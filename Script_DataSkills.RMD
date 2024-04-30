@@ -1,6 +1,6 @@
 ---
 title: "Data skills for social work professionals"
-author: "Dorian Kessler A and Samin Sepahniya"
+author: "Dorian Kessler AB and Samin Sepahniya"
 date: !r May 2024
 output:
   html_document:
