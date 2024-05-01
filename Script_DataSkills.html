@@ -9,10 +9,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Dorian Kessler ABCDE and Samin Sepahniya" />
+<meta name="author" content="Dorian Kessler and Samin Sepahniya" />
 
 
-<title>Data skills for social work professionals</title>
+<title>Data skills for social work professionals (Room 136)</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -579,218 +579,227 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">Data skills for social work
-professionals</h1>
-<h4 class="author">Dorian Kessler ABCDE and Samin Sepahniya</h4>
+<h1 class="title toc-ignore">Data skills for social work professionals
+(Room 136)</h1>
+<h4 class="author">Dorian Kessler and Samin Sepahniya</h4>
 <h4 class="date">May 2024</h4>
 
 </div>
 
 <div id="TOC">
 <ul>
-<li><a href="#learning-goals" id="toc-learning-goals"><span class="toc-section-number">1</span> Learning Goals</a>
+<li><a href="#introduction" id="toc-introduction"><span class="toc-section-number">1</span> Introduction</a>
 <ul>
-<li><a href="#content" id="toc-content"><span class="toc-section-number">1.1</span> Content</a>
+<li><a href="#what-is-data-science" id="toc-what-is-data-science"><span class="toc-section-number">1.1</span> What is data science?</a></li>
+<li><a href="#how-can-data-science-help-social-work" id="toc-how-can-data-science-help-social-work"><span class="toc-section-number">1.2</span> How can data science help social
+work?</a></li>
+<li><a href="#why-is-data-science-more-important-in-the-future" id="toc-why-is-data-science-more-important-in-the-future"><span class="toc-section-number">1.3</span> Why is data science more important
+in the future?</a></li>
+</ul></li>
+<li><a href="#the-effects-of" id="toc-the-effects-of"><span class="toc-section-number">2</span> The effects of</a></li>
+<li><a href="#learning-goals" id="toc-learning-goals"><span class="toc-section-number">3</span> Learning Goals</a>
 <ul>
-<li><a href="#technical-part" id="toc-technical-part"><span class="toc-section-number">1.1.1</span> Technical Part</a></li>
-<li><a href="#relation-to-social-work-short-inputs-and-discussions" id="toc-relation-to-social-work-short-inputs-and-discussions"><span class="toc-section-number">1.1.2</span> Relation to Social Work (short
+<li><a href="#content" id="toc-content"><span class="toc-section-number">3.1</span> Content</a>
+<ul>
+<li><a href="#technical-part" id="toc-technical-part"><span class="toc-section-number">3.1.1</span> Technical Part</a></li>
+<li><a href="#relation-to-social-work-short-inputs-and-discussions" id="toc-relation-to-social-work-short-inputs-and-discussions"><span class="toc-section-number">3.1.2</span> Relation to Social Work (short
 inputs and discussions?)</a></li>
 </ul></li>
 </ul></li>
-<li><a href="#general-information-about-r" id="toc-general-information-about-r"><span class="toc-section-number">2</span> <strong>General Information about
+<li><a href="#general-information-about-r" id="toc-general-information-about-r"><span class="toc-section-number">4</span> <strong>General Information about
 R</strong></a></li>
-<li><a href="#working-directory-objects-and-workspace" id="toc-working-directory-objects-and-workspace"><span class="toc-section-number">3</span> Working Directory, Objects, and
+<li><a href="#working-directory-objects-and-workspace" id="toc-working-directory-objects-and-workspace"><span class="toc-section-number">5</span> Working Directory, Objects, and
 Workspace</a>
 <ul>
-<li><a href="#beispiel-arbeitsverzeichnis-objekte-und-workspace" id="toc-beispiel-arbeitsverzeichnis-objekte-und-workspace"><span class="toc-section-number">3.1</span> Beispiel: Arbeitsverzeichnis,
+<li><a href="#beispiel-arbeitsverzeichnis-objekte-und-workspace" id="toc-beispiel-arbeitsverzeichnis-objekte-und-workspace"><span class="toc-section-number">5.1</span> Beispiel: Arbeitsverzeichnis,
 Objekte und Workspace ↑</a></li>
 </ul></li>
-<li><a href="#packages" id="toc-packages"><span class="toc-section-number">4</span> Packages ↑</a>
+<li><a href="#packages" id="toc-packages"><span class="toc-section-number">6</span> Packages ↑</a>
 <ul>
-<li><a href="#beispiel-packages-und-hilfefunktion" id="toc-beispiel-packages-und-hilfefunktion"><span class="toc-section-number">4.1</span> Beispiel: Packages und
+<li><a href="#beispiel-packages-und-hilfefunktion" id="toc-beispiel-packages-und-hilfefunktion"><span class="toc-section-number">6.1</span> Beispiel: Packages und
 Hilfefunktion ↑</a></li>
 </ul></li>
-<li><a href="#arithmetische--und-logische-operatoren" id="toc-arithmetische--und-logische-operatoren"><span class="toc-section-number">5</span> Arithmetische- und logische
+<li><a href="#arithmetische--und-logische-operatoren" id="toc-arithmetische--und-logische-operatoren"><span class="toc-section-number">7</span> Arithmetische- und logische
 Operatoren ↑</a>
 <ul>
-<li><a href="#beispiel-rechnen-und-vergleichen" id="toc-beispiel-rechnen-und-vergleichen"><span class="toc-section-number">5.1</span> Beispiel: Rechnen und Vergleichen
+<li><a href="#beispiel-rechnen-und-vergleichen" id="toc-beispiel-rechnen-und-vergleichen"><span class="toc-section-number">7.1</span> Beispiel: Rechnen und Vergleichen
 ↑</a></li>
-<li><a href="#übung-rechnen-und-vergleichen" id="toc-übung-rechnen-und-vergleichen"><span class="toc-section-number">5.2</span> Übung: Rechnen und Vergleichen
+<li><a href="#übung-rechnen-und-vergleichen" id="toc-übung-rechnen-und-vergleichen"><span class="toc-section-number">7.2</span> Übung: Rechnen und Vergleichen
 ↑</a></li>
-<li><a href="#lösung-rechnen-und-vergleichen" id="toc-lösung-rechnen-und-vergleichen"><span class="toc-section-number">5.3</span> Lösung: Rechnen und Vergleichen
+<li><a href="#lösung-rechnen-und-vergleichen" id="toc-lösung-rechnen-und-vergleichen"><span class="toc-section-number">7.3</span> Lösung: Rechnen und Vergleichen
 ↑</a></li>
 </ul></li>
-<li><a href="#klassendatentypen" id="toc-klassendatentypen"><span class="toc-section-number">6</span> Klassen/Datentypen ↑</a>
+<li><a href="#klassendatentypen" id="toc-klassendatentypen"><span class="toc-section-number">8</span> Klassen/Datentypen ↑</a>
 <ul>
-<li><a href="#übersicht-datentypen" id="toc-übersicht-datentypen"><span class="toc-section-number">6.1</span> Übersicht Datentypen ↑</a></li>
-<li><a href="#sonderwerte" id="toc-sonderwerte"><span class="toc-section-number">6.2</span> Sonderwerte ↑</a></li>
-<li><a href="#zugriff-auf-unterschiedliche-datenbereiche" id="toc-zugriff-auf-unterschiedliche-datenbereiche"><span class="toc-section-number">6.3</span> Zugriff auf unterschiedliche
+<li><a href="#übersicht-datentypen" id="toc-übersicht-datentypen"><span class="toc-section-number">8.1</span> Übersicht Datentypen ↑</a></li>
+<li><a href="#sonderwerte" id="toc-sonderwerte"><span class="toc-section-number">8.2</span> Sonderwerte ↑</a></li>
+<li><a href="#zugriff-auf-unterschiedliche-datenbereiche" id="toc-zugriff-auf-unterschiedliche-datenbereiche"><span class="toc-section-number">8.3</span> Zugriff auf unterschiedliche
 Datenbereiche ↑</a>
 <ul>
-<li><a href="#übung-vektoren" id="toc-übung-vektoren"><span class="toc-section-number">6.3.1</span> Übung: Vektoren ↑</a></li>
-<li><a href="#lösung-vektoren" id="toc-lösung-vektoren"><span class="toc-section-number">6.3.2</span> Lösung: Vektoren ↑</a></li>
+<li><a href="#übung-vektoren" id="toc-übung-vektoren"><span class="toc-section-number">8.3.1</span> Übung: Vektoren ↑</a></li>
+<li><a href="#lösung-vektoren" id="toc-lösung-vektoren"><span class="toc-section-number">8.3.2</span> Lösung: Vektoren ↑</a></li>
 </ul></li>
-<li><a href="#faktoren-und-listen" id="toc-faktoren-und-listen"><span class="toc-section-number">6.4</span> Faktoren und Listen ↑</a>
+<li><a href="#faktoren-und-listen" id="toc-faktoren-und-listen"><span class="toc-section-number">8.4</span> Faktoren und Listen ↑</a>
 <ul>
-<li><a href="#beispiel-faktoren-und-listen" id="toc-beispiel-faktoren-und-listen"><span class="toc-section-number">6.4.1</span> Beispiel: Faktoren und Listen
+<li><a href="#beispiel-faktoren-und-listen" id="toc-beispiel-faktoren-und-listen"><span class="toc-section-number">8.4.1</span> Beispiel: Faktoren und Listen
 ↑</a></li>
-<li><a href="#übung-faktoren-und-listen" id="toc-übung-faktoren-und-listen"><span class="toc-section-number">6.4.2</span> Übung: Faktoren und Listen
+<li><a href="#übung-faktoren-und-listen" id="toc-übung-faktoren-und-listen"><span class="toc-section-number">8.4.2</span> Übung: Faktoren und Listen
 ↑</a></li>
-<li><a href="#lösung-faktoren-und-listen" id="toc-lösung-faktoren-und-listen"><span class="toc-section-number">6.4.3</span> Lösung: Faktoren und Listen
+<li><a href="#lösung-faktoren-und-listen" id="toc-lösung-faktoren-und-listen"><span class="toc-section-number">8.4.3</span> Lösung: Faktoren und Listen
 ↑</a></li>
 </ul></li>
-<li><a href="#data-frames" id="toc-data-frames"><span class="toc-section-number">6.5</span> Data Frames ↑</a>
+<li><a href="#data-frames" id="toc-data-frames"><span class="toc-section-number">8.5</span> Data Frames ↑</a>
 <ul>
-<li><a href="#beispiel-data-frames" id="toc-beispiel-data-frames"><span class="toc-section-number">6.5.1</span> Beispiel: Data Frames ↑</a></li>
+<li><a href="#beispiel-data-frames" id="toc-beispiel-data-frames"><span class="toc-section-number">8.5.1</span> Beispiel: Data Frames ↑</a></li>
 </ul></li>
 </ul></li>
-<li><a href="#kontrollstrukturen-und-schleifen" id="toc-kontrollstrukturen-und-schleifen"><span class="toc-section-number">7</span> Kontrollstrukturen und Schleifen
+<li><a href="#kontrollstrukturen-und-schleifen" id="toc-kontrollstrukturen-und-schleifen"><span class="toc-section-number">9</span> Kontrollstrukturen und Schleifen
 ↑</a>
 <ul>
-<li><a href="#beispiel-kontrollstrukturen-und-schleifen" id="toc-beispiel-kontrollstrukturen-und-schleifen"><span class="toc-section-number">7.1</span> Beispiel: Kontrollstrukturen und
+<li><a href="#beispiel-kontrollstrukturen-und-schleifen" id="toc-beispiel-kontrollstrukturen-und-schleifen"><span class="toc-section-number">9.1</span> Beispiel: Kontrollstrukturen und
 Schleifen ↑</a></li>
-<li><a href="#übung-kontrollstrukturen-und-schleifen" id="toc-übung-kontrollstrukturen-und-schleifen"><span class="toc-section-number">7.2</span> Übung: Kontrollstrukturen und
+<li><a href="#übung-kontrollstrukturen-und-schleifen" id="toc-übung-kontrollstrukturen-und-schleifen"><span class="toc-section-number">9.2</span> Übung: Kontrollstrukturen und
 Schleifen ↑</a></li>
-<li><a href="#lösung-kontrollstrukturen-und-schleifen" id="toc-lösung-kontrollstrukturen-und-schleifen"><span class="toc-section-number">7.3</span> Lösung: Kontrollstrukturen und
+<li><a href="#lösung-kontrollstrukturen-und-schleifen" id="toc-lösung-kontrollstrukturen-und-schleifen"><span class="toc-section-number">9.3</span> Lösung: Kontrollstrukturen und
 Schleifen ↑</a></li>
 </ul></li>
-<li><a href="#funktionen" id="toc-funktionen"><span class="toc-section-number">8</span> Funktionen ↑</a>
+<li><a href="#funktionen" id="toc-funktionen"><span class="toc-section-number">10</span> Funktionen ↑</a>
 <ul>
-<li><a href="#beispiel-funktionen" id="toc-beispiel-funktionen"><span class="toc-section-number">8.1</span> Beispiel: Funktionen ↑</a></li>
-<li><a href="#übung-funktionen" id="toc-übung-funktionen"><span class="toc-section-number">8.2</span> Übung: Funktionen ↑</a></li>
-<li><a href="#lösung-funktionen" id="toc-lösung-funktionen"><span class="toc-section-number">8.3</span> Lösung: Funktionen ↑</a></li>
+<li><a href="#beispiel-funktionen" id="toc-beispiel-funktionen"><span class="toc-section-number">10.1</span> Beispiel: Funktionen ↑</a></li>
+<li><a href="#übung-funktionen" id="toc-übung-funktionen"><span class="toc-section-number">10.2</span> Übung: Funktionen ↑</a></li>
+<li><a href="#lösung-funktionen" id="toc-lösung-funktionen"><span class="toc-section-number">10.3</span> Lösung: Funktionen ↑</a></li>
 </ul></li>
-<li><a href="#kontingenztabellen-und-einfache-tests" id="toc-kontingenztabellen-und-einfache-tests"><span class="toc-section-number">9</span> Kontingenztabellen und einfache
+<li><a href="#kontingenztabellen-und-einfache-tests" id="toc-kontingenztabellen-und-einfache-tests"><span class="toc-section-number">11</span> Kontingenztabellen und einfache
 Tests ↑</a>
 <ul>
-<li><a href="#beispiel-kontingenztabellen-und-einfache-tests" id="toc-beispiel-kontingenztabellen-und-einfache-tests"><span class="toc-section-number">9.1</span> Beispiel: Kontingenztabellen und
+<li><a href="#beispiel-kontingenztabellen-und-einfache-tests" id="toc-beispiel-kontingenztabellen-und-einfache-tests"><span class="toc-section-number">11.1</span> Beispiel: Kontingenztabellen und
 einfache Tests ↑</a></li>
-<li><a href="#übung-kontingenztabellen-und-einfache-tests" id="toc-übung-kontingenztabellen-und-einfache-tests"><span class="toc-section-number">9.2</span> Übung: Kontingenztabellen und
+<li><a href="#übung-kontingenztabellen-und-einfache-tests" id="toc-übung-kontingenztabellen-und-einfache-tests"><span class="toc-section-number">11.2</span> Übung: Kontingenztabellen und
 einfache Tests ↑</a></li>
-<li><a href="#lösung-kontingenztabellen-und-einfache-tests" id="toc-lösung-kontingenztabellen-und-einfache-tests"><span class="toc-section-number">9.3</span> Lösung: Kontingenztabellen und
+<li><a href="#lösung-kontingenztabellen-und-einfache-tests" id="toc-lösung-kontingenztabellen-und-einfache-tests"><span class="toc-section-number">11.3</span> Lösung: Kontingenztabellen und
 einfache Tests ↑</a></li>
 </ul></li>
-<li><a href="#datenmanagement" id="toc-datenmanagement"><span class="toc-section-number">10</span> <strong>Datenmanagement</strong>
+<li><a href="#datenmanagement" id="toc-datenmanagement"><span class="toc-section-number">12</span> <strong>Datenmanagement</strong>
 ↑</a>
 <ul>
-<li><a href="#tidy-vs.-messy-data" id="toc-tidy-vs.-messy-data"><span class="toc-section-number">10.1</span> <em>Tidy vs. Messy Data</em>
+<li><a href="#tidy-vs.-messy-data" id="toc-tidy-vs.-messy-data"><span class="toc-section-number">12.1</span> <em>Tidy vs. Messy Data</em>
 ↑</a>
 <ul>
-<li><a href="#generelles" id="toc-generelles"><span class="toc-section-number">10.1.1</span> Generelles</a></li>
-<li><a href="#beispiel-tidy-vs-messy-data" id="toc-beispiel-tidy-vs-messy-data"><span class="toc-section-number">10.1.2</span> Beispiel: Tidy vs Messy Data
+<li><a href="#generelles" id="toc-generelles"><span class="toc-section-number">12.1.1</span> Generelles</a></li>
+<li><a href="#beispiel-tidy-vs-messy-data" id="toc-beispiel-tidy-vs-messy-data"><span class="toc-section-number">12.1.2</span> Beispiel: Tidy vs Messy Data
 ↑</a></li>
 </ul></li>
-<li><a href="#package-dplyr" id="toc-package-dplyr"><span class="toc-section-number">10.2</span> <em>Package dplyr</em> ↑</a>
+<li><a href="#package-dplyr" id="toc-package-dplyr"><span class="toc-section-number">12.2</span> <em>Package dplyr</em> ↑</a>
 <ul>
-<li><a href="#generelles-1" id="toc-generelles-1"><span class="toc-section-number">10.2.1</span> Generelles</a></li>
-<li><a href="#beispiel-package-dplyr" id="toc-beispiel-package-dplyr"><span class="toc-section-number">10.2.2</span> Beispiel: Package dplyr
+<li><a href="#generelles-1" id="toc-generelles-1"><span class="toc-section-number">12.2.1</span> Generelles</a></li>
+<li><a href="#beispiel-package-dplyr" id="toc-beispiel-package-dplyr"><span class="toc-section-number">12.2.2</span> Beispiel: Package dplyr
 ↑</a></li>
-<li><a href="#übung-package-dplyr" id="toc-übung-package-dplyr"><span class="toc-section-number">10.2.3</span> Übung: Package dplyr ↑</a></li>
-<li><a href="#lösung-package-dplyr" id="toc-lösung-package-dplyr"><span class="toc-section-number">10.2.4</span> Lösung: Package dplyr
+<li><a href="#übung-package-dplyr" id="toc-übung-package-dplyr"><span class="toc-section-number">12.2.3</span> Übung: Package dplyr ↑</a></li>
+<li><a href="#lösung-package-dplyr" id="toc-lösung-package-dplyr"><span class="toc-section-number">12.2.4</span> Lösung: Package dplyr
 ↑</a></li>
 </ul></li>
-<li><a href="#package-data.table" id="toc-package-data.table"><span class="toc-section-number">10.3</span> <em>Package data.table</em> ↑</a>
+<li><a href="#package-data.table" id="toc-package-data.table"><span class="toc-section-number">12.3</span> <em>Package data.table</em> ↑</a>
 <ul>
-<li><a href="#generelles-2" id="toc-generelles-2"><span class="toc-section-number">10.3.1</span> Generelles</a></li>
-<li><a href="#beispiel-package-data.table" id="toc-beispiel-package-data.table"><span class="toc-section-number">10.3.2</span> Beispiel: Package data.table
+<li><a href="#generelles-2" id="toc-generelles-2"><span class="toc-section-number">12.3.1</span> Generelles</a></li>
+<li><a href="#beispiel-package-data.table" id="toc-beispiel-package-data.table"><span class="toc-section-number">12.3.2</span> Beispiel: Package data.table
 ↑</a></li>
-<li><a href="#übung-package-data.table" id="toc-übung-package-data.table"><span class="toc-section-number">10.3.3</span> Übung: Package data.table
+<li><a href="#übung-package-data.table" id="toc-übung-package-data.table"><span class="toc-section-number">12.3.3</span> Übung: Package data.table
 ↑</a></li>
-<li><a href="#lösung-package-data.table" id="toc-lösung-package-data.table"><span class="toc-section-number">10.3.4</span> Lösung: Package data.table
+<li><a href="#lösung-package-data.table" id="toc-lösung-package-data.table"><span class="toc-section-number">12.3.4</span> Lösung: Package data.table
 ↑</a></li>
 </ul></li>
-<li><a href="#vergleich-base-r-dplyr-und-data.table" id="toc-vergleich-base-r-dplyr-und-data.table"><span class="toc-section-number">10.4</span> <em>Vergleich Base-R, dplyr und
+<li><a href="#vergleich-base-r-dplyr-und-data.table" id="toc-vergleich-base-r-dplyr-und-data.table"><span class="toc-section-number">12.4</span> <em>Vergleich Base-R, dplyr und
 data.table</em> ↑</a></li>
-<li><a href="#reshapen-von-daten" id="toc-reshapen-von-daten"><span class="toc-section-number">10.5</span> <em>Reshapen von Daten</em></a>
+<li><a href="#reshapen-von-daten" id="toc-reshapen-von-daten"><span class="toc-section-number">12.5</span> <em>Reshapen von Daten</em></a>
 <ul>
-<li><a href="#generelles-3" id="toc-generelles-3"><span class="toc-section-number">10.5.1</span> Generelles</a></li>
-<li><a href="#beispiel-daten-reshapen" id="toc-beispiel-daten-reshapen"><span class="toc-section-number">10.5.2</span> Beispiel: Daten reshapen
+<li><a href="#generelles-3" id="toc-generelles-3"><span class="toc-section-number">12.5.1</span> Generelles</a></li>
+<li><a href="#beispiel-daten-reshapen" id="toc-beispiel-daten-reshapen"><span class="toc-section-number">12.5.2</span> Beispiel: Daten reshapen
 ↑</a></li>
-<li><a href="#übung-daten-reshapen" id="toc-übung-daten-reshapen"><span class="toc-section-number">10.5.3</span> Übung: Daten reshapen
+<li><a href="#übung-daten-reshapen" id="toc-übung-daten-reshapen"><span class="toc-section-number">12.5.3</span> Übung: Daten reshapen
 ↑</a></li>
-<li><a href="#lösung-daten-reshapen" id="toc-lösung-daten-reshapen"><span class="toc-section-number">10.5.4</span> Lösung: Daten reshapen
+<li><a href="#lösung-daten-reshapen" id="toc-lösung-daten-reshapen"><span class="toc-section-number">12.5.4</span> Lösung: Daten reshapen
 ↑</a></li>
 </ul></li>
-<li><a href="#mergen-von-daten" id="toc-mergen-von-daten"><span class="toc-section-number">10.6</span> <em>Mergen von Daten</em> ↑</a>
+<li><a href="#mergen-von-daten" id="toc-mergen-von-daten"><span class="toc-section-number">12.6</span> <em>Mergen von Daten</em> ↑</a>
 <ul>
-<li><a href="#generelles-4" id="toc-generelles-4"><span class="toc-section-number">10.6.1</span> Generelles</a></li>
-<li><a href="#beispiel-mergen-von-daten" id="toc-beispiel-mergen-von-daten"><span class="toc-section-number">10.6.2</span> Beispiel: Mergen von Daten
+<li><a href="#generelles-4" id="toc-generelles-4"><span class="toc-section-number">12.6.1</span> Generelles</a></li>
+<li><a href="#beispiel-mergen-von-daten" id="toc-beispiel-mergen-von-daten"><span class="toc-section-number">12.6.2</span> Beispiel: Mergen von Daten
 ↑</a></li>
 </ul></li>
-<li><a href="#datenimport-und--export" id="toc-datenimport-und--export"><span class="toc-section-number">10.7</span> <em>Datenimport und -export</em>
+<li><a href="#datenimport-und--export" id="toc-datenimport-und--export"><span class="toc-section-number">12.7</span> <em>Datenimport und -export</em>
 ↑</a>
 <ul>
-<li><a href="#generelles-5" id="toc-generelles-5"><span class="toc-section-number">10.7.1</span> Generelles</a></li>
-<li><a href="#lokale-daten" id="toc-lokale-daten"><span class="toc-section-number">10.7.2</span> Lokale Daten ↑</a></li>
+<li><a href="#generelles-5" id="toc-generelles-5"><span class="toc-section-number">12.7.1</span> Generelles</a></li>
+<li><a href="#lokale-daten" id="toc-lokale-daten"><span class="toc-section-number">12.7.2</span> Lokale Daten ↑</a></li>
 </ul></li>
-<li><a href="#datenimport-aus-htmlxml" id="toc-datenimport-aus-htmlxml"><span class="toc-section-number">10.8</span> Datenimport aus HTML/XML ↑</a>
+<li><a href="#datenimport-aus-htmlxml" id="toc-datenimport-aus-htmlxml"><span class="toc-section-number">12.8</span> Datenimport aus HTML/XML ↑</a>
 <ul>
-<li><a href="#beispiel-datenimport-aus-htmlxml" id="toc-beispiel-datenimport-aus-htmlxml"><span class="toc-section-number">10.8.1</span> Beispiel: Datenimport aus
+<li><a href="#beispiel-datenimport-aus-htmlxml" id="toc-beispiel-datenimport-aus-htmlxml"><span class="toc-section-number">12.8.1</span> Beispiel: Datenimport aus
 HTML/XML</a></li>
-<li><a href="#übung-datenimport-aus-htmlxml" id="toc-übung-datenimport-aus-htmlxml"><span class="toc-section-number">10.8.2</span> Übung: Datenimport aus
+<li><a href="#übung-datenimport-aus-htmlxml" id="toc-übung-datenimport-aus-htmlxml"><span class="toc-section-number">12.8.2</span> Übung: Datenimport aus
 HTML/XML</a></li>
 </ul></li>
-<li><a href="#lösung-webscraping-tidying" id="toc-lösung-webscraping-tidying"><span class="toc-section-number">10.9</span> Lösung: Webscraping / Tidying
+<li><a href="#lösung-webscraping-tidying" id="toc-lösung-webscraping-tidying"><span class="toc-section-number">12.9</span> Lösung: Webscraping / Tidying
 ↑</a>
 <ul>
-<li><a href="#datenimport-aus-json" id="toc-datenimport-aus-json"><span class="toc-section-number">10.9.1</span> Datenimport aus JSON ↑</a></li>
-<li><a href="#apis" id="toc-apis"><span class="toc-section-number">10.9.2</span> APIs ↑</a></li>
-<li><a href="#daten-aus-datenbanken-lesen" id="toc-daten-aus-datenbanken-lesen"><span class="toc-section-number">10.9.3</span> Daten aus Datenbanken lesen
+<li><a href="#datenimport-aus-json" id="toc-datenimport-aus-json"><span class="toc-section-number">12.9.1</span> Datenimport aus JSON ↑</a></li>
+<li><a href="#apis" id="toc-apis"><span class="toc-section-number">12.9.2</span> APIs ↑</a></li>
+<li><a href="#daten-aus-datenbanken-lesen" id="toc-daten-aus-datenbanken-lesen"><span class="toc-section-number">12.9.3</span> Daten aus Datenbanken lesen
 ↑</a></li>
 </ul></li>
-<li><a href="#übung-datenimport-und--export-mergen-tidy-data" id="toc-übung-datenimport-und--export-mergen-tidy-data"><span class="toc-section-number">10.10</span> <em>Übung: Datenimport und
+<li><a href="#übung-datenimport-und--export-mergen-tidy-data" id="toc-übung-datenimport-und--export-mergen-tidy-data"><span class="toc-section-number">12.10</span> <em>Übung: Datenimport und
 -export / Mergen / Tidy Data</em> ↑</a>
 <ul>
-<li><a href="#lösung-datenimport-und--export-mergen-tidy-data" id="toc-lösung-datenimport-und--export-mergen-tidy-data"><span class="toc-section-number">10.10.1</span> Lösung: Datenimport und
+<li><a href="#lösung-datenimport-und--export-mergen-tidy-data" id="toc-lösung-datenimport-und--export-mergen-tidy-data"><span class="toc-section-number">12.10.1</span> Lösung: Datenimport und
 -export / Mergen / Tidy Data ↑</a></li>
 </ul></li>
 </ul></li>
-<li><a href="#kommunikation-von-resultaten" id="toc-kommunikation-von-resultaten"><span class="toc-section-number">11</span> <strong>Kommunikation von
+<li><a href="#kommunikation-von-resultaten" id="toc-kommunikation-von-resultaten"><span class="toc-section-number">13</span> <strong>Kommunikation von
 Resultaten</strong></a>
 <ul>
-<li><a href="#generelles-6" id="toc-generelles-6"><span class="toc-section-number">11.1</span> Generelles ↑</a></li>
-<li><a href="#erstellen-und-export-von-tabellen" id="toc-erstellen-und-export-von-tabellen"><span class="toc-section-number">11.2</span> <em>Erstellen und Export von
+<li><a href="#generelles-6" id="toc-generelles-6"><span class="toc-section-number">13.1</span> Generelles ↑</a></li>
+<li><a href="#erstellen-und-export-von-tabellen" id="toc-erstellen-und-export-von-tabellen"><span class="toc-section-number">13.2</span> <em>Erstellen und Export von
 Tabellen</em> ↑</a>
 <ul>
-<li><a href="#office-software-latex-und-r" id="toc-office-software-latex-und-r"><span class="toc-section-number">11.2.1</span> Office Software, Latex und R
+<li><a href="#office-software-latex-und-r" id="toc-office-software-latex-und-r"><span class="toc-section-number">13.2.1</span> Office Software, Latex und R
 ↑</a></li>
-<li><a href="#beispiel-export-von-tabellen" id="toc-beispiel-export-von-tabellen"><span class="toc-section-number">11.2.2</span> Beispiel: Export von Tabellen
+<li><a href="#beispiel-export-von-tabellen" id="toc-beispiel-export-von-tabellen"><span class="toc-section-number">13.2.2</span> Beispiel: Export von Tabellen
 ↑</a></li>
-<li><a href="#übung-export-von-tabellen" id="toc-übung-export-von-tabellen"><span class="toc-section-number">11.2.3</span> Übung: Export von
+<li><a href="#übung-export-von-tabellen" id="toc-übung-export-von-tabellen"><span class="toc-section-number">13.2.3</span> Übung: Export von
 Tabellen↑</a></li>
-<li><a href="#lösung-export-von-tabellen" id="toc-lösung-export-von-tabellen"><span class="toc-section-number">11.2.4</span> Lösung: Export von Tabellen
+<li><a href="#lösung-export-von-tabellen" id="toc-lösung-export-von-tabellen"><span class="toc-section-number">13.2.4</span> Lösung: Export von Tabellen
 ↑</a></li>
 </ul></li>
-<li><a href="#erstellen-und-export-von-grafiken" id="toc-erstellen-und-export-von-grafiken"><span class="toc-section-number">11.3</span> <em>Erstellen und Export von
+<li><a href="#erstellen-und-export-von-grafiken" id="toc-erstellen-und-export-von-grafiken"><span class="toc-section-number">13.3</span> <em>Erstellen und Export von
 Grafiken</em> ↑</a>
 <ul>
-<li><a href="#generelles-7" id="toc-generelles-7"><span class="toc-section-number">11.3.1</span> Generelles ↑</a></li>
-<li><a href="#beispiele" id="toc-beispiele"><span class="toc-section-number">11.3.2</span> Beispiele ↑</a></li>
-<li><a href="#ggplot2" id="toc-ggplot2"><span class="toc-section-number">11.3.3</span> Ggplot2</a>
+<li><a href="#generelles-7" id="toc-generelles-7"><span class="toc-section-number">13.3.1</span> Generelles ↑</a></li>
+<li><a href="#beispiele" id="toc-beispiele"><span class="toc-section-number">13.3.2</span> Beispiele ↑</a></li>
+<li><a href="#ggplot2" id="toc-ggplot2"><span class="toc-section-number">13.3.3</span> Ggplot2</a>
 <ul>
-<li><a href="#beispiele-ein--und-zweidimensionale-plots" id="toc-beispiele-ein--und-zweidimensionale-plots"><span class="toc-section-number">11.3.3.1</span> Beispiele: ein- und
+<li><a href="#beispiele-ein--und-zweidimensionale-plots" id="toc-beispiele-ein--und-zweidimensionale-plots"><span class="toc-section-number">13.3.3.1</span> Beispiele: ein- und
 zweidimensionale Plots ↑</a></li>
-<li><a href="#übung-grafiken-mit-ggplot2" id="toc-übung-grafiken-mit-ggplot2"><span class="toc-section-number">11.3.3.2</span> Übung: Grafiken mit ggplot2
+<li><a href="#übung-grafiken-mit-ggplot2" id="toc-übung-grafiken-mit-ggplot2"><span class="toc-section-number">13.3.3.2</span> Übung: Grafiken mit ggplot2
 ↑</a></li>
-<li><a href="#lösung-grafiken-mit-ggplot" id="toc-lösung-grafiken-mit-ggplot"><span class="toc-section-number">11.3.3.3</span> Lösung: Grafiken mit ggplot
+<li><a href="#lösung-grafiken-mit-ggplot" id="toc-lösung-grafiken-mit-ggplot"><span class="toc-section-number">13.3.3.3</span> Lösung: Grafiken mit ggplot
 ↑</a></li>
 </ul></li>
 </ul></li>
-<li><a href="#shiny-apps" id="toc-shiny-apps"><span class="toc-section-number">11.4</span> <em>Shiny-Apps</em> ↑</a>
+<li><a href="#shiny-apps" id="toc-shiny-apps"><span class="toc-section-number">13.4</span> <em>Shiny-Apps</em> ↑</a>
 <ul>
-<li><a href="#generelles-8" id="toc-generelles-8"><span class="toc-section-number">11.4.1</span> Generelles ↑</a></li>
-<li><a href="#beispiel-package-shiny" id="toc-beispiel-package-shiny"><span class="toc-section-number">11.4.2</span> Beispiel: Package shiny
+<li><a href="#generelles-8" id="toc-generelles-8"><span class="toc-section-number">13.4.1</span> Generelles ↑</a></li>
+<li><a href="#beispiel-package-shiny" id="toc-beispiel-package-shiny"><span class="toc-section-number">13.4.2</span> Beispiel: Package shiny
 ↑</a></li>
-<li><a href="#übung-package-shiny" id="toc-übung-package-shiny"><span class="toc-section-number">11.4.3</span> Übung: Package shiny ↑</a></li>
-<li><a href="#lösung-package-shiny" id="toc-lösung-package-shiny"><span class="toc-section-number">11.4.4</span> Lösung: Package shiny
+<li><a href="#übung-package-shiny" id="toc-übung-package-shiny"><span class="toc-section-number">13.4.3</span> Übung: Package shiny ↑</a></li>
+<li><a href="#lösung-package-shiny" id="toc-lösung-package-shiny"><span class="toc-section-number">13.4.4</span> Lösung: Package shiny
 ↑</a></li>
 </ul></li>
 </ul></li>
-<li><a href="#troubleshooting" id="toc-troubleshooting"><span class="toc-section-number">12</span> Troubleshooting</a>
+<li><a href="#troubleshooting" id="toc-troubleshooting"><span class="toc-section-number">14</span> Troubleshooting</a>
 <ul>
-<li><a href="#allgemeines-vorgehen-bei-einem-error" id="toc-allgemeines-vorgehen-bei-einem-error"><span class="toc-section-number">12.1</span> Allgemeines Vorgehen bei einem
+<li><a href="#allgemeines-vorgehen-bei-einem-error" id="toc-allgemeines-vorgehen-bei-einem-error"><span class="toc-section-number">14.1</span> Allgemeines Vorgehen bei einem
 Error:</a></li>
-<li><a href="#häufigste-fehlermeldungen" id="toc-häufigste-fehlermeldungen"><span class="toc-section-number">12.2</span> Häufigste
+<li><a href="#häufigste-fehlermeldungen" id="toc-häufigste-fehlermeldungen"><span class="toc-section-number">14.2</span> Häufigste
 Fehlermeldungen</a></li>
 </ul></li>
 </ul>
@@ -801,15 +810,64 @@ h1 { font-size: 140%; }
 h2 { font-size: 130%; }
 h3 { font-size: 120%; }
 </style>
-<div id="learning-goals" class="section level1" number="1">
-<h1><span class="header-section-number">1</span> Learning Goals</h1>
+<p>To do:</p>
+<ul>
+<li>Moodlekurs</li>
+<li>Struktur inhalte</li>
+<li>Datensätze beschreiben</li>
+</ul>
+<div id="introduction" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Introduction</h1>
+<div id="what-is-data-science" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> What is data
+science?</h2>
+<ul>
+<li><p>Term that emerged ca. 10 years ago. Predecessors: Statistics,
+Data analysis.</p></li>
+<li><p>The science of creating valuable information from data</p></li>
+<li><p>Practice-oriented science</p></li>
+<li><p>Combines technical and field expertise</p></li>
+</ul>
+</div>
+<div id="how-can-data-science-help-social-work" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> How can data science
+help social work?</h2>
+<ul>
+<li><p>Discuss own examples (ca. 30 minutes)</p></li>
+<li><p><img src="data:image/png;base64,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" /></p></li>
+</ul>
+</div>
+<div id="why-is-data-science-more-important-in-the-future" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> Why is data science
+more important in the future?</h2>
+<ul>
+<li><p>Data that are relevant for social work</p>
+<ul>
+<li>Datafication:
+<ul>
+<li>data collected for research/official statistics,</li>
+<li>found data (uebung: studierende sollen selber überlegen, wo found
+data entstehen)</li>
+<li>excercise: measuring social work outcome dimensions with found data
+(give example)</li>
+<li>risks?</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="the-effects-of" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> The effects of</h1>
+</div>
+<div id="learning-goals" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Learning Goals</h1>
 <ul>
 <li>People learn basic data science tools.</li>
 <li>People learn how to integrate data science in social work problem
 solving.</li>
 </ul>
-<div id="content" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> Content</h2>
+<div id="content" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Content</h2>
 <p>Content is structured to alternate between technical aspects (basics,
 hands-on exercises) and their relation to social work and practice.</p>
 <p>#BFH Struktur</p>
@@ -958,8 +1016,8 @@ quick_docx huxtable, ggplot2, (shiny; erwähnen) - <strong>Prediction of
 risks, Evaluation/Causal design/Effects of social work (Dorian,
 5.6)</strong> - <strong>Case study work with coaching (Dorian,
 6.6)</strong> - <strong>Presentation</strong></p>
-<div id="technical-part" class="section level3" number="1.1.1">
-<h3><span class="header-section-number">1.1.1</span> Technical Part</h3>
+<div id="technical-part" class="section level3" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Technical Part</h3>
 <ul>
 <li><strong>Study Designs</strong>
 <ul>
@@ -990,8 +1048,8 @@ statistical techniques.</li>
 <li><strong>Machine Learning Applications</strong></li>
 </ul>
 </div>
-<div id="relation-to-social-work-short-inputs-and-discussions" class="section level3" number="1.1.2">
-<h3><span class="header-section-number">1.1.2</span> Relation to Social
+<div id="relation-to-social-work-short-inputs-and-discussions" class="section level3" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> Relation to Social
 Work (short inputs and discussions?)</h3>
 <ul>
 <li><p><strong>Why Should Social Workers Learn About Data
@@ -1013,8 +1071,8 @@ series Digital-HSA):</strong></p>
 </div>
 </div>
 </div>
-<div id="general-information-about-r" class="section level1" number="2">
-<h1><span class="header-section-number">2</span> <strong>General
+<div id="general-information-about-r" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> <strong>General
 Information about R</strong></h1>
 <ul>
 <li>R is free and open source.</li>
@@ -1029,8 +1087,8 @@ Statistics</a>)</li>
 workflow.</li>
 </ul>
 </div>
-<div id="working-directory-objects-and-workspace" class="section level1" number="3">
-<h1><span class="header-section-number">3</span> Working Directory,
+<div id="working-directory-objects-and-workspace" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Working Directory,
 Objects, and Workspace</h1>
 <ul>
 <li><strong>Working Directory</strong>
@@ -1070,8 +1128,8 @@ workspace.</li>
 default.</li>
 </ul></li>
 </ul>
-<div id="beispiel-arbeitsverzeichnis-objekte-und-workspace" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> Beispiel:
+<div id="beispiel-arbeitsverzeichnis-objekte-und-workspace" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Beispiel:
 Arbeitsverzeichnis, Objekte und Workspace <a href="#top">↑</a></h2>
 <pre class="r"><code># Kommentare beginnen mit #
 # Alles in der Zeile nach # wird von R ignoriert
@@ -1107,8 +1165,8 @@ ls() # Workspace anzeigen
 rm(die.beatles) # Objekt löschen</code></pre>
 </div>
 </div>
-<div id="packages" class="section level1" number="4">
-<h1><span class="header-section-number">4</span> Packages <a href="#top">↑</a></h1>
+<div id="packages" class="section level1" number="6">
+<h1><span class="header-section-number">6</span> Packages <a href="#top">↑</a></h1>
 <ul>
 <li>Viele Objekte (Funktionen, Datensätze, etc.) befinden sich in
 sogenannten Packages (<a href="http://cran.r-project.org/web/packages/available_packages_by_date.html">see
@@ -1138,8 +1196,8 @@ installieren</li>
 <li><code>remove.packages(&quot;packagename&quot;)</code>: Paket
 deinstallieren</li>
 </ul>
-<div id="beispiel-packages-und-hilfefunktion" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Beispiel: Packages
+<div id="beispiel-packages-und-hilfefunktion" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Beispiel: Packages
 und Hilfefunktion <a href="#top">↑</a></h2>
 <pre class="r"><code># nehmen wir an wir möchten eine SPSS Datei einlesen:
 
@@ -1158,8 +1216,8 @@ library(foreign)
 # Aber generelle Empfehlung: Google liefert mittlerweile i.d.R. bessere Resultate als die Hilfefunktion</code></pre>
 </div>
 </div>
-<div id="arithmetische--und-logische-operatoren" class="section level1" number="5">
-<h1><span class="header-section-number">5</span> Arithmetische- und
+<div id="arithmetische--und-logische-operatoren" class="section level1" number="7">
+<h1><span class="header-section-number">7</span> Arithmetische- und
 logische Operatoren <a href="#top">↑</a></h1>
 <ul>
 <li>Arithmetische Operatoren
@@ -1177,8 +1235,8 @@ logische Operatoren <a href="#top">↑</a></h1>
 <li><code>abs(x) sqrt(x) ceiling(x) floor(x) trunc(x) round(x, digits=n)</code></li>
 </ul></li>
 </ul>
-<div id="beispiel-rechnen-und-vergleichen" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> Beispiel: Rechnen und
+<div id="beispiel-rechnen-und-vergleichen" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> Beispiel: Rechnen und
 Vergleichen <a href="#top">↑</a></h2>
 <pre class="r"><code># Rechnen
 ergebnis &lt;- (23+24)*11/(18+15)*5
@@ -1219,8 +1277,8 @@ x &gt; 1 &amp; x &lt; -1
 # grösser als 1 oder kleiner als -1
 x &gt; 1 | x &lt; -1</code></pre>
 </div>
-<div id="übung-rechnen-und-vergleichen" class="section level2" number="5.2">
-<h2><span class="header-section-number">5.2</span> Übung: Rechnen und
+<div id="übung-rechnen-und-vergleichen" class="section level2" number="7.2">
+<h2><span class="header-section-number">7.2</span> Übung: Rechnen und
 Vergleichen <a href="#top">↑</a></h2>
 <ol style="list-style-type: decimal">
 <li>Berechnen Sie folgende Terme in R
@@ -1235,8 +1293,8 @@ Vergleichen <a href="#top">↑</a></h2>
 </ol></li>
 </ol>
 </div>
-<div id="lösung-rechnen-und-vergleichen" class="section level2" number="5.3">
-<h2><span class="header-section-number">5.3</span> Lösung: Rechnen und
+<div id="lösung-rechnen-und-vergleichen" class="section level2" number="7.3">
+<h2><span class="header-section-number">7.3</span> Lösung: Rechnen und
 Vergleichen <a href="#top">↑</a></h2>
 <pre class="r"><code># 1.
 ((3+4-5)-9)^2
@@ -1247,8 +1305,8 @@ log(1)
 sqrt(3)!=cos(17)</code></pre>
 </div>
 </div>
-<div id="klassendatentypen" class="section level1" number="6">
-<h1><span class="header-section-number">6</span> Klassen/Datentypen <a href="#top">↑</a></h1>
+<div id="klassendatentypen" class="section level1" number="8">
+<h1><span class="header-section-number">8</span> Klassen/Datentypen <a href="#top">↑</a></h1>
 <ul>
 <li><code>class()</code>: Offenbart die Klasse eines Objekts</li>
 <li>Homogen (siehe <a href="http://adv-r.had.co.nz/Data-structures.html">Wickham</a>)
@@ -1276,8 +1334,8 @@ gespeichert aber mit einem Wertelabel verbunden</li>
 </ul></li>
 </ul></li>
 </ul>
-<div id="übersicht-datentypen" class="section level2" number="6.1">
-<h2><span class="header-section-number">6.1</span> Übersicht Datentypen
+<div id="übersicht-datentypen" class="section level2" number="8.1">
+<h2><span class="header-section-number">8.1</span> Übersicht Datentypen
 <a href="#top">↑</a></h2>
 <pre class="r"><code># Homogen
 
@@ -1327,8 +1385,8 @@ factor(sex,labels=c(&quot;Mann&quot;,&quot;Frau&quot;))
 class(mean)
 mean</code></pre>
 </div>
-<div id="sonderwerte" class="section level2" number="6.2">
-<h2><span class="header-section-number">6.2</span> Sonderwerte <a href="#top">↑</a></h2>
+<div id="sonderwerte" class="section level2" number="8.2">
+<h2><span class="header-section-number">8.2</span> Sonderwerte <a href="#top">↑</a></h2>
 <ul>
 <li><code>Inf</code> und <code>-Inf</code>: Positiv und negativ
 unendlich</li>
@@ -1346,8 +1404,8 @@ x == &quot;NA&quot;
 #richtig:
 is.na(x)</code></pre>
 </div>
-<div id="zugriff-auf-unterschiedliche-datenbereiche" class="section level2" number="6.3">
-<h2><span class="header-section-number">6.3</span> Zugriff auf
+<div id="zugriff-auf-unterschiedliche-datenbereiche" class="section level2" number="8.3">
+<h2><span class="header-section-number">8.3</span> Zugriff auf
 unterschiedliche Datenbereiche <a href="#top">↑</a></h2>
 <pre class="r"><code># Wie kann man direkt auf einzelne Elemente eines Vektors zugreifen?
 x &lt;- seq(2, 200, 2)
@@ -1369,8 +1427,8 @@ swiss[&quot;Delemont&quot;, &quot;Fertility&quot;]
 # oder nach einer Bedingung:
 
 swiss[swiss$Catholic &gt; 80, ]</code></pre>
-<div id="übung-vektoren" class="section level3" number="6.3.1">
-<h3><span class="header-section-number">6.3.1</span> Übung: Vektoren <a href="#top">↑</a></h3>
+<div id="übung-vektoren" class="section level3" number="8.3.1">
+<h3><span class="header-section-number">8.3.1</span> Übung: Vektoren <a href="#top">↑</a></h3>
 <ol style="list-style-type: decimal">
 <li>Lassen Sie sich aus dem Datensatz <code>swiss</code> die zehnte und
 zwölfte Zeile anzeigen.</li>
@@ -1379,8 +1437,8 @@ zwölfte Zeile anzeigen.</li>
 Kindersterblichkeit zwischen 20 und 22 haben.</li>
 </ol>
 </div>
-<div id="lösung-vektoren" class="section level3" number="6.3.2">
-<h3><span class="header-section-number">6.3.2</span> Lösung: Vektoren <a href="#top">↑</a></h3>
+<div id="lösung-vektoren" class="section level3" number="8.3.2">
+<h3><span class="header-section-number">8.3.2</span> Lösung: Vektoren <a href="#top">↑</a></h3>
 <pre class="r"><code># 1.
 
 swiss[c(10, 12), ]
@@ -1390,8 +1448,8 @@ swiss[c(10, 12), ]
 swiss[swiss$Infant.Mortality &gt; 20 &amp; swiss$Infant.Mortality &lt; 22, c(&quot;Education&quot;, &quot;Catholic&quot;)]</code></pre>
 </div>
 </div>
-<div id="faktoren-und-listen" class="section level2" number="6.4">
-<h2><span class="header-section-number">6.4</span> Faktoren und Listen
+<div id="faktoren-und-listen" class="section level2" number="8.4">
+<h2><span class="header-section-number">8.4</span> Faktoren und Listen
 <a href="#top">↑</a></h2>
 <ul>
 <li>Faktoren
@@ -1419,8 +1477,8 @@ als Behältnis für Schätzergebnisse</li>
 <li>Im Laufe des Kurses werden noch weitere Objektklassen
 auftauchen</li>
 </ul>
-<div id="beispiel-faktoren-und-listen" class="section level3" number="6.4.1">
-<h3><span class="header-section-number">6.4.1</span> Beispiel: Faktoren
+<div id="beispiel-faktoren-und-listen" class="section level3" number="8.4.1">
+<h3><span class="header-section-number">8.4.1</span> Beispiel: Faktoren
 und Listen <a href="#top">↑</a></h3>
 <pre class="r"><code># Faktor erzeugen
 
@@ -1457,8 +1515,8 @@ length(kursteilnehmer)
 kursteilnehmer$Frauen[2]
 kursteilnehmer[[3]][2]</code></pre>
 </div>
-<div id="übung-faktoren-und-listen" class="section level3" number="6.4.2">
-<h3><span class="header-section-number">6.4.2</span> Übung: Faktoren und
+<div id="übung-faktoren-und-listen" class="section level3" number="8.4.2">
+<h3><span class="header-section-number">8.4.2</span> Übung: Faktoren und
 Listen <a href="#top">↑</a></h3>
 <ol style="list-style-type: decimal">
 <li>Erzeugen Sie einen Faktor <code>obst</code>, der vier Äpfel und drei
@@ -1468,8 +1526,8 @@ der einen Brokkoli und drei Tomaten enthält.</li>
 Gemüse beherbergt.</li>
 </ol>
 </div>
-<div id="lösung-faktoren-und-listen" class="section level3" number="6.4.3">
-<h3><span class="header-section-number">6.4.3</span> Lösung: Faktoren
+<div id="lösung-faktoren-und-listen" class="section level3" number="8.4.3">
+<h3><span class="header-section-number">8.4.3</span> Lösung: Faktoren
 und Listen <a href="#top">↑</a></h3>
 <pre class="r"><code># 1.
 obst &lt;- factor(c(rep(0,4),rep(1,3)), labels=c(&quot;Apfel&quot;,&quot;Orange&quot;))
@@ -1481,8 +1539,8 @@ einkaufskorb &lt;- list(obst,gemuese)
 einkaufskorb</code></pre>
 </div>
 </div>
-<div id="data-frames" class="section level2" number="6.5">
-<h2><span class="header-section-number">6.5</span> Data Frames <a href="#top">↑</a></h2>
+<div id="data-frames" class="section level2" number="8.5">
+<h2><span class="header-section-number">8.5</span> Data Frames <a href="#top">↑</a></h2>
 <ul>
 <li>Data frames sind das typische Format für Datensätze</li>
 <li>…es handelt sich um eine Liste von Vektoren derselben Länge <a href="http://adv-r.had.co.nz/Data-structures.html">siehe
@@ -1502,8 +1560,8 @@ inspizieren</li>
 <li><code>na.omit()</code>: Zeilenweise Ausschluss von fehlenden Werten,
 d.h. Zeilen die mindestens 1 Missing beinhalten</li>
 </ul>
-<div id="beispiel-data-frames" class="section level3" number="6.5.1">
-<h3><span class="header-section-number">6.5.1</span> Beispiel: Data
+<div id="beispiel-data-frames" class="section level3" number="8.5.1">
+<h3><span class="header-section-number">8.5.1</span> Beispiel: Data
 Frames <a href="#top">↑</a></h3>
 <pre class="r"><code># fertige Daten sind oft data frames:
 titanic &lt;- read.dta(&quot;http://www.stata-press.com/data/kkd/titanic2.dta&quot;)
@@ -1524,8 +1582,8 @@ df[3,3]</code></pre>
 </div>
 </div>
 </div>
-<div id="kontrollstrukturen-und-schleifen" class="section level1" number="7">
-<h1><span class="header-section-number">7</span> Kontrollstrukturen und
+<div id="kontrollstrukturen-und-schleifen" class="section level1" number="9">
+<h1><span class="header-section-number">9</span> Kontrollstrukturen und
 Schleifen <a href="#top">↑</a></h1>
 <ul>
 <li>Schleifen sind in vielen Situationen hilfreich, sobald sich
@@ -1557,8 +1615,8 @@ jedem Durchlauf ändert sich der Wert von <code>i</code></li>
 Bedingung FALSE wird, dann wird die Schleife verlassen</li>
 </ul></li>
 </ul>
-<div id="beispiel-kontrollstrukturen-und-schleifen" class="section level2" number="7.1">
-<h2><span class="header-section-number">7.1</span> Beispiel:
+<div id="beispiel-kontrollstrukturen-und-schleifen" class="section level2" number="9.1">
+<h2><span class="header-section-number">9.1</span> Beispiel:
 Kontrollstrukturen und Schleifen <a href="#top">↑</a></h2>
 <pre class="r"><code># If Argument
 x &lt;- -5
@@ -1636,8 +1694,8 @@ apply(swiss[,2:6],2,mean)
 
 # Überlegen Sie, ob eine Schleife wirklich nötig ist für ihr Problem (sehr komplizierte und interdependente Probleme z.B. können oft nicht vektorisiert werden und Schleifen sind dann ggf. unumgänglich). Fall Sie Schleifen verwenden: Ziehen Sie soviel Code wie möglich aus der Schleife raus (alles statische) um nicht unnötig Performance einzubüssen. Vermeiden Sie innerhalb der Schleifen komplexe Datentypen (data.frames) und Funktionen die damit zusammenhängen, z.B. cbind()/rbind(). Verwenden Sie besser Vektoren, Matrizen oder data.tables (kommt in den folgenden Kapiteln)</code></pre>
 </div>
-<div id="übung-kontrollstrukturen-und-schleifen" class="section level2" number="7.2">
-<h2><span class="header-section-number">7.2</span> Übung:
+<div id="übung-kontrollstrukturen-und-schleifen" class="section level2" number="9.2">
+<h2><span class="header-section-number">9.2</span> Übung:
 Kontrollstrukturen und Schleifen <a href="#top">↑</a></h2>
 <ol style="list-style-type: decimal">
 <li>Schreiben Sie eine If-Bedingung die <code>y</code> entweder den Wert
@@ -1656,8 +1714,8 @@ berechnet und das Ergebnis (und die Zahl <code>x</code> selbst) ausgibt.
 Die Schleife soll stoppen, sobald ein Ergebnis 1000 überschreitet.</li>
 </ol>
 </div>
-<div id="lösung-kontrollstrukturen-und-schleifen" class="section level2" number="7.3">
-<h2><span class="header-section-number">7.3</span> Lösung:
+<div id="lösung-kontrollstrukturen-und-schleifen" class="section level2" number="9.3">
+<h2><span class="header-section-number">9.3</span> Lösung:
 Kontrollstrukturen und Schleifen <a href="#top">↑</a></h2>
 <pre class="r"><code># 1.
 x &lt;- 51
@@ -1685,8 +1743,8 @@ while(ergebnis &lt;= 1000) {
 }</code></pre>
 </div>
 </div>
-<div id="funktionen" class="section level1" number="8">
-<h1><span class="header-section-number">8</span> Funktionen <a href="#top">↑</a></h1>
+<div id="funktionen" class="section level1" number="10">
+<h1><span class="header-section-number">10</span> Funktionen <a href="#top">↑</a></h1>
 <ul>
 <li>…nehmen Input, geben Output</li>
 <li>…sind selbst Objekte</li>
@@ -1700,8 +1758,8 @@ Definiert eine Funktion</li>
 sich durch den Typ des Inputs ändert, z.B. <code>print()</code>,
 <code>plot()</code> oder <code>summary()</code>)</li>
 </ul>
-<div id="beispiel-funktionen" class="section level2" number="8.1">
-<h2><span class="header-section-number">8.1</span> Beispiel: Funktionen
+<div id="beispiel-funktionen" class="section level2" number="10.1">
+<h2><span class="header-section-number">10.1</span> Beispiel: Funktionen
 <a href="#top">↑</a></h2>
 <pre class="r"><code>print(&quot;Hallo&quot;)
 print
@@ -1719,8 +1777,8 @@ wurzel(4)
 # Namen eingeben um Inhalt zu sehen
 wurzel</code></pre>
 </div>
-<div id="übung-funktionen" class="section level2" number="8.2">
-<h2><span class="header-section-number">8.2</span> Übung: Funktionen <a href="#top">↑</a></h2>
+<div id="übung-funktionen" class="section level2" number="10.2">
+<h2><span class="header-section-number">10.2</span> Übung: Funktionen <a href="#top">↑</a></h2>
 <ol style="list-style-type: decimal">
 <li>Schreiben Sie eine Funktion, die Input gemäss folgender Formel
 verarbeitet: <span class="math inline">\((x + 2)^{2}\)</span> und wenden
@@ -1732,8 +1790,9 @@ Testen Sie ihre Funktion mit <code>x &lt;- 1:5</code> und
 <code>w &lt;-  c(2,4,5,6,7)</code>.</li>
 </ol>
 </div>
-<div id="lösung-funktionen" class="section level2" number="8.3">
-<h2><span class="header-section-number">8.3</span> Lösung: Funktionen <a href="#top">↑</a></h2>
+<div id="lösung-funktionen" class="section level2" number="10.3">
+<h2><span class="header-section-number">10.3</span> Lösung: Funktionen
+<a href="#top">↑</a></h2>
 <pre class="r"><code># 1.
 plus2hoch2 &lt;- function(x) {
   (x+2)^2
@@ -1748,8 +1807,8 @@ gew.mittelwert &lt;- function(x,w) sum(w*x)/sum(w)
 gew.mittelwert(x,w)</code></pre>
 </div>
 </div>
-<div id="kontingenztabellen-und-einfache-tests" class="section level1" number="9">
-<h1><span class="header-section-number">9</span> Kontingenztabellen und
+<div id="kontingenztabellen-und-einfache-tests" class="section level1" number="11">
+<h1><span class="header-section-number">11</span> Kontingenztabellen und
 einfache Tests <a href="#top">↑</a></h1>
 <ul>
 <li>Univariate Statistiken (1 Variable)
@@ -1777,8 +1836,8 @@ einfache Tests <a href="#top">↑</a></h1>
 <li><code>prop.table(table(x))</code>: relative Häufigkeit</li>
 </ul></li>
 </ul>
-<div id="beispiel-kontingenztabellen-und-einfache-tests" class="section level2" number="9.1">
-<h2><span class="header-section-number">9.1</span> Beispiel:
+<div id="beispiel-kontingenztabellen-und-einfache-tests" class="section level2" number="11.1">
+<h2><span class="header-section-number">11.1</span> Beispiel:
 Kontingenztabellen und einfache Tests <a href="#top">↑</a></h2>
 <pre class="r"><code># zwei fiktive Vektoren erstellen
 x &lt;- c(10,20,30,40,30,10,20,30,40,30,10,20,10)
@@ -1817,8 +1876,8 @@ cov(x,y)
 # Mittelwertvergleich
 t.test(x,y)</code></pre>
 </div>
-<div id="übung-kontingenztabellen-und-einfache-tests" class="section level2" number="9.2">
-<h2><span class="header-section-number">9.2</span> Übung:
+<div id="übung-kontingenztabellen-und-einfache-tests" class="section level2" number="11.2">
+<h2><span class="header-section-number">11.2</span> Übung:
 Kontingenztabellen und einfache Tests <a href="#top">↑</a></h2>
 <ol style="list-style-type: decimal">
 <li>Laden (ggf. vorher installieren) Sie das Paket <code>foreign</code>.
@@ -1833,8 +1892,8 @@ Gestorbene. Unterscheiden sich die beiden Gruppen signifikant
 voneinander?</li>
 </ol>
 </div>
-<div id="lösung-kontingenztabellen-und-einfache-tests" class="section level2" number="9.3">
-<h2><span class="header-section-number">9.3</span> Lösung:
+<div id="lösung-kontingenztabellen-und-einfache-tests" class="section level2" number="11.3">
+<h2><span class="header-section-number">11.3</span> Lösung:
 Kontingenztabellen und einfache Tests <a href="#top">↑</a></h2>
 <pre class="r"><code>### 1.
 library(foreign)
@@ -1853,14 +1912,14 @@ t.test(titanic$age2[titanic$survived==&quot;yes&quot;],titanic$age2[titanic$surv
 # ja, die 5 Jahre differenz sind überzufällig, es gibt einen Zusammenhang zwischen Alter und Überleben</code></pre>
 </div>
 </div>
-<div id="datenmanagement" class="section level1" number="10">
-<h1><span class="header-section-number">10</span>
+<div id="datenmanagement" class="section level1" number="12">
+<h1><span class="header-section-number">12</span>
 <strong>Datenmanagement</strong> <a href="#top">↑</a></h1>
-<div id="tidy-vs.-messy-data" class="section level2" number="10.1">
-<h2><span class="header-section-number">10.1</span> <em>Tidy vs. Messy
+<div id="tidy-vs.-messy-data" class="section level2" number="12.1">
+<h2><span class="header-section-number">12.1</span> <em>Tidy vs. Messy
 Data</em> <a href="#top">↑</a></h2>
-<div id="generelles" class="section level3" number="10.1.1">
-<h3><span class="header-section-number">10.1.1</span> Generelles</h3>
+<div id="generelles" class="section level3" number="12.1.1">
+<h3><span class="header-section-number">12.1.1</span> Generelles</h3>
 <ul>
 <li>Hadley Wickham hat versucht, einige Konventionen zur sauberen
 Darstellung/Ablage von Daten aufzuschreiben</li>
@@ -1894,8 +1953,8 @@ sind</li>
 </ul></li>
 </ul>
 </div>
-<div id="beispiel-tidy-vs-messy-data" class="section level3" number="10.1.2">
-<h3><span class="header-section-number">10.1.2</span> Beispiel: Tidy vs
+<div id="beispiel-tidy-vs-messy-data" class="section level3" number="12.1.2">
+<h3><span class="header-section-number">12.1.2</span> Beispiel: Tidy vs
 Messy Data <a href="#top">↑</a></h3>
 <pre class="r"><code># Wetterdaten
 weather &lt;- read.table(&quot;https://raw.githubusercontent.com/justmarkham/tidy-data/master/data/weather.txt&quot;, header=TRUE)
@@ -1927,11 +1986,11 @@ weather.tidy[, c(&quot;year&quot;, &quot;month&quot;, &quot;day&quot;)] &lt;- NU
 head(weather.tidy)</code></pre>
 </div>
 </div>
-<div id="package-dplyr" class="section level2" number="10.2">
-<h2><span class="header-section-number">10.2</span> <em>Package
+<div id="package-dplyr" class="section level2" number="12.2">
+<h2><span class="header-section-number">12.2</span> <em>Package
 dplyr</em> <a href="#top">↑</a></h2>
-<div id="generelles-1" class="section level3" number="10.2.1">
-<h3><span class="header-section-number">10.2.1</span> Generelles</h3>
+<div id="generelles-1" class="section level3" number="12.2.1">
+<h3><span class="header-section-number">12.2.1</span> Generelles</h3>
 <ul>
 <li>Relativ neues Package <a href="http://blog.rstudio.org/2014/01/17/introducing-dplyr/">dplyr</a>
 von <a href="https://twitter.com/hadleywickham">Hadley Wickham</a>/<a href="https://twitter.com/romain_francois">Romain Francois</a> bietet
@@ -1958,8 +2017,8 @@ besser lesbar und kompakter wird.</li>
 </ul></li>
 </ul>
 </div>
-<div id="beispiel-package-dplyr" class="section level3" number="10.2.2">
-<h3><span class="header-section-number">10.2.2</span> Beispiel: Package
+<div id="beispiel-package-dplyr" class="section level3" number="12.2.2">
+<h3><span class="header-section-number">12.2.2</span> Beispiel: Package
 dplyr <a href="#top">↑</a></h3>
 <pre class="r"><code>titanic &lt;- read.dta(&quot;http://www.stata-press.com/data/kkd/titanic2.dta&quot;)
 
@@ -1988,8 +2047,8 @@ titanic %&gt;%
   summarise(n=n()) %&gt;%
   arrange(sex, child, survived)</code></pre>
 </div>
-<div id="übung-package-dplyr" class="section level3" number="10.2.3">
-<h3><span class="header-section-number">10.2.3</span> Übung: Package
+<div id="übung-package-dplyr" class="section level3" number="12.2.3">
+<h3><span class="header-section-number">12.2.3</span> Übung: Package
 dplyr <a href="#top">↑</a></h3>
 <ol style="list-style-type: decimal">
 <li>Laden Sie die Daten <a href="http://www.farys.org/daten/allbus2008.dta" class="uri">http://www.farys.org/daten/allbus2008.dta</a> (hierfür
@@ -2007,16 +2066,16 @@ Kombination aus Alter und Geschlecht (<code>group_by()</code>,
 <code>summarise()</code>, <code>mean()</code>).</li>
 </ol>
 </div>
-<div id="lösung-package-dplyr" class="section level3" number="10.2.4">
-<h3><span class="header-section-number">10.2.4</span> Lösung: Package
+<div id="lösung-package-dplyr" class="section level3" number="12.2.4">
+<h3><span class="header-section-number">12.2.4</span> Lösung: Package
 dplyr <a href="#top">↑</a></h3>
 </div>
 </div>
-<div id="package-data.table" class="section level2" number="10.3">
-<h2><span class="header-section-number">10.3</span> <em>Package
+<div id="package-data.table" class="section level2" number="12.3">
+<h2><span class="header-section-number">12.3</span> <em>Package
 data.table</em> <a href="#top">↑</a></h2>
-<div id="generelles-2" class="section level3" number="10.3.1">
-<h3><span class="header-section-number">10.3.1</span> Generelles</h3>
+<div id="generelles-2" class="section level3" number="12.3.1">
+<h3><span class="header-section-number">12.3.1</span> Generelles</h3>
 <ul>
 <li>Versucht dasselbe wie <code>dplyr</code>, ist aber stärker auf <a href="https://github.com/Rdatatable/data.table/wiki">Performance und
 Funktionalität</a> ausgerichtet während <code>dplyr</code> mehr die
@@ -2057,8 +2116,8 @@ braucht mehr Eingewöhnung.</li>
 <li>Beim Arbeiten mit grossen Datensätzen unerlässlich!</li>
 </ul>
 </div>
-<div id="beispiel-package-data.table" class="section level3" number="10.3.2">
-<h3><span class="header-section-number">10.3.2</span> Beispiel: Package
+<div id="beispiel-package-data.table" class="section level3" number="12.3.2">
+<h3><span class="header-section-number">12.3.2</span> Beispiel: Package
 data.table <a href="#top">↑</a></h3>
 <pre class="r"><code>library(dplyr)
 library(foreign)
@@ -2159,8 +2218,8 @@ a[, c := c(NA, a[.I-1])]#Alternative zu lag() in dplyr
 a[, b := shift(a, n = 1, type = &quot;lag&quot;)]
 a[, c := shift(a, n = 1, type = &quot;lead&quot;)]</code></pre>
 </div>
-<div id="übung-package-data.table" class="section level3" number="10.3.3">
-<h3><span class="header-section-number">10.3.3</span> Übung: Package
+<div id="übung-package-data.table" class="section level3" number="12.3.3">
+<h3><span class="header-section-number">12.3.3</span> Übung: Package
 data.table <a href="#top">↑</a></h3>
 <ol style="list-style-type: decimal">
 <li>Laden Sie die Daten des European Social Survey (Auszug) mit
@@ -2184,8 +2243,8 @@ Support für Umverteilung pro Land (Variable <code>gincdiff</code>
 Modusfunktion aus dem Beispiel oben.</li>
 </ol>
 </div>
-<div id="lösung-package-data.table" class="section level3" number="10.3.4">
-<h3><span class="header-section-number">10.3.4</span> Lösung: Package
+<div id="lösung-package-data.table" class="section level3" number="12.3.4">
+<h3><span class="header-section-number">12.3.4</span> Lösung: Package
 data.table <a href="#top">↑</a></h3>
 <pre class="r"><code>library(data.table)
 library(dplyr)
@@ -2317,8 +2376,8 @@ ess %&gt;%
 aggregate(cbind(happy, gincdif)~Land,FUN = Mode,data = ess)</code></pre>
 </div>
 </div>
-<div id="vergleich-base-r-dplyr-und-data.table" class="section level2" number="10.4">
-<h2><span class="header-section-number">10.4</span> <em>Vergleich
+<div id="vergleich-base-r-dplyr-und-data.table" class="section level2" number="12.4">
+<h2><span class="header-section-number">12.4</span> <em>Vergleich
 Base-R, dplyr und data.table</em> <a href="#top">↑</a></h2>
 <pre class="r"><code># Beispiel data.frame:
 data &lt;- data.frame(A=1:10, B=2:11, C=3:12, D=c(&quot;a&quot;,&quot;b&quot;))
@@ -2328,10 +2387,10 @@ library(data.table)
 data &lt;- data.table(A=1:10, B=2:11, C=3:12, D=c(&quot;a&quot;,&quot;b&quot;))</code></pre>
 <table>
 <colgroup>
-<col width="25%" />
-<col width="27%" />
-<col width="14%" />
-<col width="32%" />
+<col width="23%" />
+<col width="23%" />
+<col width="23%" />
+<col width="29%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -2409,11 +2468,11 @@ oder<br />
 </table>
 <hr />
 </div>
-<div id="reshapen-von-daten" class="section level2" number="10.5">
-<h2><span class="header-section-number">10.5</span> <em>Reshapen von
+<div id="reshapen-von-daten" class="section level2" number="12.5">
+<h2><span class="header-section-number">12.5</span> <em>Reshapen von
 Daten</em></h2>
-<div id="generelles-3" class="section level3" number="10.5.1">
-<h3><span class="header-section-number">10.5.1</span> Generelles</h3>
+<div id="generelles-3" class="section level3" number="12.5.1">
+<h3><span class="header-section-number">12.5.1</span> Generelles</h3>
 <ul>
 <li>Braucht man häufig wenn wiederholte Messungen vorhanden sind (siehe
 Beispiel messy data)</li>
@@ -2423,8 +2482,8 @@ Beispiel messy data)</li>
 <li>Wide zu long: melt</li>
 </ul>
 </div>
-<div id="beispiel-daten-reshapen" class="section level3" number="10.5.2">
-<h3><span class="header-section-number">10.5.2</span> Beispiel: Daten
+<div id="beispiel-daten-reshapen" class="section level3" number="12.5.2">
+<h3><span class="header-section-number">12.5.2</span> Beispiel: Daten
 reshapen <a href="#top">↑</a></h3>
 <pre class="r"><code>library(reshape2)
 long.Daten &lt;- data.frame(Person=rep(1:5,each=3),
@@ -2438,8 +2497,8 @@ long.Daten &lt;- melt(wide.Daten,
                    variable.name=&quot;Jahr&quot;,
                    value.name = &quot;Einkommen&quot;)</code></pre>
 </div>
-<div id="übung-daten-reshapen" class="section level3" number="10.5.3">
-<h3><span class="header-section-number">10.5.3</span> Übung: Daten
+<div id="übung-daten-reshapen" class="section level3" number="12.5.3">
+<h3><span class="header-section-number">12.5.3</span> Übung: Daten
 reshapen <a href="#top">↑</a></h3>
 <ol style="list-style-type: decimal">
 <li>Laden Sie die Daten “Satisfaction.RData” in ihren Workspace. Es sind
@@ -2462,16 +2521,16 @@ grepl()). Überführen sie den Datensatz ins tidy-Format (für jede
 Dimension eine Spalte, mit dcast()).</li>
 </ol>
 </div>
-<div id="lösung-daten-reshapen" class="section level3" number="10.5.4">
-<h3><span class="header-section-number">10.5.4</span> Lösung: Daten
+<div id="lösung-daten-reshapen" class="section level3" number="12.5.4">
+<h3><span class="header-section-number">12.5.4</span> Lösung: Daten
 reshapen <a href="#top">↑</a></h3>
 </div>
 </div>
-<div id="mergen-von-daten" class="section level2" number="10.6">
-<h2><span class="header-section-number">10.6</span> <em>Mergen von
+<div id="mergen-von-daten" class="section level2" number="12.6">
+<h2><span class="header-section-number">12.6</span> <em>Mergen von
 Daten</em> <a href="#top">↑</a></h2>
-<div id="generelles-4" class="section level3" number="10.6.1">
-<h3><span class="header-section-number">10.6.1</span> Generelles</h3>
+<div id="generelles-4" class="section level3" number="12.6.1">
+<h3><span class="header-section-number">12.6.1</span> Generelles</h3>
 <ul>
 <li>Wird in der Praxis sehr häufig gebraucht. Klassisch gibt es
 <code>merge()</code> (siehe <a href="http://www.statmethods.net/management/merging.html">Quick
@@ -2495,8 +2554,8 @@ zusammenzukleben, oder <code>cbind()</code> um <code>data.frames</code>
 mit gleichen Zeilen spaltenweise zusammenzukleben</li>
 </ul>
 </div>
-<div id="beispiel-mergen-von-daten" class="section level3" number="10.6.2">
-<h3><span class="header-section-number">10.6.2</span> Beispiel: Mergen
+<div id="beispiel-mergen-von-daten" class="section level3" number="12.6.2">
+<h3><span class="header-section-number">12.6.2</span> Beispiel: Mergen
 von Daten <a href="#top">↑</a></h3>
 <pre class="r"><code>name &lt;- c(&quot;Rudi&quot;,&quot;Simon&quot;,&quot;Daniela&quot;,&quot;Viktor&quot;)
 geschlecht &lt;- c(&quot;Mann&quot;, &quot;Mann&quot;, &quot;Frau&quot;,&quot;Mann&quot;)
@@ -2562,11 +2621,11 @@ rbind(daten1,daten2)
 rbindlist(list(daten1,daten2))</code></pre>
 </div>
 </div>
-<div id="datenimport-und--export" class="section level2" number="10.7">
-<h2><span class="header-section-number">10.7</span> <em>Datenimport und
+<div id="datenimport-und--export" class="section level2" number="12.7">
+<h2><span class="header-section-number">12.7</span> <em>Datenimport und
 -export</em> <a href="#top">↑</a></h2>
-<div id="generelles-5" class="section level3" number="10.7.1">
-<h3><span class="header-section-number">10.7.1</span> Generelles</h3>
+<div id="generelles-5" class="section level3" number="12.7.1">
+<h3><span class="header-section-number">12.7.1</span> Generelles</h3>
 <ul>
 <li>Grundsätzliches zum Umgang mit Daten <a href="#top">↑</a> +
 Speichern Sie Daten, so dass diese nicht abhanden kommen können (z.B.
@@ -2577,8 +2636,8 @@ z.B. als Code-Kommentar + Ihre Analysen sollten in alle Ewigkeit
 reproduzierbar sein</li>
 </ul>
 </div>
-<div id="lokale-daten" class="section level3" number="10.7.2">
-<h3><span class="header-section-number">10.7.2</span> Lokale Daten <a href="#top">↑</a></h3>
+<div id="lokale-daten" class="section level3" number="12.7.2">
+<h3><span class="header-section-number">12.7.2</span> Lokale Daten <a href="#top">↑</a></h3>
 <ul>
 <li><code>read.table()</code> und <code>write.table()</code>: für
 Textformate (<code>.txt, .csv</code>)
@@ -2627,8 +2686,8 @@ Sheet-/Zellennotation zur Bereichsauswahl (keine Spaltenauswahl).</li>
 </ul>
 </div>
 </div>
-<div id="datenimport-aus-htmlxml" class="section level2" number="10.8">
-<h2><span class="header-section-number">10.8</span> Datenimport aus
+<div id="datenimport-aus-htmlxml" class="section level2" number="12.8">
+<h2><span class="header-section-number">12.8</span> Datenimport aus
 HTML/XML <a href="#top">↑</a></h2>
 <ul>
 <li>Wichtig ist hier das Package <code>XML</code>, das die
@@ -2648,8 +2707,8 @@ Authentifizierungen notwendig sind, um Daten zu laden)</li>
 HTML/XML, baut jedoch auf <code>httr</code> und <code>xml2</code> (in C
 implementiert)</li>
 </ul>
-<div id="beispiel-datenimport-aus-htmlxml" class="section level3" number="10.8.1">
-<h3><span class="header-section-number">10.8.1</span> Beispiel:
+<div id="beispiel-datenimport-aus-htmlxml" class="section level3" number="12.8.1">
+<h3><span class="header-section-number">12.8.1</span> Beispiel:
 Datenimport aus HTML/XML</h3>
 <pre class="r"><code># XML Beispiel
 library(XML)
@@ -2663,8 +2722,8 @@ library(rvest)
 roh&lt;-read_html(&quot;http://www.switzerland.org/schweiz/kantone/index.de&quot;)
 tabelle &lt;- html_table(roh,fill=TRUE,header=TRUE)[[6]]</code></pre>
 </div>
-<div id="übung-datenimport-aus-htmlxml" class="section level3" number="10.8.2">
-<h3><span class="header-section-number">10.8.2</span> Übung: Datenimport
+<div id="übung-datenimport-aus-htmlxml" class="section level3" number="12.8.2">
+<h3><span class="header-section-number">12.8.2</span> Übung: Datenimport
 aus HTML/XML</h3>
 <ol style="list-style-type: decimal">
 <li><p>Betrachten Sie den Wikipedia-Eintrag zum Klima in Bern: <a href="https://de.wikipedia.org/wiki/Bern#Klima" class="uri">https://de.wikipedia.org/wiki/Bern#Klima</a>. Lesen Sie die
@@ -2678,215 +2737,21 @@ Temperatur, Min. Temperatur) und säubern Sie die Daten (vgl. Kapitel
 kommen:</p></li>
 </ol>
 <center>
-<table style="text-align:center">
-<tr>
-<td colspan="4" style="border-bottom: 1px solid black">
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-</td>
-<td>
-Monat
-</td>
-<td>
-Max
-</td>
-<td>
-Min
-</td>
-</tr>
-<tr>
-<td colspan="4" style="border-bottom: 1px solid black">
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-1
-</td>
-<td>
-Jan
-</td>
-<td>
-2.800
-</td>
-<td>
--3.600
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-2
-</td>
-<td>
-Feb
-</td>
-<td>
-4.700
-</td>
-<td>
--3.100
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-3
-</td>
-<td>
-Mär
-</td>
-<td>
-9.500
-</td>
-<td>
-0.200
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-4
-</td>
-<td>
-Apr
-</td>
-<td>
-13.400
-</td>
-<td>
-3
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-5
-</td>
-<td>
-Mai
-</td>
-<td>
-18.200
-</td>
-<td>
-7.400
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-6
-</td>
-<td>
-Jun
-</td>
-<td>
-21.600
-</td>
-<td>
-10.500
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-7
-</td>
-<td>
-Jul
-</td>
-<td>
-24.300
-</td>
-<td>
-12.500
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-8
-</td>
-<td>
-Aug
-</td>
-<td>
-23.700
-</td>
-<td>
-12.300
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-9
-</td>
-<td>
-Sep
-</td>
-<td>
-19.100
-</td>
-<td>
-8.900
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-10
-</td>
-<td>
-Okt
-</td>
-<td>
-13.800
-</td>
-<td>
-5.400
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-11
-</td>
-<td>
-Nov
-</td>
-<td>
-7.300
-</td>
-<td>
-0.400
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-12
-</td>
-<td>
-Dez
-</td>
-<td>
-3.500
-</td>
-<td>
--2.300
-</td>
-</tr>
-<tr>
-<td colspan="4" style="border-bottom: 1px solid black">
-</td>
-</tr>
-</table>
+31b8e172-b470-440e-83d8-e6b185028602:dAB5AHAAZQA6AE8AQQBCAGwAQQBHAFkAQQBOAFEAQgBoAEEARABjAEEATgB3AEEAeQBBAEMAMABBAFoAQQBCAGsAQQBEAFkAQQBNAHcAQQB0AEEARABRAEEATgBnAEEAeQBBAEQASQBBAEwAUQBBADQAQQBEAFEAQQBZAGcAQgBtAEEAQwAwAEEAWQBRAEIAbQBBAEQARQBBAE8AUQBBADUAQQBEAFUAQQBZAFEAQQB4AEEARwBJAEEATQBnAEIAaQBBAEQAawBBAAoAcABvAHMAaQB0AGkAbwBuADoATgBnAEEAdwBBAEQAWQBBAE0AQQBBAHoAQQBBAD0APQAKAHAAcgBlAGYAaQB4ADoACgBzAG8AdQByAGMAZQA6AFAAQQBCADAAQQBHAEUAQQBZAGcAQgBzAEEARwBVAEEASQBBAEIAegBBAEgAUQBBAGUAUQBCAHMAQQBHAFUAQQBQAFEAQQBpAEEASABRAEEAWgBRAEIANABBAEgAUQBBAEwAUQBCAGgAQQBHAHcAQQBhAFEAQgBuAEEARwA0AEEATwBnAEIAagBBAEcAVQBBAGIAZwBCADAAQQBHAFUAQQBjAGcAQQBpAEEARAA0AEEAUABBAEIAMABBAEgASQBBAFAAZwBBADgAQQBIAFEAQQBaAEEAQQBnAEEARwBNAEEAYgB3AEIAcwBBAEgATQBBAGMAQQBCAGgAQQBHADQAQQBQAFEAQQBpAEEARABRAEEASQBnAEEAZwBBAEgATQBBAGQAQQBCADUAQQBHAHcAQQBaAFEAQQA5AEEAQwBJAEEAWQBnAEIAdgBBAEgASQBBAFoAQQBCAGwAQQBIAEkAQQBMAFEAQgBpAEEARwA4AEEAZABBAEIAMABBAEcAOABBAGIAUQBBADYAQQBDAEEAQQBNAFEAQgB3AEEASABnAEEASQBBAEIAegBBAEcAOABBAGIAQQBCAHAAQQBHAFEAQQBJAEEAQgBpAEEARwB3AEEAWQBRAEIAagBBAEcAcwBBAEkAZwBBACsAQQBEAHcAQQBMAHcAQgAwAEEARwBRAEEAUABnAEEAOABBAEMAOABBAGQAQQBCAHkAQQBEADQAQQBQAEEAQgAwAEEASABJAEEAUABnAEEAOABBAEgAUQBBAFoAQQBBAGcAQQBIAE0AQQBkAEEAQgA1AEEARwB3AEEAWgBRAEEAOQBBAEMASQBBAGQAQQBCAGwAQQBIAGcAQQBkAEEAQQB0AEEARwBFAEEAYgBBAEIAcABBAEcAYwBBAGIAZwBBADYAQQBHAHcAQQBaAFEAQgBtAEEASABRAEEASQBnAEEAKwBBAEQAdwBBAEwAdwBCADAAQQBHAFEAQQBQAGcAQQA4AEEASABRAEEAWgBBAEEAKwBBAEUAMABBAGIAdwBCAHUAQQBHAEUAQQBkAEEAQQA4AEEAQwA4AEEAZABBAEIAawBBAEQANABBAFAAQQBCADAAQQBHAFEAQQBQAGcAQgBOAEEARwBFAEEAZQBBAEEAOABBAEMAOABBAGQAQQBCAGsAQQBEADQAQQBQAEEAQgAwAEEARwBRAEEAUABnAEIATgBBAEcAawBBAGIAZwBBADgAQQBDADgAQQBkAEEAQgBrAEEARAA0AEEAUABBAEEAdgBBAEgAUQBBAGMAZwBBACsAQQBBAG8AQQBQAEEAQgAwAEEASABJAEEAUABnAEEAOABBAEgAUQBBAFoAQQBBAGcAQQBHAE0AQQBiAHcAQgBzAEEASABNAEEAYwBBAEIAaABBAEcANABBAFAAUQBBAGkAQQBEAFEAQQBJAGcAQQBnAEEASABNAEEAZABBAEIANQBBAEcAdwBBAFoAUQBBADkAQQBDAEkAQQBZAGcAQgB2AEEASABJAEEAWgBBAEIAbABBAEgASQBBAEwAUQBCAGkAQQBHADgAQQBkAEEAQgAwAEEARwA4AEEAYgBRAEEANgBBAEMAQQBBAE0AUQBCAHcAQQBIAGcAQQBJAEEAQgB6AEEARwA4AEEAYgBBAEIAcABBAEcAUQBBAEkAQQBCAGkAQQBHAHcAQQBZAFEAQgBqAEEARwBzAEEASQBnAEEAKwBBAEQAdwBBAEwAdwBCADAAQQBHAFEAQQBQAGcAQQA4AEEAQwA4AEEAZABBAEIAeQBBAEQANABBAFAAQQBCADAAQQBIAEkAQQBQAGcAQQA4AEEASABRAEEAWgBBAEEAZwBBAEgATQBBAGQAQQBCADUAQQBHAHcAQQBaAFEAQQA5AEEAQwBJAEEAZABBAEIAbABBAEgAZwBBAGQAQQBBAHQAQQBHAEUAQQBiAEEAQgBwAEEARwBjAEEAYgBnAEEANgBBAEcAdwBBAFoAUQBCAG0AQQBIAFEAQQBJAGcAQQArAEEARABFAEEAUABBAEEAdgBBAEgAUQBBAFoAQQBBACsAQQBEAHcAQQBkAEEAQgBrAEEARAA0AEEAUwBnAEIAaABBAEcANABBAFAAQQBBAHYAQQBIAFEAQQBaAEEAQQArAEEARAB3AEEAZABBAEIAawBBAEQANABBAE0AZwBBAHUAQQBEAGcAQQBNAEEAQQB3AEEARAB3AEEATAB3AEIAMABBAEcAUQBBAFAAZwBBADgAQQBIAFEAQQBaAEEAQQArAEEAQwAwAEEATQB3AEEAdQBBAEQAWQBBAE0AQQBBAHcAQQBEAHcAQQBMAHcAQgAwAEEARwBRAEEAUABnAEEAOABBAEMAOABBAGQAQQBCAHkAQQBEADQAQQBDAGcAQQA4AEEASABRAEEAYwBnAEEAKwBBAEQAdwBBAGQAQQBCAGsAQQBDAEEAQQBjAHcAQgAwAEEASABrAEEAYgBBAEIAbABBAEQAMABBAEkAZwBCADAAQQBHAFUAQQBlAEEAQgAwAEEAQwAwAEEAWQBRAEIAcwBBAEcAawBBAFoAdwBCAHUAQQBEAG8AQQBiAEEAQgBsAEEARwBZAEEAZABBAEEAaQBBAEQANABBAE0AZwBBADgAQQBDADgAQQBkAEEAQgBrAEEARAA0AEEAUABBAEIAMABBAEcAUQBBAFAAZwBCAEcAQQBHAFUAQQBZAGcAQQA4AEEAQwA4AEEAZABBAEIAawBBAEQANABBAFAAQQBCADAAQQBHAFEAQQBQAGcAQQAwAEEAQwA0AEEATgB3AEEAdwBBAEQAQQBBAFAAQQBBAHYAQQBIAFEAQQBaAEEAQQArAEEARAB3AEEAZABBAEIAawBBAEQANABBAEwAUQBBAHoAQQBDADQAQQBNAFEAQQB3AEEARABBAEEAUABBAEEAdgBBAEgAUQBBAFoAQQBBACsAQQBEAHcAQQBMAHcAQgAwAEEASABJAEEAUABnAEEASwBBAEQAdwBBAGQAQQBCAHkAQQBEADQAQQBQAEEAQgAwAEEARwBRAEEASQBBAEIAegBBAEgAUQBBAGUAUQBCAHMAQQBHAFUAQQBQAFEAQQBpAEEASABRAEEAWgBRAEIANABBAEgAUQBBAEwAUQBCAGgAQQBHAHcAQQBhAFEAQgBuAEEARwA0AEEATwBnAEIAcwBBAEcAVQBBAFoAZwBCADAAQQBDAEkAQQBQAGcAQQB6AEEARAB3AEEATAB3AEIAMABBAEcAUQBBAFAAZwBBADgAQQBIAFEAQQBaAEEAQQArAEEARQAwAEEANQBBAEIAeQBBAEQAdwBBAEwAdwBCADAAQQBHAFEAQQBQAGcAQQA4AEEASABRAEEAWgBBAEEAKwBBAEQAawBBAEwAZwBBADEAQQBEAEEAQQBNAEEAQQA4AEEAQwA4AEEAZABBAEIAawBBAEQANABBAFAAQQBCADAAQQBHAFEAQQBQAGcAQQB3AEEAQwA0AEEATQBnAEEAdwBBAEQAQQBBAFAAQQBBAHYAQQBIAFEAQQBaAEEAQQArAEEARAB3AEEATAB3AEIAMABBAEgASQBBAFAAZwBBAEsAQQBEAHcAQQBkAEEAQgB5AEEARAA0AEEAUABBAEIAMABBAEcAUQBBAEkAQQBCAHoAQQBIAFEAQQBlAFEAQgBzAEEARwBVAEEAUABRAEEAaQBBAEgAUQBBAFoAUQBCADQAQQBIAFEAQQBMAFEAQgBoAEEARwB3AEEAYQBRAEIAbgBBAEcANABBAE8AZwBCAHMAQQBHAFUAQQBaAGcAQgAwAEEAQwBJAEEAUABnAEEAMABBAEQAdwBBAEwAdwBCADAAQQBHAFEAQQBQAGcAQQA4AEEASABRAEEAWgBBAEEAKwBBAEUARQBBAGMAQQBCAHkAQQBEAHcAQQBMAHcAQgAwAEEARwBRAEEAUABnAEEAOABBAEgAUQBBAFoAQQBBACsAQQBEAEUAQQBNAHcAQQB1AEEARABRAEEATQBBAEEAdwBBAEQAdwBBAEwAdwBCADAAQQBHAFEAQQBQAGcAQQA4AEEASABRAEEAWgBBAEEAKwBBAEQATQBBAFAAQQBBAHYAQQBIAFEAQQBaAEEAQQArAEEARAB3AEEATAB3AEIAMABBAEgASQBBAFAAZwBBAEsAQQBEAHcAQQBkAEEAQgB5AEEARAA0AEEAUABBAEIAMABBAEcAUQBBAEkAQQBCAHoAQQBIAFEAQQBlAFEAQgBzAEEARwBVAEEAUABRAEEAaQBBAEgAUQBBAFoAUQBCADQAQQBIAFEAQQBMAFEAQgBoAEEARwB3AEEAYQBRAEIAbgBBAEcANABBAE8AZwBCAHMAQQBHAFUAQQBaAGcAQgAwAEEAQwBJAEEAUABnAEEAMQBBAEQAdwBBAEwAdwBCADAAQQBHAFEAQQBQAGcAQQA4AEEASABRAEEAWgBBAEEAKwBBAEUAMABBAFkAUQBCAHAAQQBEAHcAQQBMAHcAQgAwAEEARwBRAEEAUABnAEEAOABBAEgAUQBBAFoAQQBBACsAQQBEAEUAQQBPAEEAQQB1AEEARABJAEEATQBBAEEAdwBBAEQAdwBBAEwAdwBCADAAQQBHAFEAQQBQAGcAQQA4AEEASABRAEEAWgBBAEEAKwBBAEQAYwBBAEwAZwBBADAAQQBEAEEAQQBNAEEAQQA4AEEAQwA4AEEAZABBAEIAawBBAEQANABBAFAAQQBBAHYAQQBIAFEAQQBjAGcAQQArAEEAQQBvAEEAUABBAEIAMABBAEgASQBBAFAAZwBBADgAQQBIAFEAQQBaAEEAQQBnAEEASABNAEEAZABBAEIANQBBAEcAdwBBAFoAUQBBADkAQQBDAEkAQQBkAEEAQgBsAEEASABnAEEAZABBAEEAdABBAEcARQBBAGIAQQBCAHAAQQBHAGMAQQBiAGcAQQA2AEEARwB3AEEAWgBRAEIAbQBBAEgAUQBBAEkAZwBBACsAQQBEAFkAQQBQAEEAQQB2AEEASABRAEEAWgBBAEEAKwBBAEQAdwBBAGQAQQBCAGsAQQBEADQAQQBTAGcAQgAxAEEARwA0AEEAUABBAEEAdgBBAEgAUQBBAFoAQQBBACsAQQBEAHcAQQBkAEEAQgBrAEEARAA0AEEATQBnAEEAeABBAEMANABBAE4AZwBBAHcAQQBEAEEAQQBQAEEAQQB2AEEASABRAEEAWgBBAEEAKwBBAEQAdwBBAGQAQQBCAGsAQQBEADQAQQBNAFEAQQB3AEEAQwA0AEEATgBRAEEAdwBBAEQAQQBBAFAAQQBBAHYAQQBIAFEAQQBaAEEAQQArAEEARAB3AEEATAB3AEIAMABBAEgASQBBAFAAZwBBAEsAQQBEAHcAQQBkAEEAQgB5AEEARAA0AEEAUABBAEIAMABBAEcAUQBBAEkAQQBCAHoAQQBIAFEAQQBlAFEAQgBzAEEARwBVAEEAUABRAEEAaQBBAEgAUQBBAFoAUQBCADQAQQBIAFEAQQBMAFEAQgBoAEEARwB3AEEAYQBRAEIAbgBBAEcANABBAE8AZwBCAHMAQQBHAFUAQQBaAGcAQgAwAEEAQwBJAEEAUABnAEEAMwBBAEQAdwBBAEwAdwBCADAAQQBHAFEAQQBQAGcAQQA4AEEASABRAEEAWgBBAEEAKwBBAEUAbwBBAGQAUQBCAHMAQQBEAHcAQQBMAHcAQgAwAEEARwBRAEEAUABnAEEAOABBAEgAUQBBAFoAQQBBACsAQQBEAEkAQQBOAEEAQQB1AEEARABNAEEATQBBAEEAdwBBAEQAdwBBAEwAdwBCADAAQQBHAFEAQQBQAGcAQQA4AEEASABRAEEAWgBBAEEAKwBBAEQARQBBAE0AZwBBAHUAQQBEAFUAQQBNAEEAQQB3AEEARAB3AEEATAB3AEIAMABBAEcAUQBBAFAAZwBBADgAQQBDADgAQQBkAEEAQgB5AEEARAA0AEEAQwBnAEEAOABBAEgAUQBBAGMAZwBBACsAQQBEAHcAQQBkAEEAQgBrAEEAQwBBAEEAYwB3AEIAMABBAEgAawBBAGIAQQBCAGwAQQBEADAAQQBJAGcAQgAwAEEARwBVAEEAZQBBAEIAMABBAEMAMABBAFkAUQBCAHMAQQBHAGsAQQBaAHcAQgB1AEEARABvAEEAYgBBAEIAbABBAEcAWQBBAGQAQQBBAGkAQQBEADQAQQBPAEEAQQA4AEEAQwA4AEEAZABBAEIAawBBAEQANABBAFAAQQBCADAAQQBHAFEAQQBQAGcAQgBCAEEASABVAEEAWgB3AEEAOABBAEMAOABBAGQAQQBCAGsAQQBEADQAQQBQAEEAQgAwAEEARwBRAEEAUABnAEEAeQBBAEQATQBBAEwAZwBBADMAQQBEAEEAQQBNAEEAQQA4AEEAQwA4AEEAZABBAEIAawBBAEQANABBAFAAQQBCADAAQQBHAFEAQQBQAGcAQQB4AEEARABJAEEATABnAEEAegBBAEQAQQBBAE0AQQBBADgAQQBDADgAQQBkAEEAQgBrAEEARAA0AEEAUABBAEEAdgBBAEgAUQBBAGMAZwBBACsAQQBBAG8AQQBQAEEAQgAwAEEASABJAEEAUABnAEEAOABBAEgAUQBBAFoAQQBBAGcAQQBIAE0AQQBkAEEAQgA1AEEARwB3AEEAWgBRAEEAOQBBAEMASQBBAGQAQQBCAGwAQQBIAGcAQQBkAEEAQQB0AEEARwBFAEEAYgBBAEIAcABBAEcAYwBBAGIAZwBBADYAQQBHAHcAQQBaAFEAQgBtAEEASABRAEEASQBnAEEAKwBBAEQAawBBAFAAQQBBAHYAQQBIAFEAQQBaAEEAQQArAEEARAB3AEEAZABBAEIAawBBAEQANABBAFUAdwBCAGwAQQBIAEEAQQBQAEEAQQB2AEEASABRAEEAWgBBAEEAKwBBAEQAdwBBAGQAQQBCAGsAQQBEADQAQQBNAFEAQQA1AEEAQwA0AEEATQBRAEEAdwBBAEQAQQBBAFAAQQBBAHYAQQBIAFEAQQBaAEEAQQArAEEARAB3AEEAZABBAEIAawBBAEQANABBAE8AQQBBAHUAQQBEAGsAQQBNAEEAQQB3AEEARAB3AEEATAB3AEIAMABBAEcAUQBBAFAAZwBBADgAQQBDADgAQQBkAEEAQgB5AEEARAA0AEEAQwBnAEEAOABBAEgAUQBBAGMAZwBBACsAQQBEAHcAQQBkAEEAQgBrAEEAQwBBAEEAYwB3AEIAMABBAEgAawBBAGIAQQBCAGwAQQBEADAAQQBJAGcAQgAwAEEARwBVAEEAZQBBAEIAMABBAEMAMABBAFkAUQBCAHMAQQBHAGsAQQBaAHcAQgB1AEEARABvAEEAYgBBAEIAbABBAEcAWQBBAGQAQQBBAGkAQQBEADQAQQBNAFEAQQB3AEEARAB3AEEATAB3AEIAMABBAEcAUQBBAFAAZwBBADgAQQBIAFEAQQBaAEEAQQArAEEARQA4AEEAYQB3AEIAMABBAEQAdwBBAEwAdwBCADAAQQBHAFEAQQBQAGcAQQA4AEEASABRAEEAWgBBAEEAKwBBAEQARQBBAE0AdwBBAHUAQQBEAGcAQQBNAEEAQQB3AEEARAB3AEEATAB3AEIAMABBAEcAUQBBAFAAZwBBADgAQQBIAFEAQQBaAEEAQQArAEEARABVAEEATABnAEEAMABBAEQAQQBBAE0AQQBBADgAQQBDADgAQQBkAEEAQgBrAEEARAA0AEEAUABBAEEAdgBBAEgAUQBBAGMAZwBBACsAQQBBAG8AQQBQAEEAQgAwAEEASABJAEEAUABnAEEAOABBAEgAUQBBAFoAQQBBAGcAQQBIAE0AQQBkAEEAQgA1AEEARwB3AEEAWgBRAEEAOQBBAEMASQBBAGQAQQBCAGwAQQBIAGcAQQBkAEEAQQB0AEEARwBFAEEAYgBBAEIAcABBAEcAYwBBAGIAZwBBADYAQQBHAHcAQQBaAFEAQgBtAEEASABRAEEASQBnAEEAKwBBAEQARQBBAE0AUQBBADgAQQBDADgAQQBkAEEAQgBrAEEARAA0AEEAUABBAEIAMABBAEcAUQBBAFAAZwBCAE8AQQBHADgAQQBkAGcAQQA4AEEAQwA4AEEAZABBAEIAawBBAEQANABBAFAAQQBCADAAQQBHAFEAQQBQAGcAQQAzAEEAQwA0AEEATQB3AEEAdwBBAEQAQQBBAFAAQQBBAHYAQQBIAFEAQQBaAEEAQQArAEEARAB3AEEAZABBAEIAawBBAEQANABBAE0AQQBBAHUAQQBEAFEAQQBNAEEAQQB3AEEARAB3AEEATAB3AEIAMABBAEcAUQBBAFAAZwBBADgAQQBDADgAQQBkAEEAQgB5AEEARAA0AEEAQwBnAEEAOABBAEgAUQBBAGMAZwBBACsAQQBEAHcAQQBkAEEAQgBrAEEAQwBBAEEAYwB3AEIAMABBAEgAawBBAGIAQQBCAGwAQQBEADAAQQBJAGcAQgAwAEEARwBVAEEAZQBBAEIAMABBAEMAMABBAFkAUQBCAHMAQQBHAGsAQQBaAHcAQgB1AEEARABvAEEAYgBBAEIAbABBAEcAWQBBAGQAQQBBAGkAQQBEADQAQQBNAFEAQQB5AEEARAB3AEEATAB3AEIAMABBAEcAUQBBAFAAZwBBADgAQQBIAFEAQQBaAEEAQQArAEEARQBRAEEAWgBRAEIANgBBAEQAdwBBAEwAdwBCADAAQQBHAFEAQQBQAGcAQQA4AEEASABRAEEAWgBBAEEAKwBBAEQATQBBAEwAZwBBADEAQQBEAEEAQQBNAEEAQQA4AEEAQwA4AEEAZABBAEIAawBBAEQANABBAFAAQQBCADAAQQBHAFEAQQBQAGcAQQB0AEEARABJAEEATABnAEEAegBBAEQAQQBBAE0AQQBBADgAQQBDADgAQQBkAEEAQgBrAEEARAA0AEEAUABBAEEAdgBBAEgAUQBBAGMAZwBBACsAQQBBAG8AQQBQAEEAQgAwAEEASABJAEEAUABnAEEAOABBAEgAUQBBAFoAQQBBAGcAQQBHAE0AQQBiAHcAQgBzAEEASABNAEEAYwBBAEIAaABBAEcANABBAFAAUQBBAGkAQQBEAFEAQQBJAGcAQQBnAEEASABNAEEAZABBAEIANQBBAEcAdwBBAFoAUQBBADkAQQBDAEkAQQBZAGcAQgB2AEEASABJAEEAWgBBAEIAbABBAEgASQBBAEwAUQBCAGkAQQBHADgAQQBkAEEAQgAwAEEARwA4AEEAYgBRAEEANgBBAEMAQQBBAE0AUQBCAHcAQQBIAGcAQQBJAEEAQgB6AEEARwA4AEEAYgBBAEIAcABBAEcAUQBBAEkAQQBCAGkAQQBHAHcAQQBZAFEAQgBqAEEARwBzAEEASQBnAEEAKwBBAEQAdwBBAEwAdwBCADAAQQBHAFEAQQBQAGcAQQA4AEEAQwA4AEEAZABBAEIAeQBBAEQANABBAFAAQQBBAHYAQQBIAFEAQQBZAFEAQgBpAEEARwB3AEEAWgBRAEEAKwBBAEEAPQA9AAoAcwB1AGYAZgBpAHgAOgA=:31b8e172-b470-440e-83d8-e6b185028602
 </center>
 <ol start="3" style="list-style-type: decimal">
-<li>Tipps: Zeilen und Spalten lassen sich mit <code>t()</code>
-vertauschen.
+<li><p>Tipps: Zeilen und Spalten lassen sich mit <code>t()</code>
+vertauschen.</p>
 <p>
 </p></li>
 </ol>
 </div>
 </div>
-<div id="lösung-webscraping-tidying" class="section level2" number="10.9">
-<h2><span class="header-section-number">10.9</span> Lösung: Webscraping
+<div id="lösung-webscraping-tidying" class="section level2" number="12.9">
+<h2><span class="header-section-number">12.9</span> Lösung: Webscraping
 / Tidying <a href="#top">↑</a></h2>
-<div id="datenimport-aus-json" class="section level3" number="10.9.1">
-<h3><span class="header-section-number">10.9.1</span> Datenimport aus
+<div id="datenimport-aus-json" class="section level3" number="12.9.1">
+<h3><span class="header-section-number">12.9.1</span> Datenimport aus
 JSON <a href="#top">↑</a></h3>
 <ul>
 <li>Neben XML ist JSON zunehmend beliebt. Es gibt mehrere Packages aber
@@ -2929,8 +2794,8 @@ Die eigenen Rohdaten kann man über Google Takeout kriegen.</li>
 </ul>
 <p><img src="bernmap.png" /></p>
 </div>
-<div id="apis" class="section level3" number="10.9.2">
-<h3><span class="header-section-number">10.9.2</span> APIs <a href="#top">↑</a></h3>
+<div id="apis" class="section level3" number="12.9.2">
+<h3><span class="header-section-number">12.9.2</span> APIs <a href="#top">↑</a></h3>
 <ul>
 <li>Für R sind bereits einige Packages geschrieben worden, die den
 Umgang mit einzelnen APIs (application programming interface)
@@ -2972,8 +2837,8 @@ Datensatz <code>MSTI_PUB</code> enthalten. Weisen sie die Daten einem
 Objekt zu.</p>
 <p>####Lösung</p>
 </div>
-<div id="daten-aus-datenbanken-lesen" class="section level3" number="10.9.3">
-<h3><span class="header-section-number">10.9.3</span> Daten aus
+<div id="daten-aus-datenbanken-lesen" class="section level3" number="12.9.3">
+<h3><span class="header-section-number">12.9.3</span> Daten aus
 Datenbanken lesen <a href="#top">↑</a></h3>
 <ul>
 <li>relevante Packages: <code>RODBC</code>, <code>RJDBC</code>,
@@ -3023,8 +2888,8 @@ daten
 dbDisconnect(con)</code></pre>
 </div>
 </div>
-<div id="übung-datenimport-und--export-mergen-tidy-data" class="section level2" number="10.10">
-<h2><span class="header-section-number">10.10</span> <em>Übung:
+<div id="übung-datenimport-und--export-mergen-tidy-data" class="section level2" number="12.10">
+<h2><span class="header-section-number">12.10</span> <em>Übung:
 Datenimport und -export / Mergen / Tidy Data</em> <a href="#top">↑</a></h2>
 <ol style="list-style-type: decimal">
 <li>Beim BfS <a href="https://www.bfs.admin.ch/bfs/de/home/statistiken/bevoelkerung/stand-entwicklung.assetdetail.3222015.html">gibt
@@ -3053,17 +2918,17 @@ Können alle Kantone gematcht werden?</li>
 <li>Speichern Sie diese Rangliste als csv (z.B. mit
 <code>write.table()</code>).</li>
 </ol>
-<div id="lösung-datenimport-und--export-mergen-tidy-data" class="section level3" number="10.10.1">
-<h3><span class="header-section-number">10.10.1</span> Lösung:
+<div id="lösung-datenimport-und--export-mergen-tidy-data" class="section level3" number="12.10.1">
+<h3><span class="header-section-number">12.10.1</span> Lösung:
 Datenimport und -export / Mergen / Tidy Data <a href="#top">↑</a></h3>
 </div>
 </div>
 </div>
-<div id="kommunikation-von-resultaten" class="section level1" number="11">
-<h1><span class="header-section-number">11</span> <strong>Kommunikation
+<div id="kommunikation-von-resultaten" class="section level1" number="13">
+<h1><span class="header-section-number">13</span> <strong>Kommunikation
 von Resultaten</strong></h1>
-<div id="generelles-6" class="section level2" number="11.1">
-<h2><span class="header-section-number">11.1</span> Generelles <a href="#top">↑</a></h2>
+<div id="generelles-6" class="section level2" number="13.1">
+<h2><span class="header-section-number">13.1</span> Generelles <a href="#top">↑</a></h2>
 <ul>
 <li>Möglichkeiten: + Direkter Export von Tabellen und Grafiken + <a href="https://bookdown.org/yihui/rmarkdown/">R Markdown</a>, siehe auch
 <a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">R
@@ -3075,11 +2940,11 @@ Dokumente</a> (.docx, .pptx): package <code>officer</code> und
 <a href="https://shiny.rstudio.com/">Shiny</a></li>
 </ul>
 </div>
-<div id="erstellen-und-export-von-tabellen" class="section level2" number="11.2">
-<h2><span class="header-section-number">11.2</span> <em>Erstellen und
+<div id="erstellen-und-export-von-tabellen" class="section level2" number="13.2">
+<h2><span class="header-section-number">13.2</span> <em>Erstellen und
 Export von Tabellen</em> <a href="#top">↑</a></h2>
-<div id="office-software-latex-und-r" class="section level3" number="11.2.1">
-<h3><span class="header-section-number">11.2.1</span> Office Software,
+<div id="office-software-latex-und-r" class="section level3" number="13.2.1">
+<h3><span class="header-section-number">13.2.1</span> Office Software,
 Latex und R <a href="#top">↑</a></h3>
 <ul>
 <li>Es gibt zahlreiche Funktionen und Pakete. Aktuell brauchbare Pakete
@@ -3099,8 +2964,8 @@ direkt docx und pptx zu schreiben). Neues Package:
 </ul></li>
 </ul>
 </div>
-<div id="beispiel-export-von-tabellen" class="section level3" number="11.2.2">
-<h3><span class="header-section-number">11.2.2</span> Beispiel: Export
+<div id="beispiel-export-von-tabellen" class="section level3" number="13.2.2">
+<h3><span class="header-section-number">13.2.2</span> Beispiel: Export
 von Tabellen <a href="#top">↑</a></h3>
 <pre class="r"><code>#Schöne Tabellen für R-Markdown und Latex
 library(dplyr)
@@ -3317,8 +3182,8 @@ einen guten Überblick zu <code>stargazer</code></li>
 </ul></li>
 </ul>
 </div>
-<div id="übung-export-von-tabellen" class="section level3" number="11.2.3">
-<h3><span class="header-section-number">11.2.3</span> Übung: Export von
+<div id="übung-export-von-tabellen" class="section level3" number="13.2.3">
+<h3><span class="header-section-number">13.2.3</span> Übung: Export von
 Tabellen<a href="#top">↑</a></h3>
 <ol style="list-style-type: decimal">
 <li><p>Öffnen Sie die Daten <a href="http://www.farys.org/daten/bmi.dta" class="uri">http://www.farys.org/daten/bmi.dta</a>. Diese enthalten
@@ -3335,8 +3200,8 @@ Ascii</p></li>
 fünf höchsten und der fünf niedrigsten BMI-Werte zeigt.</p></li>
 </ol>
 </div>
-<div id="lösung-export-von-tabellen" class="section level3" number="11.2.4">
-<h3><span class="header-section-number">11.2.4</span> Lösung: Export von
+<div id="lösung-export-von-tabellen" class="section level3" number="13.2.4">
+<h3><span class="header-section-number">13.2.4</span> Lösung: Export von
 Tabellen <a href="#top">↑</a></h3>
 <pre class="r"><code># 1.
 library(foreign)
@@ -3362,11 +3227,11 @@ stargazer(topbottom, summary=FALSE,
           covariate.labels=c(&quot;&quot;,&quot;Body-Mass-Index&quot;,&quot;Alter&quot;,&quot;Geschlecht&quot;,&quot;Einkommen&quot;,&quot;Bildungsjahre&quot;,&quot;ID&quot;))</code></pre>
 </div>
 </div>
-<div id="erstellen-und-export-von-grafiken" class="section level2" number="11.3">
-<h2><span class="header-section-number">11.3</span> <em>Erstellen und
+<div id="erstellen-und-export-von-grafiken" class="section level2" number="13.3">
+<h2><span class="header-section-number">13.3</span> <em>Erstellen und
 Export von Grafiken</em> <a href="#top">↑</a></h2>
-<div id="generelles-7" class="section level3" number="11.3.1">
-<h3><span class="header-section-number">11.3.1</span> Generelles <a href="#top">↑</a></h3>
+<div id="generelles-7" class="section level3" number="13.3.1">
+<h3><span class="header-section-number">13.3.1</span> Generelles <a href="#top">↑</a></h3>
 <ul>
 <li>Generische Funktion in R-base: <code>plot()</code>: Öffnet ein
 Fenster, fügt Achsen hinzu, einen Frame und zeichnet Daten ein</li>
@@ -3409,8 +3274,8 @@ schreiben).</li>
 </ul></li>
 </ul>
 </div>
-<div id="beispiele" class="section level3" number="11.3.2">
-<h3><span class="header-section-number">11.3.2</span> Beispiele <a href="#top">↑</a></h3>
+<div id="beispiele" class="section level3" number="13.3.2">
+<h3><span class="header-section-number">13.3.2</span> Beispiele <a href="#top">↑</a></h3>
 <pre class="r"><code>#Abspeichern der Grafiken
 # Histogramm von 100 Zufallszahlen erstellen
 p &lt;- hist(rnorm(n=100,sd=.8))
@@ -3438,8 +3303,8 @@ read_docx() %&gt;%
   print(target = &quot;test.docx&quot;) %&gt;% 
   invisible()</code></pre>
 </div>
-<div id="ggplot2" class="section level3" number="11.3.3">
-<h3><span class="header-section-number">11.3.3</span> Ggplot2</h3>
+<div id="ggplot2" class="section level3" number="13.3.3">
+<h3><span class="header-section-number">13.3.3</span> Ggplot2</h3>
 <p>Hadley Wickhams <code>ggplot2</code> Package hat sich im Laufe der
 letzten Jahre zu einer besonders brauchbaren Alternative zu
 <code>plot()</code> entwickelt. V.a. komplizierte Plots sind mit ggplot
@@ -3451,8 +3316,8 @@ Dokumentation: <a href="http://docs.ggplot2.org/current/" class="uri">http://doc
 Grundstrukturen: Daten (auf welches data.frame bezieht sich der Plot),
 Aesthetics (welche Variablen werden geplotet?), Geoms (Wie werden die
 Daten geometrisch transformiert?).</p>
-<div id="beispiele-ein--und-zweidimensionale-plots" class="section level4" number="11.3.3.1">
-<h4><span class="header-section-number">11.3.3.1</span> Beispiele: ein-
+<div id="beispiele-ein--und-zweidimensionale-plots" class="section level4" number="13.3.3.1">
+<h4><span class="header-section-number">13.3.3.1</span> Beispiele: ein-
 und zweidimensionale Plots <a href="#top">↑</a></h4>
 <pre class="r"><code># Eindimensionale Plots 
 library(foreign)
@@ -3504,8 +3369,8 @@ ggplot(daten, aes(x=jahr, y=svp.anteil)) +
   geom_line() + 
   ggtitle(&quot;Liniendiagramm&quot;)</code></pre>
 </div>
-<div id="übung-grafiken-mit-ggplot2" class="section level4" number="11.3.3.2">
-<h4><span class="header-section-number">11.3.3.2</span> Übung: Grafiken
+<div id="übung-grafiken-mit-ggplot2" class="section level4" number="13.3.3.2">
+<h4><span class="header-section-number">13.3.3.2</span> Übung: Grafiken
 mit ggplot2 <a href="#top">↑</a></h4>
 <ol style="list-style-type: decimal">
 <li>Laden Sie die BMI-Daten aus den Beispielen oben.</li>
@@ -3547,17 +3412,17 @@ write.csv(alledaten,&quot;OECD_MSTI_PUB.csv&quot;,row.names = F)</code></pre>
 (<code>filter</code>). Erzeugen Sie einen barplot
 (<code>geom_bar</code>) für diesen Indikator.</p>
 </div>
-<div id="lösung-grafiken-mit-ggplot" class="section level4" number="11.3.3.3">
-<h4><span class="header-section-number">11.3.3.3</span> Lösung: Grafiken
+<div id="lösung-grafiken-mit-ggplot" class="section level4" number="13.3.3.3">
+<h4><span class="header-section-number">13.3.3.3</span> Lösung: Grafiken
 mit ggplot <a href="#top">↑</a></h4>
 </div>
 </div>
 </div>
-<div id="shiny-apps" class="section level2" number="11.4">
-<h2><span class="header-section-number">11.4</span> <em>Shiny-Apps</em>
+<div id="shiny-apps" class="section level2" number="13.4">
+<h2><span class="header-section-number">13.4</span> <em>Shiny-Apps</em>
 <a href="#top">↑</a></h2>
-<div id="generelles-8" class="section level3" number="11.4.1">
-<h3><span class="header-section-number">11.4.1</span> Generelles <a href="#top">↑</a></h3>
+<div id="generelles-8" class="section level3" number="13.4.1">
+<h3><span class="header-section-number">13.4.1</span> Generelles <a href="#top">↑</a></h3>
 <ul>
 <li><a href="https://shiny.rstudio.com/gallery/">Shiny-Apps</a> sind
 reaktive Webapplikationen, die es erlauben, Komponenten einer Berechnung
@@ -3584,8 +3449,8 @@ zur Verfügung um Shiny-Apps online zu stellen (kostenlos: Shiny Server
 Open Source, Shinyapps.io)</li>
 </ul>
 </div>
-<div id="beispiel-package-shiny" class="section level3" number="11.4.2">
-<h3><span class="header-section-number">11.4.2</span> Beispiel: Package
+<div id="beispiel-package-shiny" class="section level3" number="13.4.2">
+<h3><span class="header-section-number">13.4.2</span> Beispiel: Package
 shiny <a href="#top">↑</a></h3>
 <pre class="r"><code># Ensure shiny and ggplot2 are installed
 # install.packages(&quot;shiny&quot;)
@@ -3651,8 +3516,8 @@ shinyApp(ui = ui, server = server)
 
 #Videoeinführung: https://vimeo.com/rstudioinc/review/131218530/212d8a5a7a/#t=0m0s</code></pre>
 </div>
-<div id="übung-package-shiny" class="section level3" number="11.4.3">
-<h3><span class="header-section-number">11.4.3</span> Übung: Package
+<div id="übung-package-shiny" class="section level3" number="13.4.3">
+<h3><span class="header-section-number">13.4.3</span> Übung: Package
 shiny <a href="#top">↑</a></h3>
 <ol style="list-style-type: decimal">
 <li>Erstellen Sie ein ui.R und ein server.R. Laden Sie jeweils zu Beginn
@@ -3686,16 +3551,16 @@ können sie Rudi Farys (<a href="mailto:rudolf.farys@soz.unibe.ch" class="email"
 Unterstützung zu erhalten.</li>
 </ol>
 </div>
-<div id="lösung-package-shiny" class="section level3" number="11.4.4">
-<h3><span class="header-section-number">11.4.4</span> Lösung: Package
+<div id="lösung-package-shiny" class="section level3" number="13.4.4">
+<h3><span class="header-section-number">13.4.4</span> Lösung: Package
 shiny <a href="#top">↑</a></h3>
 </div>
 </div>
 </div>
-<div id="troubleshooting" class="section level1" number="12">
-<h1><span class="header-section-number">12</span> Troubleshooting</h1>
-<div id="allgemeines-vorgehen-bei-einem-error" class="section level2" number="12.1">
-<h2><span class="header-section-number">12.1</span> Allgemeines Vorgehen
+<div id="troubleshooting" class="section level1" number="14">
+<h1><span class="header-section-number">14</span> Troubleshooting</h1>
+<div id="allgemeines-vorgehen-bei-einem-error" class="section level2" number="14.1">
+<h2><span class="header-section-number">14.1</span> Allgemeines Vorgehen
 bei einem Error:</h2>
 <ul>
 <li>Die meisten Fehlermeldungen haben eigentlich damit zu tun, dass
@@ -3720,8 +3585,8 @@ mit dem ich den Fehler reproduzieren kann, Wortlaut der Fehlermeldung
 und Verweis auf die Zeile, die den Fehler erzeugt</li>
 </ul>
 </div>
-<div id="häufigste-fehlermeldungen" class="section level2" number="12.2">
-<h2><span class="header-section-number">12.2</span> Häufigste
+<div id="häufigste-fehlermeldungen" class="section level2" number="14.2">
+<h2><span class="header-section-number">14.2</span> Häufigste
 Fehlermeldungen</h2>
 <ol style="list-style-type: decimal">
 <li><font color="red">could not find function</font></li>
