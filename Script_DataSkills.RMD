@@ -65,7 +65,7 @@ Kind regards
 
 Dorian Kessler, Samin Sepahniya
 
---------------------------------------------------------------
+------------------------------------------------------------------------
 
 Text to enter into Co-Pilot ein ([[Microsoft Copilot in Bing]{.underline}](https://www.bing.com/chat?q=Bing+AI&FORM=hpcodx "https://www.bing.com/chat?q=Bing+AI&FORM=hpcodx"); important: verwenden Sie den Unterhaltungsstil «im höheren Masse kreativ/creative mode» (Schaltfläche in der Mitte des Bildschirms)):
 
@@ -211,27 +211,697 @@ Als Studierende(r) der Sozialen Arbeit möchte ich die Grundlagen der Programmie
 
 [Power-Point-Slides](https://drive.switch.ch/index.php/s/11sUE7IQizlpCfj)
 
-## Untertitel 2
+## General Information about R
 
-```{r uebung1, echo=FALSE, results='hide'}
+-   R is free and open source.
 
-#Mit R kann man rechnen
-1+1
+-   R has excellent online documentation.
 
+-   R has a very active user community (forums, blogs, etc.).
+
+-   R is more than just statistical software.
+
+-   R has interfaces to numerous other programs.
+
+-   R is interdisciplinary.
+
+-   R is gaining in importance and popularity! (see [Popularity Statistics](http://r4stats.com/articles/popularity/))
+
+-   With RStudio, there is now a powerful tool for an easy and efficient workflow.
+
+-   Advantages
+
+    -   Free of charge
+    -   Active community
+    -   New methods are implemented faster
+    -   More flexible/customizable: more than just statistical software
+    -   Everyone can contribute
+
+-   Disadvantages
+
+    -   No centralized support
+    -   Somewhat more difficult to learn (uses command line inputs instead of pull-down menus)
+    -   Less consistency between procedures
+    -   Anyone can contribute
+
+-   Which organizations are behind R?
+
+    -   General R information: <https://www.r-project.org/about.html>
+    -   R source code contributors: <https://www.r-project.org/contributors.html>
+    -   Comprehensive R Archive Network (CRAN) download and install R: <https://cran.r-project.org/>
+    -   About RStudio: <https://www.rstudio.com/about/>
+    -   Download RStudio: <https://posit.co/downloads/>
+
+-   RStudio Environment
+
+    -   Console Window
+    -   Source Editor (Syntax window)
+    -   File Window, Plot Window
+    -   Environment Window, History Window
+
+-   First steps
+
+    -   R Studio Environment
+    -   Working Directory
+    -   R Base Package
+    -   Install & load packages
+    -   Simple calculations
+    -   Data import
+    -   Execute basic functions such as summary(), help()
+    -   Comment codes with \#
+
+## Working Directory, Objects, and Workspace
+
+-   **Working Directory**
+    -   `getwd()`: Displays the working directory.
+    -   `setwd()`: Defines a new working directory.
+    -   `dir()`: Displays the contents of the current working directory.
+    -   **Do not use `\` for path specifications, use `/` or `\\` instead.**
+-   **Objects**
+    -   "Naming guidelines": meaningful names; no spaces; start with a letter.
+    -   `a <- 10` or `a = 10`: Creates or overwrites the object `a` with the content on the right (10).
+    -   `a`: Displays the content of the object `a`.
+    -   `rm()`: Deletes objects from the workspace.
+    -   `save(a, b, file = "example.RData")`: Saves the specified objects (a, b) in the current working directory.
+    -   `load("example.RData")`: Loads all objects saved in the specified file.
+    -   `#`: Starts a commented line that is not interpreted.
+-   **Workspace**
+    -   Here are all the objects that have been worked with.
+    -   If the workspace was saved when closing (R asks for it), it will be loaded again when R starts.
+    -   `ls()`: Displays all objects in the current workspace.
+    -   The workspace is saved in the current working directory by default.
+
+## Example: Working Directory, Objects, and Workspace
+
+```{r echo=FALSE}
+# Kommentare beginnen mit #
+# Alles in der Zeile nach # wird von R ignoriert
+
+5+5
+
+getwd() # Arbeitsverzeichnis anzeigen
+# Arbeitsverzeichnis definieren
+# setwd("C:/irgendein/pfad/") 
+
+dir() # Arbeitsverzeichnis anzeigen
+
+a <- 50 # Erzeugt Objekt a (Zahlen-Vektor der Länge 1) mit dem einzelnen Wert 50
+a
+
+# Mit c() - concatenate lässt sich auch ein Zahlenvektor mit mehreren Elementen bauen:
+b <- c(1, 2, 3, 4)
+
+# oder kürzer
+b <- seq(1,4)
+
+# oder noch kürzer
+b <- 1:4
+
+# Objekt erzeugen, dass die Vornamen der Beatles enthält
+die.beatles <- c("John","Paul","George","Ringo") 
+die.beatles # im Vergleich zu a ist das Objekt nun ein String/Charakter
+
+
+# Objektnamen dürfen keine Leerzeichen haben. Ferner empfiehlt es sich - und _ zu meiden (Google R Style Guide)
+# Namen sollten aussagekräftig sein. Namensgebung sollte im ganzen Code-File konsistent sein (Punkte, Gross-/Kleinschreibung)
+
+ls() # Workspace anzeigen
+rm(die.beatles) # Objekt löschen
+
+
+```
+
+# Packages
+
+-   Viele Objekte (Funktionen, Datensätze, etc.) befinden sich in sogenannten Packages ([see here](http://cran.r-project.org/web/packages/available_packages_by_date.html))
+
+-   Pakete werden von unzähligen freiwilligen Authoren geschrieben und gepflegt. Hierdurch sind auch zahlreiche methodische Nischen gut abgedeckt (v.a. im Vergleich zu anderen Statistiksoftwarepaketen)
+
+-   Manche Pakete gehören zum Kernumfang von R und werden standardmässig beim Start von R geladen. Andere Pakete lassen sich auf Wunsch nachladen.
+
+-   Warnhinweis: Objekte die in Paketen enthalten sind (z.B. Funktionen) können sich namentlich überschneiden ("function is masked")
+
+-   Funktionen im Zusammenhang mit Paketen:
+
+    -   `library(packagename)`: installiertes Paket laden
+    -   `library()`: alle installierten Pakete anzeigen
+    -   `library(help=packagename)`: Einige Paketinformationen
+    -   `search()`: aktuell geladene Pakete anzeigen
+    -   `detach("package:packagename")`: Paket wieder "ausladen"
+    -   `ls("package:packagename")`: alle Objekte innerhalb einer Pakets zeigen
+    -   `packagename::bar`: ein einzelnes Objekt aus einem Paket laden statt das ganze Paket
+    -   `install.packages("packagename")`: Paket installieren
+    -   `remove.packages("packagename")`: Paket deinstallieren
+
+## Example: Packages and help function
+
+```{r}
+# nehmen wir an wir möchten eine SPSS Datei einlesen:
+
+??spss
+
+# liefert Hinweise auf die Funktionen read.spss und read_por auf den Paketen foreign und haven 
+
+install.packages("foreign") # Install package
+
+?read.spss 
+# geht erst wenn das Package auch geladen ist
+
+library(foreign)
+?read.spss
+
+# Aber generelle Empfehlung: Google oder AI liefern mittlerweile i.d.R. bessere Resultate als die Hilfefunktion
+
+```
+
+## Exercise: Installieren und laden Sie die folgenden Packages.
+
+-   dplyr \# zum Arbeiten mit Datensätzen / Datenbereinigung
+-   ggplot2 \# zur Datenvisualisierung
+-   haven \# erleichtert das Lesen von SPSS-, SAS- und Stata-Dateien in R.
+-   readxl \# Excel-Dateien (.xls und .xlsx) in R eingelesen
+-   officer \# ermöglicht die Erstellung und Bearbeitung von Microsoft Word-Dokumenten (.docx) direkt in R
+
+# Arithmetische- und logische Operatoren
+
+-   Arithmetische Operatoren
+    -   `+ - * / ^`
+-   Vergleichsoperatoren (logische Operatoren)
+    -   `& | == != > < >= <=`
+-   Mathematische Funktionen (siehe jeweils die Hilfe `?function`)
+    -   `exp(x)=e^x log(x) log10(x) sin(x) cos(x) tan(x)`
+    -   `abs(x) sqrt(x) ceiling(x) floor(x) trunc(x) round(x, digits=n)`
+
+## Example: Rechnen und Vergleichen
+
+```{r}
+# Rechnen
+ergebnis <- (23+24)*11/(18+15)*5
+ergebnis
+
+# Funktionen
+log(2) 
+cos(2)
+
+# Vergleich
+x <- -3:3
+x
+
+# sind die Elemente von x gleich 0?
+x == 0
+
+# grösser 0?
+x > 0
+
+# kleiner 0?
+x < 0
+
+# grösser gleich 0?
+x >= 0
+
+# kleiner gleich 0?
+x <= 0
+
+# ungleich 0?
+x != 0
+
+# grösser als -1 aber kleiner als 1
+x > -1 & x < 1
+
+# grösser als  1 und kleiner als -1
+x > 1 & x < -1
+
+# grösser als 1 oder kleiner als -1
+x > 1 | x < -1
+
+```
+
+## Exercise: Rechnen und Vergleichen
+
+1.  Berechnen Sie folgende Terme in R
+    1.  $((3 + 4 - 5) - 9)^{2}$
+    2.  $log(1)$
+2.  Prüfen Sie folgende Vergleiche:
+    1.  $5 = 7$
+    2.  $\sqrt{3} \neq cos(17)$
+
+## Solution: Rechnen und Vergleichen
+
+```{r echo=FALSE}
+# 1.
+((3+4-5)-9)^2
+log(1)
+
+# 2.
+5==7
+sqrt(3)!=cos(17)
+```
+
+# Klassen/Datentypen
+
+-   `class()`: Offenbart die Klasse eines Objekts
+
+-   numerisch
+
+-   logisch (TRUE/FALSE)
+
+-   Character/String (Die Beatles)
+
+-   Teilweise lassen sich Datentypen umwandeln, z.B. `as.numeric()` oder `as.character()`
+
+-   Liste, z.B. `list(1, "Hallo", TRUE)`
+
+-   Data frame: "Liste" von Vektoren gleicher Länge
+
+-   Faktoren: bilden kategoriale Daten ab. Diese sind als Zahlenwerte gespeichert aber mit einem Wertelabel verbunden
+
+## Übersicht Datentypen
+
+```{r}
+# Integer Vektor
+x <- c(1, 2, 3)
+class(x)
+x
+
+# Logischer Vektor
+x <- -3:3
+y <- x >= 0
+y
+class(y)
+
+# String/Character Vektor
+x <- c("a", "b", "c")
+class(x)
+x
+
+# Liste
+liste <- list(a= c(4:8), b = c("a", "b", "c"), c = c(TRUE, FALSE))
+class(liste)
+liste
+
+# Data frame: Kann man anschauen durch Aufruf von swiss
+class(swiss)
+swiss
+
+# Faktoren
+sex <- c(0,0,1,1)
+factor(sex,labels=c("Mann","Frau"))
+
+# Funktionen: z.B. cos(); mean()
+class(mean)
+mean
+
+```
+
+## Sonderwerte
+
+-   `Inf` und `-Inf`: Positiv und negativ unendlich
+-   `NaN`: "*Not a number*", z.B. `0/0`
+-   `NA`: fehlender Wert (Missing)
+
+```{r}
+
+# Wichtiger Hinweis zu fehlenden Werten:
+x <- c(1,2,NA,4)
+
+#falsch:
+x == NA
+x == "NA"
+
+#richtig:
+is.na(x)
+```
+
+## Zugriff auf unterschiedliche Datenbereiche
+
+```{r}
+
+# Wie kann man direkt auf einzelne Elemente eines Vektors zugreifen?
+x <- seq(2, 200, 2)
+x
+x[1]              # erstes Element von x
+x[1:10]           # die ersten 10 Elemente von x
+
+# für zweidimensionale Objekte können sowohl Zeilen als auch Spalten angesprochen werden:
+
+swiss[1:2, c(3, 6)] # liest sich: "erste bis zweite Zeile, dritte und sechste Spalte"
+
+# Eselsbrücke: Zeilen zuerst, Spalten später.
+
+
+# Abgesehen von der Position, kann auch über den Namen einer Spalte (oder Zeile) referenziert werden:
+
+swiss["Delemont", "Fertility"]
+
+# oder nach einer Bedingung:
+
+swiss[swiss$Catholic > 80, ]
+
+```
+
+### Exercise
+
+1.  Lassen Sie sich aus dem Datensatz `swiss` die zehnte und zwölfte Zeile anzeigen.
+2.  Lassen Sie sich die Spalten `Education` und `Catholic` für alle Gemeinden ausgeben die eine Kindersterblichkeit zwischen 20 und 22 haben.
+
+### Solution
+
+```{r echo=FALSE}
+# 1.
+
+swiss[c(10, 12), ]
+
+# 2. 
+swiss[swiss$Infant.Mortality > 20 & swiss$Infant.Mortality < 22, c("Education", "Catholic")]
+
+```
+
+## Data Frames
+
+-   Data frames sind das typische Format für Datensätze
+-   ...es handelt sich um eine Liste von Vektoren derselben Länge [siehe Wickham](http://adv-r.had.co.nz/Data-structures.html)
+-   ...ähnelt Matrizen aber die Spalten können unterschiedliche Datentypen beinhalten
+-   `data.frame()`: erzeugt einen data frame
+-   `as.data.frame()`: konvertiert in einen data frame
+-   `order()`: sortiert Daten
+-   `summary()` und `str()`: Überblick über data frames
+-   `head()` and `tail()`: erste/letzte Zeilen inspizieren
+-   `names()`: zeigt Spaltennamen
+-   `object$var1`: Greift direkt auf die Spalte `var1` im data frame `object` zu
+-   `na.omit()`: Zeilenweise Ausschluss von fehlenden Werten, d.h. Zeilen die mindestens 1 Missing beinhalten
+
+### Example: Data Frames
+
+```{r}
+# fertige Daten sind oft data frames:
+titanic <- read.dta("http://www.stata-press.com/data/kkd/titanic2.dta")
+is.data.frame(titanic)
+
+# man kann sich auch leicht selber einen bauen
+obst <- c("Apfel", "Apfel", "Birne")
+gemuese <- c("Tomate", "Karotte", "Karotte")
+id <- 1:3
+df <- data.frame(id, obst, gemuese)
+df
+
+# Ansteuern von Zeilen und Spaltenpositionen
+df$obst
+df[, "obst"]
+df[3, "gemuese"]
+df[3, 3]
+```
+
+# Datenmanagement
+
+## Tidy vs. Messy Data
+
+### Generelles
+
+-   Hadley Wickham hat versucht, einige Konventionen zur sauberen Darstellung/Ablage von Daten aufzuschreiben
+-   siehe <http://vita.had.co.nz/papers/tidy-data.pdf> und <http://tidyverse.org/>
+-   Quintesenzen:
+    -   sobald Daten einmal sauber (tidy) sind, können Analysetools (Plotting, Modellfitting) auch sauber und ohne Zusatzaufwand arbeiten (z.B. ggplot2, lm/glm)
+    -   **Fälle (Beobachtungseinheiten) in Zeilen, Variablen (Beobachtungsdimensionen) in Spalten**
+-   Daten sind Messy, wenn
+    -   Spalten nicht beschriftet sind
+    -   Eine Spalte mehr als eine Variable beinhaltet
+    -   Variablen statt in Spalten auch in Zeilen auftauchen
+    -   unterschiedliche Beobachtungseinheiten in derselben Tabelle sind
+-   Tools um Daten zu säubern (kleine Auswahl):
+    -   `dplyr` / `data.table`
+    -   `melt() dcast()` aus `reshape2`
+    -   `str_replace()`, `str_sub()` aus dem Package `stringr`
+    -   `tolower()`
+    -   einige weitere in Paket `tidyr`
+    -   auch nützlich: `recode()` von John Fox (Package `car`)
+
+### Example: Tidy vs Messy Data
+
+```{r,eval=FALSE}
+# Wetterdaten
+weather <- read.table("https://raw.githubusercontent.com/justmarkham/tidy-data/master/data/weather.txt", header=TRUE)
+head(weather) # hier sind Variablen in Zeilen und Spalten
+
+# Daten reshapen (melt) und Missings löschen
+library(reshape2) # für melt()/dcast()
+weather1 <- melt(weather, id=c("id", "year", "month", "element"), na.rm=TRUE)
+head(weather1)
+
+# saubere Spalte für "day"
+library(stringr)    # für str_replace(), str_sub()
+weather1$day <- as.integer(str_replace(weather1$variable, "d", ""))
+
+# die krude Spalte "variable" brauchen wir nicht
+weather1$variable <- NULL
+
+# die Spalte element beherbergt zwei unterschiedliche Variablen tmin und tmax. 
+# Diese sollen in zwei Spalten:
+weather1$element <- tolower(weather1$element) # Kleinbuchstaben
+weather.tidy <- dcast(weather1, ... ~ element) # reshapen auf zwei Spalten
+head(weather.tidy)
+
+# das Datum laesst sich zudem in einer Spalte darstellen als echtes Datum:
+weather.tidy$date <- as.Date(paste(weather.tidy$year, 
+                                   weather.tidy$month, 
+                                   weather.tidy$day, sep="-"))
+weather.tidy[, c("year", "month", "day")] <- NULL
+head(weather.tidy)
 ```
 
 # Descriptive statistics
 
--   Study designs: descriptive, prediction, evaluation/causal design
-    -   Descriptive: Monitoring, Probleme identifizieren, Überblick gewinnen, Entwicklungen beschreiben
-    -   Prediction: (ungewünschtes) Vorhersagen
-    -   Evaluation/Causal design: Wirkungen messen, Lösungen identifizieren
--   Distributional characteristics/univariate statistics: Frequencies, mean, median, modal value, variance, interquartile range, range of values.
--   Correlations/bi-/multivariate statistics: correlation measures, associations and group comparisons using regression or other statistical techniques.
-    -   Einfach halten: Verweis auf Methodenberatungswebseite UZH
--   Uncertainty: statistical significance, p-value and confidence intervals.
-    -   Einfach und kurz
--   Results communication: tables with quick_docx huxtable, ggplot2, (shiny; erwähnen)
+-   Univariate statistics (1 variable)
+    -   `mean(x)`: Mean
+    -   `sd(x)`: Standard deviation
+    -   `var(x)`: Variance
+    -   `median(x)`: Median
+    -   `min(x)`: minimum
+    -   `max(x)`: Maximum
+-   Bivariate statistics (2 variables)
+    -   `cov()`: covariance
+    -   `cor()`: Correlation
+    -   `cor(x,y,method="spearman")`: Rank correlation
+    -   `?cor`: more information in the helpfile
+    -   `chisq.test()`: Chi-square test
+    -   `t.test()`: t-test
+-   Contingency tables
+    -   `table(x)`: one-dimensional contingency table
+    -   `table(x,y)`: two-dimensional contingency table
+    -   `prop.table(table(x))`: relative frequency
+
+## Example: Kontingenztabellen
+
+```{r}
+# zwei fiktive Vektoren erstellen
+x <- c(10,20,30,40,30,10,20,30,40,30,10,20,10)
+y <- c(2,5,3,5,3,5,1,6,3,4,5,1,1)
+
+# Tabelle
+table(x)
+table(x,y)
+
+# Tabelle in Prozent
+100*prop.table(table(x))
+100*prop.table(table(x,y))
+round(100*prop.table(table(x,y)), 2) # gerundete Werte
+
+# Mean
+mean(x)
+
+# Median
+median(x) 
+sort(x)
+
+# mehrere Statistiken in einem Vektor
+c(mean=mean(x), median=median(x), stddev=sd(x), min=min(x), max=max(x))
+
+# gibt es verkürzt über die generische Funktion summary
+summary(x)
+
+```
+
+## Exercise: Kontingenztabellen
+
+1.  Laden (ggf. vorher installieren) Sie das Paket `foreign`. Laden Sie die Daten über den Untergang der Titanic mit folgendem Befehl: `titanic <- read.dta("http://www.stata-press.com/data/kkd/titanic2.dta")` und machen Sie sich ein bisschen mit den Daten vertraut (z.B. `head()` oder `summary()`).
+2.  Erzeugen Sie eine Kreuztabelle mit den Variablen `class` und `survived`.
+3.  Berechnen Sie Median und Mittelwert des Alters für Überlebte und Gestorbene.
+
+## Solution: Kontingenztabellen
+
+```{r echo=FALSE}
+### 1.
+library(foreign)
+titanic <- read.dta("http://www.stata-press.com/data/kkd/titanic2.dta")
+head(titanic)
+summary(titanic)
+
+### 2. 
+# survived aus Konvention auf die Y-Achse, class auf die X-Achse (Y ist die abhängige, X die erklärende Variable)
+table(titanic$survived,titanic$class) # Faktor crew ist hier nicht sauber gelabelt
+
+### 3.
+mean(titanic$age2[titanic$survived=="yes"])
+mean(titanic$age2[titanic$survived=="no"])
+
+```
+
+## Package dplyr
+
+### Generelles
+
+-   Relativ neues Package [dplyr](http://blog.rstudio.org/2014/01/17/introducing-dplyr/) von [Hadley Wickham](https://twitter.com/hadleywickham)/[Romain Francois](https://twitter.com/romain_francois) bietet ein Toolset zur Datenaufbereitung
+-   Siehe [die dplyr Vignette](http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html) und das [Data Wrangling Cheat Sheet](http://www.rstudio.com/resources/cheatsheets/) für einen sehr guten Überblick
+    -   `filter()`: wählt ein Subset von Zeilen (siehe auch `slice()`)
+    -   `arrange()`: sortiert
+    -   `select()`: wählt Spalten
+    -   `mutate()`: erzeugt neue Spalten
+    -   `summarise()`: aggregiert (collapses) Daten zu einzelnen Datenpunkten
+    -   `distinct()`: entfernt doppelte Werte
+    -   `group_by()`: Definiert Untergruppen in den Daten, damit `mutate()` und `summarise()` separat pro Gruppe angewandt werden können.
+    -   dplyr kann sehr gut zusammen mit sogenanntem Piping verwendet werden, d.h. das Datenobjekt wird von Funktion zu Funktion weitergereicht durch `%>%` wodurch der Code deutlich besser lesbar und kompakter wird.
+
+### Example: Package dplyr
+
+```{r,eval=FALSE}
+library(dplyr)
+titanic <- read.dta("http://www.stata-press.com/data/kkd/titanic2.dta")
+
+# filtern und zusätzlich Spalten selektieren:
+titanic %>%
+  filter(class == "1st class", age2 < 18) %>%
+  select(sex, age2, survived)
+
+# neue Variable "child" bauen
+titanic %>%
+  mutate(child = age2 < 18) %>%
+  head()
+
+# Auszählen wer gestorben ist nach Geschlecht und Kind (ja/nein)
+titanic %>%
+  mutate(child = ifelse(age2 < 18, "yes", "no")) %>%
+  group_by(sex, child, survived) %>%
+  summarise(n=n()) %>%
+  arrange(sex, child, survived)
+
+```
+
+## Exercise: Package dplyr
+
+Lesen Sie die SHP-Daten in RStudio ein. Beschränken Sie den Datensatz für das Jahr 2022 auf Personen, die 25 Jahre oder älter sind. Betrachten Sie die Variablen mit den Informationen zum Alter (Variable AGE), zum Geschlecht (Variable SEX), zu den Ausbildungsjahren (Variable EDYEAR) und zur ersten Nationalität (NAT_1\_). Verschaffen Sie sich einen Überblick über das Sampling mit Hilfe der beiden Funktionen `summary` und `table`.
+
+## Solution: Package dplyr
+
+```{r echo=FALSE}
+### read SHP Daten 
+library(haven)
+library(dplyr)
+shp <- read_sav("S:/MA1082973/_FHNW/BA472/data sets/SHP/SHPLONG_P_USER.sav")
+
+# Datensatz für das Jahr 2022 & Personen, die 25 oder älter sind
+shp2022 <- shp %>% filter(YEAR == 2022) %>% filter(AGE > 24) %>% select(AGE, SEX, EDYEAR, NAT_1_)
+
+summary(shp2022)
+
+table(shp2022$AGE)
+table(shp2022$SEX)
+table(shp2022$EDYEAR)
+table(shp2022$NAT_1_)
+
+```
+
+# Data visualization
+
+-   Why is data visualization important?
+
+-   Data exploration vs. data presentation
+
+-   Simple diagrams
+
+-   Histograms
+
+-   Scatter charts
+
+-   Bar charts
+
+## Visualization with ggplot2
+
+-   ggplot2 is the most important package to create visualizations in R
+-   see also cheatsheet: <https://rstudio.github.io/cheatsheets/data-visualization.pdf>
+
+Hadley Wickham's `ggplot2` package has developed into a particularly useful alternative to `plot()` over the last few years. Especially complicated plots are easier to implement with ggplot, visually appealing and the code is easily accessible. Most important basic structures: - Data that we want to visualize - Geometries to define the shapes we want to use for visualization (e.g. a scatter plot, line chart, bar chart) - Modify aesthetics to convey different meanings (e.g. colors, size, thickness of a line) - Define mappings between geometries and aesthetics (e.g. how big should the data points be)
+
+#### Example
+
+```{r,eval=FALSE}
+library(ggplot2)
+library(dplyr)
+library(haven)
+
+# set working directory
+setwd("S:/MA1082973/_FHNW/BA472")
+# load data
+shp <- read_sav("data sets/SHP/SHPLONG_P_USER.sav")
+
+# Scatterplot (einfach)
+shp2022 <- shp %>%
+  filter(YEAR==2022) %>% filter(AGE > 24)
+
+ggplot(data=shp2022, aes(x = PC46, y =PC45)) +
+  geom_point() +
+  labs(title = "Streudiagramm",
+       x = "Weight in kg",
+       y = "Height in cm")
+
+#
+ggplot(data=shp2022, aes(x = PC46, y =PC45, color=factor(SEX))) +
+  geom_point() +
+  labs(title = "Streudiagramm",
+       x = "Weight in kg",
+       y = "Height in cm",
+       color = "Geschlecht") +
+  scale_color_manual(values=c("lightgreen", "darkviolet", "red"),
+                    labels=c("Männlich", "Weiblich", "Andere"))
+
+# Erstelle ein Säulendiagramm
+# Entfernen der NA-Werte für die Variable SEX
+shp2022 <- shp2022 %>% filter(!is.na(SEX)) %>% filter(!is.na(PC44))
+
+ggplot(shp2022, aes(x=factor(PC44), y=..count.., fill=factor(SEX))) +
+  geom_bar(stat="count", position="dodge") +
+  labs(x="Zufriedenheit mit dem Leben", y="Anzahl", fill="Geschlecht") +
+  #Beschriftung für Legende
+  scale_fill_manual(values=c("lightgreen", "violet", "red"),
+                  labels=c("Männlich", "Weiblich", "Andere")) +
+  ggtitle("Zufriedenheit mit dem Leben nach Geschlecht")
+```
+
+#### Exercise: Grafiken mit ggplot2
+
+1.  Laden Sie die SHP-Daten.
+2.  Erstellen Sie ein Histogramm für das Einkommen (Variable: IPTOTN) für das Jahr 2022. Geben Sie der Grafik einen Titel. Tipp: Fügen Sie dem Diagramm ein `labs()` Argument hinzu.
+3.  Erstellen Sie einen Boxplot, der die Einkommensverteilung nach Bildungsniveau (Variable: ISCED) darstellt. Damit die Boxplots für jede Bildungsstufe separat erstellt werden, müssen Sie die Bildungsvariable vorher als Faktor speichern (die allgemeine Form ist: `daten$variable <- as.factor(daten$variable)`). Schränken Sie auch das Einkommen ein (Ausreisser, z.B. alle Einkommen über 200'000 ausschliessen).
+
+#### Solution: Grafiken mit ggplot2
+
+```{r,eval=FALSE, echo=FALSE}
+# 1. Laden Sie die SHP-Daten.
+
+# 2. Erstellen Sie ein Histogram für das Einkommen.
+library(ggplot2)
+ggplot(shp2022,aes(x=IPTOTN))+
+     geom_histogram()+
+     labs(title="Histogramm zum Einkommens")
+
+# 3. Erstellen Sie einen Boxplot, der die Einkommensverteilung nach Bildungsstand unterteilt aufzeigt.
+
+shp2022$ISCED <- as.factor(shp2022$ISCED)     # Bildungsstand als factor abspeichern
+shp2022 <- shp2022 %>% filter(IPTOTN<200000)  # Die Ausreisser beim Einkommen rausnehmen
+
+ggplot(shp2022,aes(x=ISCED,y=IPTOTN))+
+     geom_boxplot()+
+     labs(title="Boxplot Einkommen")
+
+```
 
 # Measuring the effects of social work
 
