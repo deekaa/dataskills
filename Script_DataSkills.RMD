@@ -375,7 +375,7 @@ library(foreign)
 
 -   dplyr: zum Arbeiten mit Datensätzen / Datenbereinigung
 -   ggplot2: zur Datenvisualisierung
--   haven_ erleichtert das Lesen von SPSS-, SAS- und Stata-Dateien in R.
+-   haven\_ erleichtert das Lesen von SPSS-, SAS- und Stata-Dateien in R.
 -   readxl: Excel-Dateien (.xls und .xlsx) in R eingelesen
 -   officer: ermöglicht die Erstellung und Bearbeitung von Microsoft Word-Dokumenten (.docx) direkt in R
 
@@ -784,11 +784,11 @@ titanic %>%
 
 ## Exercise: Package dplyr
 
-Lesen Sie die SHP-Daten in RStudio ein. Beschränken Sie den Datensatz für das Jahr 2022 auf Personen, die 25 Jahre oder älter sind. Betrachten Sie die Variablen mit den Informationen zum Alter (Variable AGE), zum Geschlecht (Variable SEX), zu den Ausbildungsjahren (Variable EDYEAR) und zur ersten Nationalität (NAT_1_). Verschaffen Sie sich einen Überblick über das Sampling mit Hilfe der beiden Funktionen `summary` und `table`.
+Lesen Sie die SHP-Daten in RStudio ein. Beschränken Sie den Datensatz für das Jahr 2022 auf Personen, die 25 Jahre oder älter sind. Betrachten Sie die Variablen mit den Informationen zum Alter (Variable AGE), zum Geschlecht (Variable SEX), zu den Ausbildungsjahren (Variable EDYEAR) und zur ersten Nationalität (NAT_1\_). Verschaffen Sie sich einen Überblick über das Sampling mit Hilfe der beiden Funktionen `summary` und `table`.
 
 ## Solution: Package dplyr
 
-```{r Solution: Package dplyr, echo=FALSE}
+```{r Solution: Package dplyr, eval=FALSE, echo=FALSE}
 ### read SHP Daten 
 library(haven)
 library(dplyr)
