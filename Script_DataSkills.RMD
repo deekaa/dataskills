@@ -1049,11 +1049,13 @@ ggplot(tab, aes(x = year, y = est, color = version)) +
 
     [![](images/clipboard-1967496396.png)](https://www.researchgate.net/figure/Illustration-of-a-randomised-controlled-trial-RCT-to-test-a-new-back-to-work_fig2_256031307)
 
-    -   Examples: <https://www.nber.org/papers/w30405>
+    -   Examples:
+
+        -   [A helping hand goes a long way](https://www.nber.org/papers/w30405){.uri}
 
 [![](images/clipboard-3712462696.png)](https://www.technologyreview.com/2020/12/10/1013914/pfizer-biontech-vaccine-chart-covid-19/)
 
--   **Advantage:**
+-   **Advantages:**
 
     -   Secure statements on causality
 
@@ -1063,7 +1065,9 @@ ggplot(tab, aes(x = year, y = est, color = version)) +
 
     -   Ethical problems
 
-    -   Highly limited generalizability
+    -   High financial and administrative burden
+
+    -   Often limited generalizability
 
     -   Low variance (often only two manifestations: treatment vs. no treatment)
 
