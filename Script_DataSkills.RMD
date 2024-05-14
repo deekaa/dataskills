@@ -1103,7 +1103,16 @@ ggplot(tab, aes(x = year, y = est, color = version)) +
 
 ## Exercise in R
 
-\-
+```{r rct, echo=TRUE, results='asis'}
+
+#We will analyze the effect of "Richtungswechsel" on long-term recipients' vitality
+
+#Read in data
+
+download.data(https://drive.switch.ch/index.php/s/zpjX3z1frPOQKqr
+
+
+```
 
 ## Important references
 
