@@ -1,5 +1,5 @@
 ---
-title: "Data skills for social work professionals (Room 136)"
+title: "Data skills for social work professionals"
 author: "Dorian Kessler and Samin Sepahniya"
 date: !r May 2024
 output:
@@ -35,7 +35,21 @@ To do:
 -   Struktur inhalte
 -   Datensätze beschreiben
 
+# General information
+
+-   Courses take place from 9.15-12 and from 13.15-16 and in in room 136 if not otherwise mentioned
+
+-   [Carefully study the module description](https://moodle.bfh.ch/mod/resource/view.php?id=2165225)
+
+-   [Here you find a list of class members and contact information and groups.](https://drive.switch.ch/index.php/s/nu6AXJAd6SQJo76)
+
 # Introduction
+
+## Learning Goals
+
+-   People learn basic data science tools.
+-   People learn how to integrate data science in social work problem solving.
+-   People learn how to do data science with R.
 
 ## What is data science?
 
@@ -49,11 +63,9 @@ To do:
 
 ## How can data science benefit social work?
 
--   Discuss own examples (ca. 30 minutes)
-
 -   Use cases in social work
 
-    -   [Identify demand for social work among clients](https://arbor.bfh.ch/19212/)
+    -   [Identify demand for social work among potential clients](https://arbor.bfh.ch/19212/)
 
     -   [Measure and prove the effectiveness of social work](https://www.bing.com/ck/a?!&&p=87d6833ec738372fJmltdHM9MTcwMjUxMjAwMCZpZ3VpZD0xYWFkNTE1Yi1mY2I0LTY0MDUtMjllMC00MmJjZmRiZjY1MTYmaW5zaWQ9NTIyMA&ptn=3&ver=2&hsh=3&fclid=1aad515b-fcb4-6405-29e0-42bcfdbf6516&psq=Analyse+zu+den+Auswirkungen+der+Reduktion+der+Fallbelastung+in+der+Sozialberatung+der+Stadt+Winterthur&u=a1aHR0cHM6Ly9zdGFkdC53aW50ZXJ0aHVyLmNoL2dlbWVpbmRlL3ZlcndhbHR1bmcvc296aWFsZXMvc296aWFsZS1kaWVuc3RlL2JlcmljaHRlLXVuZC1zdHVkaWVuL2Jhc3NfcmVkdWt0aW9uX2ZhbGxsYXN0X3dpbnRlcnRodXJfc2NobHVzc2JlcmljaHRfMjAyMV8wNy5wZGYvZG93bmxvYWQ&ntb=1)
 
@@ -63,22 +75,128 @@ To do:
 
     -   [Improve efficiency of workflows with generative AI](https://www.der-paritaetische.de/fileadmin/user_upload/Schwerpunkte/Digitalisierung/doc/ki/KI_Textsammlung_final.pdf)
 
+-   Discuss own examples (ca. 30 minutes)
+
 ## Why is data science more important in the future?
 
--   Data that are relevant for social work
+[![](images/clipboard-1435924333.png)](https://marketsplash.com/data-creation-statistics/)
 
-    -   Datafication:
-        -   data collected for research/official statistics,
-        -   found data (uebung: studierende sollen selber überlegen, wo found data entstehen)
-        -   excercise: measuring social work outcome dimensions with found data (give example)
-        -   risks?
+-   [Data is the new oil](https://www.economist.com/leaders/2017/05/06/the-worlds-most-valuable-resource-is-no-longer-oil-but-data).
 
-# The effects of
+-   Data contains information on human behavior = **helps us better understand the human world and solve human problems.**
 
-# Learning Goals
+## Data sources
 
--   People learn basic data science tools.
--   People learn how to integrate data science in social work problem solving.
+### Public statistics
+
+-   [BFS - Überblick](https://www.bfs.admin.ch/bfs/de/home/statistiken.html)
+-   [Stattab (personalisierte Tabellen)](https://www.pxweb.bfs.admin.ch/pxweb/de/)
+-   [Vorhandene Tabellen](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.html?dyn_prodima=901046&dyn_publishingyearend=2023)
+-   [Kantonale Datenplattformen](https://data.bs.ch/explore/dataset/100226/table/?disjunctive.publikationsjahr&disjunctive.indikator_name&sort=indikator_label)
+
+### Regular social surveys
+
+-   [Swiss household panel](https://www.swissubase.ch/en/catalogue/studies/6097/18255/datasets/932/2358/files/document/19477/11791/physicalFile)
+-   [Survey on health, aging and retirement](https://share-eric.eu/)
+-   [Survey on income and living conditions](https://www.bfs.admin.ch/bfs/en/home/statistics/economic-social-situation-population/surveys/silc.html)
+-   [Swiss Health Survey](https://www.bfs.admin.ch/bfs/de/home/statistiken/gesundheit/erhebungen/sgb.html)
+-   [Swiss Mental Health Survey](https://www.obsan.admin.ch/de/publikationen/2023-psychische-gesundheit-erhebung-herbst-2022)
+-   [European Social Survey](https://www.europeansocialsurvey.org/)
+-   [World Values Survey](https://www.worldvaluessurvey.org/WVSContents.jsp)
+
+### Found data
+
+-   Data not explicitly generated for research
+-   Always on
+-   Numbers, text, images, audio, video
+-   Data from
+    -   Online activity (digital communication etc.)
+    -   Smartphone usage (calling, filming, walking etc.)
+    -   Administrative registries
+    -   Payments
+    -   Smart devices
+    -   Video surveillance
+
+![](images/clipboard-2278665493.png)
+
+-   Publicly owned individual data
+
+-   Can be linked using social security numbers
+
+![The Swiss federation and cantons store data about all of life’s aspects](images/clipboard-1957976842.png)
+
+## Excercise
+
+-   Think of a social work field
+
+-   What is the goal of social work in that field: What aspects of your clients lives do you want to improve?
+
+-   What existing data could you use to measure these aspects of your clients’ lives? Who owns the data? What specific information would you use to measure this? What are technical and ethical limitations?
+
+-   Post your answers on this [padlet](https://padlet.com/doriank1986/data-skills-2x8f5clm7anao11g)
+
+## Kompetenznachweis
+
+-   [You will analyze one of the following data sets](https://drive.switch.ch/index.php/s/BGjMhyiMXIvMwd4)
+
+-   Structure
+
+    -   Einleitung: Vorstellung der Fragestellung und ihrer Relevanz für die Soziale Arbeit
+
+    -   Methodik: Dokumentation dessen, welche Daten verwendet und wie sie ausgewertet wurden
+
+    -   Resultate: Präsentation der Resultate
+
+    -   Schlussteil: Diskussion und Interpretation der Resultate mit Bezug zum Gegenstand und Auftrag der Sozialen Arbeit
+
+-   Die Studierenden liefern zudem ein R-Code File mit, in welchem die Aufbereitungs- und Auswertungsschritte festgehalten sind. Das Code-File muss reproduzierbar sein und die verwendeten Resultate herstellen.
+
+-   Der Kompetenznachweis (Dokumentation, R-Code) wird in Gruppen von 2-3 Personen verfasst, verfügt jedoch über individuell verantwortete Teile im Text oder im Codefile (z.B. im Text: Einleitung, Methodik, Resultate, Schlussteil; im Code: Aufbereitung und Auswertung). Die individuellen Beiträge sind am Ende der Dokumentation als solche auszuweisen (Angabe der Kapitel; für Code: Angabe der Zeilennummern).
+
+# Introduction to R
+
+[Power-Point-Slides](https://drive.switch.ch/index.php/s/11sUE7IQizlpCfj)
+
+# Descriptive statistics
+
+-   Study designs: descriptive, prediction, evaluation/causal design
+    -   Descriptive: Monitoring, Probleme identifizieren, Überblick gewinnen, Entwicklungen beschreiben
+    -   Prediction: (ungewünschtes) Vorhersagen
+    -   Evaluation/Causal design: Wirkungen messen, Lösungen identifizieren
+-   Distributional characteristics/univariate statistics: Frequencies, mean, median, modal value, variance, interquartile range, range of values.
+-   Correlations/bi-/multivariate statistics: correlation measures, associations and group comparisons using regression or other statistical techniques.
+    -   Einfach halten: Verweis auf Methodenberatungswebseite UZH
+-   Uncertainty: statistical significance, p-value and confidence intervals.
+    -   Einfach und kurz
+-   Results communication: tables with quick_docx huxtable, ggplot2, (shiny; erwähnen)
+
+# The effects of social work
+
+# Prediction in social work
+
+Evtl. 1/2 Tag oder 3/4 Tag
+
+-   Risk prediction in SW
+
+-   Examples in practice
+
+-   Black et al. - 2003 - Is the Threat of Reemployment Services More Effect.pdfBlack et al. - 2003 - Is the Threat of Reemployment Services More Effect.pdf
+
+-   Gilholm et al. - 2023 - Machine learning to predict poor school performanc.pdf
+
+-   Kleinberg et al. - 2018 - Human Decisions and Machine Predictions.pdfKleinberg et al. - 2018 - Human Decisions and Machine Predictions.pdf
+
+-   Rittenhouse et al. - 2023 - Algorithms, Humans and Racial Disparities in Child.pdfRittenhouse et al. - 2023 - Algorithms, Humans and Racial Disparities in Child.pdf
+
+-   Stevenson and Doleac - 2022 - Algorithmic Risk Assessment in the Hands of Humans.pdfStevenson and Doleac - 2022 - Algorithmic Risk Assessment in the Hands of Humans.pdf
+
+-   Tennakoon et al. - 2023 - Using electronic health record data to predict fut.pdfTennakoon et al. - 2023 - Using electronic health record data to predict fut.pdf
+
+-   Toros and Flaming - 2018 - Prioritizing Homeless Assistance Using Predictive .pdfToros and Flaming - 2018 - Prioritizing Homeless Assistance Using Predictive .pdf
+
+-   OLS, (Machine Learning)
+
+-   Organisation: Gruppenformierung
 
 ## Content
 
@@ -99,48 +217,12 @@ Content is structured to alternate between technical aspects (basics, hands-on e
         -   Datafication:
             -   data collected for research/official statistics,
             -   found data (uebung: studierende sollen selber überlegen, wo found data entstehen)
-            -   excercise: measuring social work outcome dimensions with found data (give example)
-            -   risks?
+            -   
     -   Crash course in R and R Studio: AI supported coding (ChatGPT-4 / Copilot), warum R, R as a calculator/objects/for loops (kurz), reading in data, überblick über datensatz (summary, nrow,...), dplyr, filter/select, mutate, rbind/merge, reshaping (?), umgang mit textdaten (?), saving
 
 -   **Descriptive analyses (Samin, 27.5.)**
 
-    -   Study designs: descriptive, prediction, evaluation/causal design
-        -   Descriptive: Monitoring, Probleme identifizieren, Überblick gewinnen, Entwicklungen beschreiben
-        -   Prediction: (ungewünschtes) Vorhersagen
-        -   Evaluation/Causal design: Wirkungen messen, Lösungen identifizieren
-    -   Distributional characteristics/univariate statistics: Frequencies, mean, median, modal value, variance, interquartile range, range of values.
-    -   Correlations/bi-/multivariate statistics: correlation measures, associations and group comparisons using regression or other statistical techniques.
-        -   Einfach halten: Verweis auf Methodenberatungswebseite UZH
-    -   Uncertainty: statistical significance, p-value and confidence intervals.
-        -   Einfach und kurz
-    -   Results communication: tables with quick_docx huxtable, ggplot2, (shiny; erwähnen)
-
 -   **Prediction of risks (Dorian, 28.5)**
-
-    -   Evtl. 1/2 Tag oder 3/4 Tag
-
-    -   Risk prediction in SW
-
-    -   Examples in practice
-
-    -   Black et al. - 2003 - Is the Threat of Reemployment Services More Effect.pdfBlack et al. - 2003 - Is the Threat of Reemployment Services More Effect.pdf
-
-    -   Gilholm et al. - 2023 - Machine learning to predict poor school performanc.pdf
-
-    -   Kleinberg et al. - 2018 - Human Decisions and Machine Predictions.pdfKleinberg et al. - 2018 - Human Decisions and Machine Predictions.pdf
-
-    -   Rittenhouse et al. - 2023 - Algorithms, Humans and Racial Disparities in Child.pdfRittenhouse et al. - 2023 - Algorithms, Humans and Racial Disparities in Child.pdf
-
-    -   Stevenson and Doleac - 2022 - Algorithmic Risk Assessment in the Hands of Humans.pdfStevenson and Doleac - 2022 - Algorithmic Risk Assessment in the Hands of Humans.pdf
-
-    -   Tennakoon et al. - 2023 - Using electronic health record data to predict fut.pdfTennakoon et al. - 2023 - Using electronic health record data to predict fut.pdf
-
-    -   Toros and Flaming - 2018 - Prioritizing Homeless Assistance Using Predictive .pdfToros and Flaming - 2018 - Prioritizing Homeless Assistance Using Predictive .pdf
-
-    -   OLS, (Machine Learning)
-
-    -   Organisation: Gruppenformierung
 
 -   **Evaluation/Causal design/Effects of social work (Dorian, 3.6.)**
 
@@ -1322,7 +1404,7 @@ data <- data.table(A=1:10, B=2:11, C=3:12, D=c("a","b"))
 ```
 
 |                                                                          | Base-R                                                                                                                                                          | dplyr                                                                                                                                                                                              | data.table                                                                                                                     |
-|-----------------|-----------------|-----------------|---------------------|
+|------------------|------------------|------------------|-------------------|
 | Auswahl von Zeilen nach Kriterium `B==2`                                 | `data <- data[data$B==2, ]`                                                                                                                                     | `data <- filter(data, B==2)` oder<br /> `data <- data %>% filter(B==2)`                                                                                                                            | `data <- data[B==2]` oder<br /> `data <- data[B==2, ]`                                                                         |
 | Auswahl von Spalten B und C                                              | `data <-   data[c("B", "C")]` oder<br /> `data <- data[, 2:3]` oder<br /> `data <- data[, c("B", "C")]` oder<br /> `vars <- c("B", "C")` `data <- data[, vars]` | `data <- select(data, B,   C)` oder<br /> `data <- data %>% select(B,C)`                                                                                                                           | `data <- data[, .(B, C)]` oder<br /> `data <- data[, c("B", "C")]` oder<br /> `vars <- c("B", "C")     data <- data[, ..vars]` |
 | Erstellen neuer Variablen E (A/B)                                        | `data$E <- data$A/data$B`                                                                                                                                       | `data$E <- mutate(data, A/B)` oder<br /> `data <- data %>% mutate(E = A/B)`                                                                                                                        | `data[,E := A/B]` oder<br /> `data[, E:=A/B, ]` oder<br /> `data[, ":="(E=A/B)]`                                               |
