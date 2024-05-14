@@ -43,6 +43,60 @@ To do:
 
 -   [Here you find a list of class members and contact information and groups.](https://drive.switch.ch/index.php/s/nu6AXJAd6SQJo76)
 
+# Welcome Email
+
+Dear students,
+
+A warm welcome to the module Data skills for social work professionals!
+
+As the first Monday of our class falls away (Pfingsten), we would like you to complete a few preparation tasks before the first meeting on Tuesday 21st.
+
+1.  Enroll on the moodle page ([[https://moodle.bfh.ch/course/view.php?id=37097]{.underline}](https://moodle.bfh.ch/course/view.php?id=37097 "https://moodle.bfh.ch/course/view.php?id=37097")) with the following key: FS24-bsc.
+
+2.  It is essential that you have R and R-Studio installed and running on your computer before the first classroom session. Please follow the instructions in the "Installation of R and R-Studio" guide ([[https://drive.switch.ch/index.php/s/ktNsnWxwkJ3olWG]{.underline}](https://drive.switch.ch/index.php/s/ktNsnWxwkJ3olWG "https://drive.switch.ch/index.php/s/ktNsnWxwkJ3olWG") ), and if necessary, refer to the linked instructions on YouTube. If you have any questions, please feel free to contact us via email.
+
+3.  Familiarize yourself with R. We want you to take the opportunity of new AI tools and ask Copilot to take you through a tour in R ([[https://www.bing.com/chat?q=Microsoft+Copilot&FORM=hpcodx]{.underline}](https://www.bing.com/chat?q=Microsoft+Copilot&FORM=hpcodx "https://www.bing.com/chat?q=Microsoft+Copilot&FORM=hpcodx")). Instruct Copilot on its task with the text below.
+
+4.  Finally, we invite you to familiarize yourself with the topic of "Data Science" and its application in social work. Create a forum post [[https://moodle.bfh.ch/mod/forum/view.php?id=2165224]{.underline}](https://moodle.bfh.ch/mod/forum/view.php?id=2165224 "https://moodle.bfh.ch/mod/forum/view.php?id=2165224") , where you provide a concrete example of how data science can help improve the effectiveness of social work or promote the well-being of clients. What are the potential benefits and challenges of applying data science in this field? We look forward to reading your perspectives and ideas on this topic.
+
+We wish you a successful preparation period and look forward to meeting you in person soon. Please let us know should you have any questions.
+
+Kind regards
+
+Dorian Kessler, Samin Sepahniya
+
+--------------------------------------------------------------
+
+Text to enter into Co-Pilot ein ([[Microsoft Copilot in Bing]{.underline}](https://www.bing.com/chat?q=Bing+AI&FORM=hpcodx "https://www.bing.com/chat?q=Bing+AI&FORM=hpcodx"); important: verwenden Sie den Unterhaltungsstil «im höheren Masse kreativ/creative mode» (Schaltfläche in der Mitte des Bildschirms)):
+
+Als Studierende(r) der Sozialen Arbeit möchte ich die Grundlagen der Programmiersprache R lernen, um statistische Datenanalysen für Projekte in der Sozialen Arbeit durchführen zu können. Ich habe keine Vorkenntnisse in Statistik oder Programmierung. Kannst du mir bitte eine schrittweise Einführung geben? Bitte beginne mit der Frage ob ich R und Rstudio installiert habe und wenn nein, unterstütze mich bei der Installation von R und RStudio. Zeige mir dann die grundlegenden Befehle und Funktionen von R. Ich würde ich gerne lernen, wie man einfache Datenanalysen durchführt (mit dplyr), Daten visualisiert (mit ggplot2) und Ergebnisse interpretiert. Folgende Dinge sind zu beachten:
+
+-   Wähle ein schrittweises Vorgehen. Erzähle mir erst von dem nächsten Schritt, wenn ein Schritt abgeschlossen ist. Frage nach jedem Schritt nach, ob ich diesen erfolgreich abschliessen konnte, um sicherzustellen, dass ich alles richtig gemacht habe.
+
+-   Sage mir als ersten Schritt genau wie ich mich visuell in RStudio orientieren kann und wo ich Eingaben machen muss. Wo befindet sich die Konsole/Skript/Datenübersicht/Dateienübersicht in RStudio?
+
+-   Erkläre mir, was die Konsole ist und was ein R-Skript ist, wie man ein R-Skript erstellt und abspeichert und was der Zweck von Skripten ist. Arbeite mit mir mit einem R-Skript und sage mir, wie ich Befehle ausführen kann.
+
+-   Bitte führe mich durch praktische Übungen und gebe mir Aufgaben, um das Gelernte zu festigen.
+
+-   Biete mir Unterstützung bei Unklarheiten.
+
+-   Arbeite mit Beispielen, welche für die Soziale Arbeit relevant sind. Erfinde relevante Daten aus den Bereichen Sozialhilfe oder Kindes- und Erwachsenenschutz.
+
+-   Kommentiere den Code Zeile-für-Zeile detailliert aus, so dass ich ihn genau verstehe.
+
+-   Biete mir am Schluss weitere Übungen an, falls ich Lust habe. Mache Vorschläge für Übungen.
+
+-   Du bist eine R-Expert:in, weisst aber auch, dass angehende Sozialarbeiter:in in Sachen Programmierung wenig Wissen haben und das nicht technische Begriffe eine alltagssprachliche Erklärung benötigen.
+
+-   Danke für deine motivierte Unterstützung und Hilfsbereitschaft! Du hilfst mir R zu lernen und dieses Wissen für Klient:innen einzusetzen.
+
+-   Wichtige Details:
+
+-   Bitte lasse das «print()» weg, falls nicht nötig.
+
+-   Ergänze bei Strg jeweils Ctrl, falls gewisse Personen englische Windows Tastaturen haben.
+
 # Introduction
 
 ## Learning Goals
