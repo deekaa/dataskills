@@ -1101,18 +1101,45 @@ ggplot(tab, aes(x = year, y = est, color = version)) +
 
     -   Randomness hard to prove
 
-## Exercise in R
+## Analyzing social work experiments in R
+
+### Example 
 
 ```{r rct, echo=TRUE, results='asis'}
 
-#We will analyze the effect of "Richtungswechsel" on long-term recipients' vitality
+#We will analyze the effect of "Richtungswechsel" on long-term recipients' vitality. https://journals.sagepub.com/doi/full/10.1177/10497315241232120
 
-#Read in data
+#Download the data: with this command you can download files if you have the direct link to the file
+download.file("https://drive.switch.ch/index.php/s/zpjX3z1frPOQKqr/download", "Richtungswechsel.R",mode = "wb")
 
-download.data(https://drive.switch.ch/index.php/s/zpjX3z1frPOQKqr
+#Because the file is in R-Data-Format (.R) we can load it directly
+load("Richtungswechsel.R")
+
+#Let's have a look at the Data
+View(data.anonym)
+
+#To prepare the data for analysis we will install/load the package "dplyr"
+library(dplyr)
+
+#Vit1 contains measures of vitality before Richtungswechsel, vit2 contains measures of vitality after Richtungswechsel
+
+#First we need to 
+
 
 
 ```
+
+### Excercise
+
+-   Download data from Fokus Arbeit
+
+-   Inspect data
+
+-   Remove missing values
+
+-   Calculate new variable measuring the change in vitality before versus after the intervention
+
+-   Did the intervention increase vitality?
 
 ## Important references
 
