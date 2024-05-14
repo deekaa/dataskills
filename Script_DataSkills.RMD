@@ -157,6 +157,15 @@ To do:
 
 [Power-Point-Slides](https://drive.switch.ch/index.php/s/11sUE7IQizlpCfj)
 
+## Untertitel 2
+
+```{r uebung1, echo=FALSE, results='hide'}
+
+#Mit R kann man rechnen
+1+1
+
+```
+
 # Descriptive statistics
 
 -   Study designs: descriptive, prediction, evaluation/causal design
