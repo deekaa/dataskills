@@ -1030,7 +1030,7 @@ ggplot(tab, aes(x = year, y = est, color = version)) +
 
 -   Disadvantages
 
-    -   Often: correlation \$\$\\neq\$\$ causation
+    -   Often: correlation is not equal to causation
     -   Why do frequent wine drinkers show less dementia?
 
 ### Experiments - the gold standard
@@ -1053,15 +1053,49 @@ ggplot(tab, aes(x = year, y = est, color = version)) +
 
 [![](images/clipboard-3712462696.png)](https://www.technologyreview.com/2020/12/10/1013914/pfizer-biontech-vaccine-chart-covid-19/)
 
+-   **Advantage:**
+
+    -   Secure statements on causality
+
+    -   Control over treatment
+
+-   **Disadvantages:**
+
+    -   Ethical problems
+
+    -   Highly limited generalizability
+
+    -   Low variance (often only two manifestations: treatment vs. no treatment)
+
+    -   Social desirability (except in double-blind studies with placebo)
+
 ### Natural experiments
 
 -   A random event/dimension (Z) influences independent variable (X) but not the outcome (Y)
 
 ![](images/clipboard-739871177.png)
 
--   [Unemployment insurance reform (Z), financial stress (X) and birth weight](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0264544) (Y)
+-   Examples
 
--   [Lockdowns in football stadiums (Z), racist climate (X) and black player performance (Y)](https://www.unil.ch/files/live/sites/de/files/working-papers/21.12.pdf)
+    -   [Unemployment insurance reform (Z), financial stress (X) and birth weight](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0264544) (Y)
+
+    -   [Lockdowns in football stadiums (Z), racist climate (X) and black player performance (Y)](https://www.unil.ch/files/live/sites/de/files/working-papers/21.12.pdf)
+
+-   Advantages:
+
+    -   Statements on causality (!)
+
+    -   Practically relevant
+
+    -   No distortion due to deliberate manipulation
+
+-   **Disadvantages:**
+
+    -   Limited samples: Replicability?
+
+    -   Predetermined variance
+
+    -   Randomness hard to prove
 
 ## Exercise in R
 
