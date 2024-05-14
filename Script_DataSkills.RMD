@@ -160,7 +160,7 @@ Als Studierende(r) der Sozialen Arbeit möchte ich die Grundlagen der Programmie
 
 ### Found data
 
--   Data not explicitly generated for research
+-   [Data not explicitly generated for research](https://www.bitbybitbook.com/)
 -   Always on
 -   Numbers, text, images, audio, video
 -   Data from
@@ -1041,17 +1041,31 @@ ggplot(tab, aes(x = year, y = est, color = version)) +
 
     -   Design
 
-        -   2 randomly constituted groups
+        -   2 (or more) randomly constituted groups
 
         -   one receives treatment, the other doesn't
 
         -   2 measurements: before versus after treatment
 
-[![](images/clipboard-1967496396.png)](https://www.researchgate.net/figure/Illustration-of-a-randomised-controlled-trial-RCT-to-test-a-new-back-to-work_fig2_256031307)
+    [![](images/clipboard-1967496396.png)](https://www.researchgate.net/figure/Illustration-of-a-randomised-controlled-trial-RCT-to-test-a-new-back-to-work_fig2_256031307)
+
+    -   Examples: <https://www.nber.org/papers/w30405>
+
+[![](images/clipboard-3712462696.png)](https://www.technologyreview.com/2020/12/10/1013914/pfizer-biontech-vaccine-chart-covid-19/)
 
 ### Natural experiments
 
+-   A random event/dimension (Z) influences independent variable (X) but not the outcome (Y)
+
+![](images/clipboard-739871177.png)
+
+-   [Unemployment insurance reform (Z), financial stress (X) and birth weight](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0264544) (Y)
+
+-   [Lockdowns in football stadiums (Z), racist climate (X) and black player performance (Y)](https://www.unil.ch/files/live/sites/de/files/working-papers/21.12.pdf)
+
 ## Exercise in R
+
+\-
 
 ## Important references
 
