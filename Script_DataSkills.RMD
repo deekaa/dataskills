@@ -8,7 +8,7 @@ output:
     theme: united
     toc: yes
     toc_depth: 4
-    toc_float: no
+    toc_float: yes
   pdf_document:
     toc: yes
     toc_depth: '4'
