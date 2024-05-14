@@ -1105,6 +1105,14 @@ ggplot(tab, aes(x = year, y = est, color = version)) +
 
     -   Randomness hard to prove
 
+### Excercise
+
+-   Design a study on the effect of a social work offer/intervention
+
+-   What are the outcome variables?
+
+-   Which groups would you compare?
+
 ## Analyzing social work experiments in R
 
 ### Example 
