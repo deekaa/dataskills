@@ -97,7 +97,7 @@ Als Studierende(r) der Sozialen Arbeit möchte ich die Grundlagen der Programmie
 
 -   Ergänze bei Strg jeweils Ctrl, falls gewisse Personen englische Windows Tastaturen haben.
 
-# Introduction
+# General Introduction
 
 ## Learning Goals
 
@@ -947,7 +947,7 @@ ggplot(shp2022,aes(x=ISCED,y=IPTOTN))+
 
             In 2017, Eva found a job as a cashier in a larger supermarket, while Tom continued to work in the workshop. They earned more money and were able to buy their own apartment. They also had more time for themselves and for their children, who were happy and healthy. Today, Eva and Tom are still happily married and looking forward to the future. They plan to take a trip to Spain soon to enjoy the sun. They also hope to become grandparents one day, as their son Max has a lovely girlfriend whom he has been dating for six months. Their daughter Zoe is still at school, but she already has many talents and interests that she wants to pursue."
 
-```{r grafik}
+```{r eva}
 # Create two vectors with the years and the estimates for Version 1
 year <- c(2004:2024)
 est <- c(4, 5, 6, 7, 8, 7, 8, 8, 7, 7, 8, 7, 8, 4, 3, 3, 2, 2, 2, 2,3)
