@@ -989,9 +989,9 @@ ggplot(tab, aes(x = year, y = est, color = version)) +
 
 -   Example of measuring the effects of social work
 
-    -   [![](images/clipboard-851415407.png)](https://www.nber.org/papers/w30405)
+[![](images/clipboard-851415407.png)](https://www.nber.org/papers/w30405)
 
--   This is not a measure of effect
+-   This is not a measure of effect:
 
     -   [Federal Council guidelines for the labor market integration of persons with protection status S for cantons: 40% should have a job until the end of 2024](https://www.blick.ch/politik/40-prozent-sollen-stelle-haben-der-bundesrat-will-dass-mehr-ukrainerinnen-arbeiten-id19105587.html)
     -   Why does a canton (not) reaching the goal of 40% say much about the effects of its measures?
@@ -1030,9 +1030,24 @@ ggplot(tab, aes(x = year, y = est, color = version)) +
 
 -   Disadvantages
 
-    -   Correlation \$\$\\neq\$\$ causation
+    -   Often: correlation \$\$\\neq\$\$ causation
+    -   Why do frequent wine drinkers show less dementia?
 
 ### Experiments - the gold standard
+
+-   Gold standard: best way to measure effects
+
+-   [Let's run an experiment](https://www.youtube.com/watch?v=hLhXCo2jQkg)
+
+    -   Design
+
+        -   2 randomly constituted groups
+
+        -   one receives treatment, the other doesn't
+
+        -   2 measurements: before versus after treatment
+
+[![](images/clipboard-1967496396.png)](https://www.researchgate.net/figure/Illustration-of-a-randomised-controlled-trial-RCT-to-test-a-new-back-to-work_fig2_256031307)
 
 ### Natural experiments
 
