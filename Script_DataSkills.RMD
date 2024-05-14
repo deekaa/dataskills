@@ -1105,7 +1105,7 @@ ggplot(tab, aes(x = year, y = est, color = version)) +
 
 ### Example 
 
-```{r rct, echo=TRUE, results='asis'}
+```{r rct, echo=TRUE, eval=FALSE, results='asis'}
 
 #We will analyze the effect of "Richtungswechsel" on long-term recipients' vitality. https://journals.sagepub.com/doi/full/10.1177/10497315241232120
 
@@ -1137,7 +1137,11 @@ richtungswechsel%>%
   group_by(Group)%>%#We tell R to do all calculations groupwise 
   summarise(Mean.Change=mean(vitality.change,na.rm = T)) #We tell R to calculate the mean value of the change in vitality. We must tell it to remove missing values.
 
+#Was the effect stronger for men or for women?
 
+richtungswechsel%>%
+  group_by(Group,Geschlecht=ifelse(Geschlecht==1,"Women","Men"))%>%#We tell R to do all calculations groupwise 
+  summarise(Mean.Change=mean(vitality.change,na.rm = T)) #We tell R to calculate the mean value of the change in vitality. We must tell it to remove missing values.
 
 ```
 
