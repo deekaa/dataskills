@@ -1085,6 +1085,10 @@ ggplot(tab, aes(x = year, y = est, color = version)) +
 
     -   [Lockdowns in football stadiums (Z), racist climate (X) and black player performance (Y)](https://www.unil.ch/files/live/sites/de/files/working-papers/21.12.pdf)
 
+    -   Effect of job application training
+
+![](images/clipboard-106315684.png)
+
 -   Advantages:
 
     -   Statements on causality (!)
