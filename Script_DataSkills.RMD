@@ -1003,11 +1003,13 @@ ggplot(tab, aes(x = year, y = est, color = version)) +
 
 ### Asking experts
 
--   Asking individuals about the subjectively measured effect of a certain dimension: "Do you think this course makes you a better social worker?"
+-   Asking individuals about the subjectively measured effect
+
+-   Example: "On a scale from 0 to 10, how much does alcohol affect your health?"
 
 -   Advantages
 
-    -   Easy to measure: one questionnaire
+    -   Easy to measure: one question
 
     -   Subjective expertise: we know a lot about effects (e.g. pain killers)
 
@@ -1021,9 +1023,15 @@ ggplot(tab, aes(x = year, y = est, color = version)) +
 
 -   Is there a systematic relationship between two dimensions?
 
+-   Example: wine consumption and Alzheimer's disease
+
 -   Advantages
 
-    -   Easy to measure
+    -   Easy to measure: two questions
+
+-   Disadvantages
+
+    -   Correlation \$\$\\neq\$\$ causation
 
 ### Experiments - the gold standard
 
