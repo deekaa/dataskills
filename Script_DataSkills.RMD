@@ -1115,15 +1115,27 @@ download.file("https://drive.switch.ch/index.php/s/zpjX3z1frPOQKqr/download", "R
 #Because the file is in R-Data-Format (.R) we can load it directly
 load("Richtungswechsel.R")
 
+#To prepare the data for analysis and to analyze the data we will install/load the package "dplyr"
+#install.packages("dplyr")
+library(dplyr)
+
 #Let's have a look at the Data
 View(data.anonym)
 
-#To prepare the data for analysis we will install/load the package "dplyr"
-library(dplyr)
+#There are some missing values, but we are not bothered
 
 #Vit1 contains measures of vitality before Richtungswechsel, vit2 contains measures of vitality after Richtungswechsel
 
-#First we need to 
+#We will give the data a nicer name
+richtungswechsel <- data.anonym%>%
+  mutate(vitality.change=vit2-vit1,#Here we calculate a new column measuring the change in vitality
+
+         Group=ifelse(INT1==1,"Intervention group","Comparison group")) #Here ge give the variable INT1 a nicer, more telling name and labels
+#Were there more positive changes in the intervention group?
+
+richtungswechsel%>%
+  group_by(Group)%>%#We tell R to do all calculations groupwise 
+  summarise(Mean.Change=mean(vitality.change,na.rm = T)) #We tell R to calculate the mean value of the change in vitality. We must tell it to remove missing values.
 
 
 
@@ -1140,6 +1152,8 @@ library(dplyr)
 -   Calculate new variable measuring the change in vitality before versus after the intervention
 
 -   Did the intervention increase vitality?
+
+-   Were the effects different by age, gender, duration of benefit receipt?
 
 ## Important references
 
