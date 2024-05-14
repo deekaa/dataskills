@@ -97,7 +97,7 @@ Als Studierende(r) der Sozialen Arbeit möchte ich die Grundlagen der Programmie
 
 -   Ergänze bei Strg jeweils Ctrl, falls gewisse Personen englische Windows Tastaturen haben.
 
-# Introduction
+# General Introduction
 
 ## Learning Goals
 
@@ -944,17 +944,17 @@ ggplot(shp2022,aes(x=ISCED,y=IPTOTN))+
 
             In 2017, Eva found a job as a cashier in a larger supermarket, while Tom continued to work in the workshop. They earned more money and were able to buy their own apartment. They also had more time for themselves and for their children, who were happy and healthy. Today, Eva and Tom are still happily married and looking forward to the future. They plan to take a trip to Spain soon to enjoy the sun. They also hope to become grandparents one day, as their son Max has a lovely girlfriend whom he has been dating for six months. Their daughter Zoe is still at school, but she already has many talents and interests that she wants to pursue."
 
-```{r grafik}
+```{r eva}
 # Create two vectors with the years and the estimates for Version 1
-year <- c(2004:2023)
-est <- c(4, 5, 6, 7, 8, 7, 8, 8, 7, 7, 8, 7, 8, 4, 3, 3, 2, 2, 2, 2)
+year <- c(2004:2024)
+est <- c(4, 5, 6, 7, 8, 7, 8, 8, 7, 7, 8, 7, 8, 4, 3, 3, 2, 2, 2, 2,3)
 
 # Create a table with the vectors as columns
 tab1 <- data.frame(year, est, type = "Life Satisfaction")
 save <- est
 
-year <- c(2004:2023)
-est <- c(4, 5, 6, 7, 8, 7, 8, 8, 7, 7, 8, 7, 8, 9, 9, 9, 8, 9, 9, 9)
+year <- c(2004:2024)
+est <- c(4, 5, 6, 7, 8, 7, 8, 8, 7, 7, 8, 7, 8, 9, 9, 9, 8, 9, 9, 9,8)
 
 # Create a table with the vectors as columns
 tab2 <- data.frame(year, est, type = "Life Satisfaction")
@@ -991,19 +991,20 @@ ggplot(tab, aes(x = year, y = est, color = version)) +
 
     -   [![](images/clipboard-851415407.png)](https://www.nber.org/papers/w30405)
 
--   A bad example of the effects of social work
+-   This is not a measure of effect
 
     -   [Federal Council guidelines for the labor market integration of persons with protection status S for cantons: 40% should have a job until the end of 2024](https://www.blick.ch/politik/40-prozent-sollen-stelle-haben-der-bundesrat-will-dass-mehr-ukrainerinnen-arbeiten-id19105587.html)
+    -   Why does a canton (not) reaching the goal of 40% say much about the effects of its measures?
 
 ## How can we measure the effects of social work with quantitative data?
 
 ### Asking experts
 
--   "Do you think this course makes you a better social worker?"
+-   Asking individuals about the subjectively measured effect of a certain dimension: "Do you think this course makes you a better social worker?"
 
 -   Advantages
 
-    -   Easy to measure
+    -   Easy to measure: one questionnaire
 
     -   Subjective expertise: we know a lot about effects (e.g. pain killers)
 
@@ -1011,9 +1012,15 @@ ggplot(tab, aes(x = year, y = est, color = version)) +
 
     -   We are unaware of the counterfactual
 
-    -   Social desirability bias
+    -   Social desirability bias: we want to please the researcher
 
 ### Assessing correlations
+
+-   Is there a systematic relationship between two dimensions?
+
+-   Advantages
+
+    -   Easy to measure
 
 ### Experiments - the gold standard
 
