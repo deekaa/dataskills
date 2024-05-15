@@ -1127,7 +1127,7 @@ ggplot(tab, aes(x = year, y = est, color = version)) +
 
 ### Example
 
-```{r rct, echo=TRUE, eval=FALSE, results='asis'}
+```{r rct, echo=TRUE, eval=FALSE}
 
 #We will analyze the effect of "Richtungswechsel" on long-term recipients' vitality. https://journals.sagepub.com/doi/full/10.1177/10497315241232120
 
@@ -1144,20 +1144,34 @@ library(dplyr)
 #Let's have a look at the Data
 View(data.anonym)
 
-#There are some missing values, but we are not bothered
+#Are there missing values?
+
+summary(data.anonym)
 
 #Vit1 contains measures of vitality before Richtungswechsel, vit2 contains measures of vitality after Richtungswechsel
 
 #We will give the data a nicer name
 richtungswechsel <- data.anonym%>%
+  filter(!is.na(vit2))%>%#We remove missing values
   mutate(vitality.change=vit2-vit1,#Here we calculate a new column measuring the change in vitality
 
-         Group=ifelse(INT1==1,"Intervention group","Comparison group")) #Here ge give the variable INT1 a nicer, more telling name and labels
+         Group=ifelse(INT1==1,"Intervention group","Comparison group")) #Here ge give the variable INT1 (Group membership) a nicer, more telling name and labels
 #Were there more positive changes in the intervention group?
+
+#Here we check whether the two groups are comparable in terms of 
 
 richtungswechsel%>%
   group_by(Group)%>%#We tell R to do all calculations groupwise 
-  summarise(Mean.Change=mean(vitality.change,na.rm = T)) #We tell R to calculate the mean value of the change in vitality. We must tell it to remove missing values.
+  summarise(Mean.Age=mean(age),
+            Mean.Gender=mean(Geschlecht),
+            Mean.Bezugsdauer=mean(Bezugsdauer))#We tell R to summarise all variabels in the data
+
+#Here we calculate the effect of the intervetion
+richtungswechsel%>%
+  group_by(Group)%>%
+  summarise(Mean.Change=mean(vitality.change),
+            Mean.Vit1=mean(vit1,na.rm = T),
+            Mean.Vit2=mean(vit2,na.rm=T)) #We tell R to calculate the mean value of the change in vitality. We must tell it to remove missing values.
 
 #Was the effect stronger for men or for women?
 
@@ -1169,17 +1183,74 @@ richtungswechsel%>%
 
 ### Excercise
 
--   Download data from Fokus Arbeit
+-   Download data from [Fokus Arbeit](https://www.bfh.ch/de/forschung/forschungsprojekte/2021-557-302-115/). You can find them [here](https://drive.switch.ch/index.php/s/WYdxhZ0psZZqDzv).
 
--   Inspect data
+-   Inspect data with respect to missing values and remove observations with missing values
 
--   Remove missing values
+-   Check the distribution of gender, duration of benefit receipt, age and vitality before the intervention in the intervention and the comparison group. Are the two groups comparable?
 
--   Calculate new variable measuring the change in vitality before versus after the intervention
+-   Calculate a new variable measuring the change in vitality before versus after the intervention.
 
--   Did the intervention increase vitality?
+-   Answer the following questions
 
--   Were the effects different by age, gender, duration of benefit receipt?
+    -   Are social assistance clients in Biel more vital than those participating in [Richtungswechsel](https://journals.sagepub.com/doi/full/10.1177/10497315241232120)?
+
+    -   Did Fokus Arbeit increase vitality? Did it more so than in Richtungswechsel?
+
+    -   Were the effects different by age, gender, duration of benefit receipt?
+
+```{r rct2,eval=FALSE,echo=FALSE}
+
+#We will analyze the effect of "Richtungswechsel" on long-term recipients' vitality. https://journals.sagepub.com/doi/full/10.1177/10497315241232120
+
+#Download the data: with this command you can download files if you have the direct link to the file
+download.file("https://drive.switch.ch/index.php/s/WYdxhZ0psZZqDzv/download", "FokusArbeit.csv",mode = "wb")
+
+#Because the file is in R-Data-Format (.R) we can load it directly
+data <- read.csv("C:/Users/kld1/switchdrive/BFH/Wichtige Dokumente/Lehre/Data skills for social work professionals/BFH/Daten/Fokus Arbeit/FokusArbeit_Wirkung.csv")
+
+#To prepare the data for analysis and to analyze the data we will install/load the package "dplyr"
+#install.packages("dplyr")
+library(dplyr)
+
+#Let's have a look at the Data
+View(data)
+
+#Are there missing values?
+summary(data)
+
+#Vit1 contains measures of vitality before Richtungswechsel, vit2 contains measures of vitality after Richtungswechsel
+
+#We will give the data a nicer name
+richtungswechsel <- data%>%
+  filter(!is.na(Vitality1))%>%#We remove missing values
+  mutate(vitality.change=Vitality2-Vitality1,#Here we calculate a new column measuring the change in vitality
+
+         Group=ifelse(Interventionsgruppe==1,"Intervention group","Comparison group")) #Here ge give the variable INT1 (Group membership) a nicer, more telling name and labels
+#Were there more positive changes in the intervention group?
+
+#Here we check whether the two groups are comparable in terms of 
+
+richtungswechsel%>%
+  group_by(Group)%>%#We tell R to do all calculations groupwise 
+  summarise(Mean.Age=mean(Alter),
+            Mean.Gender=mean(Weiblich),
+            Mean.Bezugsdauer=mean(Bezugsdauer))#We tell R to summarise all variabels in the data
+
+
+#Here we calculate the effect of the intervetion
+richtungswechsel%>%
+  group_by(Group)%>%
+  summarise(Mean.Change=mean(vitality.change),
+            Mean.Vit1=mean(Vitality1,na.rm = T),
+            Mean.Vit2=mean(Vitality2,na.rm=T)) #We tell R to calculate the mean value of the change in vitality. We must tell it to remove missing values.
+
+#Was the effect stronger for men or for women?
+
+richtungswechsel%>%
+  group_by(Group,Geschlecht=ifelse(Weiblich==100,"Women","Men"))%>%#We tell R to do all calculations groupwise 
+  summarise(Mean.Change=mean(vitality.change,na.rm = T)) #We tell R to calculate the mean value of the change in vitality. We must tell it to remove missing values.
+```
 
 ## Important references
 
