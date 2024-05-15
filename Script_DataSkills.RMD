@@ -117,6 +117,8 @@ Als Studierende(r) der Sozialen Arbeit möchte ich die Grundlagen der Programmie
 
 ## How can data science benefit social work?
 
+-   Discuss own examples (ca. 30 minutes)
+
 -   Use cases in social work
 
     -   [Identify demand for social work among potential clients](https://arbor.bfh.ch/19212/)
@@ -129,7 +131,21 @@ Als Studierende(r) der Sozialen Arbeit möchte ich die Grundlagen der Programmie
 
     -   [Improve efficiency of workflows with generative AI](https://www.der-paritaetische.de/fileadmin/user_upload/Schwerpunkte/Digitalisierung/doc/ki/KI_Textsammlung_final.pdf)
 
--   Discuss own examples (ca. 30 minutes)
+-   To sum up: data science can help you...
+
+    -   **In practice**
+
+        -   Design of services
+
+        -   Understanding of effective support services
+
+    -   **In politics**
+
+        -   Proof of the need for services
+
+        -   Benefits of social work
+
+![](images/clipboard-3611048152.png)
 
 ## Why is data science more important in the future?
 
@@ -1115,7 +1131,7 @@ ggplot(tab, aes(x = year, y = est, color = version)) +
 
 ## Analyzing social work experiments in R
 
-### Example 
+### Example
 
 ```{r rct, echo=TRUE, eval=FALSE, results='asis'}
 
