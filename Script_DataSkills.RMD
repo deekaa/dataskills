@@ -26,7 +26,7 @@ h3 { font-size: 120%; }
 ```
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-knitr::opts_chunk$set(eval=TRUE)
+knitr::opts_chunk$set(eval=FALSE)
 ```
 
 To do:
