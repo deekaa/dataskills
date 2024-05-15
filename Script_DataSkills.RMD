@@ -131,15 +131,15 @@ Als Studierende(r) der Sozialen Arbeit möchte ich die Grundlagen der Programmie
 
     -   [Improve efficiency of workflows with generative AI](https://www.der-paritaetische.de/fileadmin/user_upload/Schwerpunkte/Digitalisierung/doc/ki/KI_Textsammlung_final.pdf)
 
--   To sum up: data science can help you...
+-   To sum up:
 
-    -   **In practice**
+    -   **In practice,** data science can help you...
 
         -   Design of services
 
         -   Understanding of effective support services
 
-    -   **In politics**
+    -   **In politics,** data science can help you ...
 
         -   Proof of the need for services
 
@@ -345,25 +345,26 @@ rm(die.beatles) # Objekt löschen
 ```
 
 # Packages
-- Many objects (functions, data records, etc.) are located in so-called packages ([see here](http://cran.r-project.org/web/packages/available_packages_by_date.html))
 
-- Packages are written and maintained by countless voluntary authors. As a result, numerous methodological niches are well covered (especially in comparison to other statistical software packages)
+-   Many objects (functions, data records, etc.) are located in so-called packages ([see here](http://cran.r-project.org/web/packages/available_packages_by_date.html))
 
-- Some packages are part of the core scope of R and are loaded by default when R is started. Other packages can be loaded on request.
+-   Packages are written and maintained by countless voluntary authors. As a result, numerous methodological niches are well covered (especially in comparison to other statistical software packages)
 
-- Warning: Objects contained in packages (e.g. functions) may overlap by name ("function is masked")
+-   Some packages are part of the core scope of R and are loaded by default when R is started. Other packages can be loaded on request.
 
-- Functions in connection with packages:
+-   Warning: Objects contained in packages (e.g. functions) may overlap by name ("function is masked")
 
-    - `library(packagename)`: load installed package
-    - `library()`: display all installed packages
-    - `library(help=packagename)`: Some package information
-    - `search()`: show currently loaded packages
-    - `detach("package:packagename")`: "unload" package again
-    - `ls("package:packagename")`: show all objects within a package
-    - `packagename::bar`: load a single object from a package instead of the whole package
-    - `install.packages("packagename")`: install package
-    - `remove.packages("packagename")`: uninstall package
+-   Functions in connection with packages:
+
+    -   `library(packagename)`: load installed package
+    -   `library()`: display all installed packages
+    -   `library(help=packagename)`: Some package information
+    -   `search()`: show currently loaded packages
+    -   `detach("package:packagename")`: "unload" package again
+    -   `ls("package:packagename")`: show all objects within a package
+    -   `packagename::bar`: load a single object from a package instead of the whole package
+    -   `install.packages("packagename")`: install package
+    -   `remove.packages("packagename")`: uninstall package
 
 ## Example: Packages and help function
 
@@ -385,23 +386,24 @@ library(foreign)
 
 ## Exercise: Install and load the following packages.
 
-- dplyr: for working with data sets / data cleansing
-- ggplot2: for data visualization
-- haven: facilitates the reading of SPSS, SAS and Stata files in R.
-- readxl: Excel files (.xls and .xlsx) read into R
-- officer: enables the creation and editing of Microsoft Word documents (.docx) directly in R
+-   dplyr: for working with data sets / data cleansing
+-   ggplot2: for data visualization
+-   haven: facilitates the reading of SPSS, SAS and Stata files in R.
+-   readxl: Excel files (.xls and .xlsx) read into R
+-   officer: enables the creation and editing of Microsoft Word documents (.docx) directly in R
 
 # Arithmetic and logical operators
 
-- Arithmetic operators
-    - `+ - * / ^`
-- Comparison operators (logical operators)
-    - `& | == != > < >= <=`
-- Mathematical functions (see the help `?function` in each case)
-    - `exp(x)=e^x log(x) log10(x) sin(x) cos(x) tan(x)`
-    - `abs(x) sqrt(x) ceiling(x) floor(x) trunc(x) round(x, digits=n)`
+-   Arithmetic operators
+    -   `+ - * / ^`
+-   Comparison operators (logical operators)
+    -   `& | == != > < >= <=`
+-   Mathematical functions (see the help `?function` in each case)
+    -   `exp(x)=e^x log(x) log10(x) sin(x) cos(x) tan(x)`
+    -   `abs(x) sqrt(x) ceiling(x) floor(x) trunc(x) round(x, digits=n)`
 
 ## Example: Calculating and comparing
+
 ```{r Example:Rechnen und Vergleichen, eval=FALSE}
 # Rechnen
 ergebnis <- (23+24)*11/(18+15)*5
@@ -446,12 +448,12 @@ x > 1 | x < -1
 
 ## Exercise: Calculating and comparing
 
-1. calculate the following terms in R
-    1. $((3 + 4 - 5) - 9)^{2}$
-    2. $log(1)$
-2. check the following comparisons:
-    1. $5 = 7$
-    2. $\sqrt{3} \neq cos(17)$
+1.  calculate the following terms in R
+    1.  $((3 + 4 - 5) - 9)^{2}$
+    2.  $log(1)$
+2.  check the following comparisons:
+    1.  $5 = 7$
+    2.  $\sqrt{3} \neq cos(17)$
 
 ## Solution: Calculating and comparing
 
@@ -467,21 +469,21 @@ sqrt(3)!=cos(17)
 
 # Class / data types
 
-- `class()`: Reveals the class of an object
+-   `class()`: Reveals the class of an object
 
-- numeric
+-   numeric
 
-- logical (TRUE/FALSE)
+-   logical (TRUE/FALSE)
 
-- Character/String (The Beatles)
+-   Character/String (The Beatles)
 
-- Some data types can be converted, e.g. `as.numeric()` or `as.character()`
+-   Some data types can be converted, e.g. `as.numeric()` or `as.character()`
 
-- List, e.g. `list(1, "Hello", TRUE)`
+-   List, e.g. `list(1, "Hello", TRUE)`
 
-- Data frame: "list" of vectors of the same length
+-   Data frame: "list" of vectors of the same length
 
-- Factors: represent categorical data. These are stored as numerical values but are linked to a value label
+-   Factors: represent categorical data. These are stored as numerical values but are linked to a value label
 
 ## Overview of data types
 
@@ -520,9 +522,9 @@ mean
 
 ## Special values
 
-- `Inf` and `-Inf`: Positive and negative infinite
-- `NaN`: "*Not a number*", e.g. `0/0`.
-- `NA`: missing value (Missing)
+-   `Inf` and `-Inf`: Positive and negative infinite
+-   `NaN`: "*Not a number*", e.g. `0/0`.
+-   `NA`: missing value (Missing)
 
 ```{r Sonderwerte, eval=FALSE}
 
@@ -564,9 +566,10 @@ richtungswechsel[richtungswechsel$Bezugsdauer > 4, ]
 ```
 
 ### Exercises
-1. read the data set `Richtungswechsel` into R.
-2. display the tenth and twelfth rows of the data set.
-3. display the columns ``Bezugsdauer` and `Bildungsstand` for all persons aged between 25 and 40.
+
+1.  read the data set `Richtungswechsel` into R.
+2.  display the tenth and twelfth rows of the data set.
+3.  display the columns \``Bezugsdauer` and `Bildungsstand` for all persons aged between 25 and 40.
 
 ### Solution
 
@@ -583,20 +586,20 @@ richtungswechsel[richtungswechsel$Alter > 25 & richtungswechsel$Alter < 41, c("B
 
 ## Data Frames
 
-- Data frames are the typical format for data sets
-- ...it is a list of vectors of the same length [see Wickham](http://adv-r.had.co.nz/Data-structures.html)
-- ...resembles matrices but the columns can contain different data types
-- `data.frame()`: creates a data frame
-- `as.data.frame()`: converts to a data frame
-- `order()`: sorts data
-- `summary()` and `str()`: overview of data frames
-- `head()` and `tail()`: inspect first/last lines
-- `names()`: show column names
-- `object$var1`: directly accesses the column `var1` in the data frame `object
-- `na.omit()`: Row-by-row exclusion of missing values, i.e. rows that contain at least 1 missing value
-
+-   Data frames are the typical format for data sets
+-   ...it is a list of vectors of the same length [see Wickham](http://adv-r.had.co.nz/Data-structures.html)
+-   ...resembles matrices but the columns can contain different data types
+-   `data.frame()`: creates a data frame
+-   `as.data.frame()`: converts to a data frame
+-   `order()`: sorts data
+-   `summary()` and `str()`: overview of data frames
+-   `head()` and `tail()`: inspect first/last lines
+-   `names()`: show column names
+-   `object$var1`: directly accesses the column `var1` in the data frame \`object
+-   `na.omit()`: Row-by-row exclusion of missing values, i.e. rows that contain at least 1 missing value
 
 ### Example: Data Frames
+
 ```{r Data frames, eval=FALSE}
 # Prepared data are often data frames.
 class(richtungswechsel)
@@ -621,23 +624,23 @@ df[3, 3]
 
 ### General
 
-- Hadley Wickham has tried to write down some conventions for the clean presentation/storage of data
-- see <http://vita.had.co.nz/papers/tidy-data.pdf> and <http://tidyverse.org/>
-- Quintessence:
-    - once data is clean (tidy), analysis tools (plotting, model fitting) can also work cleanly and without additional effort (e.g. ggplot2, lm/glm)
-    - Cases (observation units) in rows, variables (observation dimensions) in columns**
-- Data is messy if
-    - Columns are not labeled
-    - A column contains more than one variable
-    - variables also appear in rows instead of columns
-    - different observation units are in the same table
-- Tools to clean data (small selection):
-    - `dplyr` / `data.table`
-    - `melt() dcast()` from `reshape2`
-    - `str_replace()`, `str_sub()` from the `stringr` package
-    - `tolower()`
-    - some more in package `tidyr
-    - also useful: `recode()` from John Fox (package `car`)
+-   Hadley Wickham has tried to write down some conventions for the clean presentation/storage of data
+-   see <http://vita.had.co.nz/papers/tidy-data.pdf> and <http://tidyverse.org/>
+-   Quintessence:
+    -   once data is clean (tidy), analysis tools (plotting, model fitting) can also work cleanly and without additional effort (e.g. ggplot2, lm/glm)
+    -   Cases (observation units) in rows, variables (observation dimensions) in columns\*\*
+-   Data is messy if
+    -   Columns are not labeled
+    -   A column contains more than one variable
+    -   variables also appear in rows instead of columns
+    -   different observation units are in the same table
+-   Tools to clean data (small selection):
+    -   `dplyr` / `data.table`
+    -   `melt() dcast()` from `reshape2`
+    -   `str_replace()`, `str_sub()` from the `stringr` package
+    -   `tolower()`
+    -   some more in package \`tidyr
+    -   also useful: `recode()` from John Fox (package `car`)
 
 ### Example: Tidy vs Messy Data
 
@@ -726,9 +729,9 @@ summary(x)
 
 ## Exercise: Contingency tables
 
-1. download (if necessary install beforehand) the package `foreign`. Load the data about the sinking of the Titanic with the following command: `titanic <- read.dta("http://www.stata-press.com/data/kkd/titanic2.dta")` and familiarize yourself a little with the data (e.g. `head()` or `summary()`).
-2. create a crosstab with the variables `class` and `survived`.
-3. calculate median and mean age for survived and deceased.
+1.  download (if necessary install beforehand) the package `foreign`. Load the data about the sinking of the Titanic with the following command: `titanic <- read.dta("http://www.stata-press.com/data/kkd/titanic2.dta")` and familiarize yourself a little with the data (e.g. `head()` or `summary()`).
+2.  create a crosstab with the variables `class` and `survived`.
+3.  calculate median and mean age for survived and deceased.
 
 ## Solution: Contingency tables
 
