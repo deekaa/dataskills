@@ -308,39 +308,38 @@ Als Studierende(r) der Sozialen Arbeit möchte ich die Grundlagen der Programmie
 ## Example: Working Directory, Objects, and Workspace
 
 ```{r Example: Working Directory, echo=T, eval=F}
-# Kommentare beginnen mit #
-# Alles in der Zeile nach # wird von R ignoriert
+# Comments start with #
+# Everything in the line after # is ignored by R
 5+5
 
-getwd() # Arbeitsverzeichnis anzeigen
-# Arbeitsverzeichnis definieren
-# setwd("C:/irgendein/pfad/") 
+getwd() # Display working directory
+# Define working directory
+# setwd("C:/some/path/") 
 
-dir() # Arbeitsverzeichnis anzeigen
+dir() # Display working directory
 
-a <- 50 # Erzeugt Objekt a (Zahlen-Vektor der Länge 1) mit dem einzelnen Wert 50
+a <- 50 # Creates object a (number vector of length 1) with the single value 50
 a
 
-# Mit c() - concatenate lässt sich auch ein Zahlenvektor mit mehreren Elementen bauen:
+# With c() - concatenate you can also build a number vector with several elements:
 b <- c(1, 2, 3, 4)
 
-# oder kürzer
+# or shorter
 b <- seq(1,4)
 
-# oder noch kürzer
+# or even shorter
 b <- 1:4
 
-# Objekt erzeugen, dass die Vornamen der Beatles enthält
-die.beatles <- c("John","Paul","George","Ringo") 
-die.beatles # im Vergleich zu a ist das Objekt nun ein String/Charakter
+# Create object containing the first names of the Beatles
+the.beatles <- c("John", "Paul", "George", "Ringo") 
+the.beatles # compared to a, the object is now a string/character
 
 
-# Objektnamen dürfen keine Leerzeichen haben. Ferner empfiehlt es sich - und _ zu meiden (Google R Style Guide)
-# Namen sollten aussagekräftig sein. Namensgebung sollte im ganzen Code-File konsistent sein (Punkte, Gross-/Kleinschreibung)
+# Object names must not have spaces. It is also recommended - and _ should be avoided (Google R Style Guide)
+# Names should be meaningful. Naming should be consistent throughout the code file (dots, upper/lower case)
 
-ls() # Workspace anzeigen
-rm(die.beatles) # Objekt löschen
-
+ls() # Display workspace
+rm(die.beatles) # Delete object
 
 ```
 
@@ -369,19 +368,18 @@ rm(die.beatles) # Objekt löschen
 ## Example: Packages and help function
 
 ```{r Example: Packages and help function, eval=FALSE}
-# nehmen wir an wir möchten eine SPSS Datei einlesen:
+# Let's assume we want to read in an SPSS file:
 ??spss
 
-# liefert Hinweise auf die Funktionen read.spss und read_por auf den Paketen foreign und haven 
+# provides references to the functions read.spss and read_por on the packages foreign and haven 
 # Install package
 # install.packages("foreign") 
 
-# Funktioniert erst, wenn das Package auch geladen ist
+# Only works if the package is also loaded
 library(foreign)
 ?read.spss
 
-# Aber generelle Empfehlung: Google oder AI liefern mittlerweile i.d.R. bessere Resultate als die Hilfefunktion
-
+# But general recommendation: Google or AI now usually provide better results than the help function
 ```
 
 ## Exercise: Install and load the following packages.
@@ -405,45 +403,44 @@ library(foreign)
 ## Example: Calculating and comparing
 
 ```{r Example:Rechnen und Vergleichen, eval=FALSE}
-# Rechnen
-ergebnis <- (23+24)*11/(18+15)*5
-ergebnis
+# Calculate
+result <- (23+24)*11/(18+15)*5
+result
 
-# Funktionen
+# Functions
 log(2) 
 cos(2)
 
-# Vergleich
+# Comparison
 x <- -3:3
 x
 
-# sind die Elemente von x gleich 0?
+# Are the elements of x equal to 0?
 x == 0
 
-# grösser 0?
+# greater than 0?
 x > 0
 
-# kleiner 0?
+# less than 0?
 x < 0
 
-# grösser gleich 0?
+# greater than or equal to 0?
 x >= 0
 
-# kleiner gleich 0?
+# less than or equal to 0?
 x <= 0
 
-# ungleich 0?
+# not equal to 0?
 x != 0
 
-# grösser als -1 aber kleiner als 1
+# greater than -1 but less than 1
 x > -1 & x < 1
 
-# grösser als  1 und kleiner als -1
+# greater than 1 and less than -1
 x > 1 & x < -1
 
-# grösser als 1 oder kleiner als -1
+# greater than 1 or less than -1
 x > 1 | x < -1
-
 ```
 
 ## Exercise: Calculating and comparing
@@ -488,33 +485,32 @@ sqrt(3)!=cos(17)
 ## Overview of data types
 
 ```{r Übersicht Datentypen, eval=F}
-# Integer Vektor
+# Integer vector
 x <- c(1, 2, 3)
 class(x)
 x
 
-# Logischer Vektor
+# Logical vector
 x <- -3:3
 y <- x >= 0
 y
 class(y)
 
-# String/Character Vektor
+# String/character vector
 x <- c("a", "b", "c")
 class(x)
 x
 
-# Liste
-liste <- list(a= c(4:8), b = c("a", "b", "c"), c = c(TRUE, FALSE))
-class(liste)
-liste
+# list
+list <- list(a= c(4:8), b = c("a", "b", "c"), c = c(TRUE, FALSE))
+class(list)
+list
 
-
-# Faktoren
+# factors
 sex <- c(0, 0, 1, 1)
-factor(sex, labels=c("Mann","Frau"))
+factor(sex, labels=c("man", "woman"))
 
-# Funktionen: z.B. cos(); mean()
+# Functions: e.g. cos(); mean()
 class(mean)
 mean
 
@@ -527,35 +523,37 @@ mean
 -   `NA`: missing value (Missing)
 
 ```{r Sonderwerte, eval=FALSE}
-
-# Wichtiger Hinweis zu fehlenden Werten:
+# Important note on missing values:
 x <- c(1, 2, NA, 4)
 
-#falsch:
+#wrong:
 x == NA
 x == "NA"
 
-#richtig:
+#correct:
 is.na(x)
 ```
+
 ## Data Frames
 
-- Data frames are the typical format for data sets
-- ...it is a list of vectors of the same length [see Wickham](http://adv-r.had.co.nz/Data-structures.html)
-- ...resembles matrices but the columns can contain different data types
-- `data.frame()`: creates a data frame
-- `as.data.frame()`: converts to a data frame
-- `order()`: sorts data
-- `summary()` and `str()`: overview of data frames
-- `head()` and `tail()`: inspect first/last lines
-- `names()`: show column names
-- `object$var1`: directly accesses the column `var1` in the data frame `object
-- `na.omit()`: Row-by-row exclusion of missing values, i.e. rows that contain at least 1 missing value
+-   Data frames are the typical format for data sets
+-   ...it is a list of vectors of the same length [see Wickham](http://adv-r.had.co.nz/Data-structures.html)
+-   ...resembles matrices but the columns can contain different data types
+-   `data.frame()`: creates a data frame
+-   `as.data.frame()`: converts to a data frame
+-   `order()`: sorts data
+-   `summary()` and `str()`: overview of data frames
+-   `head()` and `tail()`: inspect first/last lines
+-   `names()`: show column names
+-   `object$var1`: directly accesses the column `var1` in the data frame `object`
+-   `na.omit()`: Row-by-row exclusion of missing values, i.e. rows that contain at least 1 missing value
 
 ### Example: Data Frames
+
 ```{r Data frames, eval=FALSE}
 # Prepared data are often data frames.
 richtungswechsel <- read.csv("S:/MA1082973/_FHNW/BA472/data sets/Richtungswechsel/Richtungswechsel_anonymized data set.csv")
+
 class(richtungswechsel)
 
 # you can also easily build one yourself
@@ -575,29 +573,29 @@ df[3, 3]
 ## Access to different data areas
 
 ```{r Zugriff, eval=FALSE}
-# Wie kann man direkt auf einzelne Elemente eines Vektors zugreifen?
+# How can I access specific elements of a vector directly?
 x <- seq(2, 200, 2)
 x
-x[1]              # erstes Element von x
-x[1:10]           # die ersten 10 Elemente von x
+x[1] # first element of x
+x[1:10] # the first 10 elements of x
 
-# für zweidimensionale Objekte können sowohl Zeilen als auch Spalten angesprochen werden:
+# For two-dimensional objects, both rows and columns can be accessed:
 # load Richtungswechsel data
 richtungswechsel <- read.csv("S:/MA1082973/_FHNW/BA472/data sets/Richtungswechsel/Richtungswechsel_anonymized data set.csv")
 
-richtungswechsel[1:2, c(3, 6)] # liest sich: "erste bis zweite Zeile, dritte und sechste Spalte"
+richtungswechsel[1:2, c(3, 6)] # reads: "first to second row, third and sixth column"
 
 # Eselsbrücke: Zeilen zuerst, Spalten später.
 
 
-# Abgesehen von der Position, kann auch über den Namen einer Spalte (oder Zeile) referenziert werden:
+# Apart from the position, the name of a column (or row) can also be used for referencing:
 richtungswechsel[, c("Geschlecht", "Staatsang.", "europe")]
 
-# oder nach einer Bedingung:
+# or by a condition:
 richtungswechsel[richtungswechsel$Bezugsdauer > 4, ]
 ```
 
-### Exercises
+### Exercise
 
 1.  read the data set `Richtungswechsel` into R.
 2.  display the tenth and twelfth rows of the data set.
@@ -605,7 +603,7 @@ richtungswechsel[richtungswechsel$Bezugsdauer > 4, ]
 
 ### Solution
 
-```{r Solution: Zugriff, echo=FALSE, , eval=FALSE}
+```{r Solution: Zugriff, echo=FALSE, eval=FALSE}
 # 1.
 richtungswechsel <- read.csv("S:/MA1082973/_FHNW/BA472/data sets/Richtungswechsel/Richtungswechsel_anonymized data set.csv")
 
@@ -616,67 +614,12 @@ richtungswechsel[c(10, 12), ]
 richtungswechsel[richtungswechsel$Alter > 25 & richtungswechsel$Alter < 41, c("Bezugsdauer", "Bildungsstand")]
 ```
 
-<<<<<<< HEAD
-=======
-## Data Frames
-
--   Data frames are the typical format for data sets
--   ...it is a list of vectors of the same length [see Wickham](http://adv-r.had.co.nz/Data-structures.html)
--   ...resembles matrices but the columns can contain different data types
--   `data.frame()`: creates a data frame
--   `as.data.frame()`: converts to a data frame
--   `order()`: sorts data
--   `summary()` and `str()`: overview of data frames
--   `head()` and `tail()`: inspect first/last lines
--   `names()`: show column names
--   `object$var1`: directly accesses the column `var1` in the data frame \`object
--   `na.omit()`: Row-by-row exclusion of missing values, i.e. rows that contain at least 1 missing value
-
-### Example: Data Frames
-
-```{r Data frames, eval=FALSE}
-# Prepared data are often data frames.
-class(richtungswechsel)
-
-# you can also easily build one yourself
-beruf <- c("Lehrerin", "Verkäufer", "Pilotin")
-nation <- c("CH", "DE", "IT")
-id <- 1:3
-df <- data.frame(id, beruf, nation)
-df
-
-# Addressing rows and column positions
-df$nation
-df[, "nation"]
-df[3, "beruf"]
-df[3, 3]
-```
-
 # Data management
 
 ## Tidy vs. Messy Data
 
 ### General
 
-<<<<<<< HEAD
-- some conventions for the clean presentation/storage of data (Hadley Wickham)
-- see <http://vita.had.co.nz/papers/tidy-data.pdf> and <http://tidyverse.org/>
-- Quintessence:
-    - once data is clean (tidy), analysis tools (plotting, model fitting) can also work cleanly and without additional effort (e.g. ggplot2, lm/glm)
-    - Cases (observation units) in rows, variables (observation dimensions) in columns
-- Data is messy if
-    - Columns are not labeled
-    - A column contains more than one variable
-    - variables also appear in rows instead of columns
-    - different observation units are in the same table
-- Tools to clean data (small selection):
-    - `dplyr` / `data.table`
-    - `melt() dcast()` from `reshape2`
-    - `str_replace()`, `str_sub()` from the `stringr` package
-    - `tolower()`
-    - some more in package `tidyr
-    - also useful: `recode()` from John Fox (package `car`)
-=======
 -   some conventions for the clean presentation/storage of data (Hadley Wickham)
 -   see <http://vita.had.co.nz/papers/tidy-data.pdf> and <http://tidyverse.org/>
 -   Quintessence:
@@ -700,27 +643,27 @@ df[3, 3]
 ```{r Example: Tidy vs Messy Data, eval=FALSE}
 # Wetterdaten
 weather <- read.table("https://raw.githubusercontent.com/justmarkham/tidy-data/master/data/weather.txt", header=TRUE)
-head(weather) # hier sind Variablen in Zeilen und Spalten
+head(weather) # the variables are in rows and columns 
 
-# Daten reshapen (melt) und Missings löschen
-library(reshape2) # für melt()/dcast()
+# reshape the data (melt) and delete mssings values
+library(reshape2) # for melt()/dcast()
 weather1 <- melt(weather, id=c("id", "year", "month", "element"), na.rm=TRUE)
 head(weather1)
 
-# saubere Spalte für "day"
-library(stringr)    # für str_replace(), str_sub()
+# clean column for "day"
+library(stringr)    # for str_replace(), str_sub()
 weather1$day <- as.integer(str_replace(weather1$variable, "d", ""))
 
-# die krude Spalte "variable" brauchen wir nicht
+# we do not need the "variable" column
 weather1$variable <- NULL
 
-# die Spalte element beherbergt zwei unterschiedliche Variablen tmin und tmax. 
-# Diese sollen in zwei Spalten:
-weather1$element <- tolower(weather1$element) # Kleinbuchstaben
-weather.tidy <- dcast(weather1, ... ~ element) # reshapen auf zwei Spalten
+# The element column contains two different variables tmin and tmax. 
+# These should be in two columns:
+weather1$element <- tolower(weather1$element) # lowercase letters
+weather.tidy <- dcast(weather1, ... ~ element) # reshapen to two columns
 head(weather.tidy)
 
-# das Datum laesst sich zudem in einer Spalte darstellen als echtes Datum:
+# the date can also be displayed in a column as a real date:
 weather.tidy$date <- as.Date(paste(weather.tidy$year, 
                                    weather.tidy$month, 
                                    weather.tidy$day, sep="-"))
@@ -728,28 +671,41 @@ weather.tidy[, c("year", "month", "day")] <- NULL
 head(weather.tidy)
 ```
 
+### Exercise
+
+-   Read the data set `SHP` into R. You can use this command: *read_sav("your workingdirectory/SHPLONG_P_USER.sav")* in *haven* package.
+
+-   Look at the data structure and the variables of the data set. Also use functions such as: `summary(dataset\$var)`, `head(dataset)`, `names(dataset)`
+
+### Solution
+```{r Solution: backup_load_shp2022, echo=FALSE, eval=FALSE}
+#Download the data: with this command you can download files if you have the direct link to the file
+download.file("https://drive.switch.ch/index.php/s/02NutftoUqK4x9V/download", "shp2022.RData", mode = "wb")
+
+#Because the file is in R-Data-Format (.RData) we can load it directly
+load("S:/MA1082973/_FHNW/BA472/data sets/SHP/shp2022.RData")
+```
+
+```{r Solution: shp data, echo=FALSE, eval=FALSE}
+# load libraries & data
+library(haven)
+shp <- read_sav("S:/MA1082973/_FHNW/BA472/data sets/SHP/SHPLONG_P_USER.sav")
+
+# data structure
+head(shp)
+names(shp)
+summary(shp$AGE)
+```
+
 # Descriptive statistics
 
--   Univariate statistics (1 variable)
-    -   `mean(x)`: Mean
-    -   `sd(x)`: Standard deviation
-    -   `var(x)`: Variance
-    -   `median(x)`: Median
-    -   `min(x)`: minimum
-    -   `max(x)`: Maximum
--   Bivariate statistics (2 variables)
-    -   `cov()`: covariance
-    -   `cor()`: Correlation
-    -   `cor(x,y,method="spearman")`: Rank correlation
-    -   `?cor`: more information in the helpfile
-    -   `chisq.test()`: Chi-square test
-    -   `t.test()`: t-test
--   Contingency tables
-    -   `table(x)`: one-dimensional contingency table
-    -   `table(x,y)`: two-dimensional contingency table
-    -   `prop.table(table(x))`: relative frequency
+## Contingency tables
 
-## Example: Contingency tables
+-   `table(x)`: one-dimensional contingency table
+-   `table(x,y)`: two-dimensional contingency table
+-   `prop.table(table(x))`: relative frequency
+
+### Example: Contingency tables
 
 ```{r Kontingenztabellen, eval=FALSE}
 # Let's define a new variable AGE that contains the age (in years) of ten people.
@@ -766,8 +722,21 @@ table(age, hosp)
 100*prop.table(table(age))
 100*prop.table(table(age, hosp))
 
+```
+
+## Univariate statistics (1 variable)
+
+-   `mean(x)`: Mean
+-   `sd(x)`: Standard deviation
+-   `var(x)`: Variance
+-   `median(x)`: Median
+-   `min(x)`: minimum
+-   `max(x)`: Maximum
+
+```{r univariate, eval=FALSE}
 # Mean
 mean(age)
+sd(age)
 
 # Median
 median(age) 
@@ -775,78 +744,62 @@ sort(age)
 
 # Funktion summary
 summary(age)
-
-```
-
-## Exercise: Contingency tables !nach unten verschieben und anpassen für shp Daten!
-
-1.  download (if necessary install beforehand) the package `foreign`. Load the data about the sinking of the Titanic with the following command: `titanic <- read.dta("http://www.stata-press.com/data/kkd/titanic2.dta")` and familiarize yourself a little with the data (e.g. `head()` or `summary()`).
-2.  create a crosstab with the variables `class` and `survived`.
-3.  calculate median and mean age for survived and deceased.
-
-## Solution: Contingency tables
-
-```{r Solution: Kontingenztabellen, echo=FALSE, eval=FALSE}
-### 1.
-library(foreign)
-titanic <- read.dta("http://www.stata-press.com/data/kkd/titanic2.dta")
-head(titanic)
-summary(titanic)
-
-### 2. 
-# survived aus Konvention auf die Y-Achse, class auf die X-Achse (Y ist die abhängige, X die erklärende Variable)
-table(titanic$survived, titanic$class) # Faktor crew ist hier nicht sauber gelabelt
-
-### 3.
-mean(titanic$age2[titanic$survived=="yes"])
-mean(titanic$age2[titanic$survived=="no"])
-
 ```
 
 ## Package dplyr
 
-### Generelles
+### General
 
--   Relativ neues Package [dplyr](http://blog.rstudio.org/2014/01/17/introducing-dplyr/) von [Hadley Wickham](https://twitter.com/hadleywickham)/[Romain Francois](https://twitter.com/romain_francois) bietet ein Toolset zur Datenaufbereitung
--   Siehe [die dplyr Vignette](http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html) und das [Data Wrangling Cheat Sheet](http://www.rstudio.com/resources/cheatsheets/) für einen sehr guten Überblick
-    -   `filter()`: wählt ein Subset von Zeilen (siehe auch `slice()`)
-    -   `arrange()`: sortiert
-    -   `select()`: wählt Spalten
-    -   `mutate()`: erzeugt neue Spalten
-    -   `summarise()`: aggregiert (collapses) Daten zu einzelnen Datenpunkten
-    -   `distinct()`: entfernt doppelte Werte
-    -   `group_by()`: Definiert Untergruppen in den Daten, damit `mutate()` und `summarise()` separat pro Gruppe angewandt werden können.
-    -   dplyr kann sehr gut zusammen mit sogenanntem Piping verwendet werden, d.h. das Datenobjekt wird von Funktion zu Funktion weitergereicht durch `%>%` wodurch der Code deutlich besser lesbar und kompakter wird.
+-   package [dplyr](http://blog.rstudio.org/2014/01/17/introducing-dplyr/) by [Hadley Wickham](https://twitter.com/hadleywickham)/[Romain Francois](https://twitter.com/romain_francois) offers a toolset for data preparation
+-   See [the dplyr vignette](http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html) and the [Data Wrangling Cheat Sheet](http://www.rstudio.com/resources/cheatsheets/) for a very good overview
+    -   `filter()`: selects a subset of rows (see also `slice()`)
+    -   `arrange()`: sorts
+    -   `select()`: selects columns
+    -   `mutate()`: creates new columns
+    -   `summarize()`: aggregates (collapses) data to individual data points
+    -   `distinct()`: removes duplicate values
+    -   `group_by()`: defines subgroups in the data so that `mutate()` and `summarize()` can be applied separately per group.
+    -   dplyr can be used very well together with so-called piping, i.e. the data object is passed from function to function by `%>%`, which makes the code much easier to read and more compact.
 
 ### Example: Package dplyr
 
 ```{r Example: Package dplyr,eval=FALSE}
+# load data
 library(dplyr)
-titanic <- read.dta("http://www.stata-press.com/data/kkd/titanic2.dta")
+shp2022
 
-# filtern und zusätzlich Spalten selektieren:
-titanic %>%
-  filter(class == "1st class", age2 < 18) %>%
-  select(sex, age2, survived)
+# filter by 1st nationality not Switzerland and persons up to 65 years old  
+# select columns
+shp2022a <- shp2022 %>% 
+  filter(NAT_1_ != 8100, AGE < 66) %>% 
+  select(c("AGE", "SEX", "NAT_1_", "EDUCAT"))
+  
 
-# neue Variable "child" bauen
-titanic %>%
-  mutate(child = age2 < 18) %>%
-  head()
+# create new variable "Tertiary education"
+shp2022a <- shp2022a %>%
+  mutate(EduTertiary = EDUCAT == 10)
 
-# Auszählen wer gestorben ist nach Geschlecht und Kind (ja/nein)
-titanic %>%
-  mutate(child = ifelse(age2 < 18, "yes", "no")) %>%
-  group_by(sex, child, survived) %>%
+# Count by gender and with a tertiary education (TRUE/FALSE)
+tab <- shp2022a %>%
+  group_by(SEX, EduTertiary) %>%
   summarise(n=n()) %>%
-  arrange(sex, child, survived)
+  arrange(SEX, EduTertiary) %>%
+  na.omit()
 ```
 
-## Exercise: Package dplyr
+### Exercise: Package dplyr
 
-Lesen Sie die SHP-Daten in RStudio ein. Beschränken Sie den Datensatz für das Jahr 2022 auf Personen, die 25 Jahre oder älter sind. Betrachten Sie die Variablen mit den Informationen zum Alter (Variable AGE), zum Geschlecht (Variable SEX), zu den Ausbildungsjahren (Variable EDYEAR) und zur ersten Nationalität (NAT_1_). Verschaffen Sie sich einen Überblick über das Sampling mit Hilfe der beiden Funktionen `summary` und `table`.
+-   Read the SHP data into RStudio.
 
-## Solution: Package dplyr
+-   Restrict the data set for the year 2022 to people who are 25 years or older. Familiarize yourself a little with the data (e.g. `head()`, `summary(),` `table()`).
+
+-   Look at the variables with the information on age (variable AGE), gender (variable SEX), years of education (variable EDYEAR) and first nationality (NAT_1_).
+
+-   Create a crosstab with the variables `EDYEAR` and `SEX`.
+
+-   calculate mean and standard deviation for the variable age for men and women.
+
+### Solution: Package dplyr
 
 ```{r Solution: Package dplyr, eval=FALSE, echo=FALSE}
 ### read SHP Daten 
@@ -854,7 +807,7 @@ library(haven)
 library(dplyr)
 shp <- read_sav("S:/MA1082973/_FHNW/BA472/data sets/SHP/SHPLONG_P_USER.sav")
 
-# Datensatz für das Jahr 2022 & Personen, die 25 oder älter sind
+# Restrict the data set for the year 2022 to people who are 25 years or older.
 shp2022 <- shp %>% filter(YEAR == 2022) %>% filter(AGE > 24) %>% select(AGE, SEX, EDYEAR, NAT_1_)
 
 summary(shp2022)
@@ -864,7 +817,25 @@ table(shp2022$SEX)
 table(shp2022$EDYEAR)
 table(shp2022$NAT_1_)
 
+# Create a crosstab with the variables EDYEAR and SEX.
+table(shp2022$EDYEAR, shp2022$SEX)
+
+# calculate mean and standard deviation for the variable age for men and women.
+mean(shp2022$AGE[shp2022$SEX==1], na.rm=T)
+mean(shp2022$AGE[shp2022$SEX==2], na.rm=T)
+
+sd(shp2022$AGE[shp2022$SEX==1], na.rm=T)
+sd(shp2022$AGE[shp2022$SEX==2], na.rm=T)
 ```
+
+## Bivariate statistics (2 variables)
+
+-   `cov()`: covariance
+-   `cor()`: Correlation
+-   `cor(x,y,method="spearman")`: Rank correlation
+-   `?cor`: more information in the helpfile
+-   `chisq.test()`: Chi-square test
+-   `t.test()`: t-test
 
 # Data visualization
 
@@ -885,7 +856,15 @@ table(shp2022$NAT_1_)
 -   ggplot2 is the most important package to create visualizations in R
 -   see also cheatsheet: <https://rstudio.github.io/cheatsheets/data-visualization.pdf>
 
-Hadley Wickham's `ggplot2` package has developed into a particularly useful alternative to `plot()` over the last few years. Especially complicated plots are easier to implement with ggplot, visually appealing and the code is easily accessible. Most important basic structures: - Data that we want to visualize - Geometries to define the shapes we want to use for visualization (e.g. a scatter plot, line chart, bar chart) - Modify aesthetics to convey different meanings (e.g. colors, size, thickness of a line) - Define mappings between geometries and aesthetics (e.g. how big should the data points be)
+Hadley Wickham's `ggplot2` package has developed into a particularly useful alternative to `plot()` over the last few years. Especially complicated plots are easier to implement with ggplot, visually appealing and the code is easily accessible. Most important basic structures:
+
+-   **Data** that we want to visualize
+
+-   **Geometries** to define the shapes we want to use for visualization (e.g. a scatter plot, line chart, bar chart)
+
+-   Modify **aesthetics** to convey different meanings (e.g. colors, size, thickness of a line)
+
+-   Define **mappings** between geometries and aesthetics (e.g. how big should the data points be)
 
 ### Example: ggplot2
 
@@ -934,9 +913,9 @@ ggplot(shp2022, aes(x=factor(PC44), y=..count.., fill=factor(SEX))) +
 
 ### Exercise: Grafiken mit ggplot2
 
-1.  Laden Sie die SHP-Daten.
-2.  Erstellen Sie ein Histogramm für das Einkommen (Variable: IPTOTN) für das Jahr 2022. Geben Sie der Grafik einen Titel. Tipp: Fügen Sie dem Diagramm ein `labs()` Argument hinzu.
-3.  Erstellen Sie einen Boxplot, der die Einkommensverteilung nach Bildungsniveau (Variable: ISCED) darstellt. Damit die Boxplots für jede Bildungsstufe separat erstellt werden, müssen Sie die Bildungsvariable vorher als Faktor speichern (die allgemeine Form ist: `daten$variable <- as.factor(daten$variable)`). Schränken Sie auch das Einkommen ein (Ausreisser, z.B. alle Einkommen über 200'000 ausschliessen).
+1.  Load the SHP data.
+2.  Create a histogram for income (variable: IPTOTN) for the year 2022. give the graph a title. Tip: Add a `labs()` argument to the chart.
+3.  Create a boxplot showing the distribution of income by educational level (variable: ISCED). In order for the boxplots to be created separately for each education level, you must first save the education variable as a factor (the general form is: `data$variable <- as.factor(data$variable)`). Also restrict the income (exclude outliers, e.g. all incomes over 200000).
 
 ### Solution: Grafiken mit ggplot2
 
