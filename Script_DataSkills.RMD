@@ -652,7 +652,6 @@ df[3, "beruf"]
 df[3, 3]
 ```
 
->>>>>>> 4fb2d71340d56d6911e0de794dfc802279a4a7bc
 # Data management
 
 ## Tidy vs. Messy Data
@@ -678,11 +677,11 @@ df[3, 3]
     - some more in package `tidyr
     - also useful: `recode()` from John Fox (package `car`)
 =======
--   Hadley Wickham has tried to write down some conventions for the clean presentation/storage of data
+-   some conventions for the clean presentation/storage of data (Hadley Wickham)
 -   see <http://vita.had.co.nz/papers/tidy-data.pdf> and <http://tidyverse.org/>
 -   Quintessence:
     -   once data is clean (tidy), analysis tools (plotting, model fitting) can also work cleanly and without additional effort (e.g. ggplot2, lm/glm)
-    -   Cases (observation units) in rows, variables (observation dimensions) in columns\*\*
+    -   Cases (observation units) in rows, variables (observation dimensions) in columns
 -   Data is messy if
     -   Columns are not labeled
     -   A column contains more than one variable
@@ -693,9 +692,8 @@ df[3, 3]
     -   `melt() dcast()` from `reshape2`
     -   `str_replace()`, `str_sub()` from the `stringr` package
     -   `tolower()`
-    -   some more in package \`tidyr
+    -   some more in package `tidyr`
     -   also useful: `recode()` from John Fox (package `car`)
->>>>>>> 4fb2d71340d56d6911e0de794dfc802279a4a7bc
 
 ### Example: Tidy vs Messy Data
 
