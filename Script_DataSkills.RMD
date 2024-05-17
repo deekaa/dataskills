@@ -29,12 +29,6 @@ knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_chunk$set(eval= TRUE)
 ```
 
-To do:
-
--   Moodlekurs
--   Struktur inhalte
--   Datensätze beschreiben
-
 # General information
 
 -   Courses take place from 9.15-12 and from 13.15-16 and in in room 136 if not otherwise mentioned
@@ -43,7 +37,7 @@ To do:
 
 -   [Here you find a list of class members and contact information and groups.](https://drive.switch.ch/index.php/s/nu6AXJAd6SQJo76)
 
-# Welcome Email
+## Welcome Email
 
 Dear students,
 
@@ -102,8 +96,12 @@ Als Studierende(r) der Sozialen Arbeit möchte ich die Grundlagen der Programmie
 ## Learning Goals
 
 -   People learn basic data science tools.
+
 -   People learn how to integrate data science in social work problem solving.
+
 -   People learn how to do data science with R.
+
+    ![](images/clipboard-3611048152.png)
 
 ## What is data science?
 
@@ -145,9 +143,7 @@ Als Studierende(r) der Sozialen Arbeit möchte ich die Grundlagen der Programmie
 
         -   Benefits of social work
 
-![](images/clipboard-3611048152.png)
-
-## Why is data science more important in the future?
+## Datafication or why data science is becoming more important in the future
 
 [![](images/clipboard-1435924333.png)](https://marketsplash.com/data-creation-statistics/)
 
@@ -155,7 +151,13 @@ Als Studierende(r) der Sozialen Arbeit möchte ich die Grundlagen der Programmie
 
 -   Data contains information on human behavior = **helps us better understand the human world and solve human problems.**
 
-## Data sources
+-   In the era of AI, "data literacy" becomes a key skill in all areas of life, including social work
+
+    -   Data awareness
+
+    -   Skills to interpret and analyze data
+
+## Data sources that are relevant for social work
 
 ### Public statistics
 
@@ -678,6 +680,7 @@ head(weather.tidy)
 -   Look at the data structure and the variables of the data set. Also use functions such as: `summary(dataset\$var)`, `head(dataset)`, `names(dataset)`
 
 ### Solution
+
 ```{r Solution: backup_load_shp2022, echo=FALSE, eval=FALSE}
 #Download the data: with this command you can download files if you have the direct link to the file
 download.file("https://drive.switch.ch/index.php/s/02NutftoUqK4x9V/download", "shp2022.RData", mode = "wb")
@@ -793,7 +796,7 @@ tab <- shp2022a %>%
 
 -   Restrict the data set for the year 2022 to people who are 25 years or older. Familiarize yourself a little with the data (e.g. `head()`, `summary(),` `table()`).
 
--   Look at the variables with the information on age (variable AGE), gender (variable SEX), years of education (variable EDYEAR) and first nationality (NAT_1_).
+-   Look at the variables with the information on age (variable AGE), gender (variable SEX), years of education (variable EDYEAR) and first nationality (NAT_1\_).
 
 -   Create a crosstab with the variables `EDYEAR` and `SEX`.
 
