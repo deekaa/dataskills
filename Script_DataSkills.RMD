@@ -151,7 +151,7 @@ Als Studierende(r) der Sozialen Arbeit möchte ich die Grundlagen der Programmie
 
 -   Data contains information on human behavior = **helps us better understand the human world and solve human problems.**
 
--   In the era of AI, "data literacy" becomes a key skill in all areas of life, including social work
+-   In the era of AI, ["data literacy"](https://api.swiss-academies.ch/site/assets/files/127302/data_literacy_charta_1405_online_de.pdf) becomes a key skill in all areas of life, including social work –\> it should be a basic competence
 
     -   Data awareness
 
@@ -197,7 +197,7 @@ Als Studierende(r) der Sozialen Arbeit möchte ich die Grundlagen der Programmie
 
 ![The Swiss federation and cantons store data about all of life’s aspects](images/clipboard-1957976842.png)
 
-## Excercise
+## Exercise
 
 -   Think of a social work field
 
