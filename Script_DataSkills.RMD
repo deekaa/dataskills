@@ -345,7 +345,7 @@ rm(die.beatles) # Delete object
 
 ```
 
-# Packages
+## Packages
 
 -   Many objects (functions, data records, etc.) are located in so-called packages ([see here](http://cran.r-project.org/web/packages/available_packages_by_date.html))
 
@@ -367,7 +367,7 @@ rm(die.beatles) # Delete object
     -   `install.packages("packagename")`: install package
     -   `remove.packages("packagename")`: uninstall package
 
-## Example: Packages and help function
+### Example: Packages and help function
 
 ```{r Example: Packages and help function, eval=FALSE}
 # Let's assume we want to read in an SPSS file:
@@ -384,7 +384,7 @@ library(foreign)
 # But general recommendation: Google or AI now usually provide better results than the help function
 ```
 
-## Exercise: Install and load the following packages.
+### Exercise: Install and load the following packages.
 
 -   dplyr: for working with data sets / data cleansing
 -   ggplot2: for data visualization
@@ -392,7 +392,7 @@ library(foreign)
 -   readxl: Excel files (.xls and .xlsx) read into R
 -   officer: enables the creation and editing of Microsoft Word documents (.docx) directly in R
 
-# Arithmetic and logical operators
+## Arithmetic and logical operators
 
 -   Arithmetic operators
     -   `+ - * / ^`
@@ -402,7 +402,7 @@ library(foreign)
     -   `exp(x)=e^x log(x) log10(x) sin(x) cos(x) tan(x)`
     -   `abs(x) sqrt(x) ceiling(x) floor(x) trunc(x) round(x, digits=n)`
 
-## Example: Calculating and comparing
+### Example: Calculating and comparing
 
 ```{r Example:Rechnen und Vergleichen, eval=FALSE}
 # Calculate
@@ -445,7 +445,7 @@ x > 1 & x < -1
 x > 1 | x < -1
 ```
 
-## Exercise: Calculating and comparing
+### Exercise: Calculating and comparing
 
 1.  calculate the following terms in R
     1.  $((3 + 4 - 5) - 9)^{2}$
@@ -454,7 +454,7 @@ x > 1 | x < -1
     1.  $5 = 7$
     2.  $\sqrt{3} \neq cos(17)$
 
-## Solution: Calculating and comparing
+### Solution: Calculating and comparing
 
 ```{r Solution: Rechnen und Vergleichen, echo=FALSE, eval=FALSE}
 # 1.
@@ -466,7 +466,7 @@ log(1)
 sqrt(3)!=cos(17)
 ```
 
-# Class / data types
+## Class / data types
 
 -   `class()`: Reveals the class of an object
 
@@ -484,7 +484,7 @@ sqrt(3)!=cos(17)
 
 -   Factors: represent categorical data. These are stored as numerical values but are linked to a value label
 
-## Overview of data types
+### Overview of data types
 
 ```{r Übersicht Datentypen, eval=F}
 # Integer vector
@@ -518,7 +518,7 @@ mean
 
 ```
 
-## Special values
+### Special values
 
 -   `Inf` and `-Inf`: Positive and negative infinite
 -   `NaN`: "*Not a number*", e.g. `0/0`.
@@ -536,7 +536,7 @@ x == "NA"
 is.na(x)
 ```
 
-## Data Frames
+### Data Frames
 
 -   Data frames are the typical format for data sets
 -   ...it is a list of vectors of the same length [see Wickham](http://adv-r.had.co.nz/Data-structures.html)
@@ -550,7 +550,7 @@ is.na(x)
 -   `object$var1`: directly accesses the column `var1` in the data frame `object`
 -   `na.omit()`: Row-by-row exclusion of missing values, i.e. rows that contain at least 1 missing value
 
-### Example: Data Frames
+#### Example: Data Frames
 
 ```{r Data frames, eval=FALSE}
 # Prepared data are often data frames.
@@ -572,7 +572,7 @@ df[3, "beruf"]
 df[3, 3]
 ```
 
-## Access to different data areas
+### Access to different data areas
 
 ```{r Zugriff, eval=FALSE}
 # How can I access specific elements of a vector directly?
@@ -616,11 +616,11 @@ richtungswechsel[c(10, 12), ]
 richtungswechsel[richtungswechsel$Alter > 25 & richtungswechsel$Alter < 41, c("Bezugsdauer", "Bildungsstand")]
 ```
 
-# Data management
+## Data management
 
-## Tidy vs. Messy Data
+### Tidy vs. Messy Data
 
-### General
+#### General
 
 -   some conventions for the clean presentation/storage of data (Hadley Wickham)
 -   see <http://vita.had.co.nz/papers/tidy-data.pdf> and <http://tidyverse.org/>
@@ -640,7 +640,7 @@ richtungswechsel[richtungswechsel$Alter > 25 & richtungswechsel$Alter < 41, c("B
     -   some more in package `tidyr`
     -   also useful: `recode()` from John Fox (package `car`)
 
-### Example: Tidy vs Messy Data
+#### Example: Tidy vs Messy Data
 
 ```{r Example: Tidy vs Messy Data, eval=FALSE}
 # Wetterdaten
@@ -673,13 +673,13 @@ weather.tidy[, c("year", "month", "day")] <- NULL
 head(weather.tidy)
 ```
 
-### Exercise
+#### Exercise
 
 -   Read the data set `SHP` into R. You can use this command: *read_sav("your workingdirectory/SHPLONG_P_USER.sav")* in *haven* package.
 
 -   Look at the data structure and the variables of the data set. Also use functions such as: `summary(dataset\$var)`, `head(dataset)`, `names(dataset)`
 
-### Solution
+#### Solution
 
 ```{r Solution: backup_load_shp2022, echo=FALSE, eval=FALSE}
 #Download the data: with this command you can download files if you have the direct link to the file
@@ -941,6 +941,87 @@ ggplot(shp2022,aes(x=ISCED,y=IPTOTN))+
      labs(title="Boxplot Einkommen")
 
 ```
+
+
+## Shiny Apps: General Information 
+
+-   [Shiny apps](https://shiny.rstudio.com/gallery/) are reactive web applications that allow users to modify components of a calculation and/or its visualization without needing to write R code themselves. This is very useful for communicating results.
+-   Shiny apps consist of a website (user interface) and a computer running R (R-server): `Input()` from the user goes to the R-server, and the R-server sends `Output()` back.
+-   Basic structure: R script (named app.R, or ui.R and server.R) containing
+    -   `library(shiny)`
+    -   `ui<-fluidPage()` with input and output functions. Possible input and output functions can be found [here](https://shiny.rstudio.com/reference/shiny/1.0.5/)
+    -   `server<-function(input,output){}`
+    -   `shinyApp(ui= ui, server=server)` (if ui and server are in one script)
+-   [The R-Studio introduction to Shiny](https://shiny.rstudio.com/tutorial/)
+-   R-Studio offers various [solutions](https://www.rstudio.com/products/shiny/shiny-server/) for deploying Shiny apps online (free: Shiny Server Open Source, Shinyapps.io)
+
+### Example: Package shiny [↑](#top)
+
+```{r shiny, eval=FALSE, echo=TRUE}
+# Ensure shiny and ggplot2 are installed
+# install.packages("shiny")
+# install.packages("ggplot2")
+
+library(shiny)
+library(ggplot2)
+
+# Example data: a simple dataset related to social work
+data <- data.frame(
+  age = sample(18:65, 100, replace = TRUE), # Ages between 18 and 65
+  satisfaction = sample(1:10, 100, replace = TRUE) # Satisfaction levels from 1 to 10
+)
+
+# Define the UI
+ui <- fluidPage(
+  titlePanel("Data Visualization for Social Work"),
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput("ageRange", 
+                  "Select Age Range:", 
+                  min = min(data$age), 
+                  max = max(data$age), 
+                  value = c(25, 40)),
+      sliderInput("satisfactionRange", 
+                  "Select Satisfaction Range:", 
+                  min = min(data$satisfaction), 
+                  max = max(data$satisfaction), 
+                  value = c(4, 7))
+    ),
+    mainPanel(
+      textOutput("countOutput"),
+      plotOutput("ageDistributionPlot") # Add this line to output the plot
+    )
+  )
+)
+
+# Define server logic
+server <- function(input, output) {
+  filteredData <- reactive({
+    data[data$age >= input$ageRange[1] & data$age <= input$ageRange[2] & 
+           data$satisfaction >= input$satisfactionRange[1] & data$satisfaction <= input$satisfactionRange[2], ]
+  })
+  
+  output$countOutput <- renderText({
+    paste("Number of cases within selected range:", nrow(filteredData()))
+  })
+  
+  output$ageDistributionPlot <- renderPlot({
+    ggplot(filteredData(), aes(x = age)) +
+      geom_histogram(binwidth = 5, fill = "skyblue", color = "black") +
+      theme_minimal() +
+      labs(title = "Age Distribution of Selected Cases",
+           x = "Age",
+           y = "Frequency")
+  })
+}
+
+# Run the app
+shinyApp(ui = ui, server = server)
+
+
+```
+
+
 
 # Measuring the effects of social work
 
