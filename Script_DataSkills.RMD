@@ -389,7 +389,7 @@ library(foreign)
 -   dplyr: for working with data sets / data cleansing
 -   ggplot2: for data visualization
 -   haven: facilitates the reading of SPSS, SAS and Stata files in R.
--   readxl: Excel files (.xls and .xlsx) read into R
+-   readxl: read Excel files (.xls and .xlsx) into R
 -   officer: enables the creation and editing of Microsoft Word documents (.docx) directly in R
 
 ## Arithmetic and logical operators
@@ -474,7 +474,7 @@ sqrt(3)!=cos(17)
 
 -   logical (TRUE/FALSE)
 
--   Character/String (The Beatles)
+-   Character/String 
 
 -   Some data types can be converted, e.g. `as.numeric()` or `as.character()`
 
