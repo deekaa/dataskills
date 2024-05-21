@@ -137,20 +137,6 @@ Als Studierende(r) der Sozialen Arbeit möchte ich die Grundlagen der Programmie
 
     -   [Improve efficiency of workflows with generative AI](https://www.der-paritaetische.de/fileadmin/user_upload/Schwerpunkte/Digitalisierung/doc/ki/KI_Textsammlung_final.pdf)
 
--   To sum up:
-
-    -   **In practice,** data science can help you...
-
-        -   Design of services
-
-        -   Understanding of effective support services
-
-    -   **In politics,** data science can help you ...
-
-        -   Proof of the need for services
-
-        -   Benefits of social work
-
 ## Datafication or why data science is becoming more important in the future
 
 [![](images/clipboard-1435924333.png)](https://marketsplash.com/data-creation-statistics/)
