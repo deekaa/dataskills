@@ -675,7 +675,7 @@ head(weather.tidy)
 
 #### Solution
 
-```{r Solution: backup_load_shp2022, echo=FALSE, eval=FALSE}
+```{r Solution: backup_load_shp2022, echo=TRUE, eval=FALSE}
 #Download the data: with this command you can download files if you have the direct link to the file
 download.file("https://drive.switch.ch/index.php/s/02NutftoUqK4x9V/download", "shp2022.RData", mode = "wb")
 
@@ -683,7 +683,7 @@ download.file("https://drive.switch.ch/index.php/s/02NutftoUqK4x9V/download", "s
 load("S:/MA1082973/_FHNW/BA472/data sets/SHP/shp2022.RData")
 ```
 
-```{r Solution: shp data, echo=FALSE, eval=FALSE}
+```{r Solution: shp data, echo=TRUE, eval=FALSE}
 # load libraries & data
 library(haven)
 shp <- read_sav("S:/MA1082973/_FHNW/BA472/data sets/SHP/SHPLONG_P_USER.sav")
