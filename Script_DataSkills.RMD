@@ -599,7 +599,7 @@ richtungswechsel[richtungswechsel$Bezugsdauer > 4, ]
 
 ### Solution
 
-```{r Solution: Zugriff, echo=FALSE, eval=FALSE}
+```{r Solution: Zugriff, echo=TRUE, eval=FALSE}
 # 1.
 richtungswechsel <- read.csv("S:/MA1082973/_FHNW/BA472/data sets/Richtungswechsel/Richtungswechsel_anonymized data set.csv")
 
