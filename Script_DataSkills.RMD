@@ -865,7 +865,7 @@ Hadley Wickham's `ggplot2` package has developed into a particularly useful alte
 
 ### Example: ggplot2
 
-```{r Example: ggplot2, eval=FALSE}
+```{r Example: ggplot2, eval=TRUE}
 library(ggplot2)
 library(dplyr)
 library(haven)
