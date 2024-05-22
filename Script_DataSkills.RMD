@@ -1127,11 +1127,9 @@ ggplot(tab, aes(x = year, y = est, color = version)) +
 
 -   Form four groups: one for each method to measure effects
 
--   Search information on how effects could be measured in social work
+-   Create a social work related example of an effect measure with the respective method. What effect do you measure? What is the outcome measure? What data would you collect?
 
--   Create an example in social work that measures the effect of a given intervention
-
--   Present the basics of the methodology to your colleagues (at least including the bullet points below) and adapt the methods
+-   Present the basics of the methodology and the example to your colleagues (at least including the bullet points below)
 
 ### Asking experts
 
