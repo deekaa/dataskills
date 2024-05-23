@@ -768,7 +768,7 @@ shp2022
 # filter by 1st nationality not Switzerland and persons up to 65 years old  
 # select columns
 shp2022a <- shp2022 %>% 
-  filter(NAT_1_ != 8100, AGE < 66) %>% 
+  filter("NAT_1_" != 8100, AGE < 66) %>% 
   select(c("AGE", "SEX", "NAT_1_", "EDUCAT"))
   
 
@@ -1016,6 +1016,8 @@ shinyApp(ui = ui, server = server)
 
 # Measuring the effects of social work
 
+<!--# Time structure: why it is important to measure effects (9.30); counterfactual (Min 9.40); Excercise presentation (10.20-10.40); Data example (10.55-11.15); Data own excercise 11.15-11.50-->
+
 ## Why is it important to measure the effects of social work?
 
 -   Improving practice with better knowledge
@@ -1025,6 +1027,12 @@ shinyApp(ui = ui, server = server)
     -   Knowing the most effective interventions and offers
 
     -   Knowing the most cost-effective interventions and offers
+
+        -   Exercise
+
+            -   [What conclusions would you draw from this paper?](https://pubmed.ncbi.nlm.nih.gov/38699117/)
+
+            -   What could be the problem?
 
 -   Legitimizing social work
 
@@ -1036,7 +1044,7 @@ shinyApp(ui = ui, server = server)
 
 -   Effect = difference in the result with influencing variable versus without influencing variable (= **counterfactual** situation)
 
--   What is the counterfactual situation?
+-   What is the **counterfactual** situation?
 
     -   The story of Tom and Eva
 
@@ -1097,20 +1105,31 @@ ggplot(tab, aes(x = year, y = est, color = version)) +
   ) +  
   geom_vline(xintercept = 2016.5)
 
-
-
 ```
 
--   Example of measuring the effects of social work
+-   Exercise
+    -   Talk to the person sitting next to you.
+        -   What was the most important event in your life (family, education, work, health, social relationships)?
+        -   What areas of your life have been affected by this event?
+        -   What would these areas be like if the event had not happened (can you guess numbers)?
+-   Example of measuring effects of social work
 
 [![](images/clipboard-851415407.png)](https://www.nber.org/papers/w30405)
 
--   This is not a measure of effect:
+-   An often seen non-example of "effects":
 
     -   [Federal Council guidelines for the labor market integration of persons with protection status S for cantons: 40% should have a job until the end of 2024](https://www.blick.ch/politik/40-prozent-sollen-stelle-haben-der-bundesrat-will-dass-mehr-ukrainerinnen-arbeiten-id19105587.html)
-    -   Why does a canton (not) reaching the goal of 40% say much about the effects of its measures?
+        -   Why does a canton (not) reaching the goal of 40% not say much about the effects of its measures?
 
 ## How can we measure the effects of social work with quantitative data?
+
+### Exercise
+
+-   Form four groups: one for each method to measure effects
+
+-   Create a social work related example of an effect measure with the respective method. What effect do you measure? What is the outcome measure? What data would you collect?
+
+-   Present the basics of the methodology and the example to your colleagues (at least including the bullet points below)
 
 ### Asking experts
 
@@ -1213,19 +1232,11 @@ ggplot(tab, aes(x = year, y = est, color = version)) +
 
 -   **Disadvantages:**
 
-    -   Limited samples: Replicability?
+    -   Limited samples: Reproducability?
 
-    -   Predetermined variance
+    -   Predetermined treatment
 
     -   Randomness hard to prove
-
-### Excercise
-
--   Design a study on the effect of a social work offer/intervention
-
--   What are the outcome variables?
-
--   Which groups would you compare?
 
 ## Analyzing social work experiments in R
 
@@ -1283,6 +1294,24 @@ richtungswechsel%>%
   group_by(Group,Geschlecht=ifelse(Geschlecht==1,"Women","Men"))%>%#We tell R to do all calculations groupwise 
   summarise(Mean.Change=mean(vitality.change,na.rm = T)) #We tell R to calculate the mean value of the change in vitality. We must tell it to remove missing values.
 
+
+#Tabelle Wirkung abspeichern
+
+library(huxtable)
+# Konvertieren Sie die Tabelle in ein Huxtable-Objekt
+tabelle_wirkung_hux <- as_hux(tabelle_wirkung)
+
+# Erste Zeile fett und mit Linie abgrenzen
+bold(tabelle_wirkung_hux)[1,] <- TRUE
+bottom_border(tabelle_wirkung_hux)[1,] <- 1
+
+# Erste Spalte fett formatieren
+bold(tabelle_wirkung_hux)[,1] <- TRUE
+
+# Speichern als Word-Dokument
+quick_docx(tabelle_wirkung_hux, file = "tabelle_wirkung.docx")
+
+
 ```
 
 ### Excercise
@@ -1307,7 +1336,6 @@ richtungswechsel%>%
 
 #We will analyze the effect of "Richtungswechsel" on long-term recipients' vitality. https://journals.sagepub.com/doi/full/10.1177/10497315241232120
 
-#Download the data: with this command you can download files if you have the direct link to the file
 download.file("https://drive.switch.ch/index.php/s/WYdxhZ0psZZqDzv/download", "FokusArbeit.csv",mode = "wb")
 
 #Because the file is in R-Data-Format (.R) we can load it directly
@@ -1326,16 +1354,16 @@ summary(data)
 #Vit1 contains measures of vitality before Richtungswechsel, vit2 contains measures of vitality after Richtungswechsel
 
 #We will give the data a nicer name
-richtungswechsel <- data%>%
+fokusarbeit <- data%>%
   filter(!is.na(Vitality1))%>%#We remove missing values
   mutate(vitality.change=Vitality2-Vitality1,#Here we calculate a new column measuring the change in vitality
-
+         
          Group=ifelse(Interventionsgruppe==1,"Intervention group","Comparison group")) #Here ge give the variable INT1 (Group membership) a nicer, more telling name and labels
 #Were there more positive changes in the intervention group?
 
 #Here we check whether the two groups are comparable in terms of 
 
-richtungswechsel%>%
+fokusarbeit%>%
   group_by(Group)%>%#We tell R to do all calculations groupwise 
   summarise(Mean.Age=mean(Alter),
             Mean.Gender=mean(Weiblich),
@@ -1343,7 +1371,7 @@ richtungswechsel%>%
 
 
 #Here we calculate the effect of the intervetion
-richtungswechsel%>%
+tabellewirkung<-fokusarbeit%>%
   group_by(Group)%>%
   summarise(Mean.Change=mean(vitality.change),
             Mean.Vit1=mean(Vitality1,na.rm = T),
@@ -1351,9 +1379,26 @@ richtungswechsel%>%
 
 #Was the effect stronger for men or for women?
 
-richtungswechsel%>%
+fokusarbeit%>%
   group_by(Group,Geschlecht=ifelse(Weiblich==100,"Women","Men"))%>%#We tell R to do all calculations groupwise 
   summarise(Mean.Change=mean(vitality.change,na.rm = T)) #We tell R to calculate the mean value of the change in vitality. We must tell it to remove missing values.
+
+
+#Tabelle Wirkung abspeichern
+
+library(huxtable)
+# Konvertieren Sie die Tabelle in ein Huxtable-Objekt
+tabelle_wirkung_hux <- as_hux(tabelle_wirkung)
+
+# Erste Zeile fett und mit Linie abgrenzen
+bold(tabelle_wirkung_hux)[1,] <- TRUE
+bottom_border(tabelle_wirkung_hux)[1,] <- 1
+
+# Erste Spalte fett formatieren
+bold(tabelle_wirkung_hux)[,1] <- TRUE
+
+# Speichern als Word-Dokument
+quick_docx(tabelle_wirkung_hux, file = "tabelle_wirkung.docx")
 ```
 
 ## Important references
@@ -1365,8 +1410,6 @@ richtungswechsel%>%
 -   [The Power of Experiments](https://mitpress.mit.edu/9780262542272/the-power-of-experiments/)
 
 # Prediction in social work
-
-Evtl. 1/2 Tag oder 3/4 Tag
 
 -   Risk prediction in SW
 
@@ -1390,91 +1433,4 @@ Evtl. 1/2 Tag oder 3/4 Tag
 
 -   Organisation: Gruppenformierung
 
-## Content
-
-Content is structured to alternate between technical aspects (basics, hands-on exercises) and their relation to social work and practice.
-
-#BFH Struktur
-
--   **Preparation (Samin erstellt Begrüssungsemail)**
-
-    -   Begrüssungsnachricht: Download r/rstudio, videolink, aufgabe
-    -   Some video, introduction course (Samin sucht video)
-    -   Find examples of how data science can help social work: sie sollen ein Forumsbeitrag erstellen
-
--   **Introduction (Dorian/Samin, 21.5.)**
-
-    -   What is data science and how can it help social work? What are the limits? (Slide 4 bis 7)
-    -   Data that are relevant for social work
-        -   Datafication:
-            -   data collected for research/official statistics,
-            -   found data (uebung: studierende sollen selber überlegen, wo found data entstehen)
-            -   
-    -   Crash course in R and R Studio: AI supported coding (ChatGPT-4 / Copilot), warum R, R as a calculator/objects/for loops (kurz), reading in data, überblick über datensatz (summary, nrow,...), dplyr, filter/select, mutate, rbind/merge, reshaping (?), umgang mit textdaten (?), saving
-
--   **Descriptive analyses (Samin, 27.5.)**
-
--   **Prediction of risks (Dorian, 28.5)**
-
--   **Evaluation/Causal design/Effects of social work (Dorian, 3.6.)**
-
-    -   Evtl. 1/2 Tag oder 3/4 Tag
-    -   Randomized control trials
-    -   Natural experiments
-
--   **Case studies mit Coaching (Dorian, 4.6.)**
-
--   **Beispieldaten**
-
-    -   Beispieldaten oben einbauen
-    -   Richtungswechsel
-    -   Swiss Household Panel (Samin lädt herunter)
-    -   Data dashboard Wohlen; extension or data analysis of dependency duration (Dorian fragt nach; wir sagen nicht von welcher Gemeinde, Vertragliche Abmachung)
-    -   Jugendarbeit Burgdorf (Dorian schreibt Mani)
-    -   Fokus Arbeit (?): Wenn andere Daten nicht verfügbar sind
-    -   ESS (Samin lädt herunter) ..Daten die relevant sind für die SA
-    -   Open data/BFS/...Daten die relevant sind für die SA
-
--   Struktur KNW
-
-    -   5000-7000 Zeichen
-    -   Beschreibung Fragestellung, Daten, Code, Resultate (Tabellen/Grafik), Interpretation (Interpretation der Ergebnisse, Limitation der Daten/Analysen/Schlussfolgerungen)
-
--   Vorbereitung von Tutorials/Videos/Aufträge etc. im Falle von Krankheit...https://www.theanalysisfactor.com/resources/
-
-#FHNW Struktur - **Introduction (Samin, 3.6.)** - Organisation: Gruppenformierung - What is data science and how can it help social work? What are the limits? (Slide 4 bis 7) - Data that are relevant for social work - Datafication:\
-- data collected for research/official statistics, - found data (uebung: studierende sollen selber überlegen, wo found data entstehen) - excercise: measuring social work outcome dimensions with found data (give example) - risks? - Crash course in R and R Studio: AI supported coding (GPT-4/Bing, Copilot), warum R, R as a calculator/objects (kurz), reading in data, überblick über datensatz (summary, nrow,...), dplyr, filter/select, mutate, merging, reshaping, umgang mit textdaten, saving - **Descriptive analyses (Samin, 4.6.)** - Study designs: descriptive, prediction, evaluation/causal design - Descriptive: Monitoring, Probleme identifizieren, Überblick gewinnen, Entwicklungen beschreiben - Prediction: (ungewünschtes) Vorhersagen - Evaluation/Causal design: Wirkungen messen, Lösungen identifizieren - Distributional characteristics/univariate statistics: Frequencies, mean, median, modal value, variance, interquartile range, range of values. - Correlations/bi-/multivariate statistics: correlation measures, associations and group comparisons using regression or other statistical techniques. - Einfach halten: Verweis auf Methodenberatungswebseite UZH - Uncertainty: statistical significance, p-value and confidence intervals. - Einfach und kurz - Results communication: tables with quick_docx huxtable, ggplot2, (shiny; erwähnen) - **Prediction of risks, Evaluation/Causal design/Effects of social work (Dorian, 5.6)** - **Case study work with coaching (Dorian, 6.6)** - **Presentation**
-
-### Technical Part
-
--   **Study Designs**
-    -   Description, prediction, causal inference/evaluation design.
--   **Measurement Theory**
--   **Survey Data**
-    -   (Note: This might not be necessary since it is covered in standard curricula.)
--   **Crash Course: Interface of R/Python**
-    -   Basic functions, reading in and preparing administrative data, survey data, or data from organisations using R/Python.
-    -   Doing simple calculations, creating descriptive tables and simple graphs.
--   **Descriptive Statistics:**
-    -   Frequencies.
-    -   Mean, median, modal value.
-    -   Variance, interquartile range, range of values.
-    -   Correlation measures.
-    -   Associations and group comparisons using regression or other statistical techniques.
--   **Machine Learning Applications**
-
-### Relation to Social Work (short inputs and discussions?)
-
--   **Why Should Social Workers Learn About Data Science?**
-
-    -   Monitoring, evaluation, etc.
-
--   **What We Can Achieve with Quantitative Research in Social Work**
-
--   **Examples from Quantitative Research Projects in Social Work and Their Impacts**
-
--   **Practice Examples Using Data Science (from the podcast series Digital-HSA):**
-
-    -   Machine Learning projects in social work?
-
--   **Potential and Limitations**
+## 
