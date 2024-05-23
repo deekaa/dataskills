@@ -1409,29 +1409,45 @@ quick_docx(tabelle_wirkung_hux, file = "tabelle_wirkung.docx")
 
 -   [The Power of Experiments](https://mitpress.mit.edu/9780262542272/the-power-of-experiments/)
 
-# Prediction in social work
+# Prediction and AI in social work
 
 ## Why should we use machines to predict in social work?
 
--   Diagnosis (=identifying clients' need) is an integral part of social work
+-   Diagnosis is an integral part of individual-level social work
 
--   Social workers, like all humans, make mistakes, although experienced social workers less so.
+    -   Diagnosis is about identifying clients' need for assistance
 
--   We predict to diagnose problems and to allocate resources
+    -   The future developments of clients' without assistance is an integral part of diagnosis
 
--   Clients/groups with
+    -   Based on predictions of future outcomes, we decide on the amount and type of intervention/services needed by clients
 
--   On the aggregate level: prediction about future need for services can help motivate resources at the political level
+-   In social work, we also need predict future need for services on an aggregate level to ensure mobilization of resources at the political level
 
-## How does it work in theory?
+    -   E.g. [expectations about case numbers in social assistance during covid](https://skos.ch/themen/sozialhilfe-und-corona/herausforderungen-fuer-das-soziale-system/)
 
--   Outcomes = determinants
+-   Social workers, like all humans, make mistakes when predicting future developments, [although experienced social workers are more successfull at it](https://academic.oup.com/bjsw/article-abstract/54/3/1150/7382101?redirectedFrom=fulltext).
+
+-   Machines can help us predict outcomes more accurately, that's why we can call it artificial intelligence
+
+## How do machine predictions work?
+
+-   Basic technology: supervised machine learning
+
+-   We need (a lot of) data about **outcomes** and **determinants** of these outcomes
+
+    -   Supervised, because we tell the computer what the outcome and what the determinants are
 
 -   Algorithms determining rules linking determinants to outcomes = model
 
 -   Simple and less simple prediction algorithms
 
-    -   [See Statquest for "simple" explanations of algorithms](https://www.youtube.com/@statquest)
+    -   E.g., simple: Ordinary Least Squares
+
+    -   E.g., complex: Neural Networks
+
+        -   [see Statquest for explanations of different algorithms](https://www.youtube.com/@statquest)
+
+    -   In practice we often use extreme gradient boosting
 
 -   Model is used to predict unknown outcomes with information on predictors
 
@@ -1467,7 +1483,7 @@ quick_docx(tabelle_wirkung_hux, file = "tabelle_wirkung.docx")
 
         -   Toros and Flaming - 2018 - Prioritizing Homeless Assistance Using Predictive .pdf
 
-    -   Answer the following questions
+    -   Answer the following questions:
 
         -   What decisions are to be taken based on AI output? Decision-support or decision-making?
 
@@ -1487,15 +1503,17 @@ quick_docx(tabelle_wirkung_hux, file = "tabelle_wirkung.docx")
 
     -   Daten in trainings und Testdaten unterteilen
 
-    -   
+    -   Show predictive accuracy of different algorithms
 
--   Examples in practice
+        -   R-Squared
 
--   
+        -   Mean squared error
 
--   OLS, (Machine Learning)
+    -   Excercise
 
--   Organisation: Gruppenformierung
+        -   Add in health and motivation as a predictor. Which one is more important for prediction outcomes?
+
+        -   Can you predict more accurately when using another algorithm than OLS?
 
 ## 
 
@@ -1506,3 +1524,5 @@ quick_docx(tabelle_wirkung_hux, file = "tabelle_wirkung.docx")
 -   [Bedeutung von Künstlicher Intelligenz in der Sozialen Arbeit: Eine exemplarische arbeitsfeldübergreifende Betrachtung des Natural Language Processing (NLP)](https://link.springer.com/10.1007/s12592-023-00455-7)
 
 -   [Structuring the scattered literature onalgorithmic profiling in the case of unemployment through a systematicliterature review](https://www.emerald.com/insight/content/doi/10.1108/IJSSP-03-2022-0085/full/html?utm_source=TrendMD&utm_medium=cpc&utm_campaign=International_Journal_of_Sociology_and_Social_Policy_TrendMD_0&WT.mc_id=Emerald_TrendMD_0)
+
+-   Video: [KI und Soziale Arbeit](https://open.vhb.org/blocks/ildmetaselect/detailpage.php?id=236#jgVhf9vzHvg)
