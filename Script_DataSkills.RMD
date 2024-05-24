@@ -1099,15 +1099,15 @@ shinyApp(ui = ui, server = server)
 
     -   Knowing the most cost-effective interventions and offers
 
-        -   Exercise
+    -   Exercise
 
-            -   [What conclusions would you draw from this paper?](https://pubmed.ncbi.nlm.nih.gov/38699117/)
+        -   [What conclusions would you draw from this paper?](https://pubmed.ncbi.nlm.nih.gov/38699117/)
 
-            -   What could be the problem?
+        -   What could be the problem?
 
 -   Legitimizing social work
 
-    -   Gaining political support for social work (i.e. money!)
+    -   Gaining political support for social work
     -   Example:
         -   [Winterthur](https://www.buerobass.ch/fileadmin/Files/2021/2021_Reduktion_Falllast_Winterthur_Schlussbericht_DE.pdf)
 
