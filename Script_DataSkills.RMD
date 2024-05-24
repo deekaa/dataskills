@@ -1439,7 +1439,7 @@ quick_docx(tabelle_wirkung_hux, file = "tabelle_wirkung.docx")
 
     -   E.g. [expectations about case numbers in social assistance during covid](https://skos.ch/themen/sozialhilfe-und-corona/herausforderungen-fuer-das-soziale-system/)
 
--   Social workers, like all humans, make mistakes when predicting future developments, [although experienced social workers are more successfull at it](https://academic.oup.com/bjsw/article-abstract/54/3/1150/7382101?redirectedFrom=fulltext).
+-   Social workers, like all humans, make mistakes when predicting future developments, [although experienced social workers are more successful at it](https://academic.oup.com/bjsw/article-abstract/54/3/1150/7382101?redirectedFrom=fulltext).
 
 -   Machines can help us predict outcomes more accurately, that's why we can call it artificial intelligence
 
@@ -1489,15 +1489,15 @@ quick_docx(tabelle_wirkung_hux, file = "tabelle_wirkung.docx")
 
         -   [Gilholm et al. - 2023 - Machine learning to predict poor school performanc.pdf](https://moodle.bfh.ch/pluginfile.php/3114064/mod_folder/content/0/Gilholm%20et%20al.%20-%202023%20-%20Machine%20learning%20to%20predict%20poor%20school%20performanc.pdf?forcedownload=1)
 
-        -   [Kleinberg et al. - 2018 - Human Decisions and Machine Predictions.pdf](Kleinberg et al. - 2018 - Human Decisions and Machine Predictions.pdf)
+        -   [Kleinberg et al. - 2018 - Human Decisions and Machine Predictions.pdf](Kleinberg%20et%20al.%20-%202018%20-%20Human%20Decisions%20and%20Machine%20Predictions.pdf)
 
-        -   [Rittenhouse et al. - 2023 - Algorithms, Humans and Racial Disparities in Child.pdf](Rittenhouse et al. - 2023 - Algorithms, Humans and Racial Disparities in Child.pdf)
+        -   [Rittenhouse et al. - 2023 - Algorithms, Humans and Racial Disparities in Child.pdf](Rittenhouse%20et%20al.%20-%202023%20-%20Algorithms,%20Humans%20and%20Racial%20Disparities%20in%20Child.pdf)
 
-        -   [Stevenson and Doleac - 2022 - Algorithmic Risk Assessment in the Hands of Humans.pdf](Stevenson and Doleac - 2022 - Algorithmic Risk Assessment in the Hands of Humans.pdf)
+        -   [Stevenson and Doleac - 2022 - Algorithmic Risk Assessment in the Hands of Humans.pdf](Stevenson%20and%20Doleac%20-%202022%20-%20Algorithmic%20Risk%20Assessment%20in%20the%20Hands%20of%20Humans.pdf)
 
-        -   [Tennakoon et al. - 2023 - Using electronic health record data to predict fut.pdf](Tennakoon et al. - 2023 - Using electronic health record data to predict fut.pdf)
+        -   [Tennakoon et al. - 2023 - Using electronic health record data to predict fut.pdf](Tennakoon%20et%20al.%20-%202023%20-%20Using%20electronic%20health%20record%20data%20to%20predict%20fut.pdf)
 
-        -   [Toros and Flaming - 2018 - Prioritizing Homeless Assistance Using Predictive .pdf](Toros and Flaming - 2018 - Prioritizing Homeless Assistance Using Predictive .pdf)
+        -   [Toros and Flaming - 2018 - Prioritizing Homeless Assistance Using Predictive .pdf](Toros%20and%20Flaming%20-%202018%20-%20Prioritizing%20Homeless%20Assistance%20Using%20Predictive%20.pdf)
 
     -   Answer the following questions:
 
