@@ -674,6 +674,7 @@ head(weather.tidy)
 -   Look at the data structure and the variables of the data set. Also use functions such as: `summary(dataset$var)`, `head(dataset)`, `names(dataset)`
 
 #### Solution
+
 ```{r Solution: shp data, echo=TRUE, eval=FALSE}
 # load libraries & data
 library(haven)
@@ -847,7 +848,7 @@ summary(age)
 -   `group_by()`: defines subgroups in the data so that `mutate()` and `summarize()` can be applied separately per group.
 -   dplyr can be used very well together with so-called piping, i.e. the data object is passed from function to function by `%>%`, which makes the code much easier to read and more compact.
 
-### Example: Package dplyr 
+### Example: Package dplyr
 
 ```{r Example: Package dplyr,eval=FALSE}
 # load data
@@ -927,8 +928,8 @@ sd(shp2022$AGE[shp2022$SEX==2], na.rm=T)
 
 -   ggplot2 is the most important package to create visualizations in R
 -   see also cheatsheet: <https://rstudio.github.io/cheatsheets/data-visualization.pdf>
-  
-  Hadley Wickham's `ggplot2` package has developed into a particularly useful alternative to `plot()` over the last few years. Especially complicated plots are easier to implement with ggplot, visually appealing and the code is easily accessible. Most important basic structures:
+
+Hadley Wickham's `ggplot2` package has developed into a particularly useful alternative to `plot()` over the last few years. Especially complicated plots are easier to implement with ggplot, visually appealing and the code is easily accessible. Most important basic structures:
 
 -   **Data** that we want to visualize
 
@@ -977,7 +978,7 @@ ggplot(shp2022, aes(x=factor(PC44), y=..count.., fill=factor(SEX))) +
   ggtitle("Zufriedenheit mit dem Leben nach Geschlecht")
 ```
 
-### Exercise: Grafiken mit ggplot2 
+### Exercise: Grafiken mit ggplot2
 
 1.  Load the SHP data.
 2.  Create a histogram for income (variable: IPTOTN) for the year 2022. give the graph a title. Tip: Add a `labs()` argument to the chart.
@@ -1099,15 +1100,15 @@ shinyApp(ui = ui, server = server)
 
     -   Knowing the most cost-effective interventions and offers
 
-        -   Exercise
+    -   Exercise
 
-            -   [What conclusions would you draw from this paper?](https://pubmed.ncbi.nlm.nih.gov/38699117/)
+        -   [What conclusions would you draw from this paper?](https://pubmed.ncbi.nlm.nih.gov/38699117/)
 
-            -   What could be the problem?
+        -   What could be the problem?
 
 -   Legitimizing social work
 
-    -   Gaining political support for social work (i.e. money!)
+    -   Gaining political support for social work
     -   Example:
         -   [Winterthur](https://www.buerobass.ch/fileadmin/Files/2021/2021_Reduktion_Falllast_Winterthur_Schlussbericht_DE.pdf)
 
@@ -1584,21 +1585,32 @@ quick_docx(tabelle_wirkung_hux, file = "tabelle_wirkung.docx")
 
         -   What are the effects of usage?
 
-## How to train your a prediction model?
+## How to train your own prediction model
 
--   Fokus Arbeit Daten
+-   Training a prediction model involves the following steps
 
-    -   Vorzeigen mit wenig prädiktoren
+    -   Acquiring the data with past observations of determinants and outcomes
 
-    -   Daten in trainings und Testdaten unterteilen
+    -   Split observations into training data and test data
 
-    -   Show predictive accuracy of different algorithms
+    -   Maximizing predictive performance
 
-        -   R-Squared
+        -   Determine measures of predictive performance
 
-        -   Mean squared error
+            -   Continuous outcomes
 
-```{r Prediction,eval=FALSE}
+                -   usually mean squared error
+
+            -   Categorical outcomes
+
+                -   correctly classified
+
+        -   Play around with the choice of prediction algorithm
+
+        -   For algorithms that have parameters: play around
+
+```{r Prediction,eval=FALSE,echo=TRUE}
+library(dplyr)
 
 download.file("https://drive.switch.ch/index.php/s/hYUFQEOz12pFbvS/download", "FokusArbeit_Vorhersage.csv",mode = "wb")
 
@@ -1610,10 +1622,81 @@ names(data)
 
 #Rename variables to make them more intuitive
 data <- data %>%
-  mutate(HasJob = Erwerbkorr.mean, # measures the proportion of months the client has a job in months 4 up to 24 after the intervention
+  select(HasJob = Erwerbkorr.mean, # measures the proportion of months the client has a job in months 4 up to 24 after the intervention
          IsWoman = Weiblich, # Is a woman
          IsSwiss = Schweiz, # Is Swiss
-         Speaks_language = Grundkompetenz.verstehen) # Speaks either French/German
+         Speaks_language = Grundkompetenz.verstehen) %>% # Speaks either French/German
+na.omit()
+
+#Then we need to chose test Data and training data
+# Set seed for reproducibility
+set.seed(123)
+
+# Calculate the number of rows for training data (80%)
+train_rows <- sample(1:nrow(data), size = 0.8 * nrow(data))
+
+# Split the data
+train_data <- data %>% slice(train_rows)
+test_data <- data %>% slice(-train_rows)
+
+# Fit a linear model (Ordinary Least Squares)
+model <- lm(HasJob ~ IsWoman + IsSwiss + Speaks_language, data = train_data)
+
+#The advantage with OLS is that we can see which factors matter
+
+# Predict on test data
+predictions <- predict(model, newdata = test_data)
+
+# Calculate Mean Squared Error (MSE)
+mse <- mean((predictions - test_data$HasJob)^2)
+
+# Print the results
+cat("R-squared: ", rsq, "\n")
+cat("Mean Squared Error: ", mse, "\n")
+
+```
+
+## Exercise
+
+-   Add in health (Gesund) and motivation (Arbeitsidentitaet) as predictors of labor market success. Which one is more important for predictive performance?
+
+-   Can you predict more accurately when using random foralgorithm than OLS?
+
+-   Extra: Test your own predictive performance on a subset of 10 test observations. Can you predict better than the model? Use the following code to take the subset of the test data and make manual predictions.
+
+    ```{r Prediction_excercisetip,eval=FALSE,echo=TRUE}
+    # Test your own predictive performance on a subset of 10 test observations
+    set.seed(123) # For reproducibility
+    test_subset <- test_data %>% sample_n(10)
+
+    # Display the subset to make manual predictions
+    cat("\nTest Subset for Manual Prediction:\n")
+    print(test_subset%>%select(-HasJob))
+
+    # Manually input your predictions here
+    # For example, let's assume you predicted the following:
+    manual_predictions <- c(0.4, 0.5, 0.3, 0.6, 0.2, 0.7, 0.4, 0.5, 0.3, 0.6)
+    ```
+
+```{r Prediction_Excercise, eval=FALSE,echo=FALSE}
+library(dplyr)
+library(randomForest)
+
+# Download the data
+download.file("https://drive.switch.ch/index.php/s/hYUFQEOz12pFbvS/download", "FokusArbeit_Vorhersage.csv", mode = "wb")
+
+# Load the data
+data <- read.csv("FokusArbeit_Vorhersage.csv")
+
+# Rename variables to make them more intuitive
+data <- data %>%
+  select(HasJob = Erwerbkorr.mean, # measures the proportion of months the client has a job in months 4 up to 24 after the intervention
+         IsWoman = Weiblich, # Is a woman
+         IsSwiss = Schweiz, # Is Swiss
+         Speaks_language = Grundkompetenz.verstehen, # Speaks either French/German
+         Health = Gesund, # Health
+         Motivation = Arbeitsidentitaet) %>% # Motivation
+  na.omit()
 
 # Set seed for reproducibility
 set.seed(123)
@@ -1625,28 +1708,70 @@ train_rows <- sample(1:nrow(data), size = 0.8 * nrow(data))
 train_data <- data %>% slice(train_rows)
 test_data <- data %>% slice(-train_rows)
 
-# Fit a linear model
-model <- lm(HasJob ~ IsWoman + IsSwiss + Speaks_language, data = train_data)
+# Fit linear models with different sets of predictors
+model_ols_basic <- lm(HasJob ~ IsWoman + IsSwiss + Speaks_language, data = train_data)
+model_ols_health <- lm(HasJob ~ IsWoman + IsSwiss + Speaks_language + Health, data = train_data)
+model_ols_motivation <- lm(HasJob ~ IsWoman + IsSwiss + Speaks_language + Motivation, data = train_data)
+model_ols_full <- lm(HasJob ~ IsWoman + IsSwiss + Speaks_language + Health + Motivation, data = train_data)
 
-# Predict on test data
-predictions <- predict(model, newdata = test_data)
+# Predict on test data using OLS models
+predictions_ols_basic <- predict(model_ols_basic, newdata = test_data)
+predictions_ols_health <- predict(model_ols_health, newdata = test_data)
+predictions_ols_motivation <- predict(model_ols_motivation, newdata = test_data)
+predictions_ols_full <- predict(model_ols_full, newdata = test_data)
 
-# Calculate R-squared
-rsq <- summary(model)$r.squared
+# Calculate Mean Squared Error (MSE) for OLS models
+mse_ols_basic <- mean((predictions_ols_basic - test_data$HasJob)^2)
+mse_ols_health <- mean((predictions_ols_health - test_data$HasJob)^2)
+mse_ols_motivation <- mean((predictions_ols_motivation - test_data$HasJob)^2)
+mse_ols_full <- mean((predictions_ols_full - test_data$HasJob)^2)
 
-# Calculate Mean Squared Error (MSE)
-mse <- mean((predictions - test_data$HasJob)^2)
+# Fit a Random Forest model with full predictors
+model_rf <- randomForest(HasJob ~ IsWoman + IsSwiss + Speaks_language + Health + Motivation, data = train_data, ntree = 500)
 
+# Predict on test data using Random Forest
+predictions_rf <- predict(model_rf, newdata = test_data)
+
+# Calculate Mean Squared Error (MSE) for Random Forest
+mse_rf <- mean((predictions_rf - test_data$HasJob)^2)
+
+# Print the results
+cat("OLS Model - Basic Predictors (IsWoman, IsSwiss, Speaks_language):\n")
+cat("Mean Squared Error: ", mse_ols_basic, "\n\n")
+
+cat("OLS Model - Adding Health:\n")
+cat("Mean Squared Error: ", mse_ols_health, "\n\n")
+
+cat("OLS Model - Adding Motivation:\n")
+cat("Mean Squared Error: ", mse_ols_motivation, "\n\n")
+
+cat("OLS Model - Full Predictors (Including Health and Motivation):\n")
+cat("Mean Squared Error: ", mse_ols_full, "\n\n")
+
+cat("Random Forest Model - Full Predictors (Including Health and Motivation):\n")
+cat("Mean Squared Error: ", mse_rf, "\n")
+
+
+# Test your own predictive performance on a subset of 10 test observations
+set.seed(123) # For reproducibility
+test_subset <- test_data %>% sample_n(10)
+
+# Display the subset to make manual predictions
+cat("\nTest Subset for Manual Prediction:\n")
+print(test_subset%>%select(-HasJob))
+
+# Manually input your predictions here
+# For example, let's assume you predicted the following:
+manual_predictions <- c(0.4, 0.5, 0.3, 0.6, 0.2, 0.7, 0.4, 0.5, 0.3, 0.6)
+
+# Calculate Mean Squared Error (MSE) for your manual predictions
+mse_manual <- mean((manual_predictions - test_subset$HasJob)^2)
+
+# Print your manual prediction results
+cat("\nYour Manual Predictions:\n")
+cat("Mean Squared Error: ", mse_manual, "\n")
 
 ```
-
--   
-
-    -   Excercise
-
-        -   Add in health and motivation as a predictor. Which one is more important for prediction outcomes?
-
-        -   Can you predict more accurately when using another algorithm than OLS?
 
 ## Important references
 
