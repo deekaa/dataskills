@@ -1513,19 +1513,31 @@ quick_docx(tabelle_wirkung_hux, file = "tabelle_wirkung.docx")
 
         -   What are the effects of usage?
 
-## How to train your a prediction model?
+## How to train your own prediction model
 
--   Fokus Arbeit Daten
+-   Training a prediction model involves the following steps
 
-    -   Vorzeigen mit wenig prädiktoren
+    -   Acquiring the data with past observations of determinants and outcomes
 
-    -   Daten in trainings und Testdaten unterteilen
+    -   Split observations into training data and test data
 
-    -   Show predictive accuracy of different algorithms
+    -   Maximizing predictive performance
 
-        -   R-Squared
+        -   Determine measures of predictive performance
 
-        -   Mean squared error
+            -   Continuous outcomes
+
+                -   usually mean squared error
+
+            -   Categorical outcomes
+
+                -   correctly classified
+
+        -   Play around with the choice of prediction algorithm
+
+        -   For algorithms that have parameters: play around
+
+        -   
 
 ```{r Prediction,eval=FALSE}
 
@@ -1537,12 +1549,15 @@ data <- read.csv("FokusArbeit_Vorhersage.csv")
 #Lets have a look at the variables
 names(data)
 
-#Rename variables to make more intuitive
+#Rename variables to make them more intuitive
+data <- data %>%
+  select(HasJob = Erwerbkorr.mean, # measures the proportion of months the client has a job in months 4 up to 24 after the intervention
+         IsWoman = Weiblich, # Is a woman
+         IsSwiss = Schweiz, # Is Swiss
+         Speaks_language = Grundkompetenz.verstehen) %>% # Speaks either French/German
+na.omit()#simple way to remove missing values
 
-data <- data%>%
-  mutate(Hasjob=Erwerbkorr.mean,#measures the proportion of months the client has a job in months 4 up to 24 after the intervention
-         )
-
+#Then we need to chose test Data and training data
 # Set seed for reproducibility
 set.seed(123)
 
@@ -1553,7 +1568,18 @@ train_rows <- sample(1:nrow(data), size = 0.8 * nrow(data))
 train_data <- data %>% slice(train_rows)
 test_data <- data %>% slice(-train_rows)
 
+# Fit a linear model (Ordinary Least Squares)
+model <- lm(HasJob ~ IsWoman + IsSwiss + Speaks_language, data = train_data)
 
+# Predict on test data
+predictions <- predict(model, newdata = test_data)
+
+# Calculate Mean Squared Error (MSE)
+mse <- mean((predictions - test_data$HasJob)^2)
+
+# Print the results
+cat("R-squared: ", rsq, "\n")
+cat("Mean Squared Error: ", mse, "\n")
 
 ```
 
@@ -1561,7 +1587,7 @@ test_data <- data %>% slice(-train_rows)
 
     -   Excercise
 
-        -   Add in health and motivation as a predictor. Which one is more important for prediction outcomes?
+        -   Add in health (`r Gesund`) and motivation (`r`) as predictors of labor market success. Which one is more important for prediction outcomes?
 
         -   Can you predict more accurately when using another algorithm than OLS?
 
