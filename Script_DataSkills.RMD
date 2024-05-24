@@ -1626,12 +1626,7 @@ data <- data %>%
          IsWoman = Weiblich, # Is a woman
          IsSwiss = Schweiz, # Is Swiss
          Speaks_language = Grundkompetenz.verstehen) %>% # Speaks either French/German
-na.omit()#simple way to remove missing values
-  mutate(HasJob = Erwerbkorr.mean, # measures the proportion of months the client has a job in months 4 up to 24 after the intervention
-         IsWoman = Weiblich, # Is a woman
-         IsSwiss = Schweiz, # Is Swiss
-         Speaks_language = Grundkompetenz.verstehen) # Speaks either French/German
-
+na.omit()
 #Then we need to chose test Data and training data
 # Set seed for reproducibility
 set.seed(123)
