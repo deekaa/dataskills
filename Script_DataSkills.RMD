@@ -671,7 +671,7 @@ head(weather.tidy)
 
 -   Read the data set `SHP` into R. You can use this command: *read_sav("your workingdirectory/SHPLONG_P_USER.sav")* in *haven* package.
 
--   Look at the data structure and the variables of the data set. Also use functions such as: `summary(dataset\$var)`, `head(dataset)`, `names(dataset)`
+-   Look at the data structure and the variables of the data set. Also use functions such as: `summary(dataset$var)`, `head(dataset)`, `names(dataset)`
 
 #### Solution
 
@@ -680,7 +680,7 @@ head(weather.tidy)
 download.file("https://drive.switch.ch/index.php/s/02NutftoUqK4x9V/download", "shp2022.RData", mode = "wb")
 
 #Because the file is in R-Data-Format (.RData) we can load it directly
-load("S:/MA1082973/_FHNW/BA472/data sets/SHP/shp2022.RData")
+load("shp2022.RData")
 ```
 
 ```{r Solution: shp data, echo=TRUE, eval=FALSE}
@@ -758,7 +758,7 @@ summary(age)
     -   `group_by()`: defines subgroups in the data so that `mutate()` and `summarize()` can be applied separately per group.
     -   dplyr can be used very well together with so-called piping, i.e. the data object is passed from function to function by `%>%`, which makes the code much easier to read and more compact.
 
-### Example: Package dplyr
+### Example: Package dplyr <!--# Code funktioniert nicht bei mir? -->
 
 ```{r Example: Package dplyr,eval=FALSE}
 # load data
@@ -784,7 +784,7 @@ tab <- shp2022a %>%
   na.omit()
 ```
 
-### Exercise: Package dplyr
+### Exercise: Package dplyr <!--# Wir sollten auch select in die Übung einbauen -->
 
 -   Read the SHP data into RStudio.
 
@@ -865,7 +865,7 @@ Hadley Wickham's `ggplot2` package has developed into a particularly useful alte
 
 ### Example: ggplot2
 
-```{r Example: ggplot2, eval=TRUE}
+```{r Example: ggplot2, eval=FALSE}
 library(ggplot2)
 library(dplyr)
 library(haven)
@@ -908,7 +908,7 @@ ggplot(shp2022, aes(x=factor(PC44), y=..count.., fill=factor(SEX))) +
   ggtitle("Zufriedenheit mit dem Leben nach Geschlecht")
 ```
 
-### Exercise: Grafiken mit ggplot2
+### Exercise: Grafiken mit ggplot2 <!--# Die Grafiktypen, die sie erstellen müssen, sollten mit den Beispielen die du oben zeigst übereinstimmen, bitte also Begriffe Histogram/Boxplot verwenden. Generell empfehle ich die Daten zuerst zu aggregieren und erst dann zu plotten. Das ist viel weniger kompliziert, als die Aggregationsfunktionen von ggplot zu verwenden. Verstehst du was ich meine? -->
 
 1.  Load the SHP data.
 2.  Create a histogram for income (variable: IPTOTN) for the year 2022. give the graph a title. Tip: Add a `labs()` argument to the chart.
@@ -940,7 +940,7 @@ ggplot(shp2022,aes(x=ISCED,y=IPTOTN))+
 
 -   [Shiny apps](https://shiny.rstudio.com/gallery/) are reactive web applications that allow users to modify components of a calculation and/or its visualization without needing to write R code themselves. This is very useful for communicating results.
 -   Shiny apps consist of a website (user interface) and a computer running R (R-server): `Input()` from the user goes to the R-server, and the R-server sends `Output()` back.
--   Basic structure: R script (named app.R, or ui.R and server.R) containing
+-   Basic structure: R script (named app.R) containing
     -   `library(shiny)`
     -   `ui<-fluidPage()` with input and output functions. Possible input and output functions can be found [here](https://shiny.rstudio.com/reference/shiny/1.0.5/)
     -   `server<-function(input,output){}`
@@ -975,7 +975,7 @@ ui <- fluidPage(
                   max = max(data$age), 
                   value = c(25, 40)),
       sliderInput("satisfactionRange", 
-                  "Select Satisfaction Range:", 
+                  "Select Satisfaction with services range:", 
                   min = min(data$satisfaction), 
                   max = max(data$satisfaction), 
                   value = c(4, 7))
@@ -1039,6 +1039,12 @@ shinyApp(ui = ui, server = server)
     -   Gaining political support for social work (i.e. money!)
     -   Example:
         -   [Winterthur](https://www.buerobass.ch/fileadmin/Files/2021/2021_Reduktion_Falllast_Winterthur_Schlussbericht_DE.pdf)
+
+-   Shift to online activity of social work offers facilitates measuring the effects of social work
+
+    -   More outcome data (e.g. use of services)
+
+    -   Easier randomization (e.g. changing formulations on a website to see whether it affects service usage)
 
 ## What is an effect and what not?
 
@@ -1409,28 +1415,139 @@ quick_docx(tabelle_wirkung_hux, file = "tabelle_wirkung.docx")
 
 -   [The Power of Experiments](https://mitpress.mit.edu/9780262542272/the-power-of-experiments/)
 
-# Prediction in social work
+# Prediction and AI in social work
 
--   Risk prediction in SW
+<!--# Why? (9.30); How does it work? (9.45); Excercise (11); Own test (12) -->
 
--   Examples in practice
+## Why should we use machines to predict in social work?
 
--   Black et al. - 2003 - Is the Threat of Reemployment Services More Effect.pdfBlack et al. - 2003 - Is the Threat of Reemployment Services More Effect.pdf
+-   Prediction is an integral part of individual-level social work
 
--   Gilholm et al. - 2023 - Machine learning to predict poor school performanc.pdf
+    -   Is used for **diagnosis**
 
--   Kleinberg et al. - 2018 - Human Decisions and Machine Predictions.pdfKleinberg et al. - 2018 - Human Decisions and Machine Predictions.pdf
+        -   is about identifying clients' need for assistance
 
--   Rittenhouse et al. - 2023 - Algorithms, Humans and Racial Disparities in Child.pdfRittenhouse et al. - 2023 - Algorithms, Humans and Racial Disparities in Child.pdf
+        -   The future developments of clients' without assistance is an integral part of diagnosis
 
--   Stevenson and Doleac - 2022 - Algorithmic Risk Assessment in the Hands of Humans.pdfStevenson and Doleac - 2022 - Algorithmic Risk Assessment in the Hands of Humans.pdf
+        -   Based on predictions of future outcomes, we decide **which clients need our help most**
 
--   Tennakoon et al. - 2023 - Using electronic health record data to predict fut.pdfTennakoon et al. - 2023 - Using electronic health record data to predict fut.pdf
+    -   It is also used for **treatment**
 
--   Toros and Flaming - 2018 - Prioritizing Homeless Assistance Using Predictive .pdfToros and Flaming - 2018 - Prioritizing Homeless Assistance Using Predictive .pdf
+        -   When deciding on which action to take with our client (service, activity, intervention), we make predictions on [**which action will bring the greatest improvements?**](https://www.sciencedirect.com/science/article/pii/S0927537105000564)
 
--   OLS, (Machine Learning)
+-   On an aggreagte level, we need to predict future need for services to ensure mobilization of adequate resources (i.e. asking politics for money)
 
--   Organisation: Gruppenformierung
+    -   E.g. [expectations about case numbers in social assistance during covid](https://skos.ch/themen/sozialhilfe-und-corona/herausforderungen-fuer-das-soziale-system/)
 
-## 
+-   Social workers, like all humans, make mistakes when predicting future developments, [although experienced social workers are more successfull at it](https://academic.oup.com/bjsw/article-abstract/54/3/1150/7382101?redirectedFrom=fulltext).
+
+-   Machines can help us predict outcomes more accurately, that's why we can call it artificial intelligence
+
+    -   Helpfulness of machine predictions increase, the more data we have
+
+## How do machine predictions work?
+
+-   Basic technology: supervised machine learning
+
+-   We need (a lot of) data about **outcomes** and **determinants** of these outcomes
+
+    -   Supervised, because we tell the computer what the outcome and what the determinants are
+
+-   Algorithms determining rules linking determinants to outcomes = model
+
+-   Simple and less simple prediction algorithms
+
+    -   E.g., simple: Ordinary Least Squares
+
+    -   E.g., complex: Neural Networks
+
+        -   [see Statquest for explanations of different algorithms](https://www.youtube.com/@statquest)
+
+    -   In practice we often use extreme gradient boosting
+
+-   Model is used to predict unknown outcomes with information on predictors
+
+-   It is more useful
+
+    -   the more precise machines can predict the
+
+    -   the clearer is what can be done to prevent the outcome
+
+    -   the more important it is to intervene early
+
+    -   the greater the difference between what at risk clients currently receive in terms of intervention and what they could receive
+
+## Examples
+
+-   Excercise
+
+    -   Please choose one of the following texts on applications of prediction algorithms
+
+        -   [Berman et al. - 2024 - Trustworthy AI in the public sector An empirical .pdf](https://www.sciencedirect.com/science/article/pii/S0160791X24000198)
+
+        -   [Black et al. - 2003 - Is the Threat of Reemployment Services More Effect.pdf](https://moodle.bfh.ch/pluginfile.php/3114064/mod_folder/content/0/Black%20et%20al.%20-%202003%20-%20Is%20the%20Threat%20of%20Reemployment%20Services%20More%20Effect.pdf?forcedownload=1)
+
+        -   [Gilholm et al. - 2023 - Machine learning to predict poor school performanc.pdf](https://moodle.bfh.ch/pluginfile.php/3114064/mod_folder/content/0/Gilholm%20et%20al.%20-%202023%20-%20Machine%20learning%20to%20predict%20poor%20school%20performanc.pdf?forcedownload=1)
+
+        -   [Kleinberg et al. - 2018 - Human Decisions and Machine Predictions.pdf](Kleinberg et al. - 2018 - Human Decisions and Machine Predictions.pdf)
+
+        -   [Rittenhouse et al. - 2023 - Algorithms, Humans and Racial Disparities in Child.pdf](Rittenhouse et al. - 2023 - Algorithms, Humans and Racial Disparities in Child.pdf)
+
+        -   [Stevenson and Doleac - 2022 - Algorithmic Risk Assessment in the Hands of Humans.pdf](Stevenson and Doleac - 2022 - Algorithmic Risk Assessment in the Hands of Humans.pdf)
+
+        -   [Tennakoon et al. - 2023 - Using electronic health record data to predict fut.pdf](Tennakoon et al. - 2023 - Using electronic health record data to predict fut.pdf)
+
+        -   [Toros and Flaming - 2018 - Prioritizing Homeless Assistance Using Predictive .pdf](Toros and Flaming - 2018 - Prioritizing Homeless Assistance Using Predictive .pdf)
+
+    -   Answer the following questions:
+
+        -   What decisions are to be taken based on AI output? Decision-support or decision-making?
+
+        -   What data are used? What influencing factors?
+
+        -   How accurate is it? More or less than humans or bureaucratic rules?
+
+        -   How biased is it? More or less than humans or bureaucratic rules?
+
+        -   Would humans trust and use it?
+
+## How to train your a prediction model?
+
+-   Fokus Arbeit Daten
+
+    -   Vorzeigen mit wenig prädiktoren
+
+    -   Daten in trainings und Testdaten unterteilen
+
+    -   Show predictive accuracy of different algorithms
+
+        -   R-Squared
+
+        -   Mean squared error
+
+```{r Prediction,eval=FALSE}
+
+download.file("https://drive.switch.ch/index.php/s/WYdxhZ0psZZqDzv/download", "FokusArbeit.csv",mode = "wb")
+
+#Because the file is in R-Data-Format (.R) we can load it directly
+data <- read.csv("C:/Users/kld1/switchdrive/BFH/Wichtige Dokumente/Lehre/Data skills for social work professionals/BFH/Daten/Fokus Arbeit/FokusArbeit_Wirkung.csv")
+
+```
+
+-   
+
+    -   Excercise
+
+        -   Add in health and motivation as a predictor. Which one is more important for prediction outcomes?
+
+        -   Can you predict more accurately when using another algorithm than OLS?
+
+## Important references
+
+-   [Künstliche Intelligenz in der Sozialen Arbeit](https://link.springer.com/article/10.1007/s12054-022-00546-4)
+
+-   [Bedeutung von Künstlicher Intelligenz in der Sozialen Arbeit: Eine exemplarische arbeitsfeldübergreifende Betrachtung des Natural Language Processing (NLP)](https://link.springer.com/10.1007/s12592-023-00455-7)
+
+-   [Structuring the scattered literature onalgorithmic profiling in the case of unemployment through a systematicliterature review](https://www.emerald.com/insight/content/doi/10.1108/IJSSP-03-2022-0085/full/html?utm_source=TrendMD&utm_medium=cpc&utm_campaign=International_Journal_of_Sociology_and_Social_Policy_TrendMD_0&WT.mc_id=Emerald_TrendMD_0)
+
+-   Video: [KI und Soziale Arbeit](https://open.vhb.org/blocks/ildmetaselect/detailpage.php?id=236#jgVhf9vzHvg)
