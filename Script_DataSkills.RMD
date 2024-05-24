@@ -1621,7 +1621,6 @@ names(data)
 
 #Rename variables to make them more intuitive
 data <- data %>%
-<<<<<<< HEAD
   select(HasJob = Erwerbkorr.mean, # measures the proportion of months the client has a job in months 4 up to 24 after the intervention
          IsWoman = Weiblich, # Is a woman
          IsSwiss = Schweiz, # Is Swiss
@@ -1632,7 +1631,6 @@ na.omit()#simple way to remove missing values
          IsWoman = Weiblich, # Is a woman
          IsSwiss = Schweiz, # Is Swiss
          Speaks_language = Grundkompetenz.verstehen) # Speaks either French/German
->>>>>>> abbd5fe5c7702608d340b78925a03b2238d8f36f
 
 #Then we need to chose test Data and training data
 # Set seed for reproducibility
@@ -1645,10 +1643,9 @@ train_rows <- sample(1:nrow(data), size = 0.8 * nrow(data))
 train_data <- data %>% slice(train_rows)
 test_data <- data %>% slice(-train_rows)
 
-<<<<<<< HEAD
 # Fit a linear model (Ordinary Least Squares)
 model <- lm(HasJob ~ IsWoman + IsSwiss + Speaks_language, data = train_data)
-=======
+
 # Fit a linear model
 model <- lm(HasJob ~ IsWoman + IsSwiss + Speaks_language, data = train_data)
 
@@ -1660,7 +1657,6 @@ rsq <- summary(model)$r.squared
 
 # Calculate Mean Squared Error (MSE)
 mse <- mean((predictions - test_data$HasJob)^2)
->>>>>>> abbd5fe5c7702608d340b78925a03b2238d8f36f
 
 # Predict on test data
 predictions <- predict(model, newdata = test_data)
