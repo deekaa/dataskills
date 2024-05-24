@@ -674,6 +674,7 @@ head(weather.tidy)
 -   Look at the data structure and the variables of the data set. Also use functions such as: `summary(dataset$var)`, `head(dataset)`, `names(dataset)`
 
 #### Solution
+
 ```{r Solution: shp data, echo=TRUE, eval=FALSE}
 # load libraries & data
 library(haven)
@@ -846,7 +847,7 @@ summary(age)
 -   `group_by()`: defines subgroups in the data so that `mutate()` and `summarize()` can be applied separately per group.
 -   dplyr can be used very well together with so-called piping, i.e. the data object is passed from function to function by `%>%`, which makes the code much easier to read and more compact.
 
-### Example: Package dplyr 
+### Example: Package dplyr
 
 ```{r Example: Package dplyr,eval=FALSE}
 # load data
@@ -926,8 +927,8 @@ sd(shp2022$AGE[shp2022$SEX==2], na.rm=T)
 
 -   ggplot2 is the most important package to create visualizations in R
 -   see also cheatsheet: <https://rstudio.github.io/cheatsheets/data-visualization.pdf>
-  
-  Hadley Wickham's `ggplot2` package has developed into a particularly useful alternative to `plot()` over the last few years. Especially complicated plots are easier to implement with ggplot, visually appealing and the code is easily accessible. Most important basic structures:
+
+Hadley Wickham's `ggplot2` package has developed into a particularly useful alternative to `plot()` over the last few years. Especially complicated plots are easier to implement with ggplot, visually appealing and the code is easily accessible. Most important basic structures:
 
 -   **Data** that we want to visualize
 
@@ -976,7 +977,7 @@ ggplot(shp2022, aes(x=factor(PC44), y=..count.., fill=factor(SEX))) +
   ggtitle("Zufriedenheit mit dem Leben nach Geschlecht")
 ```
 
-### Exercise: Grafiken mit ggplot2 
+### Exercise: Grafiken mit ggplot2
 
 1.  Load the SHP data.
 2.  Create a histogram for income (variable: IPTOTN) for the year 2022. give the graph a title. Tip: Add a `labs()` argument to the chart.
@@ -1626,7 +1627,6 @@ data <- data %>%
          IsSwiss = Schweiz, # Is Swiss
          Speaks_language = Grundkompetenz.verstehen) %>% # Speaks either French/German
 na.omit()#simple way to remove missing values
-=======
   mutate(HasJob = Erwerbkorr.mean, # measures the proportion of months the client has a job in months 4 up to 24 after the intervention
          IsWoman = Weiblich, # Is a woman
          IsSwiss = Schweiz, # Is Swiss
