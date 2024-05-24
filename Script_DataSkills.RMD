@@ -696,6 +696,95 @@ summary(shp$AGE)
 
 # Descriptive statistics
 
+[Powerpoint](https://drive.switch.ch/index.php/s/4IwhHQ3fYO5BDyR)
+
+An example for illustration
+
+```{r rw example, eval=FALSE}
+# Example: Clean data & Exploration
+# Data: Richtungswechsel 
+# Goal: Create a descriptive table for Participant Characteristics (N=106) & a graph to visualize the change in earnings
+
+#load packages
+library(dplyr)
+library(huxtable)
+library(ggplot2)
+
+# set working directory
+setwd("S:/MA1082973/_FHNW/BA472")
+
+#load data
+richtungswechsel <- read.csv("data sets/Richtungswechsel/Richtungswechsel_anonymized data set.csv")
+
+# Exploration
+summary(richtungswechsel)
+View(richtungswechsel)
+names(richtungswechsel)
+mean(richtungswechsel$Alter)
+table(richtungswechsel$Geschlecht)
+
+# Create a new data set with the variables I am interested in
+sub_rw <- richtungswechsel %>% filter(source != "Dropout") %>%
+  select(Alter, Geschlecht, Bezugsdauer, Staatsang., EINA1, EINA2, earnings.change, INT1)
+                      # 
+sub_rw <- sub_rw %>% mutate(Geschlecht=ifelse(Geschlecht==1, "Female", "Male"),
+                          # create age groups for the descriptive table
+                          Age_groups=ifelse(Alter<35, "25–34 years",
+                                            ifelse(Alter>34 & Alter<45, "35–44 years",
+                                                   ifelse(Alter>44 & Alter<55, "45–54 years",
+                                                          ifelse(Alter>54 & Alter<65, "55–64 years",
+                                                          NA)))))
+
+geschl_tab <- as.data.frame(table(sub_rw$Geschlecht))
+Age_tab <- as.data.frame(table(sub_rw$Age_groups))
+
+# Kombinieren der Häufigkeitstabellen in einen Datenrahmen
+combined_df <- data.frame(
+  Variable = c("Gender", as.character(geschl_tab$Var1), "Age",as.character(Age_tab$Var1)),
+  n = c("", geschl_tab$Freq, "", Age_tab$Freq),
+  percent = c("", geschl_tab$Freq/106*100, "", Age_tab$Freq/106*100)
+)
+
+# Create and format the huxtable
+deskriptive_tabelle1 <- hux(combined_df) %>%
+  # Set all borders to have a width of 1 (adds borders around all cells)
+  set_all_borders(1) %>%  
+  # Set a caption for the table
+  set_caption("Participant Characteristics (N=106)") %>%   
+  # Make the first, second and fifth row bold 
+  set_bold(c(1, 2, 5), TRUE)  
+
+# save the table in docx document
+quick_docx(deskriptive_tabelle1, file = "R/results/desc_tab1.docx")
+
+# Part 2: Descriptive statistics: Calculate mean & standard deviation
+tab1 <- sub_rw %>%
+  summarise(
+    Alter_mean = mean(Alter, na.rm = TRUE),
+    Alter_sd = sd(Alter, na.rm = TRUE),
+    Bezugsdauer_mean = mean(Bezugsdauer, na.rm = TRUE),
+    Bezugsdauer_sd = sd(Bezugsdauer, na.rm = TRUE),
+    earnings_change_mean = mean(earnings.change, na.rm = TRUE),
+    earnings_change_sd = sd(earnings.change, na.rm = TRUE)
+  )
+
+# create a data set in long format for huxtable
+tab_long <- data.frame(
+  Variable = c("Age (in years)", "Social assistance receipt (in years)", "Earnings Change (in CHF)"),
+  Mean = c(tab1$Alter_mean, tab1$Bezugsdauer_mean, tab1$earnings_change_mean),
+  SD = c(tab1$Alter_sd, tab1$Bezugsdauer_sd, tab1$earnings_change_sd)
+)
+  
+# Create and format the huxtable 
+deskriptive_tabelle2 <- hux(tab_long) %>%
+  set_all_borders(1) %>%
+  set_caption("Participant Characteristics (N=106)") %>%
+  set_bold(1, TRUE) 
+
+# Save desciptive table part 2
+quick_docx(deskriptive_tabelle2, file = "R/results/desc_tab2.docx")
+```
+
 ## Contingency tables
 
 -   `table(x)`: one-dimensional contingency table
@@ -758,12 +847,12 @@ summary(age)
     -   `group_by()`: defines subgroups in the data so that `mutate()` and `summarize()` can be applied separately per group.
     -   dplyr can be used very well together with so-called piping, i.e. the data object is passed from function to function by `%>%`, which makes the code much easier to read and more compact.
 
-### Example: Package dplyr <!--# Code funktioniert nicht bei mir? -->
+### Example: Package dplyr 
 
 ```{r Example: Package dplyr,eval=FALSE}
 # load data
 library(dplyr)
-shp2022
+load("shp2022.RData")
 
 # filter by 1st nationality not Switzerland and persons up to 65 years old  
 # select columns
@@ -784,13 +873,13 @@ tab <- shp2022a %>%
   na.omit()
 ```
 
-### Exercise: Package dplyr <!--# Wir sollten auch select in die Übung einbauen -->
+### Exercise: Package dplyr
 
 -   Read the SHP data into RStudio.
 
--   Restrict the data set for the year 2022 to people who are 25 years or older. Familiarize yourself a little with the data (e.g. `head()`, `summary(),` `table()`).
+-   Restrict the data set for the year 2022 to people who are 25 years or older. Familiarize yourself a little with the data (e.g. `head()`, `summary()`,`table()`).
 
--   Look at the variables with the information on age (variable AGE), gender (variable SEX), years of education (variable EDYEAR) and first nationality (NAT_1\_).
+-   Look at the variables with the information on age (variable AGE), gender (variable SEX), years of education (variable EDYEAR) and first nationality (`NAT_1_`).
 
 -   Create a crosstab with the variables `EDYEAR` and `SEX`.
 
@@ -800,12 +889,10 @@ tab <- shp2022a %>%
 
 ```{r Solution: Package dplyr, eval=FALSE, echo=FALSE}
 ### read SHP Daten 
-library(haven)
-library(dplyr)
-shp <- read_sav("S:/MA1082973/_FHNW/BA472/data sets/SHP/SHPLONG_P_USER.sav")
+load("shp2022.RData")
 
-# Restrict the data set for the year 2022 to people who are 25 years or older.
-shp2022 <- shp %>% filter(YEAR == 2022) %>% filter(AGE > 24) %>% select(AGE, SEX, EDYEAR, NAT_1_)
+# Restrict the data set to people who are 25 years or older.
+shp2022 <- shp %>% filter(AGE > 24) %>% select(AGE, SEX, EDYEAR, NAT_1_)
 
 summary(shp2022)
 
@@ -868,17 +955,11 @@ Hadley Wickham's `ggplot2` package has developed into a particularly useful alte
 ```{r Example: ggplot2, eval=FALSE}
 library(ggplot2)
 library(dplyr)
-library(haven)
 
-# set working directory
-setwd("S:/MA1082973/_FHNW/BA472")
-# load data
-shp <- read_sav("data sets/SHP/SHPLONG_P_USER.sav")
+### read SHP Daten 
+load("shp2022.RData")
 
 # Scatterplot (einfach)
-shp2022 <- shp %>%
-  filter(YEAR==2022) %>% filter(AGE > 24)
-
 ggplot(data=shp2022, aes(x = PC46, y =PC45)) +
   geom_point() +
   labs(title = "Streudiagramm",
@@ -908,7 +989,7 @@ ggplot(shp2022, aes(x=factor(PC44), y=..count.., fill=factor(SEX))) +
   ggtitle("Zufriedenheit mit dem Leben nach Geschlecht")
 ```
 
-### Exercise: Grafiken mit ggplot2 <!--# Die Grafiktypen, die sie erstellen müssen, sollten mit den Beispielen die du oben zeigst übereinstimmen, bitte also Begriffe Histogram/Boxplot verwenden. Generell empfehle ich die Daten zuerst zu aggregieren und erst dann zu plotten. Das ist viel weniger kompliziert, als die Aggregationsfunktionen von ggplot zu verwenden. Verstehst du was ich meine? -->
+### Exercise: Grafiken mit ggplot2 
 
 1.  Load the SHP data.
 2.  Create a histogram for income (variable: IPTOTN) for the year 2022. give the graph a title. Tip: Add a `labs()` argument to the chart.
@@ -917,6 +998,7 @@ ggplot(shp2022, aes(x=factor(PC44), y=..count.., fill=factor(SEX))) +
 ### Solution: Grafiken mit ggplot2
 
 ```{r Solution: Grafiken mit ggplot2, eval=FALSE, echo=FALSE}
+
 # 1. Laden Sie die SHP-Daten.
 
 # 2. Erstellen Sie ein Histogram für das Einkommen.
@@ -926,9 +1008,10 @@ ggplot(shp2022,aes(x=IPTOTN))+
      labs(title="Histogramm zum Einkommens")
 
 # 3. Erstellen Sie einen Boxplot, der die Einkommensverteilung nach Bildungsstand unterteilt aufzeigt.
-
-shp2022$ISCED <- as.factor(shp2022$ISCED)     # Bildungsstand als factor abspeichern
-shp2022 <- shp2022 %>% filter(IPTOTN<200000)  # Die Ausreisser beim Einkommen rausnehmen
+# Bildungsstand als factor abspeichern
+shp2022$ISCED <- as.factor(shp2022$ISCED)
+# Die Ausreisser beim Einkommen rausnehmen
+shp2022 <- shp2022 %>% filter(IPTOTN<200000)  
 
 ggplot(shp2022,aes(x=ISCED,y=IPTOTN))+
      geom_boxplot()+
@@ -1489,15 +1572,15 @@ quick_docx(tabelle_wirkung_hux, file = "tabelle_wirkung.docx")
 
         -   [Gilholm et al. - 2023 - Machine learning to predict poor school performanc.pdf](https://moodle.bfh.ch/pluginfile.php/3114064/mod_folder/content/0/Gilholm%20et%20al.%20-%202023%20-%20Machine%20learning%20to%20predict%20poor%20school%20performanc.pdf?forcedownload=1)
 
-        -   [Kleinberg et al. - 2018 - Human Decisions and Machine Predictions.pdf](Kleinberg et al. - 2018 - Human Decisions and Machine Predictions.pdf)
+        -   [Kleinberg et al. - 2018 - Human Decisions and Machine Predictions.pdf](Kleinberg%20et%20al.%20-%202018%20-%20Human%20Decisions%20and%20Machine%20Predictions.pdf)
 
-        -   [Rittenhouse et al. - 2023 - Algorithms, Humans and Racial Disparities in Child.pdf](Rittenhouse et al. - 2023 - Algorithms, Humans and Racial Disparities in Child.pdf)
+        -   [Rittenhouse et al. - 2023 - Algorithms, Humans and Racial Disparities in Child.pdf](Rittenhouse%20et%20al.%20-%202023%20-%20Algorithms,%20Humans%20and%20Racial%20Disparities%20in%20Child.pdf)
 
-        -   [Stevenson and Doleac - 2022 - Algorithmic Risk Assessment in the Hands of Humans.pdf](Stevenson and Doleac - 2022 - Algorithmic Risk Assessment in the Hands of Humans.pdf)
+        -   [Stevenson and Doleac - 2022 - Algorithmic Risk Assessment in the Hands of Humans.pdf](Stevenson%20and%20Doleac%20-%202022%20-%20Algorithmic%20Risk%20Assessment%20in%20the%20Hands%20of%20Humans.pdf)
 
-        -   [Tennakoon et al. - 2023 - Using electronic health record data to predict fut.pdf](Tennakoon et al. - 2023 - Using electronic health record data to predict fut.pdf)
+        -   [Tennakoon et al. - 2023 - Using electronic health record data to predict fut.pdf](Tennakoon%20et%20al.%20-%202023%20-%20Using%20electronic%20health%20record%20data%20to%20predict%20fut.pdf)
 
-        -   [Toros and Flaming - 2018 - Prioritizing Homeless Assistance Using Predictive .pdf](Toros and Flaming - 2018 - Prioritizing Homeless Assistance Using Predictive .pdf)
+        -   [Toros and Flaming - 2018 - Prioritizing Homeless Assistance Using Predictive .pdf](Toros%20and%20Flaming%20-%202018%20-%20Prioritizing%20Homeless%20Assistance%20Using%20Predictive%20.pdf)
 
     -   Answer the following questions:
 
