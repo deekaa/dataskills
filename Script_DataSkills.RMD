@@ -674,15 +674,6 @@ head(weather.tidy)
 -   Look at the data structure and the variables of the data set. Also use functions such as: `summary(dataset$var)`, `head(dataset)`, `names(dataset)`
 
 #### Solution
-
-```{r Solution: backup_load_shp2022, echo=TRUE, eval=FALSE}
-#Download the data: with this command you can download files if you have the direct link to the file
-download.file("https://drive.switch.ch/index.php/s/02NutftoUqK4x9V/download", "shp2022.RData", mode = "wb")
-
-#Because the file is in R-Data-Format (.RData) we can load it directly
-load("shp2022.RData")
-```
-
 ```{r Solution: shp data, echo=TRUE, eval=FALSE}
 # load libraries & data
 library(haven)
@@ -694,7 +685,104 @@ names(shp)
 summary(shp$AGE)
 ```
 
+```{r Solution: backup_load_shp2022, echo=TRUE, eval=FALSE}
+#Variante 2: Download the data: with this command you can download files if you have the direct link to the file
+download.file("https://drive.switch.ch/index.php/s/02NutftoUqK4x9V/download", "shp2022.RData", mode = "wb")
+
+#Because the file is in R-Data-Format (.RData) we can load it directly
+load("shp2022.RData")
+```
+
 # Descriptive statistics
+
+[Powerpoint](https://drive.switch.ch/index.php/s/4IwhHQ3fYO5BDyR)
+
+An example for illustration
+
+```{r rw example, eval=FALSE}
+# Example: Clean data & Exploration
+# Data: Richtungswechsel 
+# Goal: Create a descriptive table for Participant Characteristics (N=106) & a graph to visualize the change in earnings
+
+#load packages
+library(dplyr)
+library(huxtable)
+library(ggplot2)
+
+# set working directory
+setwd("S:/MA1082973/_FHNW/BA472")
+
+#load data
+richtungswechsel <- read.csv("data sets/Richtungswechsel/Richtungswechsel_anonymized data set.csv")
+
+# Exploration
+summary(richtungswechsel)
+View(richtungswechsel)
+names(richtungswechsel)
+mean(richtungswechsel$Alter)
+table(richtungswechsel$Geschlecht)
+
+# Create a new data set with the variables I am interested in
+sub_rw <- richtungswechsel %>% filter(source != "Dropout") %>%
+  select(Alter, Geschlecht, Bezugsdauer, Staatsang., EINA1, EINA2, earnings.change, INT1)
+# 
+sub_rw <- sub_rw %>% mutate(Geschlecht=ifelse(Geschlecht==1, "Female", "Male"),
+                            # create age groups for the descriptive table
+                            Age_groups=ifelse(Alter<35, "25–34 years",
+                                              ifelse(Alter>34 & Alter<45, "35–44 years",
+                                                     ifelse(Alter>44 & Alter<55, "45–54 years",
+                                                            ifelse(Alter>54 & Alter<65, "55–64 years",
+                                                                   NA)))))
+
+geschl_tab <- as.data.frame(table(sub_rw$Geschlecht))
+Age_tab <- as.data.frame(table(sub_rw$Age_groups))
+
+# Kombinieren der Häufigkeitstabellen in einen Datenrahmen
+combined_df <- data.frame(
+  Variable = c("Gender", as.character(geschl_tab$Var1), "Age",as.character(Age_tab$Var1)),
+  n = c("", geschl_tab$Freq, "", Age_tab$Freq),
+  percent = c("", geschl_tab$Freq/106*100, "", Age_tab$Freq/106*100)
+)
+
+# Create and format the huxtable
+deskriptive_tabelle1 <- hux(combined_df) %>%
+  # Set all borders to have a width of 1 (adds borders around all cells)
+  set_all_borders(1) %>%  
+  # Set a caption for the table
+  set_caption("Participant Characteristics (N=106)") %>%   
+  # Make the first, second and fifth row bold 
+  set_bold(c(1, 2, 5), TRUE)  
+
+# save the table in docx document
+quick_docx(deskriptive_tabelle1, file = "R/results/desc_tab1.docx")
+
+# Part 2: Descriptive statistics: Calculate mean & standard deviation
+tab1 <- sub_rw %>%
+  summarise(
+    Alter_mean = mean(Alter, na.rm = TRUE),
+    Alter_sd = sd(Alter, na.rm = TRUE),
+    Bezugsdauer_mean = mean(Bezugsdauer, na.rm = TRUE),
+    Bezugsdauer_sd = sd(Bezugsdauer, na.rm = TRUE),
+    earnings_change_mean = mean(earnings.change, na.rm = TRUE),
+    earnings_change_sd = sd(earnings.change, na.rm = TRUE)
+  )
+
+# create a data set in long format for huxtable
+tab_long <- data.frame(
+  Variable = c("Age (in years)", "Social assistance receipt (in years)", "Earnings Change (in CHF)"),
+  Mean = c(tab1$Alter_mean, tab1$Bezugsdauer_mean, tab1$earnings_change_mean),
+  SD = c(tab1$Alter_sd, tab1$Bezugsdauer_sd, tab1$earnings_change_sd)
+)
+
+# Create and format the huxtable 
+deskriptive_tabelle2 <- hux(tab_long) %>%
+  set_all_borders(1) %>%
+  set_caption("Participant Characteristics (N=106)") %>%
+  set_bold(1, TRUE) 
+
+# Save desciptive table part 2
+quick_docx(deskriptive_tabelle2, file = "R/results/desc_tab2.docx")
+```
 
 ## Contingency tables
 
@@ -749,28 +837,28 @@ summary(age)
 
 -   package [dplyr](http://blog.rstudio.org/2014/01/17/introducing-dplyr/) by [Hadley Wickham](https://twitter.com/hadleywickham)/[Romain Francois](https://twitter.com/romain_francois) offers a toolset for data preparation
 -   See [the dplyr vignette](http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html) and the [Data Wrangling Cheat Sheet](http://www.rstudio.com/resources/cheatsheets/) for a very good overview
-    -   `filter()`: selects a subset of rows (see also `slice()`)
-    -   `arrange()`: sorts
-    -   `select()`: selects columns
-    -   `mutate()`: creates new columns
-    -   `summarize()`: aggregates (collapses) data to individual data points
-    -   `distinct()`: removes duplicate values
-    -   `group_by()`: defines subgroups in the data so that `mutate()` and `summarize()` can be applied separately per group.
-    -   dplyr can be used very well together with so-called piping, i.e. the data object is passed from function to function by `%>%`, which makes the code much easier to read and more compact.
+-   `filter()`: selects a subset of rows (see also `slice()`)
+-   `arrange()`: sorts
+-   `select()`: selects columns
+-   `mutate()`: creates new columns
+-   `summarize()`: aggregates (collapses) data to individual data points
+-   `distinct()`: removes duplicate values
+-   `group_by()`: defines subgroups in the data so that `mutate()` and `summarize()` can be applied separately per group.
+-   dplyr can be used very well together with so-called piping, i.e. the data object is passed from function to function by `%>%`, which makes the code much easier to read and more compact.
 
-### Example: Package dplyr <!--# Code funktioniert nicht bei mir? -->
+### Example: Package dplyr 
 
 ```{r Example: Package dplyr,eval=FALSE}
 # load data
 library(dplyr)
-shp2022
+load("shp2022.RData")
 
 # filter by 1st nationality not Switzerland and persons up to 65 years old  
 # select columns
 shp2022a <- shp2022 %>% 
   filter("NAT_1_" != 8100, AGE < 66) %>% 
   select(c("AGE", "SEX", "NAT_1_", "EDUCAT"))
-  
+
 
 # create new variable "Tertiary education"
 shp2022a <- shp2022a %>%
@@ -784,13 +872,13 @@ tab <- shp2022a %>%
   na.omit()
 ```
 
-### Exercise: Package dplyr <!--# Wir sollten auch select in die Übung einbauen -->
+### Exercise: Package dplyr
 
 -   Read the SHP data into RStudio.
 
--   Restrict the data set for the year 2022 to people who are 25 years or older. Familiarize yourself a little with the data (e.g. `head()`, `summary(),` `table()`).
+-   Restrict the data set for the year 2022 to people who are 25 years or older. Familiarize yourself a little with the data (e.g. `head()`, `summary()`,`table()`).
 
--   Look at the variables with the information on age (variable AGE), gender (variable SEX), years of education (variable EDYEAR) and first nationality (NAT_1\_).
+-   Look at the variables with the information on age (variable AGE), gender (variable SEX), years of education (variable EDYEAR) and first nationality (`NAT_1_`).
 
 -   Create a crosstab with the variables `EDYEAR` and `SEX`.
 
@@ -800,12 +888,10 @@ tab <- shp2022a %>%
 
 ```{r Solution: Package dplyr, eval=FALSE, echo=FALSE}
 ### read SHP Daten 
-library(haven)
-library(dplyr)
-shp <- read_sav("S:/MA1082973/_FHNW/BA472/data sets/SHP/SHPLONG_P_USER.sav")
+load("shp2022.RData")
 
-# Restrict the data set for the year 2022 to people who are 25 years or older.
-shp2022 <- shp %>% filter(YEAR == 2022) %>% filter(AGE > 24) %>% select(AGE, SEX, EDYEAR, NAT_1_)
+# Restrict the data set to people who are 25 years or older.
+shp2022 <- shp %>% filter(AGE > 24) %>% select(AGE, SEX, EDYEAR, NAT_1_)
 
 summary(shp2022)
 
@@ -836,24 +922,12 @@ sd(shp2022$AGE[shp2022$SEX==2], na.rm=T)
 
 # Data visualization
 
--   Why is data visualization important?
-
--   Data exploration vs. data presentation
-
--   Simple diagrams
-
--   Histograms
-
--   Scatter charts
-
--   Bar charts
-
 ## Visualization with ggplot2
 
 -   ggplot2 is the most important package to create visualizations in R
 -   see also cheatsheet: <https://rstudio.github.io/cheatsheets/data-visualization.pdf>
-
-Hadley Wickham's `ggplot2` package has developed into a particularly useful alternative to `plot()` over the last few years. Especially complicated plots are easier to implement with ggplot, visually appealing and the code is easily accessible. Most important basic structures:
+  
+  Hadley Wickham's `ggplot2` package has developed into a particularly useful alternative to `plot()` over the last few years. Especially complicated plots are easier to implement with ggplot, visually appealing and the code is easily accessible. Most important basic structures:
 
 -   **Data** that we want to visualize
 
@@ -868,17 +942,11 @@ Hadley Wickham's `ggplot2` package has developed into a particularly useful alte
 ```{r Example: ggplot2, eval=FALSE}
 library(ggplot2)
 library(dplyr)
-library(haven)
 
-# set working directory
-setwd("S:/MA1082973/_FHNW/BA472")
-# load data
-shp <- read_sav("data sets/SHP/SHPLONG_P_USER.sav")
+### read SHP Daten 
+load("shp2022.RData")
 
 # Scatterplot (einfach)
-shp2022 <- shp %>%
-  filter(YEAR==2022) %>% filter(AGE > 24)
-
 ggplot(data=shp2022, aes(x = PC46, y =PC45)) +
   geom_point() +
   labs(title = "Streudiagramm",
@@ -908,7 +976,7 @@ ggplot(shp2022, aes(x=factor(PC44), y=..count.., fill=factor(SEX))) +
   ggtitle("Zufriedenheit mit dem Leben nach Geschlecht")
 ```
 
-### Exercise: Grafiken mit ggplot2 <!--# Die Grafiktypen, die sie erstellen müssen, sollten mit den Beispielen die du oben zeigst übereinstimmen, bitte also Begriffe Histogram/Boxplot verwenden. Generell empfehle ich die Daten zuerst zu aggregieren und erst dann zu plotten. Das ist viel weniger kompliziert, als die Aggregationsfunktionen von ggplot zu verwenden. Verstehst du was ich meine? -->
+### Exercise: Grafiken mit ggplot2 
 
 1.  Load the SHP data.
 2.  Create a histogram for income (variable: IPTOTN) for the year 2022. give the graph a title. Tip: Add a `labs()` argument to the chart.
@@ -917,6 +985,7 @@ ggplot(shp2022, aes(x=factor(PC44), y=..count.., fill=factor(SEX))) +
 ### Solution: Grafiken mit ggplot2
 
 ```{r Solution: Grafiken mit ggplot2, eval=FALSE, echo=FALSE}
+
 # 1. Laden Sie die SHP-Daten.
 
 # 2. Erstellen Sie ein Histogram für das Einkommen.
@@ -926,9 +995,10 @@ ggplot(shp2022,aes(x=IPTOTN))+
      labs(title="Histogramm zum Einkommens")
 
 # 3. Erstellen Sie einen Boxplot, der die Einkommensverteilung nach Bildungsstand unterteilt aufzeigt.
-
-shp2022$ISCED <- as.factor(shp2022$ISCED)     # Bildungsstand als factor abspeichern
-shp2022 <- shp2022 %>% filter(IPTOTN<200000)  # Die Ausreisser beim Einkommen rausnehmen
+# Bildungsstand als factor abspeichern
+shp2022$ISCED <- as.factor(shp2022$ISCED)
+# Die Ausreisser beim Einkommen rausnehmen
+shp2022 <- shp2022 %>% filter(IPTOTN<200000)  
 
 ggplot(shp2022,aes(x=ISCED,y=IPTOTN))+
      geom_boxplot()+
@@ -1551,11 +1621,18 @@ names(data)
 
 #Rename variables to make them more intuitive
 data <- data %>%
+<<<<<<< HEAD
   select(HasJob = Erwerbkorr.mean, # measures the proportion of months the client has a job in months 4 up to 24 after the intervention
          IsWoman = Weiblich, # Is a woman
          IsSwiss = Schweiz, # Is Swiss
          Speaks_language = Grundkompetenz.verstehen) %>% # Speaks either French/German
 na.omit()#simple way to remove missing values
+=======
+  mutate(HasJob = Erwerbkorr.mean, # measures the proportion of months the client has a job in months 4 up to 24 after the intervention
+         IsWoman = Weiblich, # Is a woman
+         IsSwiss = Schweiz, # Is Swiss
+         Speaks_language = Grundkompetenz.verstehen) # Speaks either French/German
+>>>>>>> abbd5fe5c7702608d340b78925a03b2238d8f36f
 
 #Then we need to chose test Data and training data
 # Set seed for reproducibility
@@ -1568,8 +1645,22 @@ train_rows <- sample(1:nrow(data), size = 0.8 * nrow(data))
 train_data <- data %>% slice(train_rows)
 test_data <- data %>% slice(-train_rows)
 
+<<<<<<< HEAD
 # Fit a linear model (Ordinary Least Squares)
 model <- lm(HasJob ~ IsWoman + IsSwiss + Speaks_language, data = train_data)
+=======
+# Fit a linear model
+model <- lm(HasJob ~ IsWoman + IsSwiss + Speaks_language, data = train_data)
+
+# Predict on test data
+predictions <- predict(model, newdata = test_data)
+
+# Calculate R-squared
+rsq <- summary(model)$r.squared
+
+# Calculate Mean Squared Error (MSE)
+mse <- mean((predictions - test_data$HasJob)^2)
+>>>>>>> abbd5fe5c7702608d340b78925a03b2238d8f36f
 
 # Predict on test data
 predictions <- predict(model, newdata = test_data)
