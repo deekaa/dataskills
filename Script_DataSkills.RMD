@@ -674,15 +674,6 @@ head(weather.tidy)
 -   Look at the data structure and the variables of the data set. Also use functions such as: `summary(dataset$var)`, `head(dataset)`, `names(dataset)`
 
 #### Solution
-
-```{r Solution: backup_load_shp2022, echo=TRUE, eval=FALSE}
-#Download the data: with this command you can download files if you have the direct link to the file
-download.file("https://drive.switch.ch/index.php/s/02NutftoUqK4x9V/download", "shp2022.RData", mode = "wb")
-
-#Because the file is in R-Data-Format (.RData) we can load it directly
-load("shp2022.RData")
-```
-
 ```{r Solution: shp data, echo=TRUE, eval=FALSE}
 # load libraries & data
 library(haven)
@@ -692,6 +683,14 @@ shp <- read_sav("S:/MA1082973/_FHNW/BA472/data sets/SHP/SHPLONG_P_USER.sav")
 head(shp)
 names(shp)
 summary(shp$AGE)
+```
+
+```{r Solution: backup_load_shp2022, echo=TRUE, eval=FALSE}
+#Variante 2: Download the data: with this command you can download files if you have the direct link to the file
+download.file("https://drive.switch.ch/index.php/s/02NutftoUqK4x9V/download", "shp2022.RData", mode = "wb")
+
+#Because the file is in R-Data-Format (.RData) we can load it directly
+load("shp2022.RData")
 ```
 
 # Descriptive statistics
@@ -726,14 +725,14 @@ table(richtungswechsel$Geschlecht)
 # Create a new data set with the variables I am interested in
 sub_rw <- richtungswechsel %>% filter(source != "Dropout") %>%
   select(Alter, Geschlecht, Bezugsdauer, Staatsang., EINA1, EINA2, earnings.change, INT1)
-                      # 
+# 
 sub_rw <- sub_rw %>% mutate(Geschlecht=ifelse(Geschlecht==1, "Female", "Male"),
-                          # create age groups for the descriptive table
-                          Age_groups=ifelse(Alter<35, "25–34 years",
-                                            ifelse(Alter>34 & Alter<45, "35–44 years",
-                                                   ifelse(Alter>44 & Alter<55, "45–54 years",
-                                                          ifelse(Alter>54 & Alter<65, "55–64 years",
-                                                          NA)))))
+                            # create age groups for the descriptive table
+                            Age_groups=ifelse(Alter<35, "25–34 years",
+                                              ifelse(Alter>34 & Alter<45, "35–44 years",
+                                                     ifelse(Alter>44 & Alter<55, "45–54 years",
+                                                            ifelse(Alter>54 & Alter<65, "55–64 years",
+                                                                   NA)))))
 
 geschl_tab <- as.data.frame(table(sub_rw$Geschlecht))
 Age_tab <- as.data.frame(table(sub_rw$Age_groups))
@@ -774,7 +773,7 @@ tab_long <- data.frame(
   Mean = c(tab1$Alter_mean, tab1$Bezugsdauer_mean, tab1$earnings_change_mean),
   SD = c(tab1$Alter_sd, tab1$Bezugsdauer_sd, tab1$earnings_change_sd)
 )
-  
+
 # Create and format the huxtable 
 deskriptive_tabelle2 <- hux(tab_long) %>%
   set_all_borders(1) %>%
@@ -838,14 +837,14 @@ summary(age)
 
 -   package [dplyr](http://blog.rstudio.org/2014/01/17/introducing-dplyr/) by [Hadley Wickham](https://twitter.com/hadleywickham)/[Romain Francois](https://twitter.com/romain_francois) offers a toolset for data preparation
 -   See [the dplyr vignette](http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html) and the [Data Wrangling Cheat Sheet](http://www.rstudio.com/resources/cheatsheets/) for a very good overview
-    -   `filter()`: selects a subset of rows (see also `slice()`)
-    -   `arrange()`: sorts
-    -   `select()`: selects columns
-    -   `mutate()`: creates new columns
-    -   `summarize()`: aggregates (collapses) data to individual data points
-    -   `distinct()`: removes duplicate values
-    -   `group_by()`: defines subgroups in the data so that `mutate()` and `summarize()` can be applied separately per group.
-    -   dplyr can be used very well together with so-called piping, i.e. the data object is passed from function to function by `%>%`, which makes the code much easier to read and more compact.
+-   `filter()`: selects a subset of rows (see also `slice()`)
+-   `arrange()`: sorts
+-   `select()`: selects columns
+-   `mutate()`: creates new columns
+-   `summarize()`: aggregates (collapses) data to individual data points
+-   `distinct()`: removes duplicate values
+-   `group_by()`: defines subgroups in the data so that `mutate()` and `summarize()` can be applied separately per group.
+-   dplyr can be used very well together with so-called piping, i.e. the data object is passed from function to function by `%>%`, which makes the code much easier to read and more compact.
 
 ### Example: Package dplyr 
 
@@ -859,7 +858,7 @@ load("shp2022.RData")
 shp2022a <- shp2022 %>% 
   filter("NAT_1_" != 8100, AGE < 66) %>% 
   select(c("AGE", "SEX", "NAT_1_", "EDUCAT"))
-  
+
 
 # create new variable "Tertiary education"
 shp2022a <- shp2022a %>%
@@ -923,24 +922,12 @@ sd(shp2022$AGE[shp2022$SEX==2], na.rm=T)
 
 # Data visualization
 
--   Why is data visualization important?
-
--   Data exploration vs. data presentation
-
--   Simple diagrams
-
--   Histograms
-
--   Scatter charts
-
--   Bar charts
-
 ## Visualization with ggplot2
 
 -   ggplot2 is the most important package to create visualizations in R
 -   see also cheatsheet: <https://rstudio.github.io/cheatsheets/data-visualization.pdf>
-
-Hadley Wickham's `ggplot2` package has developed into a particularly useful alternative to `plot()` over the last few years. Especially complicated plots are easier to implement with ggplot, visually appealing and the code is easily accessible. Most important basic structures:
+  
+  Hadley Wickham's `ggplot2` package has developed into a particularly useful alternative to `plot()` over the last few years. Especially complicated plots are easier to implement with ggplot, visually appealing and the code is easily accessible. Most important basic structures:
 
 -   **Data** that we want to visualize
 
@@ -1425,10 +1412,10 @@ quick_docx(tabelle_wirkung_hux, file = "tabelle_wirkung.docx")
 
 #We will analyze the effect of "Richtungswechsel" on long-term recipients' vitality. https://journals.sagepub.com/doi/full/10.1177/10497315241232120
 
-download.file("https://drive.switch.ch/index.php/s/WYdxhZ0psZZqDzv/download", "FokusArbeit.csv",mode = "wb")
+download.file("https://drive.switch.ch/index.php/s/WYdxhZ0psZZqDzv/download", "FokusArbeit_Wirkung.csv",mode = "wb")
 
 #Because the file is in R-Data-Format (.R) we can load it directly
-data <- read.csv("C:/Users/kld1/switchdrive/BFH/Wichtige Dokumente/Lehre/Data skills for social work professionals/BFH/Daten/Fokus Arbeit/FokusArbeit_Wirkung.csv")
+data <- read.csv("FokusArbeit_Wirkung.csv")
 
 #To prepare the data for analysis and to analyze the data we will install/load the package "dplyr"
 #install.packages("dplyr")
@@ -1477,7 +1464,7 @@ fokusarbeit%>%
 
 library(huxtable)
 # Konvertieren Sie die Tabelle in ein Huxtable-Objekt
-tabelle_wirkung_hux <- as_hux(tabelle_wirkung)
+tabelle_wirkung_hux <- as_hux(tabellewirkung)
 
 # Erste Zeile fett und mit Linie abgrenzen
 bold(tabelle_wirkung_hux)[1,] <- TRUE
@@ -1522,7 +1509,7 @@ quick_docx(tabelle_wirkung_hux, file = "tabelle_wirkung.docx")
 
     -   E.g. [expectations about case numbers in social assistance during covid](https://skos.ch/themen/sozialhilfe-und-corona/herausforderungen-fuer-das-soziale-system/)
 
--   Social workers, like all humans, make mistakes when predicting future developments, [although experienced social workers are more successfull at it](https://academic.oup.com/bjsw/article-abstract/54/3/1150/7382101?redirectedFrom=fulltext).
+-   Social workers, like all humans, make mistakes when predicting future developments, [although experienced social workers are more successful at it](https://academic.oup.com/bjsw/article-abstract/54/3/1150/7382101?redirectedFrom=fulltext).
 
 -   Machines can help us predict outcomes more accurately, that's why we can call it artificial intelligence
 
@@ -1564,35 +1551,37 @@ quick_docx(tabelle_wirkung_hux, file = "tabelle_wirkung.docx")
 
 -   Excercise
 
-    -   Please choose one of the following texts on applications of prediction algorithms
+    -   Please choose one of the following texts on applications of prediction algorithms in fields related to social work
 
-        -   [Berman et al. - 2024 - Trustworthy AI in the public sector An empirical .pdf](https://www.sciencedirect.com/science/article/pii/S0160791X24000198)
+        -   [Berman et al. - 2024 - Trustworthy AI in the public sector An empirical .pdf](https://drive.switch.ch/index.php/s/0BnVw64Ld3IlHzl)
 
-        -   [Black et al. - 2003 - Is the Threat of Reemployment Services More Effect.pdf](https://moodle.bfh.ch/pluginfile.php/3114064/mod_folder/content/0/Black%20et%20al.%20-%202003%20-%20Is%20the%20Threat%20of%20Reemployment%20Services%20More%20Effect.pdf?forcedownload=1)
+        -   [Black et al. - 2003 - Is the Threat of Reemployment Services More Effect.pdf](https://drive.switch.ch/index.php/s/x03olQjgxDtiZAl)
 
-        -   [Gilholm et al. - 2023 - Machine learning to predict poor school performanc.pdf](https://moodle.bfh.ch/pluginfile.php/3114064/mod_folder/content/0/Gilholm%20et%20al.%20-%202023%20-%20Machine%20learning%20to%20predict%20poor%20school%20performanc.pdf?forcedownload=1)
+        -   [Gilholm et al. - 2023 - Machine learning to predict poor school performanc.pdf](https://drive.switch.ch/index.php/s/vQ0wcVhosqs8r0X)
 
-        -   [Kleinberg et al. - 2018 - Human Decisions and Machine Predictions.pdf](Kleinberg%20et%20al.%20-%202018%20-%20Human%20Decisions%20and%20Machine%20Predictions.pdf)
+        -   [Kleinberg et al. - 2018 - Human Decisions and Machine Predictions.pdf](https://drive.switch.ch/index.php/s/ukrf4MrRG4dejE2)
 
-        -   [Rittenhouse et al. - 2023 - Algorithms, Humans and Racial Disparities in Child.pdf](Rittenhouse%20et%20al.%20-%202023%20-%20Algorithms,%20Humans%20and%20Racial%20Disparities%20in%20Child.pdf)
+        -   [Rittenhouse et al. - 2023 - Algorithms, Humans and Racial Disparities in Child.pdf](https://drive.switch.ch/index.php/s/ziuaAdJWjWDU358)
 
-        -   [Stevenson and Doleac - 2022 - Algorithmic Risk Assessment in the Hands of Humans.pdf](Stevenson%20and%20Doleac%20-%202022%20-%20Algorithmic%20Risk%20Assessment%20in%20the%20Hands%20of%20Humans.pdf)
+        -   [Stevenson and Doleac - 2022 - Algorithmic Risk Assessment in the Hands of Humans.pdf](https://drive.switch.ch/index.php/s/fuogL1edjahkUSE)
 
-        -   [Tennakoon et al. - 2023 - Using electronic health record data to predict fut.pdf](Tennakoon%20et%20al.%20-%202023%20-%20Using%20electronic%20health%20record%20data%20to%20predict%20fut.pdf)
+        -   [Tennakoon et al. - 2023 - Using electronic health record data to predict fut.pdf](https://drive.switch.ch/index.php/s/yUkYmA5PtK8AvRY)
 
-        -   [Toros and Flaming - 2018 - Prioritizing Homeless Assistance Using Predictive .pdf](Toros%20and%20Flaming%20-%202018%20-%20Prioritizing%20Homeless%20Assistance%20Using%20Predictive%20.pdf)
+        -   [Toros and Flaming - 2018 - Prioritizing Homeless Assistance Using Predictive .pdf](https://drive.switch.ch/index.php/s/JRn0ybFpXYpaiLg)
 
-    -   Answer the following questions:
+    -   Answer the following questions (some questions may not be answered based on information in the papers):
 
         -   What decisions are to be taken based on AI output? Decision-support or decision-making?
 
-        -   What data are used? What influencing factors?
+        -   What data are used to train the models? What are the outcomes, what are the influencing factors?
 
         -   How accurate is it? More or less than humans or bureaucratic rules?
 
         -   How biased is it? More or less than humans or bureaucratic rules?
 
         -   Would humans trust and use it?
+
+        -   What are the effects of usage?
 
 ## How to train your a prediction model?
 
@@ -1610,10 +1599,43 @@ quick_docx(tabelle_wirkung_hux, file = "tabelle_wirkung.docx")
 
 ```{r Prediction,eval=FALSE}
 
-download.file("https://drive.switch.ch/index.php/s/WYdxhZ0psZZqDzv/download", "FokusArbeit.csv",mode = "wb")
+download.file("https://drive.switch.ch/index.php/s/hYUFQEOz12pFbvS/download", "FokusArbeit_Vorhersage.csv",mode = "wb")
 
 #Because the file is in R-Data-Format (.R) we can load it directly
-data <- read.csv("C:/Users/kld1/switchdrive/BFH/Wichtige Dokumente/Lehre/Data skills for social work professionals/BFH/Daten/Fokus Arbeit/FokusArbeit_Wirkung.csv")
+data <- read.csv("FokusArbeit_Vorhersage.csv")
+
+#Lets have a look at the variables
+names(data)
+
+#Rename variables to make them more intuitive
+data <- data %>%
+  mutate(HasJob = Erwerbkorr.mean, # measures the proportion of months the client has a job in months 4 up to 24 after the intervention
+         IsWoman = Weiblich, # Is a woman
+         IsSwiss = Schweiz, # Is Swiss
+         Speaks_language = Grundkompetenz.verstehen) # Speaks either French/German
+
+# Set seed for reproducibility
+set.seed(123)
+
+# Calculate the number of rows for training data (80%)
+train_rows <- sample(1:nrow(data), size = 0.8 * nrow(data))
+
+# Split the data
+train_data <- data %>% slice(train_rows)
+test_data <- data %>% slice(-train_rows)
+
+# Fit a linear model
+model <- lm(HasJob ~ IsWoman + IsSwiss + Speaks_language, data = train_data)
+
+# Predict on test data
+predictions <- predict(model, newdata = test_data)
+
+# Calculate R-squared
+rsq <- summary(model)$r.squared
+
+# Calculate Mean Squared Error (MSE)
+mse <- mean((predictions - test_data$HasJob)^2)
+
 
 ```
 
