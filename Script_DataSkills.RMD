@@ -1040,6 +1040,12 @@ shinyApp(ui = ui, server = server)
     -   Example:
         -   [Winterthur](https://www.buerobass.ch/fileadmin/Files/2021/2021_Reduktion_Falllast_Winterthur_Schlussbericht_DE.pdf)
 
+-   Shift to online activity of social work offers facilitates measuring the effects of social work
+
+    -   More outcome data (e.g. use of services)
+
+    -   Easier randomization (e.g. changing formulations on a website to see whether it affects service usage)
+
 ## What is an effect and what not?
 
 -   Effect = difference in the result with influencing variable versus without influencing variable (= **counterfactual** situation)
@@ -1411,23 +1417,33 @@ quick_docx(tabelle_wirkung_hux, file = "tabelle_wirkung.docx")
 
 # Prediction and AI in social work
 
+<!--# Why? (9.30); How does it work? (9.45); Excercise (11); Own test (12) -->
+
 ## Why should we use machines to predict in social work?
 
--   Diagnosis is an integral part of individual-level social work
+-   Prediction is an integral part of individual-level social work
 
-    -   Diagnosis is about identifying clients' need for assistance
+    -   Is used for **diagnosis**
 
-    -   The future developments of clients' without assistance is an integral part of diagnosis
+        -   is about identifying clients' need for assistance
 
-    -   Based on predictions of future outcomes, we decide on the amount and type of intervention/services needed by clients
+        -   The future developments of clients' without assistance is an integral part of diagnosis
 
--   In social work, we also need predict future need for services on an aggregate level to ensure mobilization of resources at the political level
+        -   Based on predictions of future outcomes, we decide **which clients need our help most**
+
+    -   It is also used for **treatment**
+
+        -   When deciding on which action to take with our client (service, activity, intervention), we make predictions on [**which action will bring the greatest improvements?**](https://www.sciencedirect.com/science/article/pii/S0927537105000564)
+
+-   On an aggreagte level, we need to predict future need for services to ensure mobilization of adequate resources (i.e. asking politics for money)
 
     -   E.g. [expectations about case numbers in social assistance during covid](https://skos.ch/themen/sozialhilfe-und-corona/herausforderungen-fuer-das-soziale-system/)
 
 -   Social workers, like all humans, make mistakes when predicting future developments, [although experienced social workers are more successfull at it](https://academic.oup.com/bjsw/article-abstract/54/3/1150/7382101?redirectedFrom=fulltext).
 
 -   Machines can help us predict outcomes more accurately, that's why we can call it artificial intelligence
+
+    -   Helpfulness of machine predictions increase, the more data we have
 
 ## How do machine predictions work?
 
@@ -1465,23 +1481,23 @@ quick_docx(tabelle_wirkung_hux, file = "tabelle_wirkung.docx")
 
 -   Excercise
 
-    -   Please chose one of the following texts on applications of prediction algorithms
+    -   Please choose one of the following texts on applications of prediction algorithms
 
-        -   Berman et al. - 2024 - Trustworthy AI in the public sector An empirical .pdf
+        -   [Berman et al. - 2024 - Trustworthy AI in the public sector An empirical .pdf](https://www.sciencedirect.com/science/article/pii/S0160791X24000198)
 
-        -   Black et al. - 2003 - Is the Threat of Reemployment Services More Effect.pdf
+        -   [Black et al. - 2003 - Is the Threat of Reemployment Services More Effect.pdf](https://moodle.bfh.ch/pluginfile.php/3114064/mod_folder/content/0/Black%20et%20al.%20-%202003%20-%20Is%20the%20Threat%20of%20Reemployment%20Services%20More%20Effect.pdf?forcedownload=1)
 
-        -   Gilholm et al. - 2023 - Machine learning to predict poor school performanc.pdf
+        -   [Gilholm et al. - 2023 - Machine learning to predict poor school performanc.pdf](https://moodle.bfh.ch/pluginfile.php/3114064/mod_folder/content/0/Gilholm%20et%20al.%20-%202023%20-%20Machine%20learning%20to%20predict%20poor%20school%20performanc.pdf?forcedownload=1)
 
-        -   Kleinberg et al. - 2018 - Human Decisions and Machine Predictions.pdf
+        -   [Kleinberg et al. - 2018 - Human Decisions and Machine Predictions.pdf](Kleinberg et al. - 2018 - Human Decisions and Machine Predictions.pdf)
 
-        -   Rittenhouse et al. - 2023 - Algorithms, Humans and Racial Disparities in Child.pdf
+        -   [Rittenhouse et al. - 2023 - Algorithms, Humans and Racial Disparities in Child.pdf](Rittenhouse et al. - 2023 - Algorithms, Humans and Racial Disparities in Child.pdf)
 
-        -   Stevenson and Doleac - 2022 - Algorithmic Risk Assessment in the Hands of Humans.pdf
+        -   [Stevenson and Doleac - 2022 - Algorithmic Risk Assessment in the Hands of Humans.pdf](Stevenson and Doleac - 2022 - Algorithmic Risk Assessment in the Hands of Humans.pdf)
 
-        -   Tennakoon et al. - 2023 - Using electronic health record data to predict fut.pdf
+        -   [Tennakoon et al. - 2023 - Using electronic health record data to predict fut.pdf](Tennakoon et al. - 2023 - Using electronic health record data to predict fut.pdf)
 
-        -   Toros and Flaming - 2018 - Prioritizing Homeless Assistance Using Predictive .pdf
+        -   [Toros and Flaming - 2018 - Prioritizing Homeless Assistance Using Predictive .pdf](Toros and Flaming - 2018 - Prioritizing Homeless Assistance Using Predictive .pdf)
 
     -   Answer the following questions:
 
@@ -1495,7 +1511,7 @@ quick_docx(tabelle_wirkung_hux, file = "tabelle_wirkung.docx")
 
         -   Would humans trust and use it?
 
-## How to train your own prediction model?
+## How to train your a prediction model?
 
 -   Fokus Arbeit Daten
 
@@ -1509,13 +1525,22 @@ quick_docx(tabelle_wirkung_hux, file = "tabelle_wirkung.docx")
 
         -   Mean squared error
 
+```{r Prediction,eval=FALSE}
+
+download.file("https://drive.switch.ch/index.php/s/WYdxhZ0psZZqDzv/download", "FokusArbeit.csv",mode = "wb")
+
+#Because the file is in R-Data-Format (.R) we can load it directly
+data <- read.csv("C:/Users/kld1/switchdrive/BFH/Wichtige Dokumente/Lehre/Data skills for social work professionals/BFH/Daten/Fokus Arbeit/FokusArbeit_Wirkung.csv")
+
+```
+
+-   
+
     -   Excercise
 
         -   Add in health and motivation as a predictor. Which one is more important for prediction outcomes?
 
         -   Can you predict more accurately when using another algorithm than OLS?
-
-## 
 
 ## Important references
 
