@@ -1342,10 +1342,10 @@ quick_docx(tabelle_wirkung_hux, file = "tabelle_wirkung.docx")
 
 #We will analyze the effect of "Richtungswechsel" on long-term recipients' vitality. https://journals.sagepub.com/doi/full/10.1177/10497315241232120
 
-download.file("https://drive.switch.ch/index.php/s/WYdxhZ0psZZqDzv/download", "FokusArbeit.csv",mode = "wb")
+download.file("https://drive.switch.ch/index.php/s/WYdxhZ0psZZqDzv/download", "FokusArbeit_Wirkung.csv",mode = "wb")
 
 #Because the file is in R-Data-Format (.R) we can load it directly
-data <- read.csv("C:/Users/kld1/switchdrive/BFH/Wichtige Dokumente/Lehre/Data skills for social work professionals/BFH/Daten/Fokus Arbeit/FokusArbeit_Wirkung.csv")
+data <- read.csv("FokusArbeit_Wirkung.csv")
 
 #To prepare the data for analysis and to analyze the data we will install/load the package "dplyr"
 #install.packages("dplyr")
@@ -1394,7 +1394,7 @@ fokusarbeit%>%
 
 library(huxtable)
 # Konvertieren Sie die Tabelle in ein Huxtable-Objekt
-tabelle_wirkung_hux <- as_hux(tabelle_wirkung)
+tabelle_wirkung_hux <- as_hux(tabellewirkung)
 
 # Erste Zeile fett und mit Linie abgrenzen
 bold(tabelle_wirkung_hux)[1,] <- TRUE
@@ -1481,35 +1481,37 @@ quick_docx(tabelle_wirkung_hux, file = "tabelle_wirkung.docx")
 
 -   Excercise
 
-    -   Please choose one of the following texts on applications of prediction algorithms
+    -   Please choose one of the following texts on applications of prediction algorithms in fields related to social work
 
-        -   [Berman et al. - 2024 - Trustworthy AI in the public sector An empirical .pdf](https://www.sciencedirect.com/science/article/pii/S0160791X24000198)
+        -   [Berman et al. - 2024 - Trustworthy AI in the public sector An empirical .pdf](https://drive.switch.ch/index.php/s/0BnVw64Ld3IlHzl)
 
-        -   [Black et al. - 2003 - Is the Threat of Reemployment Services More Effect.pdf](https://moodle.bfh.ch/pluginfile.php/3114064/mod_folder/content/0/Black%20et%20al.%20-%202003%20-%20Is%20the%20Threat%20of%20Reemployment%20Services%20More%20Effect.pdf?forcedownload=1)
+        -   [Black et al. - 2003 - Is the Threat of Reemployment Services More Effect.pdf](https://drive.switch.ch/index.php/s/x03olQjgxDtiZAl)
 
-        -   [Gilholm et al. - 2023 - Machine learning to predict poor school performanc.pdf](https://moodle.bfh.ch/pluginfile.php/3114064/mod_folder/content/0/Gilholm%20et%20al.%20-%202023%20-%20Machine%20learning%20to%20predict%20poor%20school%20performanc.pdf?forcedownload=1)
+        -   [Gilholm et al. - 2023 - Machine learning to predict poor school performanc.pdf](https://drive.switch.ch/index.php/s/vQ0wcVhosqs8r0X)
 
-        -   [Kleinberg et al. - 2018 - Human Decisions and Machine Predictions.pdf](Kleinberg%20et%20al.%20-%202018%20-%20Human%20Decisions%20and%20Machine%20Predictions.pdf)
+        -   [Kleinberg et al. - 2018 - Human Decisions and Machine Predictions.pdf](https://drive.switch.ch/index.php/s/ukrf4MrRG4dejE2)
 
-        -   [Rittenhouse et al. - 2023 - Algorithms, Humans and Racial Disparities in Child.pdf](Rittenhouse%20et%20al.%20-%202023%20-%20Algorithms,%20Humans%20and%20Racial%20Disparities%20in%20Child.pdf)
+        -   [Rittenhouse et al. - 2023 - Algorithms, Humans and Racial Disparities in Child.pdf](https://drive.switch.ch/index.php/s/ziuaAdJWjWDU358)
 
-        -   [Stevenson and Doleac - 2022 - Algorithmic Risk Assessment in the Hands of Humans.pdf](Stevenson%20and%20Doleac%20-%202022%20-%20Algorithmic%20Risk%20Assessment%20in%20the%20Hands%20of%20Humans.pdf)
+        -   [Stevenson and Doleac - 2022 - Algorithmic Risk Assessment in the Hands of Humans.pdf](https://drive.switch.ch/index.php/s/fuogL1edjahkUSE)
 
-        -   [Tennakoon et al. - 2023 - Using electronic health record data to predict fut.pdf](Tennakoon%20et%20al.%20-%202023%20-%20Using%20electronic%20health%20record%20data%20to%20predict%20fut.pdf)
+        -   [Tennakoon et al. - 2023 - Using electronic health record data to predict fut.pdf](https://drive.switch.ch/index.php/s/yUkYmA5PtK8AvRY)
 
-        -   [Toros and Flaming - 2018 - Prioritizing Homeless Assistance Using Predictive .pdf](Toros%20and%20Flaming%20-%202018%20-%20Prioritizing%20Homeless%20Assistance%20Using%20Predictive%20.pdf)
+        -   [Toros and Flaming - 2018 - Prioritizing Homeless Assistance Using Predictive .pdf](https://drive.switch.ch/index.php/s/JRn0ybFpXYpaiLg)
 
-    -   Answer the following questions:
+    -   Answer the following questions (some questions may not be answered based on information in the papers):
 
         -   What decisions are to be taken based on AI output? Decision-support or decision-making?
 
-        -   What data are used? What influencing factors?
+        -   What data are used to train the models? What are the outcomes, what are the influencing factors?
 
         -   How accurate is it? More or less than humans or bureaucratic rules?
 
         -   How biased is it? More or less than humans or bureaucratic rules?
 
         -   Would humans trust and use it?
+
+        -   What are the effects of usage?
 
 ## How to train your a prediction model?
 
@@ -1527,10 +1529,31 @@ quick_docx(tabelle_wirkung_hux, file = "tabelle_wirkung.docx")
 
 ```{r Prediction,eval=FALSE}
 
-download.file("https://drive.switch.ch/index.php/s/WYdxhZ0psZZqDzv/download", "FokusArbeit.csv",mode = "wb")
+download.file("https://drive.switch.ch/index.php/s/hYUFQEOz12pFbvS/download", "FokusArbeit_Vorhersage.csv",mode = "wb")
 
 #Because the file is in R-Data-Format (.R) we can load it directly
-data <- read.csv("C:/Users/kld1/switchdrive/BFH/Wichtige Dokumente/Lehre/Data skills for social work professionals/BFH/Daten/Fokus Arbeit/FokusArbeit_Wirkung.csv")
+data <- read.csv("FokusArbeit_Vorhersage.csv")
+
+#Lets have a look at the variables
+names(data)
+
+#Rename variables to make more intuitive
+
+data <- data%>%
+  mutate(Hasjob=Erwerbkorr.mean,#measures the proportion of months the client has a job in months 4 up to 24 after the intervention
+         )
+
+# Set seed for reproducibility
+set.seed(123)
+
+# Calculate the number of rows for training data (80%)
+train_rows <- sample(1:nrow(data), size = 0.8 * nrow(data))
+
+# Split the data
+train_data <- data %>% slice(train_rows)
+test_data <- data %>% slice(-train_rows)
+
+
 
 ```
 
