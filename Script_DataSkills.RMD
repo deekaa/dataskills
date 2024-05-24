@@ -706,6 +706,7 @@ An example for illustration
 
 #load packages
 library(dplyr)
+# install.packages("huxtable") 
 library(huxtable)
 library(ggplot2)
 
@@ -737,7 +738,7 @@ sub_rw <- sub_rw %>% mutate(Geschlecht=ifelse(Geschlecht==1, "Female", "Male"),
 geschl_tab <- as.data.frame(table(sub_rw$Geschlecht))
 Age_tab <- as.data.frame(table(sub_rw$Age_groups))
 
-# Kombinieren der Häufigkeitstabellen in einen Datenrahmen
+# combine the dataframes for gender and age
 combined_df <- data.frame(
   Variable = c("Gender", as.character(geschl_tab$Var1), "Age",as.character(Age_tab$Var1)),
   n = c("", geschl_tab$Freq, "", Age_tab$Freq),
