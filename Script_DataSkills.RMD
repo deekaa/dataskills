@@ -692,6 +692,7 @@ download.file("https://drive.switch.ch/index.php/s/02NutftoUqK4x9V/download", "s
 
 #Because the file is in R-Data-Format (.RData) we can load it directly
 load("shp2022.RData")
+View(shp2022)
 ```
 
 # Descriptive statistics
@@ -751,7 +752,7 @@ deskriptive_tabelle1 <- hux(combined_df) %>%
   # Set all borders to have a width of 1 (adds borders around all cells)
   set_all_borders(1) %>%  
   # Set a caption for the table
-  set_caption("Participant Characteristics (N=106)") %>%   
+  set_caption("Participant Characteristics (N=81)") %>%   
   # Make the first, second and fifth row bold 
   set_bold(c(1, 2, 5), TRUE)  
 
@@ -779,7 +780,7 @@ tab_long <- data.frame(
 # Create and format the huxtable 
 deskriptive_tabelle2 <- hux(tab_long) %>%
   set_all_borders(1) %>%
-  set_caption("Participant Characteristics (N=106)") %>%
+  set_caption("Descriptive table") %>%
   set_bold(1, TRUE) 
 
 # Save desciptive table part 2
@@ -808,7 +809,6 @@ table(age, hosp)
 # Tabelle in Prozent
 100*prop.table(table(age))
 100*prop.table(table(age, hosp))
-
 ```
 
 ## Univariate statistics (1 variable)
@@ -888,7 +888,7 @@ tab <- shp2022a %>%
 
 ### Solution: Package dplyr
 
-```{r Solution: Package dplyr, eval=FALSE, echo=FALSE}
+```{r Solution: Package dplyr, eval=FALSE}
 ### read SHP Daten 
 load("shp2022.RData")
 
@@ -944,6 +944,7 @@ Hadley Wickham's `ggplot2` package has developed into a particularly useful alte
 ```{r Example: ggplot2, eval=FALSE}
 library(ggplot2)
 library(dplyr)
+library(haven)
 
 ### read SHP Daten 
 load("shp2022.RData")
