@@ -888,7 +888,7 @@ tab <- shp2022a %>%
 
 ### Solution: Package dplyr
 
-```{r Solution: Package dplyr, eval=FALSE}
+```{r Solution: Package dplyr, eval=FALSE, echo=TRUE}
 ### read SHP Daten 
 load("shp2022.RData")
 
@@ -987,7 +987,7 @@ ggplot(shp2022, aes(x=factor(PC44), y=..count.., fill=factor(SEX))) +
 
 ### Solution: Grafiken mit ggplot2
 
-```{r Solution: Grafiken mit ggplot2, eval=FALSE, echo=FALSE}
+```{r Solution: Grafiken mit ggplot2, eval=FALSE, echo=TRUE}
 
 # 1. Laden Sie die SHP-Daten.
 
