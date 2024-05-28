@@ -1145,7 +1145,7 @@ shinyApp(ui = ui, server = server)
 
             In 2017, Eva found a job as a cashier in a larger supermarket, while Tom continued to work in the workshop. They earned more money and were able to buy their own apartment. They also had more time for themselves and for their children, who were happy and healthy. Today, Eva and Tom are still happily married and looking forward to the future. They plan to take a trip to Spain soon to enjoy the sun. They also hope to become grandparents one day, as their son Max has a lovely girlfriend whom he has been dating for six months. Their daughter Zoe is still at school, but she already has many talents and interests that she wants to pursue."
 
-```{r eva}
+```{r eva, warnings=FALSE}
 # Create two vectors with the years and the estimates for Version 1
 year <- c(2004:2024)
 est <- c(4, 5, 6, 7, 8, 7, 8, 8, 7, 7, 8, 7, 8, 4, 3, 3, 2, 2, 2, 2,3)
@@ -1395,7 +1395,7 @@ quick_docx(tabelle_wirkung_hux, file = "tabelle_wirkung.docx")
 
 ### Excercise
 
--   Download data from [Fokus Arbeit](https://www.bfh.ch/de/forschung/forschungsprojekte/2021-557-302-115/). You can find them [here](https://drive.switch.ch/index.php/s/WYdxhZ0psZZqDzv).
+-   Download data from [Fokus Arbeit](https://www.bfh.ch/de/forschung/forschungsprojekte/2021-557-302-115/). You can find it [here](https://drive.switch.ch/index.php/s/WYdxhZ0psZZqDzv).
 
 -   Inspect data with respect to missing values and remove observations with missing values
 
