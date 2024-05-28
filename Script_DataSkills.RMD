@@ -1354,9 +1354,9 @@ richtungswechsel <- data.anonym%>%
 
 #Here we check whether the two groups are comparable in terms of 
 
-richtungswechsel%>%
+tabelle_wirkung<-richtungswechsel%>%
   group_by(Group)%>%#We tell R to do all calculations groupwise 
-  summarise(Mean.Age=mean(age),
+  summarise(Mean.Age=mean(Alter),
             Mean.Gender=mean(Geschlecht),
             Mean.Bezugsdauer=mean(Bezugsdauer))#We tell R to summarise all variabels in the data
 
