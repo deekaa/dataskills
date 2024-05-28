@@ -1411,7 +1411,7 @@ quick_docx(tabelle_wirkung_hux, file = "tabelle_wirkung.docx")
 
     -   Were the effects different by age, gender, duration of benefit receipt?
 
-```{r rct2,eval=FALSE,echo=FALSE}
+```{r rct2,eval=FALSE,echo=TRUE}
 
 #We will analyze the effect of "Richtungswechsel" on long-term recipients' vitality. https://journals.sagepub.com/doi/full/10.1177/10497315241232120
 
