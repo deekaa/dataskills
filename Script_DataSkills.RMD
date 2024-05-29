@@ -1093,27 +1093,25 @@ shinyApp(ui = ui, server = server)
 
 ## Why is it important to measure the effects of social work?
 
--   Improving practice with better knowledge
+Improving practice with better knowledge
 
-    -   Understanding whether and how social work interventions and offers reach their goals (evaluation)
+-   Understanding whether and how social work interventions and offers reach their goals (evaluation)
 
     -   Knowing the most effective interventions and offers
 
-    -   Knowing the most cost-effective interventions and offers
-
     -   Exercise
 
-        -   [What conclusions would you draw from this paper?](https://pubmed.ncbi.nlm.nih.gov/38699117/)
-
-        -   What could be the problem?
+        -   [What conclusions would you draw from this paper for counseling clients thinking about gender affirmative surgey?](https://pubmed.ncbi.nlm.nih.gov/38699117/)
 
 -   Legitimizing social work
 
     -   Gaining political support for social work
+
     -   Example:
+
         -   [Winterthur](https://www.buerobass.ch/fileadmin/Files/2021/2021_Reduktion_Falllast_Winterthur_Schlussbericht_DE.pdf)
 
--   Shift to online activity of social work offers facilitates measuring the effects of social work
+-   Digitalization strongly facilitates measuring the effects of social work
 
     -   More outcome data (e.g. use of services)
 
@@ -1497,7 +1495,7 @@ quick_docx(tabelle_wirkung_hux, file = "tabelle_wirkung.docx")
 
 -   Prediction is an integral part of individual-level social work
 
-    -   Is used for **diagnosis**
+    -   It is used for **diagnosis**
 
         -   is about identifying clients' need for assistance
 
@@ -1509,7 +1507,7 @@ quick_docx(tabelle_wirkung_hux, file = "tabelle_wirkung.docx")
 
         -   When deciding on which action to take with our client (service, activity, intervention), we make predictions on [**which action will bring the greatest improvements?**](https://www.sciencedirect.com/science/article/pii/S0927537105000564)
 
--   On an aggreagte level, we need to predict future need for services to ensure mobilization of adequate resources (i.e. asking politics for money)
+-   On an aggregate level, we need to predict future need for services to ensure mobilization of adequate resources (i.e. asking for more funding)
 
     -   E.g. [expectations about case numbers in social assistance during covid](https://skos.ch/themen/sozialhilfe-und-corona/herausforderungen-fuer-das-soziale-system/)
 
@@ -1527,25 +1525,25 @@ quick_docx(tabelle_wirkung_hux, file = "tabelle_wirkung.docx")
 
     -   Supervised, because we tell the computer what the outcome and what the determinants are
 
--   Algorithms determining rules linking determinants to outcomes = model
+-   Using prediction algorithms, the computer finds rules linking determinants to outcomes. These rule sets are a model.
 
--   Simple and less simple prediction algorithms
+-   There are simple and less simple prediction algorithms
 
-    -   E.g., simple: Ordinary Least Squares
+    -   E.g., simple and rigid: Ordinary Least Squares
 
-    -   E.g., complex: Neural Networks
+    -   E.g., complex and flexible: Neural Networks
 
-        -   [see Statquest for explanations of different algorithms](https://www.youtube.com/@statquest)
+        -   [Statquest for explanations of different algorithms](https://www.youtube.com/@statquest)
 
-    -   In practice we often use extreme gradient boosting
+    -   In practice we often use [extreme gradient boosting](https://www.youtube.com/watch?v=OtD8wVaFm6E)
 
 -   Model is used to predict unknown outcomes with information on predictors
 
 -   It is more useful
 
-    -   the more precise machines can predict the
+    -   the more precise machines can predict the outcome
 
-    -   the clearer is what can be done to prevent the outcome
+    -   the clearer it is what can be done to prevent the outcome
 
     -   the more important it is to intervene early
 
@@ -1553,7 +1551,7 @@ quick_docx(tabelle_wirkung_hux, file = "tabelle_wirkung.docx")
 
 ## Examples
 
--   Excercise
+-   Exercise
 
     -   Please choose one of the following texts on applications of prediction algorithms in fields related to social work
 
@@ -1653,8 +1651,7 @@ predictions <- predict(model, newdata = test_data)
 mse <- mean((predictions - test_data$HasJob)^2)
 
 # Print the results
-cat("R-squared: ", rsq, "\n")
-cat("Mean Squared Error: ", mse, "\n")
+cat("Mean Squared Error: ", mse)
 
 ```
 
@@ -1662,7 +1659,7 @@ cat("Mean Squared Error: ", mse, "\n")
 
 -   Add in health (Gesund) and motivation (Arbeitsidentitaet) as predictors of labor market success. Which one is more important for predictive performance?
 
--   Can you predict more accurately when using random foralgorithm than OLS?
+-   Can you predict more accurately when using random forest algorithm than OLS?
 
 -   Extra: Test your own predictive performance on a subset of 10 test observations. Can you predict better than the model? Use the following code to take the subset of the test data and make manual predictions.
 
@@ -1676,7 +1673,6 @@ cat("Mean Squared Error: ", mse, "\n")
     print(test_subset%>%select(-HasJob))
 
     # Manually input your predictions here
-    # For example, let's assume you predicted the following:
     manual_predictions <- c(0.4, 0.5, 0.3, 0.6, 0.2, 0.7, 0.4, 0.5, 0.3, 0.6)
     ```
 
@@ -1761,10 +1757,10 @@ test_subset <- test_data %>% sample_n(10)
 # Display the subset to make manual predictions
 cat("\nTest Subset for Manual Prediction:\n")
 print(test_subset%>%select(-HasJob))
-
+print(test_subset)
 # Manually input your predictions here
 # For example, let's assume you predicted the following:
-manual_predictions <- c(0.4, 0.5, 0.3, 0.6, 0.2, 0.7, 0.4, 0.5, 0.3, 0.6)
+manual_predictions <- c(40, 50, 30, 60, 20, 70, 40, 50, 30, 60)
 
 # Calculate Mean Squared Error (MSE) for your manual predictions
 mse_manual <- mean((manual_predictions - test_subset$HasJob)^2)
