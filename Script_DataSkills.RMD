@@ -1123,77 +1123,21 @@ Improving practice with better knowledge
 
 -   What is the **counterfactual** situation?
 
-    -   The story of Tom and Eva
+    -   The fictional world in which the influencing variable was not present.
 
-        -   "Eva was a saleswoman in a supermarket in Lucerne, who came from a poor family. She dropped out of school after the ninth grade to financially support her parents. In 2005, she met Tom, a mechanic from St. Gallen who worked in a workshop. They fell in love and got married in 2007. They had two children: a son named Max in 2008 and a daughter named Zoe in 2010.
-
-            Eva and Tom had a loving marriage but also their problems. They had to deal with the low income, high rent, and high cost of living. They sometimes argued, but they always talked it out and found a solution. They valued each other and supported each other's wishes.
-
-            However, in 2017, the relationship between Eva and Tom broke down. Eva discovered that Tom was having an affair with a customer he had met in his workshop. She was angry and hurt and confronted him about it. Tom admitted his infidelity and told her that he no longer loved her. He wanted a divorce and to move out.
-
-            Eva was devastated and agreed to the divorce. They had to arrange custody for their children, who suffered from their parents' separation. They decided on joint custody, with the children alternating between living with each parent. They also had to divide the assets they had accumulated during their marriage. They sold their apartment in Lucerne and split the proceeds.
-
-            Today, Eva and Tom are divorced and live separately. They have both continued their careers but with less success than before. Eva is still a saleswoman in a small supermarket but has no prospects for promotion or salary increase. Tom is still a mechanic in a small workshop but faces a lot of competition from younger colleagues. They earn less money than before and have trouble paying their bills. They also have less time for themselves and for their children, who are unhappy and insecure. Since 2020, Eva has been supported by social welfare."
-
-    -   The counterfactual version
-
-        -   "Eva was a saleswoman in a supermarket in Lucerne, who came from a poor family. She dropped out of school after the ninth grade to financially support her parents. In 2005, she met Tom, a mechanic from St. Gallen who worked in a workshop. They fell in love and got married in 2007. They had two children: a son named Max in 2008 and a daughter named Zoe in 2010.
-
-            Eva and Tom had a loving marriage but also their problems. They had to deal with the low income, high rent, and high cost of living. They sometimes argued, but they always talked it out and found a solution. They valued each other and supported each other's wishes.
-
-            In 2017, Eva found a job as a cashier in a larger supermarket, while Tom continued to work in the workshop. They earned more money and were able to buy their own apartment. They also had more time for themselves and for their children, who were happy and healthy. Today, Eva and Tom are still happily married and looking forward to the future. They plan to take a trip to Spain soon to enjoy the sun. They also hope to become grandparents one day, as their son Max has a lovely girlfriend whom he has been dating for six months. Their daughter Zoe is still at school, but she already has many talents and interests that she wants to pursue."
-
-```{r eva, warnings=FALSE}
-# Create two vectors with the years and the estimates for Version 1
-year <- c(2004:2024)
-est <- c(4, 5, 6, 7, 8, 7, 8, 8, 7, 7, 8, 7, 8, 4, 3, 3, 2, 2, 2, 2,3)
-
-# Create a table with the vectors as columns
-tab1 <- data.frame(year, est, type = "Life Satisfaction")
-save <- est
-
-year <- c(2004:2024)
-est <- c(4, 5, 6, 7, 8, 7, 8, 8, 7, 7, 8, 7, 8, 9, 9, 9, 8, 9, 9, 9,8)
-
-# Create a table with the vectors as columns
-tab2 <- data.frame(year, est, type = "Life Satisfaction")
-
-tab3 <- data.frame(year, est = save - est, type = "Effect of Divorce", version = "Effect of Divorce")
-
-library(ggplot2)
-
-# Add a new column indicating the version
-tab1$version <- "Real Situation"
-tab2$version <- "Counterfactual Scenario"
-
-# Combine the two tables
-tab <- rbind(tab1, tab2, tab3)
-
-# Create a line plot with ggplot
-ggplot(tab, aes(x = year, y = est, color = version)) +  
-  geom_line() +  
-  facet_grid(type ~ ., scales = "free_y") + 
-  labs(
-    title = "The Effect of Eva's Divorce", 
-    subtitle = "Eva's Life Satisfaction in the Actual and Counterfactual World", 
-    x = "Year", 
-    color = "Effect", 
-    y = "Life Satisfaction resp.\nEffect of Divorce on Life Satisfaction"
-  ) +  
-  geom_vline(xintercept = 2016.5)
-
+```{=html}
+<!-- -->
 ```
-
 -   Exercise
     -   Talk to the person sitting next to you.
         -   What was the most important event in your life (family, education, work, health, social relationships)?
         -   What areas of your life have been affected by this event?
         -   What would these areas be like if the event had not happened (can you guess numbers)?
--   Example of measuring effects of social work
+-   Example of effect measures in social work
 
 [![](images/clipboard-851415407.png)](https://www.nber.org/papers/w30405)
 
--   An often seen non-example of "effects":
+-   Caution: "Wirkungsziele" are often not actual measures of "effects":
 
     -   [Federal Council guidelines for the labor market integration of persons with protection status S for cantons: 40% should have a job until the end of 2024](https://www.blick.ch/politik/40-prozent-sollen-stelle-haben-der-bundesrat-will-dass-mehr-ukrainerinnen-arbeiten-id19105587.html)
         -   Why does a canton (not) reaching the goal of 40% not say much about the effects of its measures?
@@ -1312,6 +1256,10 @@ ggplot(tab, aes(x = year, y = est, color = version)) +
 -   Imagine this: you want to find out how number of meetings with social worker affects client well-being
 
 -   Please define a research design according to your method of effect measurement
+
+    -   What data would you analyze?
+
+    -   What numbers would you calculate to measure the effect?
 
 ## Analyzing social work experiments in R
 
