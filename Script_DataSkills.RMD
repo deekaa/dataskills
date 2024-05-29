@@ -1202,14 +1202,6 @@ ggplot(tab, aes(x = year, y = est, color = version)) +
 
 ## How can we measure the effects of social work with quantitative data?
 
-### Exercise
-
--   Form four groups: one for each method to measure effects
-
--   Create a social work related example of an effect measure with the respective method. What effect do you measure? What is the outcome measure? What data would you collect?
-
--   Present the basics of the methodology and the example to your colleagues (at least including the bullet points below)
-
 ### Asking experts
 
 -   Asking individuals about the subjectively measured effect
@@ -1313,9 +1305,15 @@ ggplot(tab, aes(x = year, y = est, color = version)) +
 
     -   Limited samples: Reproducability?
 
-    -   Predetermined treatment
-
     -   Randomness hard to prove
+
+### Exercise
+
+-   Form four groups: one for each method to measure effects
+
+-   Imagine this: you want to find out how number of meetings with social worker affects client well-being
+
+-   Please define a research design according to your method of effect measurement
 
 ## Analyzing social work experiments in R
 
