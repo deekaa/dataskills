@@ -157,7 +157,9 @@ sqrt(3)!=cos(17)
 ```
 
 ## Class / data types
+
 ### Overview of data types
+
 ```{r Übersicht Datentypen, eval=F}
 # Integer vector
 x <- c(1, 2, 3)
@@ -465,7 +467,8 @@ summary(age)
     -   `group_by()`: defines subgroups in the data so that `mutate()` and `summarize()` can be applied separately per group.
     -   dplyr can be used very well together with so-called piping, i.e. the data object is passed from function to function by `%>%`, which makes the code much easier to read and more compact.
 
-### Example: Package dplyr 
+### Example: Package dplyr
+
 ```{r Example: Package dplyr,eval=FALSE}
 # load libraries
 library(dplyr)
@@ -493,7 +496,7 @@ tab <- stadtdata %>%
   na.omit() # Entfernt Zeilen mit fehlenden Werten.
 ```
 
-### Exercise: Package dplyr 
+### Exercise: Package dplyr
 
 -   Read the Naturprojekt data into RStudio.
 
@@ -611,11 +614,11 @@ ggplot(mydata, aes(x=factor(draussen_zeit), y=..count.., fill=factor(land))) +
   ggtitle("Wie viel Zeit verbringt Ihr Kind normalerweise in einer Woche draussen in der Natur?")
 ```
 
-### Exercise: Grafiken mit ggplot2 
+### Exercise: Grafiken mit ggplot2
 
 1.  Load the Naturproject data.
 2.  Create a histogram for income (variable: inc_level). give the graph a title. Tip: Add a `labs()` argument to the chart.
-3. Create a scatterplot for quality of life (`LQ`) and time spending outside (`draussen_zeit`). 
+3.  Create a scatterplot for quality of life (`LQ`) and time spending outside (`draussen_zeit`).
 
 ### Solution: Grafiken mit ggplot2
 
@@ -722,27 +725,25 @@ shinyApp(ui = ui, server = server)
 
 ## Why is it important to measure the effects of social work?
 
--   Improving practice with better knowledge
+Improving practice with better knowledge
 
-    -   Understanding whether and how social work interventions and offers reach their goals (evaluation)
+-   Understanding whether and how social work interventions and offers reach their goals (evaluation)
 
     -   Knowing the most effective interventions and offers
 
-    -   Knowing the most cost-effective interventions and offers
+    -   Exercise
 
-        -   Exercise
-
-            -   [What conclusions would you draw from this paper?](https://pubmed.ncbi.nlm.nih.gov/38699117/)
-
-            -   What could be the problem?
+        -   [What conclusions would you draw from this paper for counseling clients thinking about gender affirmative surgey?](https://pubmed.ncbi.nlm.nih.gov/38699117/)
 
 -   Legitimizing social work
 
-    -   Gaining political support for social work (i.e. money!)
+    -   Gaining political support for social work
+
     -   Example:
+
         -   [Winterthur](https://www.buerobass.ch/fileadmin/Files/2021/2021_Reduktion_Falllast_Winterthur_Schlussbericht_DE.pdf)
 
--   Shift to online activity of social work offers facilitates measuring the effects of social work
+-   Digitalization strongly facilitates measuring the effects of social work
 
     -   More outcome data (e.g. use of services)
 
@@ -754,90 +755,25 @@ shinyApp(ui = ui, server = server)
 
 -   What is the **counterfactual** situation?
 
-    -   The story of Tom and Eva
+    -   The fictional world in which the influencing variable was not present.
 
-        -   "Eva was a saleswoman in a supermarket in Lucerne, who came from a poor family. She dropped out of school after the ninth grade to financially support her parents. In 2005, she met Tom, a mechanic from St. Gallen who worked in a workshop. They fell in love and got married in 2007. They had two children: a son named Max in 2008 and a daughter named Zoe in 2010.
-
-            Eva and Tom had a loving marriage but also their problems. They had to deal with the low income, high rent, and high cost of living. They sometimes argued, but they always talked it out and found a solution. They valued each other and supported each other's wishes.
-
-            However, in 2017, the relationship between Eva and Tom broke down. Eva discovered that Tom was having an affair with a customer he had met in his workshop. She was angry and hurt and confronted him about it. Tom admitted his infidelity and told her that he no longer loved her. He wanted a divorce and to move out.
-
-            Eva was devastated and agreed to the divorce. They had to arrange custody for their children, who suffered from their parents' separation. They decided on joint custody, with the children alternating between living with each parent. They also had to divide the assets they had accumulated during their marriage. They sold their apartment in Lucerne and split the proceeds.
-
-            Today, Eva and Tom are divorced and live separately. They have both continued their careers but with less success than before. Eva is still a saleswoman in a small supermarket but has no prospects for promotion or salary increase. Tom is still a mechanic in a small workshop but faces a lot of competition from younger colleagues. They earn less money than before and have trouble paying their bills. They also have less time for themselves and for their children, who are unhappy and insecure. Since 2020, Eva has been supported by social welfare."
-
-    -   The counterfactual version
-
-        -   "Eva was a saleswoman in a supermarket in Lucerne, who came from a poor family. She dropped out of school after the ninth grade to financially support her parents. In 2005, she met Tom, a mechanic from St. Gallen who worked in a workshop. They fell in love and got married in 2007. They had two children: a son named Max in 2008 and a daughter named Zoe in 2010.
-
-            Eva and Tom had a loving marriage but also their problems. They had to deal with the low income, high rent, and high cost of living. They sometimes argued, but they always talked it out and found a solution. They valued each other and supported each other's wishes.
-
-            In 2017, Eva found a job as a cashier in a larger supermarket, while Tom continued to work in the workshop. They earned more money and were able to buy their own apartment. They also had more time for themselves and for their children, who were happy and healthy. Today, Eva and Tom are still happily married and looking forward to the future. They plan to take a trip to Spain soon to enjoy the sun. They also hope to become grandparents one day, as their son Max has a lovely girlfriend whom he has been dating for six months. Their daughter Zoe is still at school, but she already has many talents and interests that she wants to pursue."
-
-```{r eva}
-# Create two vectors with the years and the estimates for Version 1
-year <- c(2004:2024)
-est <- c(4, 5, 6, 7, 8, 7, 8, 8, 7, 7, 8, 7, 8, 4, 3, 3, 2, 2, 2, 2,3)
-
-# Create a table with the vectors as columns
-tab1 <- data.frame(year, est, type = "Life Satisfaction")
-save <- est
-
-year <- c(2004:2024)
-est <- c(4, 5, 6, 7, 8, 7, 8, 8, 7, 7, 8, 7, 8, 9, 9, 9, 8, 9, 9, 9,8)
-
-# Create a table with the vectors as columns
-tab2 <- data.frame(year, est, type = "Life Satisfaction")
-
-tab3 <- data.frame(year, est = save - est, type = "Effect of Divorce", version = "Effect of Divorce")
-
-library(ggplot2)
-
-# Add a new column indicating the version
-tab1$version <- "Real Situation"
-tab2$version <- "Counterfactual Scenario"
-
-# Combine the two tables
-tab <- rbind(tab1, tab2, tab3)
-
-# Create a line plot with ggplot
-ggplot(tab, aes(x = year, y = est, color = version)) +  
-  geom_line() +  
-  facet_grid(type ~ ., scales = "free_y") + 
-  labs(
-    title = "The Effect of Eva's Divorce", 
-    subtitle = "Eva's Life Satisfaction in the Actual and Counterfactual World", 
-    x = "Year", 
-    color = "Effect", 
-    y = "Life Satisfaction resp.\nEffect of Divorce on Life Satisfaction"
-  ) +  
-  geom_vline(xintercept = 2016.5)
-
-```
+<!-- -->
 
 -   Exercise
     -   Talk to the person sitting next to you.
         -   What was the most important event in your life (family, education, work, health, social relationships)?
         -   What areas of your life have been affected by this event?
         -   What would these areas be like if the event had not happened (can you guess numbers)?
--   Example of measuring effects of social work
+-   Example of effect measures in social work
 
 [![](images/clipboard-851415407.png)](https://www.nber.org/papers/w30405)
 
--   An often seen non-example of "effects":
+-   Caution: "Wirkungsziele" are often not actual measures of "effects":
 
     -   [Federal Council guidelines for the labor market integration of persons with protection status S for cantons: 40% should have a job until the end of 2024](https://www.blick.ch/politik/40-prozent-sollen-stelle-haben-der-bundesrat-will-dass-mehr-ukrainerinnen-arbeiten-id19105587.html)
         -   Why does a canton (not) reaching the goal of 40% not say much about the effects of its measures?
 
 ## How can we measure the effects of social work with quantitative data?
-
-### Exercise
-
--   Form four groups: one for each method to measure effects
-
--   Create a social work related example of an effect measure with the respective method. What effect do you measure? What is the outcome measure? What data would you collect?
-
--   Present the basics of the methodology and the example to your colleagues (at least including the bullet points below)
 
 ### Asking experts
 
@@ -942,9 +878,19 @@ ggplot(tab, aes(x = year, y = est, color = version)) +
 
     -   Limited samples: Reproducability?
 
-    -   Predetermined treatment
-
     -   Randomness hard to prove
+
+### Exercise
+
+-   Form four groups: one for each method to measure effects
+
+-   Imagine this: you want to find out how number of meetings with social worker affects client well-being
+
+-   Please define a research design according to your method of effect measurement
+
+    -   What data would you analyze?
+
+    -   What numbers would you calculate to measure the effect?
 
 ## Analyzing social work experiments in R
 
@@ -983,9 +929,9 @@ richtungswechsel <- data.anonym%>%
 
 #Here we check whether the two groups are comparable in terms of 
 
-richtungswechsel%>%
+tabelle_wirkung<-richtungswechsel%>%
   group_by(Group)%>%#We tell R to do all calculations groupwise 
-  summarise(Mean.Age=mean(age),
+  summarise(Mean.Age=mean(Alter),
             Mean.Gender=mean(Geschlecht),
             Mean.Bezugsdauer=mean(Bezugsdauer))#We tell R to summarise all variabels in the data
 
@@ -1024,7 +970,7 @@ quick_docx(tabelle_wirkung_hux, file = "tabelle_wirkung.docx")
 
 ### Excercise
 
--   Download data from [Fokus Arbeit](https://www.bfh.ch/de/forschung/forschungsprojekte/2021-557-302-115/). You can find them [here](https://drive.switch.ch/index.php/s/WYdxhZ0psZZqDzv).
+-   Download data from [Fokus Arbeit](https://www.bfh.ch/de/forschung/forschungsprojekte/2021-557-302-115/). You can find it [here](https://drive.switch.ch/index.php/s/WYdxhZ0psZZqDzv).
 
 -   Inspect data with respect to missing values and remove observations with missing values
 
@@ -1040,67 +986,70 @@ quick_docx(tabelle_wirkung_hux, file = "tabelle_wirkung.docx")
 
     -   Were the effects different by age, gender, duration of benefit receipt?
 
-```{r rct2,eval=FALSE,echo=FALSE}
+```{r rct2,eval=FALSE,echo=TRUE}
 
 #We will analyze the effect of "Richtungswechsel" on long-term recipients' vitality. https://journals.sagepub.com/doi/full/10.1177/10497315241232120
 
-download.file("https://drive.switch.ch/index.php/s/WYdxhZ0psZZqDzv/download", "FokusArbeit.csv",mode = "wb")
+#We will analyze the effect of "Richtungswechsel" on long-term recipients' vitality. https://journals.sagepub.com/doi/full/10.1177/10497315241232120
+
+#Download the data: with this command you can download files if you have the direct link to the file
+download.file("https://drive.switch.ch/index.php/s/zpjX3z1frPOQKqr/download", "Richtungswechsel.R",mode = "wb")
 
 #Because the file is in R-Data-Format (.R) we can load it directly
-data <- read.csv("C:/Users/kld1/switchdrive/BFH/Wichtige Dokumente/Lehre/Data skills for social work professionals/BFH/Daten/Fokus Arbeit/FokusArbeit_Wirkung.csv")
+load("Richtungswechsel.R")
 
 #To prepare the data for analysis and to analyze the data we will install/load the package "dplyr"
 #install.packages("dplyr")
 library(dplyr)
 
 #Let's have a look at the Data
-View(data)
+View(data.anonym)
 
 #Are there missing values?
-summary(data)
+
+summary(data.anonym)
 
 #Vit1 contains measures of vitality before Richtungswechsel, vit2 contains measures of vitality after Richtungswechsel
 
 #We will give the data a nicer name
-fokusarbeit <- data%>%
-  filter(!is.na(Vitality1))%>%#We remove missing values
-  mutate(vitality.change=Vitality2-Vitality1,#Here we calculate a new column measuring the change in vitality
+richtungswechsel <- data.anonym%>%
+  filter(!is.na(vit2))%>%#We remove missing values
+  mutate(vitality.change=vit2-vit1,#Here we calculate a new column measuring the change in vitality
          
-         Group=ifelse(Interventionsgruppe==1,"Intervention group","Comparison group")) #Here ge give the variable INT1 (Group membership) a nicer, more telling name and labels
+         Group=ifelse(INT1==1,"Intervention group","Comparison group")) #Here ge give the variable INT1 (Group membership) a nicer, more telling name and labels
 #Were there more positive changes in the intervention group?
 
 #Here we check whether the two groups are comparable in terms of 
 
-fokusarbeit%>%
+richtungswechsel%>%
   group_by(Group)%>%#We tell R to do all calculations groupwise 
   summarise(Mean.Age=mean(Alter),
-            Mean.Gender=mean(Weiblich),
+            Mean.Gender=mean(Geschlecht),
             Mean.Bezugsdauer=mean(Bezugsdauer))#We tell R to summarise all variabels in the data
 
-
 #Here we calculate the effect of the intervetion
-tabellewirkung<-fokusarbeit%>%
+tabelle_wirkung<-richtungswechsel%>%
   group_by(Group)%>%
   summarise(Mean.Change=mean(vitality.change),
-            Mean.Vit1=mean(Vitality1,na.rm = T),
-            Mean.Vit2=mean(Vitality2,na.rm=T)) #We tell R to calculate the mean value of the change in vitality. We must tell it to remove missing values.
+            Mean.Vit1=mean(vit1,na.rm = T),
+            Mean.Vit2=mean(vit2,na.rm=T)) #We tell R to calculate the mean value of the change in vitality. We must tell it to remove missing values.
 
 #Was the effect stronger for men or for women?
 
-fokusarbeit%>%
-  group_by(Group,Geschlecht=ifelse(Weiblich==100,"Women","Men"))%>%#We tell R to do all calculations groupwise 
+richtungswechsel%>%
+  group_by(Group,Geschlecht=ifelse(Geschlecht==1,"Women","Men"))%>%#We tell R to do all calculations groupwise 
   summarise(Mean.Change=mean(vitality.change,na.rm = T)) #We tell R to calculate the mean value of the change in vitality. We must tell it to remove missing values.
 
 
 #Tabelle Wirkung abspeichern
-
+install.packages("huxtable")
 library(huxtable)
 # Konvertieren Sie die Tabelle in ein Huxtable-Objekt
 tabelle_wirkung_hux <- as_hux(tabelle_wirkung)
 
 # Erste Zeile fett und mit Linie abgrenzen
 bold(tabelle_wirkung_hux)[1,] <- TRUE
-bottom_border(tabelle_wirkung_hux)[1,] <- 1
+bottom_border(tabelle_wirkung_hux)[1,] <- TRUE
 
 # Erste Spalte fett formatieren
 bold(tabelle_wirkung_hux)[,1] <- TRUE
@@ -1125,7 +1074,7 @@ quick_docx(tabelle_wirkung_hux, file = "tabelle_wirkung.docx")
 
 -   Prediction is an integral part of individual-level social work
 
-    -   Is used for **diagnosis**
+    -   It is used for **diagnosis**
 
         -   is about identifying clients' need for assistance
 
@@ -1137,11 +1086,11 @@ quick_docx(tabelle_wirkung_hux, file = "tabelle_wirkung.docx")
 
         -   When deciding on which action to take with our client (service, activity, intervention), we make predictions on [**which action will bring the greatest improvements?**](https://www.sciencedirect.com/science/article/pii/S0927537105000564)
 
--   On an aggreagte level, we need to predict future need for services to ensure mobilization of adequate resources (i.e. asking politics for money)
+-   On an aggregate level, we need to predict future need for services to ensure mobilization of adequate resources (i.e. asking for more funding)
 
     -   E.g. [expectations about case numbers in social assistance during covid](https://skos.ch/themen/sozialhilfe-und-corona/herausforderungen-fuer-das-soziale-system/)
 
--   Social workers, like all humans, make mistakes when predicting future developments, [although experienced social workers are more successfull at it](https://academic.oup.com/bjsw/article-abstract/54/3/1150/7382101?redirectedFrom=fulltext).
+-   Social workers, like all humans, make mistakes when predicting future developments, [although experienced social workers are more successful at it](https://academic.oup.com/bjsw/article-abstract/54/3/1150/7382101?redirectedFrom=fulltext).
 
 -   Machines can help us predict outcomes more accurately, that's why we can call it artificial intelligence
 
@@ -1155,25 +1104,25 @@ quick_docx(tabelle_wirkung_hux, file = "tabelle_wirkung.docx")
 
     -   Supervised, because we tell the computer what the outcome and what the determinants are
 
--   Algorithms determining rules linking determinants to outcomes = model
+-   Using prediction algorithms, the computer finds rules linking determinants to outcomes. These rule sets are a model.
 
--   Simple and less simple prediction algorithms
+-   There are simple and less simple prediction algorithms
 
-    -   E.g., simple: Ordinary Least Squares
+    -   E.g., simple and rigid: Ordinary Least Squares
 
-    -   E.g., complex: Neural Networks
+    -   E.g., complex and flexible: Neural Networks
 
-        -   [see Statquest for explanations of different algorithms](https://www.youtube.com/@statquest)
+        -   [Statquest for explanations of different algorithms](https://www.youtube.com/@statquest)
 
-    -   In practice we often use extreme gradient boosting
+    -   In practice we often use [extreme gradient boosting](https://www.youtube.com/watch?v=OtD8wVaFm6E)
 
 -   Model is used to predict unknown outcomes with information on predictors
 
 -   It is more useful
 
-    -   the more precise machines can predict the
+    -   the more precise machines can predict the outcome
 
-    -   the clearer is what can be done to prevent the outcome
+    -   the clearer it is what can be done to prevent the outcome
 
     -   the more important it is to intervene early
 
@@ -1181,31 +1130,31 @@ quick_docx(tabelle_wirkung_hux, file = "tabelle_wirkung.docx")
 
 ## Examples
 
--   Excercise
+-   Exercise
 
-    -   Please choose one of the following texts on applications of prediction algorithms
+    -   Please choose one of the following texts on applications of prediction algorithms in fields related to social work
 
-        -   [Berman et al. - 2024 - Trustworthy AI in the public sector An empirical .pdf](https://www.sciencedirect.com/science/article/pii/S0160791X24000198)
+        -   [Berman et al. - 2024 - Trustworthy AI in the public sector An empirical .pdf](https://drive.switch.ch/index.php/s/0BnVw64Ld3IlHzl)
 
-        -   [Black et al. - 2003 - Is the Threat of Reemployment Services More Effect.pdf](https://moodle.bfh.ch/pluginfile.php/3114064/mod_folder/content/0/Black%20et%20al.%20-%202003%20-%20Is%20the%20Threat%20of%20Reemployment%20Services%20More%20Effect.pdf?forcedownload=1)
+        -   [Black et al. - 2003 - Is the Threat of Reemployment Services More Effect.pdf](https://drive.switch.ch/index.php/s/x03olQjgxDtiZAl)
 
-        -   [Gilholm et al. - 2023 - Machine learning to predict poor school performanc.pdf](https://moodle.bfh.ch/pluginfile.php/3114064/mod_folder/content/0/Gilholm%20et%20al.%20-%202023%20-%20Machine%20learning%20to%20predict%20poor%20school%20performanc.pdf?forcedownload=1)
+        -   [Gilholm et al. - 2023 - Machine learning to predict poor school performanc.pdf](https://drive.switch.ch/index.php/s/vQ0wcVhosqs8r0X)
 
-        -   [Kleinberg et al. - 2018 - Human Decisions and Machine Predictions.pdf](Kleinberg et al. - 2018 - Human Decisions and Machine Predictions.pdf)
+        -   [Kleinberg et al. - 2018 - Human Decisions and Machine Predictions.pdf](https://drive.switch.ch/index.php/s/ukrf4MrRG4dejE2)
 
-        -   [Rittenhouse et al. - 2023 - Algorithms, Humans and Racial Disparities in Child.pdf](Rittenhouse et al. - 2023 - Algorithms, Humans and Racial Disparities in Child.pdf)
+        -   [Rittenhouse et al. - 2023 - Algorithms, Humans and Racial Disparities in Child.pdf](https://drive.switch.ch/index.php/s/ziuaAdJWjWDU358)
 
-        -   [Stevenson and Doleac - 2022 - Algorithmic Risk Assessment in the Hands of Humans.pdf](Stevenson and Doleac - 2022 - Algorithmic Risk Assessment in the Hands of Humans.pdf)
+        -   [Stevenson and Doleac - 2022 - Algorithmic Risk Assessment in the Hands of Humans.pdf](https://drive.switch.ch/index.php/s/fuogL1edjahkUSE)
 
-        -   [Tennakoon et al. - 2023 - Using electronic health record data to predict fut.pdf](Tennakoon et al. - 2023 - Using electronic health record data to predict fut.pdf)
+        -   [Tennakoon et al. - 2023 - Using electronic health record data to predict fut.pdf](https://drive.switch.ch/index.php/s/yUkYmA5PtK8AvRY)
 
-        -   [Toros and Flaming - 2018 - Prioritizing Homeless Assistance Using Predictive .pdf](Toros and Flaming - 2018 - Prioritizing Homeless Assistance Using Predictive .pdf)
+        -   [Toros and Flaming - 2018 - Prioritizing Homeless Assistance Using Predictive .pdf](https://drive.switch.ch/index.php/s/JRn0ybFpXYpaiLg)
 
-    -   Answer the following questions:
+    -   Answer the following questions (some questions may not be answered based on information in the papers):
 
         -   What decisions are to be taken based on AI output? Decision-support or decision-making?
 
-        -   What data are used? What influencing factors?
+        -   What data are used to train the models? What are the outcomes, what are the influencing factors?
 
         -   How accurate is it? More or less than humans or bureaucratic rules?
 
@@ -1213,36 +1162,193 @@ quick_docx(tabelle_wirkung_hux, file = "tabelle_wirkung.docx")
 
         -   Would humans trust and use it?
 
-## How to train your a prediction model?
+        -   What are the effects of usage?
 
--   Fokus Arbeit Daten
+## How to train your own prediction model
 
-    -   Vorzeigen mit wenig prädiktoren
+-   Training a prediction model involves the following steps
 
-    -   Daten in trainings und Testdaten unterteilen
+    -   Acquiring the data with past observations of determinants and outcomes
 
-    -   Show predictive accuracy of different algorithms
+    -   Split observations into training data and test data
 
-        -   R-Squared
+    -   Maximizing predictive performance
 
-        -   Mean squared error
+        -   Measures of predictive performance
 
-```{r Prediction,eval=FALSE}
+            -   Continuous outcomes
 
-download.file("https://drive.switch.ch/index.php/s/WYdxhZ0psZZqDzv/download", "FokusArbeit.csv",mode = "wb")
+                -   usually mean squared error
+
+            -   Categorical outcomes
+
+                -   correctly classified
+
+        -   Play around with the choice of prediction algorithm
+
+        -   For algorithms that have parameters: play around
+
+```{r Prediction,eval=FALSE,echo=TRUE}
+library(dplyr)
+
+download.file("https://drive.switch.ch/index.php/s/hYUFQEOz12pFbvS/download", "FokusArbeit_Vorhersage.csv",mode = "wb")
 
 #Because the file is in R-Data-Format (.R) we can load it directly
-data <- read.csv("C:/Users/kld1/switchdrive/BFH/Wichtige Dokumente/Lehre/Data skills for social work professionals/BFH/Daten/Fokus Arbeit/FokusArbeit_Wirkung.csv")
+data <- read.csv("FokusArbeit_Vorhersage.csv")
+
+#Lets have a look at the variables
+names(data)
+
+#Rename variables to make them more intuitive
+data <- data %>%
+  select(HasJob = Erwerbkorr.mean, # measures the proportion of months the client has a job in months 4 up to 24 after the intervention
+         IsWoman = Weiblich, # Is a woman
+         IsSwiss = Schweiz, # Is Swiss
+         Speaks_language = Grundkompetenz.verstehen) %>% # Speaks either French/German
+na.omit()
+
+#Then we need to chose test Data and training data
+# Set seed for reproducibility
+set.seed(123)
+
+# Calculate the number of rows for training data (80%)
+train_rows <- sample(1:nrow(data), size = 0.8 * nrow(data))
+
+# Split the data
+train_data <- data %>% slice(train_rows)
+test_data <- data %>% slice(-train_rows)
+
+# Fit a linear model (Ordinary Least Squares)
+model <- lm(HasJob ~ IsWoman + IsSwiss + Speaks_language, data = train_data)
+
+#The advantage with OLS is that we can see which factors matter
+
+# Predict on test data
+predictions <- predict(model, newdata = test_data)
+
+# Calculate Mean Squared Error (MSE)
+mse <- mean((predictions - test_data$HasJob)^2)
+
+# Print the results
+cat("Mean Squared Error: ", mse)
 
 ```
 
--   
+## Exercise
 
-    -   Excercise
+-   Add in health (Gesund) and motivation (Arbeitsidentitaet) as predictors of labor market success. Which one is more important for predictive performance?
 
-        -   Add in health and motivation as a predictor. Which one is more important for prediction outcomes?
+-   Can you predict more accurately when using the random forest algorithm than OLS?
 
-        -   Can you predict more accurately when using another algorithm than OLS?
+-   Extra: Test your own predictive performance on a subset of 10 test observations. Can you predict better than the model? Use the following code to take the subset of the test data and make manual predictions.
+
+    ```{r Prediction_excercisetip,eval=FALSE,echo=TRUE}
+    # Test your own predictive performance on a subset of 10 test observations
+    set.seed(123) # For reproducibility
+    test_subset <- test_data %>% sample_n(10)
+
+    # Display the subset to make manual predictions
+    cat("\nTest Subset for Manual Prediction:\n")
+    print(test_subset%>%select(-HasJob))
+
+    # Manually input your predictions here
+    manual_predictions <- c(40, 50, 30, 60, 20, 70, 40, 50, 30, 60)
+    ```
+
+```{r Prediction_Excercise, eval=FALSE,echo=FALSE}
+library(dplyr)
+library(randomForest)
+
+# Download the data
+download.file("https://drive.switch.ch/index.php/s/hYUFQEOz12pFbvS/download", "FokusArbeit_Vorhersage.csv", mode = "wb")
+
+# Load the data
+data <- read.csv("FokusArbeit_Vorhersage.csv")
+
+# Rename variables to make them more intuitive
+data <- data %>%
+  select(HasJob = Erwerbkorr.mean, # measures the proportion of months the client has a job in months 4 up to 24 after the intervention
+         IsWoman = Weiblich, # Is a woman
+         IsSwiss = Schweiz, # Is Swiss
+         Speaks_language = Grundkompetenz.verstehen, # Speaks either French/German
+         Health = Gesund, # Health
+         Motivation = Arbeitsidentitaet) %>% # Motivation
+  na.omit()
+
+# Set seed for reproducibility
+set.seed(123)
+
+# Calculate the number of rows for training data (80%)
+train_rows <- sample(1:nrow(data), size = 0.8 * nrow(data))
+
+# Split the data
+train_data <- data %>% slice(train_rows)
+test_data <- data %>% slice(-train_rows)
+
+# Fit linear models with different sets of predictors
+model_ols_basic <- lm(HasJob ~ IsWoman + IsSwiss + Speaks_language, data = train_data)
+model_ols_health <- lm(HasJob ~ IsWoman + IsSwiss + Speaks_language + Health, data = train_data)
+model_ols_motivation <- lm(HasJob ~ IsWoman + IsSwiss + Speaks_language + Motivation, data = train_data)
+model_ols_full <- lm(HasJob ~ IsWoman + IsSwiss + Speaks_language + Health + Motivation, data = train_data)
+
+# Predict on test data using OLS models
+predictions_ols_basic <- predict(model_ols_basic, newdata = test_data)
+predictions_ols_health <- predict(model_ols_health, newdata = test_data)
+predictions_ols_motivation <- predict(model_ols_motivation, newdata = test_data)
+predictions_ols_full <- predict(model_ols_full, newdata = test_data)
+
+# Calculate Mean Squared Error (MSE) for OLS models
+mse_ols_basic <- mean((predictions_ols_basic - test_data$HasJob)^2)
+mse_ols_health <- mean((predictions_ols_health - test_data$HasJob)^2)
+mse_ols_motivation <- mean((predictions_ols_motivation - test_data$HasJob)^2)
+mse_ols_full <- mean((predictions_ols_full - test_data$HasJob)^2)
+
+# Fit a Random Forest model with full predictors
+model_rf <- randomForest(HasJob ~ IsWoman + IsSwiss + Speaks_language + Health + Motivation, data = train_data, ntree = 500)
+
+# Predict on test data using Random Forest
+predictions_rf <- predict(model_rf, newdata = test_data)
+
+# Calculate Mean Squared Error (MSE) for Random Forest
+mse_rf <- mean((predictions_rf - test_data$HasJob)^2)
+
+# Print the results
+cat("OLS Model - Basic Predictors (IsWoman, IsSwiss, Speaks_language):\n")
+cat("Mean Squared Error: ", mse_ols_basic, "\n\n")
+
+cat("OLS Model - Adding Health:\n")
+cat("Mean Squared Error: ", mse_ols_health, "\n\n")
+
+cat("OLS Model - Adding Motivation:\n")
+cat("Mean Squared Error: ", mse_ols_motivation, "\n\n")
+
+cat("OLS Model - Full Predictors (Including Health and Motivation):\n")
+cat("Mean Squared Error: ", mse_ols_full, "\n\n")
+
+cat("Random Forest Model - Full Predictors (Including Health and Motivation):\n")
+cat("Mean Squared Error: ", mse_rf, "\n")
+
+
+# Test your own predictive performance on a subset of 10 test observations
+set.seed(123) # For reproducibility
+test_subset <- test_data %>% sample_n(10)
+
+# Display the subset to make manual predictions
+cat("\nTest Subset for Manual Prediction:\n")
+print(test_subset%>%select(-HasJob))
+print(test_subset)
+# Manually input your predictions here
+# For example, let's assume you predicted the following:
+manual_predictions <- c(40, 50, 30, 60, 20, 70, 40, 50, 30, 60)
+
+# Calculate Mean Squared Error (MSE) for your manual predictions
+mse_manual <- mean((manual_predictions - test_subset$HasJob)^2)
+
+# Print your manual prediction results
+cat("\nYour Manual Predictions:\n")
+cat("Mean Squared Error: ", mse_manual, "\n")
+
+```
 
 ## Important references
 
