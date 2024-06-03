@@ -1486,15 +1486,13 @@ quick_docx(tabelle_wirkung_hux, file = "tabelle_wirkung.docx")
 
 -   Model is used to predict unknown outcomes with information on determinants
 
--   Prediction models are more useful for practice,
+-   Prediction models are more useful for social work practice,
 
-    -   the more precise machines can predict the outcome
+    -   the more precise machines can predict the outcome, and the [less biased](https://onlinelibrary.wiley.com/doi/abs/10.1002/widm.1356) they are.
 
     -   the clearer it is what can be done to prevent the outcome
 
     -   the more important it is to intervene early
-
-    -   the greater the difference between what at risk clients currently receive in terms of intervention and what they could receive
 
 ## Examples
 
@@ -1625,7 +1623,7 @@ cat("Mean Squared Error: ", mse)
     manual_predictions <- c(40, 50, 30, 60, 20, 70, 40, 50, 30, 60)
     ```
 
-```{r Prediction_Excercise, eval=FALSE,echo=FALSE}
+```{r Prediction_Excercise, eval=FALSE,echo=TRUE}
 library(dplyr)
 library(randomForest)
 
