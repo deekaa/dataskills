@@ -86,7 +86,7 @@ the.beatles # compared to a, the object is now a string/character
 # Names should be meaningful. Naming should be consistent throughout the code file (dots, upper/lower case)
 
 ls() # Display workspace
-rm(die.beatles) # Delete object
+rm(the.beatles) # Delete object
 
 ```
 
@@ -364,7 +364,7 @@ Age_tab <- as.data.frame(table(sub_rw$Age_groups))
 combined_df <- data.frame(
   Variable = c("Gender", as.character(geschl_tab$Var1), "Age",as.character(Age_tab$Var1)),
   n = c("", geschl_tab$Freq, "", Age_tab$Freq),
-  percent = c("", geschl_tab$Freq/106*100, "", Age_tab$Freq/106*100)
+  percent = c("", round(geschl_tab$Freq/106*100,2), "", round(Age_tab$Freq/106*100,2))
 )
 
 # Create and format the huxtable
@@ -510,7 +510,7 @@ tab <- stadtdata %>%
 
 ### Solution: Package dplyr
 
-```{r Solution: Package dplyr, eval=FALSE, echo=FALSE}
+```{r Solution: Package dplyr, eval=F, echo=TRUE}
 ### read data 
 library(haven)
 library(dplyr)
@@ -622,7 +622,7 @@ ggplot(mydata, aes(x=factor(draussen_zeit), y=..count.., fill=factor(land))) +
 
 ### Solution: Grafiken mit ggplot2
 
-```{r Solution: Grafiken mit ggplot2, eval=FALSE, echo=FALSE}
+```{r Solution: Grafiken mit ggplot2, eval=F}
 # 1. Laden Sie die Naturprojekt Daten.
 library(ggplot2)
 library(dplyr)
