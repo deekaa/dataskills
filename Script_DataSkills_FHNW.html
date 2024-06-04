@@ -1574,7 +1574,7 @@ the.beatles # compared to a, the object is now a string/character
 # Names should be meaningful. Naming should be consistent throughout the code file (dots, upper/lower case)
 
 ls() # Display workspace
-rm(die.beatles) # Delete object</code></pre>
+rm(the.beatles) # Delete object</code></pre>
 </div>
 <div id="arithmetic-and-logical-operators" class="section level2" number="1.3">
 <h2><span class="header-section-number">1.3</span> Arithmetic and
@@ -1881,7 +1881,7 @@ Age_tab &lt;- as.data.frame(table(sub_rw$Age_groups))
 combined_df &lt;- data.frame(
   Variable = c(&quot;Gender&quot;, as.character(geschl_tab$Var1), &quot;Age&quot;,as.character(Age_tab$Var1)),
   n = c(&quot;&quot;, geschl_tab$Freq, &quot;&quot;, Age_tab$Freq),
-  percent = c(&quot;&quot;, geschl_tab$Freq/106*100, &quot;&quot;, Age_tab$Freq/106*100)
+  percent = c(&quot;&quot;, round(geschl_tab$Freq/106*100,), &quot;&quot;, round(Age_tab$Freq/106*100,2))
 )
 
 # Create and format the huxtable
@@ -2047,6 +2047,39 @@ girls and boys.</p></li>
 <div id="solution-package-dplyr" class="section level3" number="2.3.3">
 <h3><span class="header-section-number">2.3.3</span> Solution: Package
 dplyr</h3>
+<pre class="r"><code>### read data 
+library(haven)
+library(dplyr)
+
+Naturdata &lt;- read_sav(&quot;S:/MA1082973/_FHNW/BA472/data sets/Naturprojekt/cleandata_naturproj_BA472.sav&quot;)
+
+# filter by living place &quot;&quot;stadt&quot; &quot;not city&quot;
+mydata &lt;- filter(Naturdata, stadt != 1)
+
+# select columns
+mydata &lt;- select(mydata, c(&quot;age_kid&quot;, &quot;maedchen&quot;, &quot;land&quot;, &quot;LQ&quot;, &quot;draussen_zeit&quot;, &quot;SES_h&quot;))
+
+summary(mydata)
+
+table(mydata$age_kid)
+table(mydata$maedchen)
+table(mydata$land)
+table(mydata$LQ)
+table(mydata$draussen_zeit)
+table(mydata$SES_h)
+
+# Create a crosstab with the variables SES_h and land
+table(mydata$SES_h, mydata$land)
+
+# calculate mean and standard deviation for the variable age for girls and boys.
+mydata_girls &lt;- filter(mydata, maedchen==1)
+mydata_boys &lt;- filter(mydata, maedchen==0)
+
+mean(mydata_girls$age_kid, na.rm=T)
+mean(mydata_boys$age_kid, na.rm=T)
+
+sd(mydata_girls$age_kid, na.rm=T)
+sd(mydata_boys$age_kid, na.rm=T)</code></pre>
 </div>
 </div>
 <div id="bivariate-statistics-2-variables" class="section level2" number="2.4">
@@ -2140,6 +2173,24 @@ spending outside (<code>draussen_zeit</code>).</li>
 <div id="solution-grafiken-mit-ggplot2" class="section level3" number="3.1.3">
 <h3><span class="header-section-number">3.1.3</span> Solution: Grafiken
 mit ggplot2</h3>
+<pre class="r"><code># 1. Laden Sie die Naturprojekt Daten.
+library(ggplot2)
+library(dplyr)
+
+mydata &lt;- Naturdata%&gt;%select(inc_level, LQ, draussen_zeit) # wähle die Spalten, die ich brauche
+
+# 2. Erstellen Sie ein Histogram für das Einkommen der Eltern.
+ggplot(mydata, aes(x=inc_level))+
+     geom_histogram()+
+     labs(title=&quot;Histogramm zum Einkommens&quot;)
+
+# 3. Erstellen Sie ein Streudiagramm / Scatterplot mit LQ and time spending outside
+
+ggplot(data=mydata, aes(x = draussen_zeit, y = LQ)) +
+  geom_point() +
+  labs(title = &quot;Zusammenhang zwischen der verbrachten Zeit im Freien und der Lebensqualität&quot;,
+    x = &quot;Verbrachte Zeit im Freien (Stunden/Woche)&quot;,
+    y = &quot;Lebensqualitätsbewertung&quot;)</code></pre>
 </div>
 </div>
 <div id="shiny-apps-general-information" class="section level2" number="3.2">
