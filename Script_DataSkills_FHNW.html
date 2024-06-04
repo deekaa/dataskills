@@ -1881,7 +1881,7 @@ Age_tab &lt;- as.data.frame(table(sub_rw$Age_groups))
 combined_df &lt;- data.frame(
   Variable = c(&quot;Gender&quot;, as.character(geschl_tab$Var1), &quot;Age&quot;,as.character(Age_tab$Var1)),
   n = c(&quot;&quot;, geschl_tab$Freq, &quot;&quot;, Age_tab$Freq),
-  percent = c(&quot;&quot;, round(geschl_tab$Freq/106*100,), &quot;&quot;, round(Age_tab$Freq/106*100,2))
+  percent = c(&quot;&quot;, round(geschl_tab$Freq/106*100,2), &quot;&quot;, round(Age_tab$Freq/106*100,2))
 )
 
 # Create and format the huxtable
