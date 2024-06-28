@@ -1356,56 +1356,51 @@ quick_docx(tabelle_wirkung_hux, file = "tabelle_wirkung.docx")
 
 ```{r rct2,eval=FALSE,echo=TRUE}
 
-#We will analyze the effect of "Richtungswechsel" on long-term recipients' vitality. https://journals.sagepub.com/doi/full/10.1177/10497315241232120
-
-#We will analyze the effect of "Richtungswechsel" on long-term recipients' vitality. https://journals.sagepub.com/doi/full/10.1177/10497315241232120
-
 #Download the data: with this command you can download files if you have the direct link to the file
-download.file("https://drive.switch.ch/index.php/s/zpjX3z1frPOQKqr/download", "Richtungswechsel.R",mode = "wb")
+download.file("https://drive.switch.ch/index.php/s/WYdxhZ0psZZqDzv/download", "FokusArbeit.csv",mode = "wb")
 
 #Because the file is in R-Data-Format (.R) we can load it directly
-load("Richtungswechsel.R")
+fokus.arbeit<-read.csv("FokusArbeit.csv")
 
 #To prepare the data for analysis and to analyze the data we will install/load the package "dplyr"
 #install.packages("dplyr")
 library(dplyr)
 
 #Let's have a look at the Data
-View(data.anonym)
+View(fokus.arbeit)
 
 #Are there missing values?
 
-summary(data.anonym)
+summary(fokus.arbeit)
 
 #Vit1 contains measures of vitality before Richtungswechsel, vit2 contains measures of vitality after Richtungswechsel
 
 #We will give the data a nicer name
-richtungswechsel <- data.anonym%>%
-  filter(!is.na(vit2))%>%#We remove missing values
-  mutate(vitality.change=vit2-vit1,#Here we calculate a new column measuring the change in vitality
-         
-         Group=ifelse(INT1==1,"Intervention group","Comparison group")) #Here ge give the variable INT1 (Group membership) a nicer, more telling name and labels
+fokus.arbeit <- fokus.arbeit%>%
+  filter(!is.na(Vitality1))%>%#We remove missing values
+  mutate(vitality.change=Vitality2-Vitality1,#Here we calculate a new column measuring the change in vitality
+         Group=ifelse(Interventionsgruppe==1,"Intervention group","Comparison group")) #Here ge give the variable INT1 (Group membership) a nicer, more telling name and labels
 #Were there more positive changes in the intervention group?
 
 #Here we check whether the two groups are comparable in terms of 
 
-richtungswechsel%>%
+fokus.arbeit%>%
   group_by(Group)%>%#We tell R to do all calculations groupwise 
   summarise(Mean.Age=mean(Alter),
-            Mean.Gender=mean(Geschlecht),
+            Mean.Gender=mean(Weiblich),
             Mean.Bezugsdauer=mean(Bezugsdauer))#We tell R to summarise all variabels in the data
 
 #Here we calculate the effect of the intervetion
-tabelle_wirkung<-richtungswechsel%>%
+tabelle_wirkung<-fokus.arbeit%>%
   group_by(Group)%>%
   summarise(Mean.Change=mean(vitality.change),
-            Mean.Vit1=mean(vit1,na.rm = T),
-            Mean.Vit2=mean(vit2,na.rm=T)) #We tell R to calculate the mean value of the change in vitality. We must tell it to remove missing values.
+            Mean.Vit1=mean(Vitality1,na.rm = T),
+            Mean.Vit2=mean(Vitality2,na.rm=T)) #We tell R to calculate the mean value of the change in vitality. We must tell it to remove missing values.
 
 #Was the effect stronger for men or for women?
 
-richtungswechsel%>%
-  group_by(Group,Geschlecht=ifelse(Geschlecht==1,"Women","Men"))%>%#We tell R to do all calculations groupwise 
+fokus.arbeit%>%
+  group_by(Group,Geschlecht=ifelse(Weiblich==100,"Women","Men"))%>%#We tell R to do all calculations groupwise 
   summarise(Mean.Change=mean(vitality.change,na.rm = T)) #We tell R to calculate the mean value of the change in vitality. We must tell it to remove missing values.
 
 
