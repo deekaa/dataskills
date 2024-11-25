@@ -519,26 +519,17 @@ Improving practice with better knowledge
         -   Research question: Who are Social Workers? Sociodemographic and Socioeconomic Characteristics of Social Workers and their Well-Being in Europe
     -   [Data from youth centers Burgdorf](https://jugend.burgdorf.ch/jubu/index.php)
         -   [Gender composition before and after introducing mixed-gender youth center](https://drive.switch.ch/index.php/s/LoJjPR0XAVZWFYx)
-            -   Research question: What was the effect of switching to a mixed-gender youth center on boys and girls attendance?
+            -   Research question: What was the effect of switching to a mixed-gender youth center on boys' and girls' attendance?
         -   [Gender and age composition before and after shifting from "Jugendbüro" to "offene Turnhalle"](https://drive.switch.ch/index.php/s/JCaEawuJWM63KyR)
             -   Research question: What was the effect of switching to "offene Turnhalle" on boys' and girls' attendance in different age categories?
     -   [Fokus Arbeit](https://www.biel-bienne.ch/de/fokusarbeit.html/2897)
         -   [Data and Variables](https://drive.switch.ch/index.php/s/eatQbxi4RjEFXKC)
         -   Research question: What was the effect of Fokus Arbeit on individuals vitality, perspectives, mastery, social support and which personal characteristics increased the effect of Fokus Arbeit?
+        -   Also see [Regionaljournal](https://www.srf.ch/news/schweiz/hoechste-sozialhilfequote-nach-pilotprojekt-biel-zieht-durchzogene-bilanz) for a deeper understanding of what was done in the project
 
--   Structure
+-   Form: presentation on final day
 
-    -   Einleitung: Vorstellung der Fragestellung und ihrer Relevanz für die Soziale Arbeit
-
-    -   Methodik: Dokumentation dessen, welche Daten verwendet und wie sie ausgewertet wurden
-
-    -   Resultate: Präsentation der Resultate
-
-    -   Schlussteil: Diskussion und Interpretation der Resultate mit Bezug zum Gegenstand und Auftrag der Sozialen Arbeit
-
--   Die Studierenden liefern zudem ein R-Code File mit, in welchem die Aufbereitungs- und Auswertungsschritte festgehalten sind. Das Code-File muss reproduzierbar sein und die verwendeten Resultate herstellen.
-
--   Der Kompetenznachweis (Dokumentation, R-Code) wird in Gruppen von 2-3 Personen verfasst, verfügt jedoch über individuell verantwortete Teile im Text oder im Codefile (z.B. im Text: Einleitung, Methodik, Resultate, Schlussteil; im Code: Aufbereitung und Auswertung). Die individuellen Beiträge sind am Ende der Dokumentation als solche auszuweisen (Angabe der Kapitel; für Code: Angabe der Zeilennummern).
+-   See [module description](https://moodle.bfh.ch/pluginfile.php/3161090/mod_resource/content/5/MB_Data%20skills%20for%20social%20work%20professionals.pdf?forcedownload=1)
 
 # Introduction to R
 
@@ -561,7 +552,7 @@ Improving practice with better knowledge
 ## Data Science workflow
 
 ```{r Example: Basic workflow, echo=T, eval=F}
-# Installiere benötigte Pakete, falls sie noch nicht installiert sind
+# Install required packages if they are not already installed
 required_packages <- c("readxl", "dplyr", "tidyr", "ggplot2", "officer", "flextable")
 installed_packages <- installed.packages()
 
@@ -571,57 +562,56 @@ for(pkg in required_packages){
   }
 }
 
-# Lade die Pakete
+# Load the packages
 library(readxl)
 library(tidyverse)
 library(ggplot2)
 library(officer)
 library(flextable)
 
-#Working directory festlegen
+# Set the working directory
 setwd("C:/Users/kld1/Downloads/")
 
-
-# 1. Excel-Datei herunterladen
-#https://www.pxweb.bfs.admin.ch/pxweb/de/px-x-1304030000_134/-/px-x-1304030000_134.px/table/tableViewLayout2/
+# 1. Download Excel file
+# https://www.pxweb.bfs.admin.ch/pxweb/de/px-x-1304030000_134/-/px-x-1304030000_134.px/table/tableViewLayout2/
 
 url <- "https://www.pxweb.bfs.admin.ch/sq/ecfd5274-e21f-4d26-9bcf-5326af3edc9a"
 destfile <- "sozialhilfe.xlsx"
 
 download.file(url, destfile, mode = "wb")
 
-# 2. Daten einlesen und aufbereiten
+# 2. Read and process data
 
-# Lese das Excel-Sheet ein (falls mehrere Sheets vorhanden sind, ggf. das richtige auswählen)
-# Hier wird angenommen, dass die Daten im ersten Sheet sind
-raw_data <- read_excel(destfile, sheet = 1, skip =2)  # Überspringe die ersten 5 Zeilen, die Metainformationen enthalten
+# Read the Excel sheet (if multiple sheets exist, choose the correct one)
+# Assuming the data is in the first sheet
+raw_data <- read_excel(destfile, sheet = 1, skip = 2)  # Skip the first 2 rows containing metadata
 
-#Aufbereiten: Spalten auswählen, umbenennen, Zeilen auswählen
-data <- raw_data%>%
-  select(Kanton='...2',contains("20"))%>%
-  filter(!is.na(Kanton),Kanton %in% c("Bern / Berne","Zürich","Basel-Stadt","Genève"))
+# Process the data: Select columns, rename, filter rows
+data <- raw_data %>%
+  select(Kanton='...2', contains("20")) %>%
+  filter(!is.na(Kanton), Kanton %in% c("Bern / Berne", "Zürich", "Basel-Stadt", "Genève"))
 
-# Transformiere die Daten von Wide zu Long Format
+# Transform the data from wide to long format
 long_data <- data %>%
   pivot_longer(
     cols = `2009`:`2022`,
-    names_to = "Jahr",
-    values_to = "Anzahl"
+    names_to = "Year",
+    values_to = "Count"
   ) %>%
-  mutate(Jahr = as.integer(Jahr),
-         Anzahl = as.numeric(Anzahl))
+  mutate(Year = as.integer(Year),
+         Count = as.numeric(Count))
 
-# 3. Grafik erstellen mit ggplot2
+# 3. Create a plot with ggplot2
 
-# Erstelle eine schöne ggplot-Grafik
-plot <- ggplot(long_data, aes(x = Jahr, y = Anzahl, color = Kanton)) +
+# Create a nice ggplot graphic
+plot <- ggplot(long_data, aes(x = Year, y = Count, color = Kanton)) +
   geom_line(size = 1) +
   theme_minimal() +
   labs(
-    title = "Anzahl Sozialhilfebeziehende pro Kanton (2009-2022)",
-    x = "Jahr",
-    y = "Anzahl Sozialhilfebeziehende",
-    color = "Kanton"
+    title = "Number of Social Assistance Recipients per Canton (2009-2022)",
+    x = "Year",
+    y = "Number of Recipients",
+    color = "Canton"
   ) +
   theme(
     plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
@@ -631,26 +621,26 @@ plot <- ggplot(long_data, aes(x = Jahr, y = Anzahl, color = Kanton)) +
     legend.text = element_text(size = 10)
   )
 
-# Speichere die Grafik als Bild, um sie in Word einzufügen
+# Save the plot as an image to insert into Word
 ggsave("sozialhilfe_plot.png", plot = plot, width = 12, height = 8, dpi = 300)
 
-# 4. Grafik in ein Word-Dokument einfügen
+# 4. Insert the plot into a Word document
 
-# Erstelle ein neues Word-Dokument
+# Create a new Word document
 doc <- read_docx()
 
-# Füge einen Titel hinzu
+# Add a title
 doc <- doc %>%
-  body_add_par("Anzahl der Sozialhilfebeziehenden pro Kanton (2009-2022)", style = "heading 1")
+  body_add_par("Number of Social Assistance Recipients per Canton (2009-2022)", style = "heading 1")
 
-# Füge die Grafik hinzu
+# Add the plot
 doc <- doc %>%
   body_add_img(src = "sozialhilfe_plot.png", width = 6, height = 4, style = "centered")
 
-# Optional: Füge eine Tabelle mit den Daten hinzu
-# Erstelle eine Beispieltabelle (hier die ersten 10 Zeilen)
+# Optional: Add a table with the data
+# Create an example table (here the first 10 rows)
 table_data <- long_data %>%
-  filter(Kanton %in% c("Bern / Berne","Zürich","Basel-Stadt","Genève"))  
+  filter(Kanton %in% c("Bern / Berne", "Zürich", "Basel-Stadt", "Genève"))  
 
 ft <- flextable(table_data) %>%
   # Automatically adjust column widths to fit content
@@ -663,13 +653,14 @@ ft <- flextable(table_data) %>%
   fontsize(size = 10, part = "all") %>%
   bold(part = "header")  # Bold the header row
 
-# Füge die Tabelle hinzu
+# Add the table
 doc <- doc %>%
-  body_add_par("Beispieltabelle der Daten", style = "heading 2") %>%
+  body_add_par("Example Table of the Data", style = "heading 2") %>%
   body_add_flextable(ft)
 
-# Speichere das Word-Dokument
-print(doc, target = "Sozialhilfe_Report.docx")
+# Save the Word document
+print(doc, target = "Social_Assistance_Report.docx")
+
 
 ```
 
@@ -682,9 +673,11 @@ print(doc, target = "Sozialhilfe_Report.docx")
 
 ## AI coding assistants
 
--   ChatGPT and other frontier Large Language Models know R pretty well (Copilot [22nd rank](https://huggingface.co/spaces/lmarena-ai/chatbot-arena-leaderboard) also works, but the newest ChatGPT [1st rank](https://huggingface.co/spaces/lmarena-ai/chatbot-arena-leaderboard) is more able)
+-   ChatGPT and other frontier Large Language Models know R pretty well (Copilot also works, but the [newest models](https://huggingface.co/spaces/lmarena-ai/chatbot-arena-leaderboard) are more able)
 
--   After you ask a question, tell ChatGPT how your data look like. If you have no sensitive data, just paste the data in to show ChatGPT the structure. If you have sensitive data, just paste the header (= variable names)
+-   After you ask a question, tell ChatGPT how your data look like.
+
+-   If you have no sensitive data, just paste the data in to show ChatGPT the structure. If you have sensitive data, just paste the header (= variable names). With Copilot, data protection issues are smaller.
 
 -   Paste the resulting code back into the R-Script and run the code
 
@@ -694,11 +687,9 @@ print(doc, target = "Sozialhilfe_Report.docx")
 
 -   If it doesn't comment code, ask to comment and explain what each piece of code does.
 
-## Excercise
+### Exercise: cold-coding with AI
 
--   Open a new R script
-
--   Copy the code above into the R Script
+-   Open a new R script and save it
 
 -   Copy the code above into [ChatGPT](https://chatgpt.com/) or [Copilot](https://copilot.cloud.microsoft/?fromcode=cmc&redirectid=EA5A38658CDC4AD29387F73CD32353C6&auth=2)
 
@@ -710,13 +701,13 @@ print(doc, target = "Sozialhilfe_Report.docx")
 
 ## Reading in data
 
--   R allows you to read in data in all formats
+-   R allows you to read in data in all formats, including directly from the internet (see `rvest`).
 
--   The most common data storage format are excel tables. You can open them with the `readxl` package.
+-   The most common data storage format are Excel tables. You can open them with the `readxl` package.
 
--   The most common data storage format is csv (comma separated values)
+-   The most universal data storage format is csv (comma separated values).
 
--   The best way to deal with large data are the `data.table` (to read in csv-data) and `arrow` packages (to save and read in large data)
+-   The best way to deal with large data are the `data.table` (to read in large csv-data-files) and the `arrow` packages (to save and read in large data).
 
 ```{r readindata,eval=FALSE,echo=TRUE}
 
@@ -738,19 +729,21 @@ library(readxl)
 Buero <- read.excel("OJAOffice_Statistikdaten_Jugendbüro Oberburg 23.xlsx",sheet="Statistikdaten 2024")
 Turnhalle<- read.excel("OJAOffice_Statistikdaten_offene Turnhalle 24.xlsx",sheet="Statistikdaten 2024")
 
-#Funktion von range und col_names = FALSE aufzeigen
+#Explain objects, observations and variables
+#Explain range und col_names = FALSE
+
 
 
 ```
 
-## Looking at data
+### Looking at data
 
 -   RStudio allows you to manually scroll through data
 
 -   This helps you better understand what is going on
 
 ```{r lookingatdata,eval=FALSE,echo=TRUE}
-
+#Explain what rows (observations) and columns (variables) are.
 #You can either click on the object or...
 
 #use View()
@@ -762,12 +755,12 @@ fix(Buero)
 
 ```
 
-## Exercise: reading in data and looking at it
+### Exercise: reading in data and looking at it
 
 1.  Goal: read in data necessary for measuring the change of gender composition after introduction of mixed gender youth club in Summer 2023.
 2.  For each file, what are the column names under which you find information on the date of the attendance, the number of attendees and the age and gender composition of the attendees?
 
-| **Object name data should be saved with** | **Year** | **Sheet to read in** | **Source Link** |
+| **Object name data should be saved with** | **Year** | **Sheet to read in and additional restrictions** | **Source Link** |
 |------------------|------------------|------------------|------------------|
 
 |  |  |  |  |
@@ -794,7 +787,26 @@ fix(Buero)
 |------------------|------------------|------------------|------------------|
 | `JuBu_24` | 2024 | Statistikdaten 2024 | [Copy of OJAOffice_Statistikdaten_Mittelstufentreff 24.xlsx](https://drive.switch.ch/index.php/s/3XloagU1LkJIZCI) |
 
-## Simple manipulation of one data frame with dplyr
+### Solution: reading in data and looking at it
+
+```{r solutionreadin,echo=FALSE,eval=FALSE}
+
+Mädels_22 <- read_excel("OJAOffice_Statistikdaten_Moditrff.xlsx")
+Mädels_23 <- read_excel("Statistik OJA Angebote Burgdorf 2023.xlsx",sheet = "Moditräff")
+Jungs_22 <- read_excel("OJAOffice_Statistikdaten_Gieltrff.xlsx")
+Jungs_23 <- read_excel("Statistik OJA Angebote Burgdorf 2023.xlsx",sheet = "Gieläträff",
+                       range = "A1:B11",#Welche Daten aus dem Excel brauchen wir; Spalte A, Zeile 1 is Spalte B Zeile 11
+                       col_names = FALSE)#die erste Zeile enthält nicht die Spaltennamen sondern Messwerte
+JuBu_23 <- read_excel("Statistik OJA Angebote Burgdorf 2023.xlsx",sheet = "JuBU Träff 5&6")
+JuBu_24 <- read_excel("Copy of OJAOffice_Statistikdaten_Mittelstufentreff 24.xlsx",sheet = "Statistikdaten 2024")
+
+
+View(Mädels_22)
+
+
+```
+
+## Simple data manipulation with dplyr
 
 ### General
 
@@ -812,26 +824,47 @@ fix(Buero)
 ### Example: Package dplyr
 
 ```{r Example: Package dplyr2,eval=FALSE}
-# load data
+#install package
+
+#install.packages("dplyr")
+
+#load package
+library(dplyr)
+
+setwd("C:/Users/kld1/switchdrive/BFH/Wichtige Dokumente/Lehre/Data skills for social work professionals/BFH/Daten/Fokus Arbeit/")
+
+focarb <- read.csv("FokusArbeit_Wirkung.csv")
+
+#Select: select the variables Vitality1 (=measurement of vitality before the intervention), Vitality2 (=measurement of vitality before the intervention) and intervention (did the person participate in Fokus Arbeit or )
+focarb <- focarb %>%
+  select(Vitality1,Vitality2,Interventionsgruppe)%>%
+#Filter: out observations that have a missing value (NA = not available) on the measurement before the intervention. Use logical operators to set the filter condition.
+  filter(!(is.na(Vitality1)))%>%
+#Mutate: calculate a new variable that measures the change in vitality before versus after
+  mutate(Change_Vitality=Vitality2-Vitality1)
 
 
+#Plot the distribution of the change for the two groups 
 
+ggplot(focarb,aes(x=Change_Vitality,
+                  fill=factor(Interventionsgruppe)))+
+  geom_density(alpha=.5)
 
 ```
 
-### Exercise: Package dplyr
+### Exercise: simple data manipulation with dplyr
 
--   Read the SHP data into RStudio.
+-   Read in [data from the 11 rounds of the European Social Survey](https://drive.switch.ch/index.php/s/vSytsi7wl1H1yf3) with the following steps:
 
--   Restrict the data set for the year 2022 to people who are 25 years or older. Familiarize yourself a little with the data (e.g. `head()`, `summary()`,`table()`).
+    -   Use the password to download the data
 
--   Look at the variables with the information on age (variable AGE), gender (variable SEX), years of education (variable EDYEAR) and first nationality (`NAT_1_`).
+    -   Relocate the working directory (using `setwd()`) to your download folder or move the data to your working directory
 
--   Create a crosstab with the variables `EDYEAR` and `SEX`.
+    -   Make sure you have the `arrow` package installed
 
--   calculate mean and standard deviation for the variable age for men and women.
+-   
 
-### Solution: Package dplyr
+### Solution: simple data manipulation with dplyr
 
 ## Merging and reshaping data
 
@@ -839,7 +872,7 @@ fix(Buero)
 
 ### Merge
 
-## Dealing with text
+## Dealing with text and dates
 
 ### Regular expressions --\> ChatGPT
 
@@ -854,6 +887,8 @@ fix(Buero)
 ### Mean, median, mode
 
 ## Analysing associations
+
+### Frequency tables
 
 ### Grouped mean
 
