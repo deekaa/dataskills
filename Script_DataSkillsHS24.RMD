@@ -687,17 +687,17 @@ print(doc, target = "Social_Assistance_Report.docx")
 
 -   If it doesn't comment code, ask to comment and explain what each piece of code does.
 
-### Exercise: cold-coding with AI
+### Exercise: throwing you in at the deep end
 
--   Open a new R script and save it
+-   Open a new R script, copy the above code into it and save it
 
 -   Copy the code above into [ChatGPT](https://chatgpt.com/) or [Copilot](https://copilot.cloud.microsoft/?fromcode=cmc&redirectid=EA5A38658CDC4AD29387F73CD32353C6&auth=2)
 
--   Ask it to assist you with the following tasks:
+-   Ask it to assist you while giving helpful and targeted advice, i.e. that it should tell you how to change the code. Try the following tasks:
 
     -   Exercise 1: Add Luzern and Waadt to the plot and table
     -   Exercise 2: Make the plot more beautiful by adding dots to the lines and by making sure every year is displayed on the x-Axis
-    -   Exercise 3: Develop a bar chart that displays the number of social assistance recipients for each canton for the year 2022 ordered by number of recipients. Ensure the chart includes appropriate titles and axis labels. Also ask it to label the bars with the values (with vertical alignment). Save the bar chart as a separate PNG file.
+    -   Exercise 3: Develop a bar chart that displays the number of social assistance recipients for each canton for the year 2022 ordered by number of recipients. Ensure the chart includes appropriate titles and axis labels. Also ask it to label the bars with the values (with vertical alignment). Save the bar chart as a PNG file.
 
 ## Reading in data
 
@@ -854,6 +854,8 @@ ggplot(focarb,aes(x=Change_Vitality,
 
 ### Exercise: simple data manipulation with dplyr
 
+-   Goal: find out the share of social workers among the total population in Europe and in Switzerland.
+
 -   Read in [data from the 11 rounds of the European Social Survey](https://drive.switch.ch/index.php/s/vSytsi7wl1H1yf3) with the following steps:
 
     -   Use the password to download the data
@@ -862,9 +864,43 @@ ggplot(focarb,aes(x=Change_Vitality,
 
     -   Make sure you have the `arrow` package installed
 
+    -   Read in the data with the `read_parquet()` command.
+
+    -   Save it into the object `ess`.
+
+-   Find out which variables measure the country of origin and the occupation of the respondent using the variable list. Hint 1: start searching from the top. Hint 2: Occuption is measured in two variables. For earlier years, it is the ISCO88 classification. For later years, it is the ISCO08 classification. Use the [variable list](https://drive.switch.ch/index.php/s/PvHOlINAPMoTOWN) to find the exact variable names and labels.
+
+-   Reduce the data frame to those three variables: country, ISCO88, ISCO08.
+
+-   Filter out observations of individuals where information on either the ISCO88, ISCO08
+
+-   Create a new variable that measures whether someone is a social worker or not (click on the variable to know which numbers stand for social workers). Use the `case_when()` variable.
+
 -   
 
 ### Solution: simple data manipulation with dplyr
+
+```{r solution dplyr, echo=FALSE,eval=FALSE}
+#install and load the arrow package 
+install.packages("arrow")
+library(arrow)
+
+#Set working directory to your download folder
+setwd("C:/Users/kld1/switchdrive/BFH/Wichtige Dokumente/Lehre/Data skills for social work professionals/BFH/Daten/European Social Survey/")
+
+#Load in data
+ess <- read_parquet("ESS.parquet")
+
+#Select variables with information on country and occupation
+
+ess <- ess%>%
+  select(cntry,iscoco, isco08)
+
+#Filter out 
+
+ess <- ess %>%
+  mutate(socialworker= case_when(ISCO08 == 2635 | ISCO88 == 2445  ~ "Social Worker"))
+```
 
 ## Merging and reshaping data
 
