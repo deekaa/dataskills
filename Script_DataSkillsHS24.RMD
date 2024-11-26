@@ -835,10 +835,19 @@ setwd("C:/Users/kld1/switchdrive/BFH/Wichtige Dokumente/Lehre/Data skills for so
 
 focarb <- read.csv("FokusArbeit_Wirkung.csv")
 
-#Select: select the variables Vitality1 (=measurement of vitality before the intervention), Vitality2 (=measurement of vitality before the intervention) and intervention (did the person participate in Fokus Arbeit or )
+#Select: select the variables Vitality1 (=measurement of vitality before the intervention), Vitality2 (=measurement of vitality before the intervention) and intervention (did the person participate in Fokus Arbeit or recieve standard counseling)
 focarb <- focarb %>%
   select(Vitality1,Vitality2,Interventionsgruppe)%>%
-#Filter: out observations that have a missing value (NA = not available) on the measurement before the intervention. Use logical operators to set the filter condition.
+#Filter: out observations that have a missing value (NA = not available) on the measurement before the intervention. Use logical operators to set the filter condition. Logical operators: 
+#  is missing: is.na(), 
+#  bigger than: >, 
+#  smaller than: <, 
+#  equals: ==, 
+#  not equal to: !=, 
+#  not: !, 
+#  or: |, 
+#  is element of: %in%, 
+#  is infinite: is.inf()).
   filter(!(is.na(Vitality1)))%>%
 #Mutate: calculate a new variable that measures the change in vitality before versus after
   mutate(Change_Vitality=Vitality2-Vitality1)
@@ -854,37 +863,46 @@ ggplot(focarb,aes(x=Change_Vitality,
 
 ### Exercise: simple data manipulation with dplyr
 
--   Goal: find out the share of social workers among the total population in Europe and in Switzerland.
+-   Goal: find out the share of social workers among the working population in Europe and in Switzerland.
 
--   Read in [data from the 11 rounds of the European Social Survey](https://drive.switch.ch/index.php/s/vSytsi7wl1H1yf3) with the following steps:
+-   Read in [data from the European Social Survey](https://drive.switch.ch/index.php/s/vSytsi7wl1H1yf3) with the following steps:
 
     -   Use the password to download the data
 
     -   Relocate the working directory (using `setwd()`) to your download folder or move the data to your working directory
 
-    -   Make sure you have the `arrow` package installed
+    -   Make sure you have the `arrow` package installed (otherwise use `install.packages("arrow")`).
 
     -   Read in the data with the `read_parquet()` command.
 
     -   Save it into the object `ess`.
 
--   Find out which variables measure the country of origin and the occupation of the respondent using the variable list. Hint 1: start searching from the top. Hint 2: Occuption is measured in two variables. For earlier years, it is the ISCO88 classification. For later years, it is the ISCO08 classification. Use the [variable list](https://drive.switch.ch/index.php/s/PvHOlINAPMoTOWN) to find the exact variable names and labels.
+-   Find out which variables measure the country of origin and the occupation of the respondent using the variable list. Hint 1: start searching from the top. Hint 2: Occuption is measured with the ISCO08 classification. For earlier years, it is the ISCO88 classification, but the data is reduced to years with the isco08 classification (after 2010). Use the [variable list](https://drive.switch.ch/index.php/s/PvHOlINAPMoTOWN) to find the exact variable names and labels.
 
--   Reduce the data frame to those three variables: country, ISCO88, ISCO08.
+-   Reduce the data frame to those two variables: country, ISCO08.
 
--   Filter out observations of individuals where information on either the ISCO88, ISCO08
+-   Filter out observations of individuals where information on ISCO08 is missing. The following values should be excluded:
 
--   Create a new variable that measures whether someone is a social worker or not (click on the variable to know which numbers stand for social workers). Use the `case_when()` variable.
+    |       |                  |
+    |-------|------------------|
+    | 66666 | Not applicable\* |
+    | 77777 | Refusal\*        |
+    | 88888 | Don't know\*     |
+    | 99999 | No answer\*      |
 
--   
+-   Create a new variable `socialworker` that measures whether someone is a social worker or not (click on the variable to know which numbers stand for social workers). Use the `ifelse()` function to define the variable.
+
+-   Calculate the share of social workers in the whole data set using `prop.table(table())`. How many social workers per 100 working people are there in Switzerland?
+
+-   Reduce the data frame to people from Switzerland and repeat. Are there more social workers per 100 people in Switzerland than in total Europe?
 
 ### Solution: simple data manipulation with dplyr
 
 ```{r solution dplyr, echo=FALSE,eval=FALSE}
 #install and load the arrow package 
-install.packages("arrow")
+#install.packages("arrow")
 library(arrow)
-
+library(dplyr)
 #Set working directory to your download folder
 setwd("C:/Users/kld1/switchdrive/BFH/Wichtige Dokumente/Lehre/Data skills for social work professionals/BFH/Daten/European Social Survey/")
 
@@ -894,12 +912,39 @@ ess <- read_parquet("ESS.parquet")
 #Select variables with information on country and occupation
 
 ess <- ess%>%
-  select(cntry,iscoco, isco08)
+  select(cntry,isco08)
 
-#Filter out 
+#Filter out people with no information on job
 
+ess <- ess%>%
+  filter(isco08<10000)
+
+#Is someone a social worker
 ess <- ess %>%
-  mutate(socialworker= case_when(ISCO08 == 2635 | ISCO88 == 2445  ~ "Social Worker"))
+  mutate(socialworker= ifelse(isco08 == 2635, "Social Worker","Not a social worker"))
+
+#What is the share of social workers in total
+prop.table(table(ess$socialworker))
+
+#What is the share of social workers in Switzerland
+
+swiss<-ess%>%
+  filter(cntry=="CH")
+prop.table(table(swiss$socialworker))
+
+#Add on: What is the country with the highest share of social workers
+
+ranking<-ess%>%
+  group_by(cntry)%>%
+  summarise(sharesw=mean(socialworker=="Social Worker"))%>%
+  arrange(sharesw)
+
+#Make a graph that plots the ranking of countries
+
+library(ggplot2)
+ggplot(ranking,aes(x=reorder(cntry,-sharesw),y=sharesw*100))+
+  geom_bar(stat="identity")+
+  labs(x="Country",y="%-Share of Working Population is Social Worker")
 ```
 
 ## Merging and reshaping data
