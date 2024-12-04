@@ -1255,7 +1255,7 @@ gesamttabelle%>%
 
 ## Summarizing data: describing normality and diversity of single characteristics (univariate statistics)
 
-### Frequency tables
+### Frequencies
 
 -   Use **`count(x)`** to count how often each value occurs in your variable. This is the most universal strategy to summarize your data. It is applicable to all data types (remember from [introduction to quantitative social research](https://de.wikipedia.org/wiki/Skalenniveau): nominal, ordinal, numeric).
 
@@ -1276,7 +1276,7 @@ ess%>%
 #Add percentages
 ess%>%
     count(cntry)%>%
-    mutate(Percentages=n/sum(n)*100)
+    mutate(Percentages=n/sum(n)*100)#show round
 ```
 
 ### Summarizing variables into one number: mean and variance
@@ -1319,7 +1319,7 @@ ess%>%summarise(Average_Happiness=mean(happy),
 
 -   What percentage of participants are women? What percentage are long-term recipients (more than 12 months of receipt?
 
--   Calculate summary statistics for both the measurements before versus after the intervention for vitality (`Vitality`), social support (`Sozial)`, mastery (`Mastery`) and work outlooks (`Perspektive`). Measurements before the intervention end with a 1, measurements after the intervention end with a 2. Bind the data together into one large data.frame. Hint for more efficient code: ask ChatGPT to write the code with the `across` function. This allows you perform the same functions (pre-defined functions such as `mean()`, but also own functions) on multiple variables.
+-   Calculate summary statistics for both the measurements before and after the intervention for vitality (`Vitality`), social support (`Sozial)`, mastery (`Mastery`) and work outlooks (`Perspektive`). Measurements before the intervention end with a 1, measurements after the intervention end with a 2. Bind the data together into one large data.frame. Hint for more efficient code: ask ChatGPT to write the code with the `across` function. This allows you perform the same functions (pre-defined functions such as `mean()`, but also own functions) on multiple variables.
 
 -   Which aspects changed the most? Which distributional parameters changed most? Do you observe changes in variability of measurements?
 
@@ -1335,10 +1335,10 @@ focarb <- read.csv("FokusArbeit_Wirkung.csv")
 
 focarb%>%count(Weiblich)
 
-focarb%>%mutate(Langzeit=Bezugsdauer>12)%>%
-  count(Langzeit)%>%
-  mutate(Prop=n/sum(n))
-
+focarb%>%
+  mutate(Langzeit=Bezugsdauer>12)%>%#Definition of long-term recipients
+  count(Langzeit)%>%#Frequencies
+  mutate(Prop=round(n/sum(n)*100)) #Percentages
 
 #By hand
 table<-focarb%>%
@@ -1379,7 +1379,7 @@ table<-focarb %>%
 
 ```
 
-## Summarizing data: analysing associations between two variables
+## Summarizing data: analyzing associations between two variables
 
 ### Cross tables
 
