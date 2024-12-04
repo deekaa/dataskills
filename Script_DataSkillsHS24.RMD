@@ -32,13 +32,13 @@ knitr::opts_chunk$set(eval= TRUE)
 
 # General information
 
--   Courses take place from 9.15-12 and from 13.15-16 and in room xxx if not otherwise mentioned
+-   Courses take place from 9.15-12 and from 13.15-16 and in room HAL 230
 
     -   For group work
 
-        -   Thursday 10th:
+        -   Thursday 9th: HAL 224a, 225, 226, 228, 229, 131
 
-        -   Friday 11th:
+        -   Friday 10th: HAL 224a, 225, 226, 228, 229, 131
 
 -   [Carefully study the module description]()
 
@@ -84,7 +84,7 @@ Text to enter into Co-Pilot ein (Microsoft Copilot in Bing; important: verwenden
 
 -   Du bist eine R-Expert:in, weisst aber auch, dass angehende Sozialarbeiter:in in Sachen Programmierung wenig Wissen haben und das nicht technische Begriffe eine alltagssprachliche Erklaerung benötigen.
 
--   Danke für deine motivierte Unterstützung und Hilfsbereitschaft! Du hilfst mir R zu lernen und dieses Wissen für Klient:innen einzusetzen.
+-   Danke für deine motivierte Unterstützung und Hilfsbereitschaft als persönliche Tutorin! Du hilfst mir bedarfsgerecht R zu lernen und dieses Wissen für Klient:innen einzusetzen.
 
 -   Wichtige Details:
 
@@ -179,35 +179,43 @@ Text to enter into Co-Pilot ein (Microsoft Copilot in Bing; important: verwenden
 -   Develop an idea how data science could be used in social work based on the file "[Use cases in social work](https://drive.switch.ch/index.php/s/r3FcksvmwvSodpY)" together with Copilot/ChatGPT
 -   Use the following prompt:
 
-You are ChatGPT, and your task is to help me develop a practical example of how data science could be applied in social work. The goal should be an example that is highly useful. Use the file from Dorian Kessler on potential use cases as a reference. Guide me through targeted questions to understand my work context or area of interest and suggest the most relevant application.
+*You are a highly experienced data science expert and consultant specializing in applications for social organizations. Your task is to help me design a clear, impactful, and practical example of how data science could be applied in social work, tailored to my specific interests, expertise, and work context. Use the file by Dorian Kessler on potential use cases as a reference and engage with me through targeted questions to fully understand my context before developing the application idea. The goal is to create a solution that is actionable, highly beneficial, and easy to present to colleagues.*
 
-Conversation steps:
+*Conversation Steps:*
 
-Understand the context:
+***Step 1: Understand the Context***
 
-Ask me:
+*Ask me targeted questions to build a clear picture of my work environment and challenges:*
 
--   "Are you currently working in social work? If not, what area interests you most?"
+1.  *"Are you currently working in social work? If not, what field or area interests you most?"*
 
--   "Who are the clients or groups you work with or aim to work with?"
+2.  *"Who are the clients or groups you work with, or aim to serve?"*
 
--   "What are common tasks in this field?"
+3.  *"What are the most common tasks or processes in this field?"*
 
--   "What are the three most pressing problems in your field?"
+4.  *"What are the three most pressing challenges or problems you encounter in this area?"*
 
--   "What data is currently available or could be collected to improve workflows?"
+5.  *"What data is currently available, or could realistically be collected, to improve workflows or solve these challenges?"*
 
-Suggest solutions:
+***Step 2: Suggest Solutions***
 
-Based on my answers and Dorian Kessler’s file, propose 1–2 realistic examples of how data science could address challenges or improve processes. Briefly explain the benefits.
+*Using the information I provide and the reference material, propose **three realistic examples for each problem** where data science could address challenges or improve processes. Each example should:*
 
-Get feedback and refine:
+-   *Clearly outline the concept and how it works.*
 
-Ask:
+-   *Highlight specific benefits for the field of social work.*
 
--   "Does this idea seem relevant and practical for your field? How could it be adjusted to fit better?"
+-   *Address the potential feasibility and required resources.*
 
-Refine the example with my input and help me select the best option to share with my peers.
+***Step 3: Get Feedback and Refine***
+
+-   *Ask for feedback: "Do these ideas seem relevant and practical for your field? How could they be adjusted to better fit your needs or constraints?"*
+
+-   *Refine the ideas based on my input, providing more specific or adapted examples if needed.*
+
+-   *Help me select the most promising application to share with my peers, ensuring it’s polished and well-presented.*
+
+*Throughout the process, aim to keep the ideas practical and impactful, while guiding me in envisioning how they could be implemented effectively in the social work domain.*
 
 -   Post your final ideas on this [padlet](https://padlet.com/doriank1986/data-skills-2x8f5clm7anao11g)
 
@@ -216,8 +224,6 @@ Refine the example with my input and help me select the best option to share wit
 -   [See module description]()
 
 # Measuring the effects of social work
-
-<!--# Time structure: why it is important to measure effects (9.30); counterfactual (Min 9.40); Excercise presentation (10.20-10.40); Data example (10.55-11.15); Data own excercise 11.15-11.50-->
 
 ## Why is it important to measure the effects of social work?
 
@@ -253,13 +259,13 @@ Improving practice with better knowledge
 
     -   The fictional world in which the influencing variable was not present.
 
-<!-- -->
-
 -   Exercise
+
     -   Talk to the person sitting next to you.
-        -   What was the most important event in your life (family, education, work, health, social relationships)?
+        -   What was the most important event in your life (e.g. family, education, work, health, social relationships)?
         -   What areas of your life have been affected by this event?
-        -   What would these areas be like if the event had not happened (can you guess numbers)?
+        -   What would these areas be like if the event had not happened (in terms of strong facts)?
+
 -   Example of effect measures in social work
 
 [![](images/clipboard-851415407.png)](https://www.nber.org/papers/w30405)
@@ -510,7 +516,9 @@ Improving practice with better knowledge
 
 # Kompetenznachweis
 
--   You will analyze one of the following data sets and research questions
+-   See [module description](https://moodle.bfh.ch/pluginfile.php/3161090/mod_resource/content/5/MB_Data%20skills%20for%20social%20work%20professionals.pdf?forcedownload=1).
+
+-   You will analyze one of the following (or your own) data sets and research questions
 
     -   [European Social Survey](https://www.europeansocialsurvey.org/)
         -   Biannual survey in more than 30 countries
@@ -528,8 +536,6 @@ Improving practice with better knowledge
         -   Also see [Regionaljournal](https://www.srf.ch/news/schweiz/hoechste-sozialhilfequote-nach-pilotprojekt-biel-zieht-durchzogene-bilanz) for a deeper understanding of what was done in the project
 
 -   Form: presentation on final day
-
--   See [module description](https://moodle.bfh.ch/pluginfile.php/3161090/mod_resource/content/5/MB_Data%20skills%20for%20social%20work%20professionals.pdf?forcedownload=1)
 
 # Introduction to R
 
@@ -782,7 +788,7 @@ fix(Buero)
 | `Jungs_23` | 2023 | Gieletraeff, range="A11:B11",col_names = FALSE | Statistik OJA Angebote Burgdorf 2023.xlsx |
 
 |           |      |                 |                                           |
-|------------------|------------------|------------------|------------------|
+|---------------|---------------|---------------|-----------------------------|
 | `JuBu_23` | 2023 | JuBU Traeff 5&6 | Statistik OJA Angebote Burgdorf 2023.xlsx |
 
 |  |  |  |  |
@@ -817,7 +823,17 @@ View(Maedels_22)
 
 -   package [dplyr](http://blog.rstudio.org/2014/01/17/introducing-dplyr/) by [Hadley Wickham](https://twitter.com/hadleywickham)/[Romain Francois](https://twitter.com/romain_francois) offers a toolset for data preparation
 -   See [the dplyr vignette](http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html) and the [Data Wrangling Cheat Sheet](http://www.rstudio.com/resources/cheatsheets/) for a very good overview
--   `filter()`: selects a subset of rows (see also `slice()`)
+-   `filter()`: selects a subset of rows (see also `slice()`).
+    -   Use logical operators to set the filter condition:
+        -   bigger than: `>`
+        -   smaller than: `<`
+        -   equals: `==`
+        -   not equal to: `!=`
+        -   not: `!`
+        -   or: `|`
+        -   is element of: `%in%`
+        -   is missing: `is.na(x)`
+        -   is infinite: `is.inf()`
 -   `arrange()`: sorts
 -   `select()`: selects columns
 -   `mutate()`: creates new columns
@@ -835,24 +851,15 @@ View(Maedels_22)
 
 #load package
 library(dplyr)
+#https://drive.switch.ch/index.php/s/eatQbxi4RjEFXKC
 
 setwd("C:/Users/kld1/switchdrive/BFH/Wichtige Dokumente/Lehre/Data skills for social work professionals/BFH/Daten/Fokus Arbeit/")
-
 focarb <- read.csv("FokusArbeit_Wirkung.csv")
 
 #Select: select the variables Vitality1 (=measurement of vitality before the intervention), Vitality2 (=measurement of vitality before the intervention) and intervention (did the person participate in Fokus Arbeit or recieve standard counseling)
 focarb <- focarb %>%
   select(Vitality1,Vitality2,Interventionsgruppe)%>%
-#Filter: out observations that have a missing value (NA = not available) on the measurement before the intervention. Use logical operators to set the filter condition. Logical operators: 
-#  is missing: is.na(), 
-#  bigger than: >, 
-#  smaller than: <, 
-#  equals: ==, 
-#  not equal to: !=, 
-#  not: !, 
-#  or: |, 
-#  is element of: %in%, 
-#  is infinite: is.inf()).
+#Filter: out observations that have a missing value (NA = not available) on the measurement before the intervention. .
   filter(!(is.na(Vitality1)))%>%
 #Mutate: calculate a new variable that measures the change in vitality before versus after
   mutate(Change_Vitality=Vitality2-Vitality1)
@@ -1065,11 +1072,11 @@ JuBu_24 %>%
 
 ```
 
-## Dealing with difficult data formats
+## Dealing with special data formats
 
 ### Dealing with text: regular expressions
 
--   The two most frequently used operations with text variables are searching for text patterns (`grepl`) and replacing text-parts (`gsub`).
+-   The two most frequently used operations with text variables are searching for text patterns within cells (`grepl`) and replacing text-parts from a cell (`gsub`).
 
     -   Regular expressions enable "wildcards" and other elements to define a search pattern.
 
@@ -1094,56 +1101,287 @@ JuBu_24 %>%
         -   Extracting specific parts
             -   `()`
         -   There are many more metacharacters, see for example: <https://stat.ethz.ch/R-manual/R-devel/library/base/html/regex.html>
-        -   See also <https://emailregex.com/> for a detailed regex example.
 
     -   Use ChatGPT for creating regular expressions. E.g. give me a regular expression that is true when the 3rd last character is a an "a".
 
 ```{r regularexpression,echo=TRUE,eval=FALSE}
 #https://drive.switch.ch/index.php/s/LoJjPR0XAVZWFYx
+
+library(dplyr)
+library(readxl)
 setwd("C:/Users/kld1/switchdrive/BFH/Wichtige Dokumente/Lehre/Data skills for social work professionals/BFH/Daten/Burgdorf/Zusammenlegung/")
+
+
 Maedels_22 <- read_excel("OJAOffice_Statistikdaten_Moditrff.xlsx")
+Maedels_23 <- read_excel("Statistik OJA Angebote Burgdorf 2023.xlsx",sheet = "Moditraeff")
 Jungs_22 <- read_excel("OJAOffice_Statistikdaten_Gieltrff.xlsx")
+Jungs_23 <- read_excel("Statistik OJA Angebote Burgdorf 2023.xlsx",sheet = "Gielaetraeff",
+                       range = "A1:B11",#Welche Daten aus dem Excel brauchen wir; Spalte A, Zeile 1 is Spalte B Zeile 11
+                       col_names = FALSE)#die erste Zeile enthaelt nicht die Spaltennamen sondern Messwerte
+JuBu_23 <- read_excel("Statistik OJA Angebote Burgdorf 2023.xlsx",sheet = "JuBU Traeff 5&6")
+JuBu_24 <- read_excel("Copy of OJAOffice_Statistikdaten_Mittelstufentreff 24.xlsx",sheet = "Statistikdaten 2024")
 
-Daten22 <- rbind(Maedels_22,Jungs_22)
 
-Daten22 <-Daten22%>%
-  mutate(Geschlecht=ifelse(grepl("Mädels",Statistikfeld, useBytes = TRUE),"Girls","Boys"))%>%
+gesamttabelle_burgdorf <- rbind(Maedels_22 %>%
+  select(Datum='Erfasst am', Anzahl, Gruppe=Statistikfeld),
+ Maedels_23 %>%
+  select(Datum='Erfasst am', Anzahl, Gruppe=Statistikfeld),
+Jungs_22 %>%
+  select(Datum='Erfasst am', Anzahl, Gruppe=Statistikfeld),
+Jungs_23 %>%
+  select(Datum=...1, Anzahl=...2)%>%
+  mutate(Gruppe="Jungs")%>%select(Datum, Anzahl, Gruppe),
+JuBu_23 %>%
+  select(Datum='Erfasst am', Anzahl, Gruppe=Statistikfeld),
+JuBu_24 %>%
+  select(Datum='Erfasst am', Anzahl, Gruppe=Statistikfeld))
+
+gesamttabelle_burgdorf <-gesamttabelle_burgdorf%>%
+  mutate(Geschlecht=ifelse(grepl("Mädels",Gruppe, useBytes = TRUE),"Girls","Boys"))%>%#useBytes needed because of ä
   mutate(Geschlecht2=gsub("[0-9]+-[0-9]+","",Statistikfeld))
 
 
 ```
 
-### Dates
+-   ChatGPT can also be used to convert text into numeric data. *Not only to extract physical information*, but also to extract *meaning* between the lines.
 
--   R has
+    -   Example: Please give me a number from 0 to 10 how happy these statements are c("Bähhh","Juhuu","Näää", "Yes!"). Make R Code to store it into a vector.
 
-## Univariate analysis
+### Dates and times
 
--   Univariate Statistiken (1 Variable)
-    -   `mean(x)`: Mean
-    -   `sd(x)`: Standardabweichung
-    -   `var(x)`: Varianz
-    -   `median(x)`: Median
-    -   `min(x)`: Minimum
-    -   `max(x)`: Maximum
--   Bivariate Statistik (2 Variablen)
-    -   `cov()`: Kovarianz
-    -   `cor()`: Korrelation
-    -   `cor(x, y, method = "spearman")`: Rangkorrelation
-    -   `chisq.test()`: Chi-Quadrat-Test
-    -   `t.test()`: t-Test
--   Kontingenz Tabellen
-    -   `table(x)`: eindimensionale Kontingenztabelle
-    -   `table(x, y)`: zweidimensionale Kontingenztabelle
-    -   `prop.table(table(x))`: relative Haeufigkeit
+-   R handles dates and times using the POSIX standard, widely used in computing.
 
-### Frequencies
+-   Dates are stored as numeric values, representing the number of days since the "epoch" (January 1, 1970).
 
-### Distributional parameters: mean and variance
+    -   For example, **`as.Date("1970-01-02")`** equals `1`, as it is one day after the epoch.
 
-## Analysing associations
+-   When times are included, R uses seconds since the epoch.
 
-### Crosstables
+    -   For example, **`as.POSIXct("1970-01-01 00:01:00")`** equals `60`, representing 60 seconds after the epoch.
+
+-   **This system allows for efficient calculations, such as finding time differences, sorting dates and times or extracting simpler representations of time.**
+
+-   To transform character strings into date or POSIX formats, use the following:
+
+    -   **`as.Date()`** with a specified format, such as **`as.Date("04.12.2024", format = "%d.%m.%Y")`** for European-style dates.
+
+    -   **`as.POSIXct()`** for date-times, e.g., **`as.POSIXct("04-12-2024 14:30", format = "%d-%m-%Y %H:%M")`**.
+
+-   Format strings are key to parsing correctly:
+
+    -   **`%Y`**: 4-digit year, **`%m`**: month, **`%d`**: day.
+
+    -   **`%H`**: hour (24-hour format), **`%M`**: minute, **`%S`**: second.
+
+-   To extract only parts of a date or time, use the **`format()`** function.
+
+    -   For example, to reduce `"2022-04-01 15:21:03"` to `"2022-04-01"`, you can use:
+
+        ```{r dates and times, eval=FALSE,echo=TRUE}
+        datetime <- as.POSIXct("2022-04-01 15:21:03")
+        format(datetime, "%Y-%m-%d")
+        format(datetime, "%Y-%m")
+        format(datetime, "%Y")
+
+        ```
+
+    -   **`as.POSIXct()`** / `as.Date()` converts the character string into a date-time/date object, and **`format()`** extracts the desired components using format codes.
+
+### Exercise text, dates and times
+
+-   Load in the data of Oberdorf ([Büro](https://drive.switch.ch/index.php/s/gdNYHopxWDCV9hr){.uri}, [Turnhalle](https://drive.switch.ch/index.php/s/am1T36ehPL24QuQ){.uri}) and bind them together.
+
+-   Create a variable `age_group` from the variable `Statistikfeld`. Use either `gsub()` or `grepl()` to extract the relevant information.
+
+-   Create a variable `months_since_jan24` from the variable `'Erfasst am'` that indicates the number of months between the current date and the introduction of the Turnhalle offer. Use the following steps:
+
+    -   Define the reference date in `as.POSIXct()` format and store it into an object (see example above).
+
+    -   Rename the variable `'Erfasst am'` into a new one called `erfassungsdatum`. It is possible to work with variables that have a space, but unhandy (you always have to use back ticks).
+
+### Solution text, dates and times
+
+```{r solutiontextdates,echo=FALSE,eval=FALSE}
+#Download data to the folder by hand
+
+#Büro: https://drive.switch.ch/index.php/s/gdNYHopxWDCV9hr
+#Turnhalle: https://drive.switch.ch/index.php/s/am1T36ehPL24QuQ
+
+#Load packages
+
+library(readxl)
+library(dplyr)
+
+#Read in data
+
+setwd("C:/Users/kld1/switchdrive/BFH/Wichtige Dokumente/Lehre/Data skills for social work professionals/BFH/Daten/Burgdorf/Turnhalle/")
+
+Buero <- read_excel("OJAOffice_Statistikdaten_Jugendbüro Oberburg 23.xlsx",sheet="Statistikdaten 2024")
+Turnhalle<- read_excel("OJAOffice_Statistikdaten_offene Turnhalle 24.xlsx",sheet="Statistikdaten 2024")
+
+#Bind together
+gesamttabelle <- rbind(Buero,Turnhalle)
+
+#Create variable age_group
+
+gesamttabelle <- gesamttabelle %>%
+  mutate(age_group = gsub("^(Jungs|Mädels) ", "", Statistikfeld))
+
+
+#Create a variable months_since_jan24
+
+# Reference date
+reference_date <- as.POSIXct("2024-01-01 00:00:00")
+
+# Calculate months difference
+gesamttabelle <- gesamttabelle %>%
+  mutate(erfassungsdatum=`Erfasst am`)%>%
+  mutate(
+    months_since_jan_2024 = (as.numeric(format(erfassungsdatum, "%Y")) - 
+                               as.numeric(format(reference_date, "%Y"))) * 12 +
+      (as.numeric(format(erfassungsdatum, "%m")) - as.numeric(format(reference_date, "%m"))
+         )
+  )
+
+library(ggplot2)
+gesamttabelle%>%
+  group_by(months_since_jan_2024)%>%
+  summarise(meanAnzahl=mean(Anzahl))%>%
+  ggplot(.,aes(x=months_since_jan_2024,y=meanAnzahl))+
+  geom_bar(stat="identity",position = "dodge")
+
+
+```
+
+## Summarizing data: describing normality and diversity of single characteristics (univariate statistics)
+
+### Frequency tables
+
+-   Use **`count(x)`** to count how often each value occurs in your variable. This is the most universal strategy to summarize your data. It is applicable to all data types (remember from [introduction to quantitative social research](https://de.wikipedia.org/wiki/Skalenniveau): nominal, ordinal, numeric).
+
+```{r table,echo=TRUE,eval=FALSE}
+
+#With real data
+library(arrow)
+setwd("C:/Users/kld1/switchdrive/BFH/Wichtige Dokumente/Lehre/Data skills for social work professionals/BFH/Daten/European Social Survey/")
+
+#data: https://drive.switch.ch/index.php/s/vSytsi7wl1H1yf3
+
+#Load in data
+ess <- read_parquet("ESS.parquet")
+
+ess%>%
+  count(cntry)
+
+#Add percentages
+ess%>%
+    count(cntry)%>%
+    mutate(Percentages=n/sum(n)*100)
+```
+
+### Summarizing variables into one number: mean and variance
+
+-   Data can be summarized using the `summarise()` function.
+
+-   If numeric, single variables can be described with a single number, so called distributional parameters.
+
+-   Distributional parameters allow to quantify the central tendency of a single variable
+
+    -   Calculate the mean using `mean(x)` to find the central tendency, or simply the "average" value. The median - a sometimes better measure for the central tendency of data - is calculated using `median(x)`.
+
+-   Distributional parameters allow to quantify the variability of a single variable
+
+    -   Use the minimum `min(x)` and maximum `max(x)` to measure the range of data.
+
+    -   Use the **standard deviation** with `sd(x)` to measure how much the data varies from the mean.
+
+```{r distrparam,echo=TRUE,eval=FALSE}
+
+library(arrow)
+setwd("C:/Users/kld1/switchdrive/BFH/Wichtige Dokumente/Lehre/Data skills for social work professionals/BFH/Daten/European Social Survey/")
+
+#data: https://drive.switch.ch/index.php/s/vSytsi7wl1H1yf3
+
+#Load in data
+ess <- read_parquet("ESS.parquet")
+
+ess%>%summarise(Average_Happiness=mean(happy),
+                Minimum_Happiness=min(happy),
+                Maximum_Happiness=max(happy),
+                SD_Happiness=sd(happy))
+```
+
+### Exercise: summarizing single variables
+
+-   Read in data of [Fokus Arbeit](#https://drive.switch.ch/index.php/s/eatQbxi4RjEFXKC).
+
+-   Remove observations from the control group and missing values (definition control group: `Interventionsgruppe == 0`).
+
+-   What percentage of participants are women? What percentage are long-term recipients (more than 12 months of receipt?
+
+-   Calculate summary statistics for both the measurements before versus after the intervention for vitality (`Vitality`), social support (`Sozial)`, mastery (`Mastery`) and work outlooks (`Perspektive`). Measurements before the intervention end with a 1, measurements after the intervention end with a 2. Bind the data together into one large data.frame. Hint for more efficient code: ask ChatGPT to write the code with the `across` function. This allows you perform the same functions (pre-defined functions such as `mean()`, but also own functions) on multiple variables.
+
+-   Which aspects changed the most? Which distributional parameters changed most? Do you observe changes in variability of measurements?
+
+### Solution: summarizing single variables
+
+```{r solutionsummary,eval=FALSE,echo=FALSE}
+#load package
+library(dplyr)
+library(tidyr)
+setwd("C:/Users/kld1/switchdrive/BFH/Wichtige Dokumente/Lehre/Data skills for social work professionals/BFH/Daten/Fokus Arbeit/")
+
+focarb <- read.csv("FokusArbeit_Wirkung.csv")
+
+focarb%>%count(Weiblich)
+
+focarb%>%mutate(Langzeit=Bezugsdauer>12)%>%
+  count(Langzeit)%>%
+  mutate(Prop=n/sum(n))
+
+
+#By hand
+table<-focarb%>%
+  filter(Interventionsgruppe==1, !is.na(Vitality1)) %>%
+  summarise(Average_Happiness=mean(Vitality1),
+                Minimum_Happiness=min(Vitality1),
+                Maximum_Happiness=max(Vitality1),
+                SD_Happiness=sd(Vitality1),
+                Average_Happiness2=mean(Vitality2),
+                Minimum_Happiness2=min(Vitality2),
+                Maximum_Happiness2=max(Vitality2),
+                SD_Happiness2=sd(Vitality2))
+#More efficient
+table<-focarb %>%
+  filter(Interventionsgruppe == 1, !is.na(Vitality1)) %>%
+  summarise(
+    across(
+      c(Vitality1, Vitality2, Sozial1, Sozial2, Perspektive1,Perspektive2,Mastery1,Mastery2),
+      list(
+        Average = mean,
+        Minimum = min,
+        Maximum = max,
+        SD = sd
+      ),
+      .names = "{.col}_{.fn}"
+    )
+  )%>%
+  pivot_longer(#Put it into nice format; this is why we need tidyr; unfortunately not so simple; but ChatGPT helps you well
+    cols = everything(),
+    names_to = c("Variable", "Statistic"),
+    names_sep = "_",
+    values_to = "Value"
+  ) %>%
+  pivot_wider(
+    names_from = Statistic,
+    values_from = Value
+  )
+
+```
+
+## Summarizing data: analysing associations between two variables
+
+### Cross tables
 
 ### Controlled differences
 
