@@ -96,7 +96,7 @@ Text to enter into Co-Pilot ein (Microsoft Copilot in Bing; important: verwenden
 
 -   People gain awareness of data science tools and how they could be used for social work.
 
--   People learn how to critically evaluate data science products
+-   People learn how to critically evaluate data science products.
 
 -   People learn how to do data science with R.
 
@@ -177,7 +177,7 @@ Text to enter into Co-Pilot ein (Microsoft Copilot in Bing; important: verwenden
 -   Develop an idea how data science could be used in social work based on the file "[Use cases in social work](https://drive.switch.ch/index.php/s/r3FcksvmwvSodpY)" together with Copilot/ChatGPT
 -   Use the following prompt:
 
-*You are a highly experienced data science expert and consultant specializing in applications for social organizations. Your task is to help me design a clear, impactful, and practical example of how data science could be applied in social work, tailored to my specific interests, expertise, and work context. Use the file by Dorian Kessler on potential use cases as a reference and engage with me through targeted questions to fully understand my context before developing the application idea. The goal is to create a solution that is actionable, highly beneficial, and easy to present to colleagues.*
+*You are a highly experienced data science expert and consultant specializing in applications for social organizations. Your task is to help me design a clear, impactful, and practical example of how data science could be applied in social work, tailored to my specific interests, expertise, and work context. Use the file by Dorian Kessler on potential use cases (ask me to upload it) as a reference and engage with me through targeted questions to fully understand my context before developing the application idea. The goal is to create a solution that is actionable, highly beneficial, and easy to present to colleagues.*
 
 *Conversation Steps:*
 
@@ -221,9 +221,9 @@ Text to enter into Co-Pilot ein (Microsoft Copilot in Bing; important: verwenden
 
 -   [See module description]()
 
-# Measuring the effects of social work
+## Measuring the effects of social work
 
-## Why is it important to measure the effects of social work?
+### Why is it important to measure the effects of social work?
 
 Improving practice with better knowledge
 
@@ -249,7 +249,7 @@ Improving practice with better knowledge
 
     -   Easier randomization (e.g. changing formulations on a website to see whether it affects service usage)
 
-## What is an effect and what not?
+### What is an effect and what not?
 
 -   Effect = difference in the result with influencing variable versus without influencing variable (= **counterfactual** situation)
 
@@ -273,9 +273,9 @@ Improving practice with better knowledge
     -   [Federal Council guidelines for the labor market integration of persons with protection status S for cantons: 40% should have a job until the end of 2024](https://www.blick.ch/politik/40-prozent-sollen-stelle-haben-der-bundesrat-will-dass-mehr-ukrainerinnen-arbeiten-id19105587.html)
         -   Why does a canton (not) reaching the goal of 40% not say much about the effects of its measures?
 
-## How can we measure the effects of social work with quantitative data?
+### How can we measure the effects of social work with quantitative data?
 
-### Asking experts
+#### Asking experts
 
 -   Asking individuals about the subjectively measured effect
 
@@ -293,7 +293,7 @@ Improving practice with better knowledge
 
     -   Social desirability bias: we want to please the researcher
 
-### Assessing correlations
+#### Assessing correlations
 
 -   Is there a systematic relationship between two dimensions?
 
@@ -312,7 +312,7 @@ Improving practice with better knowledge
 
 ![<https://x.com/DBelardoMD/status/1860421340903182519>](images/Moewe.png)
 
-### Experiments - the gold standard
+#### Experiments - the gold standard
 
 -   Gold standard: best way to measure effects
 
@@ -352,7 +352,7 @@ Improving practice with better knowledge
 
     -   Social desirability (except in double-blind studies with placebo)
 
-### Natural experiments
+#### Natural experiments
 
 -   A random event/dimension (Z) influences independent variable (X) but not the outcome (Y)
 
@@ -380,7 +380,7 @@ Improving practice with better knowledge
 
     -   Randomness hard to prove
 
-### Exercise
+#### Exercise
 
 -   Form four groups: one for each method to measure effects
 
@@ -392,9 +392,9 @@ Improving practice with better knowledge
 
     -   What numbers would you calculate to measure the effect?
 
-# Prediction and AI in social work
+## Prediction and AI in social work
 
-## Why should we use machines to predict in social work?
+### Why should we use machines to predict in social work?
 
 -   Prediction is an integral part of individual-level social work
 
@@ -420,7 +420,7 @@ Improving practice with better knowledge
 
     -   Helpfulness of machine predictions increase, the more data we have
 
-## How do machine predictions work?
+### How do machine predictions work?
 
 -   Basic technology: supervised machine learning
 
@@ -450,7 +450,7 @@ Improving practice with better knowledge
 
     -   the more important it is to intervene early
 
-## Examples
+### Examples
 
 -   Exercise
 
@@ -486,7 +486,7 @@ Improving practice with better knowledge
 
         -   What are the effects of usage?
 
-## How to train your own prediction model
+### How to train your own prediction model
 
 -   Training a prediction model involves the following steps
 
@@ -545,13 +545,13 @@ Improving practice with better knowledge
 
 -   With `ggplot2` R allows you to create beautiful figures.
 
--   With the `tidyverse` and `dplyr`, R has the simplest language for data preparation.
+-   With the `tidyverse` and `dplyr`, R has the simplest and most intuitive language for data preparation and analysis.
 
 -   R is more than just statistical software (cf. `shiny`).
 
 -   R is well known by ChatGPT. Disclaimer: we will focus on the most necessary tools for working the data you have.
 
-## Data Science workflow
+## Data science workflow from A to Z
 
 ```{r Example: Basic workflow, echo=T, eval=F}
 # Install required packages if they are not already installed
@@ -591,7 +591,7 @@ raw_data <- read_excel(destfile, sheet = 1, skip = 2)  # Skip the first 2 rows c
 # Process the data: Select columns, rename, filter rows
 data <- raw_data %>%
   select(Kanton='...2', contains("20")) %>%
-  filter(!is.na(Kanton), Kanton %in% c("Bern / Berne", "Zürich", "Basel-Stadt", "Genève"))
+  filter(Kanton %in% c("Bern / Berne", "Zürich", "Basel-Stadt", "Genève"))
 
 # Transform the data from wide to long format
 long_data <- data %>%
@@ -662,7 +662,6 @@ doc <- doc %>%
 
 # Save the Word document
 print(doc, target = "Social_Assistance_Report.docx")
-
 
 ```
 
@@ -784,7 +783,7 @@ fix(Buero)
 | `Jungs_23` | 2023 | Gieletraeff, range="A11:B11",col_names = FALSE | Statistik OJA Angebote Burgdorf 2023.xlsx |
 
 |           |      |                 |                                           |
-|-----------------|-----------------|-----------------|---------------------|
+|-------------|-------------|-------------|----------------------------------|
 | `JuBu_23` | 2023 | JuBU Traeff 5&6 | Statistik OJA Angebote Burgdorf 2023.xlsx |
 
 |  |  |  |  |
@@ -830,12 +829,12 @@ View(Maedels_22)
         -   is element of: `%in%`
         -   is missing: `is.na(x)`
         -   is infinite: `is.inf()`
--   `arrange()`: sorts
 -   `select()`: selects columns
 -   `mutate()`: creates new columns
--   `summarize()`: aggregates (collapses) data to individual data points
--   `distinct()`: removes duplicate values
 -   `group_by()`: defines subgroups in the data so that `mutate()` and `summarize()` can be applied separately per group.
+-   `summarize()`: aggregates (collapses) data to individual data points
+-   `arrange()`: sorts
+-   `distinct()`: removes duplicate values
 -   dplyr can be used very well together with so-called piping, i.e. the data object is passed from function to function by `%>%`, which makes the code much easier to read and more compact.
 
 ### Example: Package dplyr
@@ -859,13 +858,6 @@ focarb <- focarb %>%
   filter(!(is.na(Vitality1)))%>%
 #Mutate: calculate a new variable that measures the change in vitality before versus after
   mutate(Change_Vitality=Vitality2-Vitality1)
-
-
-#Plot the distribution of the change for the two groups 
-
-ggplot(focarb,aes(x=Change_Vitality,
-                  fill=factor(Interventionsgruppe)))+
-  geom_density(alpha=.5)
 
 ```
 
@@ -898,15 +890,13 @@ ggplot(focarb,aes(x=Change_Vitality,
     | 88888 | Don't know\*     |
     | 99999 | No answer\*      |
 
--   Create a new variable `socialworker` that measures whether someone is a social worker or not (click on the variable to know which numbers stand for social workers). Use the `ifelse()` function to define the variable.
+-   Create a new variable `socialworker` that measures whether someone is a social worker or not (click on the variable to know which numbers stand for social workers). Use the `ifelse(isco==NUMBERFORSOCAILWORKERS,"Yes","No")` function to define the variable.
 
--   Check the number of rows in the total data frame using `nrow(data.frame)`. Filter out individuals that are social workers
+-   Check the number of individuals (i.e. rows) in the total data frame using `nrow(data.frame)`. Store it into an object. Filter out individuals that are social workers and check number of individuals again. What is the proportion of social workers in Europe? And in Switzerland?
 
 ### Solution: simple data manipulation with dplyr
 
 ```{r solution dplyr, echo=FALSE,eval=FALSE}
-#install and load the arrow package 
-#install.packages("arrow")
 library(arrow)
 library(dplyr)
 #Set working directory to your download folder
@@ -927,9 +917,19 @@ ess <- ess%>%
 
 #Is someone a social worker
 ess <- ess %>%
-  mutate(socialworker= ifelse(isco08 == 2635, "Social Worker","Not a social worker"))
+  mutate(socialworker= ifelse(isco08 == 2635, "Yes","No"))
 
-#What is the share of social workers in total
+total<-nrow(ess)
+
+socialworkers<-nrow(ess%>%filter(socialworker=="Yes"))
+
+socialworkers/total
+
+total.CH<-nrow(ess%>%filter(cntry=="CH"))
+
+socialworkers.CH<-nrow(ess%>%filter(socialworker=="Yes"&cntry=="CH"))
+
+socialworkers.CH/total.CH
 
 ```
 
@@ -950,8 +950,6 @@ ess <- ess %>%
         -   Useful when data are not sorted in the same order and when some rows in data frame 1 are not present in data frame 2.
 
 ```{r binding,echo=TRUE,eval=FALSE}
-
-
 library(arrow)
 library(dplyr)
 #data: https://drive.switch.ch/index.php/s/vSytsi7wl1H1yf3
@@ -961,17 +959,16 @@ setwd("C:/Users/kld1/switchdrive/BFH/Wichtige Dokumente/Lehre/Data skills for so
 ess <- read_parquet("ESS.parquet")
 
 #Rbind
-
 Swiss<-ess%>%
   filter(cntry=="CH")
 
 Germans<-ess%>%
   filter(cntry=="DE")
 
-Austria<-ess%>%
+Austrians<-ess%>%
   filter(cntry=="AT")
 
-DACH<-rbind(Swiss,Germans,Austria)
+DACH<-rbind(Swiss,Germans,Austrians)
 
 #Cbind and merge
 
@@ -1152,7 +1149,7 @@ gesamttabelle_burgdorf <-gesamttabelle_burgdorf%>%
     -   For example, to reduce `"2022-04-01 15:21:03"` to `"2022-04-01"`, you can use:
 
         ```{r dates and times, eval=FALSE,echo=TRUE}
-        datetime <- as.POSIXct("2022-04-01 15:21:03")
+        datetime <- as.Date("2022-04-01")
         format(datetime, "%Y-%m-%d")
         format(datetime, "%Y-%m")
         format(datetime, "%Y")
@@ -1167,11 +1164,15 @@ gesamttabelle_burgdorf <-gesamttabelle_burgdorf%>%
 
 -   Create a variable `age_group` from the variable `Statistikfeld`. Use either `gsub()` or `grepl()` to extract the relevant information.
 
--   Create a variable `months_since_jan24` from the variable `'Erfasst am'` that indicates the number of months between the current date and the introduction of the Turnhalle offer. Use the following steps:
+-   Create a variable `months_since_jan24` from the variable `'Erfasst am'` that indicates the number of months between the current date and the introduction of the Turnhalle offer. Do it with the following steps:
 
     -   Define the reference date in `as.POSIXct()` format and store it into an object (see example above).
 
     -   Rename the variable `'Erfasst am'` into a new one called `erfassungsdatum`. It is possible to work with variables that have a space, but unhandy (you always have to use back ticks).
+
+    -   Calculate the difference with the following formula:
+
+        `(as.numeric(format(erfassungsdatum, "%Y")) - as.numeric(format(reference_date, "%Y"))) * 12 +(as.numeric(format(erfassungsdatum, "%m")) - as.numeric(format(reference_date, "%m"))`
 
 ### Solution text, dates and times
 
@@ -1205,7 +1206,7 @@ gesamttabelle <- gesamttabelle %>%
 #Create a variable months_since_jan24
 
 # Reference date
-reference_date <- as.POSIXct("2024-01-01 00:00:00")
+reference_date <- as.Date("2024-01-01")
 
 # Calculate months difference
 gesamttabelle <- gesamttabelle %>%
@@ -1303,7 +1304,8 @@ ess%>%summarise(Average_Happiness=mean(happy),
 ```{r solutionsummary,eval=FALSE,echo=FALSE}
 #load package
 library(dplyr)
-library(tidyr)
+
+#load data: #https://drive.switch.ch/index.php/s/eatQbxi4RjEFXKC
 setwd("C:/Users/kld1/switchdrive/BFH/Wichtige Dokumente/Lehre/Data skills for social work professionals/BFH/Daten/Fokus Arbeit/")
 
 focarb <- read.csv("FokusArbeit_Wirkung.csv")
@@ -1386,20 +1388,21 @@ ranking<-ess%>%
   arrange(sharesw)
 ```
 
-### Exercise: grouped means
+#### Exercise: grouped means
 
 1.  Read in the data from Jugendarbeit Oberdorf ([Büro](https://drive.switch.ch/index.php/s/gdNYHopxWDCV9hr){.uri}, [Turnhalle](https://drive.switch.ch/index.php/s/am1T36ehPL24QuQ){.uri}).
 2.  Create the `gesamttabelle` and add a variable before versus after January 2024.
 3.  Summarize the `Anzahl` data into one row per date. We want to have data on the total number of visitors per day. Use `group_by(erfassungsdatum)%>%summarise(Totalvisits=sum(Anzahl)`.
 4.  Create a grouped mean table on whether numbers were, on average, higher before versus after January 2024. Was it higher or lower after the "Büro" was shifted to the "Turnhalle"?
 
-### Solution: grouped means
+#### Solution: grouped means
 
 ```{r excercise grouped mean, echo=FALSE,eval=FALSE}
 
 library(readxl)
 library(dplyr)
-
+#https://drive.switch.ch/index.php/s/gdNYHopxWDCV9hr
+#https://drive.switch.ch/index.php/s/am1T36ehPL24QuQ
 #Read in data
 
 setwd("C:/Users/kld1/switchdrive/BFH/Wichtige Dokumente/Lehre/Data skills for social work professionals/BFH/Daten/Burgdorf/Turnhalle/")
@@ -1422,11 +1425,11 @@ gesamttabelle%>%
 
 ### Controlled differences: OLS
 
--   There might be situations where we not only want to know whether there is an association between two variables or a difference between two groups but were we
+-   There might be situations where we not only want to know whether there is a difference between two groups but were we
 
-    -   A) want to explore the reasons for differences or
+    -   A. want to explore the reasons for differences or
 
-    -   B) want to see whether the differences hold while accounting for third variables.
+    -   B. want to see whether the differences hold while accounting for third variables.
 
 -   Examples:
 
@@ -1434,17 +1437,15 @@ gesamttabelle%>%
 
     -   We not only want to know whether social workers are happier with their lives compared to health care workers but also whether this is due to their job satisfaction.
 
-    -   We want to know whether participants in "Fokus Arbeit" feel more vital after the intervention than the control group irrespective of eventual differences in vitality before the intervention.
-
 -   In this case, linear regression or **Ordinary Least Squares** (usually called OLS) is the tool of choice. It can be used in the situation where the dependent variable is continuous or has two categories (e.g. 0 for "Not poor" and 1 for "Poor"), and for all types of independent variables.
 
 -   The command looks the following: `lm(dependent_variable ~ independent_variable + third_variable, name_of_dataframe)`.
 
     -   Usually you would store the output of the model calculations into an object, e.g. like this `model<-lm(dependent_variable ~ independent_variable + third_variable, name_of_dataframe)`
 
-    -   Then you get the most relevant results using `huxreg(model)` from the `huxtable` package.
+    -   Then you get the most relevant results nicely presented using `huxreg(model)` from the `huxtable` package.
 
-    -   Relevant for the interpretation are the coefficients (first row of the table) and test of the statistical significance (last row). You will get two types of coefficients:
+    -   Relevant for the interpretation are the coefficients (number without brackets) and the test of the statistical significance (stars). You will get two types of coefficients:
 
         -   Coefficients for *continuous* independent variables. They tell you how much the dependent variable increases for each unit increase of the independent variable.
 
@@ -1498,17 +1499,67 @@ selected_data <- selected_data %>%
 
 
 # Run the linear regression
-model <- lm(stfmjob ~ occupation
-            , data = selected_data)
-model_controlled <- lm(stfmjob ~ occupation + happy
-            , data = selected_data)
+model <- lm(stfmjob ~ occupation, selected_data)
+model_controlled <- lm(stfmjob ~ occupation + happy, selected_data)
 
 huxreg(model,model_controlled)
 ```
 
+#### Exercise: controlled differences
+
+-   Read in data of [Fokus Arbeit](#https://drive.switch.ch/index.php/s/eatQbxi4RjEFXKC).
+
+-   Calculate a variable that measures the change in vitality (e.g. `changevit`) from the time point before versus after the intervention (formula: `vitatlity2-vitality1`).
+
+-   Run a regression model with `changevit` as the dependent variable and `Interventionsgruppe` as the independent variable.
+
+-   Run a second model include age, gender and duration of benefit receipt. Do these factors influence whether vitality has changed between the two measurements? Does accounting for these factors alter the association between `Interventionsgruppe` and vitality?
+
+#### Solution: controlled differences
+
+```{r OLSexercise,echo=FALSE,eval=FALSE}
+library(huxtable)
+library(dplyr)
+
+#load data: #https://drive.switch.ch/index.php/s/eatQbxi4RjEFXKC
+setwd("C:/Users/kld1/switchdrive/BFH/Wichtige Dokumente/Lehre/Data skills for social work professionals/BFH/Daten/Fokus Arbeit/")
+
+focarb <- read.csv("FokusArbeit_Wirkung.csv")
+
+focarb <- focarb%>%
+  mutate(changevit=Vitality2-Vitality1)
+
+model <- lm(changevit~Interventionsgruppe,focarb)
+model2 <- lm(changevit~Interventionsgruppe+Alter+Weiblich+Bezugsdauer,focarb)
+
+huxreg(model,model2)
+```
+
 ## Presentation of results
 
-### Huxtable
+-   The presentation of results is crucial for their impact.
+
+-   R is very versatile in terms of data preparation and analysis but, unfortunately, raw output from R is hard to read.
+
+-   However, there are packages (`huxtable,ggplot2,officer,flextable`) that help you create really nice tables and figures from within R.
+
+-   Generally, you should try to keep table and graph creation within R. This takes time. However, it allows you to automate the data preparation and analysis process thus saving you a lot of time if your data changes (e.g. because of an update) or when you want the change the way you analyze your data. Specifically, you can save your tables or figures and link them into the document you are creating and automatically update them within your document when needed.
+
+-   Generally, table and graph creation is nitty-gritty work requiring a lot of detail knowledge. So we won't go into it further here. However, ChatGPT is very good at this. Use it extensively for these tasks.
+
+### Nice tables: huxtable
+
+-   The `huxtable` package allows you to control many aspects of the aesthetic design of a table and to save it into a output file in a handy format (such as Word or PDF). For example, you can tell it which cells should have bold font and which rows and columns should be underlined.
+
+-   However, before you get to the point of changing the looks of the table, the data must be in correct shape. The `tidyr` package brings two important functions:
+
+    -   **`pivot_longer()`**: Transforms a **wide** dataset (with multiple columns) into a **long** dataset, where values from multiple columns are combined into a single column, and another column is created to label those values.
+
+        -   Useful when you want to analyze or plot data with repeated measures or categories.
+
+    -   **`pivot_wider()`**: Transforms a **long** dataset (with multiple rows for the same observation) into a **wide** dataset, where unique values in a column become new columns, and the data is spread across these columns.
+
+        -   Useful when you want a compact summary or reshape data for specific analyses.
 
 ```{r nicetables,echo=TRUE,eval=FALSE}
 #load package
@@ -1517,13 +1568,6 @@ library(tidyr)
 setwd("C:/Users/kld1/switchdrive/BFH/Wichtige Dokumente/Lehre/Data skills for social work professionals/BFH/Daten/Fokus Arbeit/")
 
 focarb <- read.csv("FokusArbeit_Wirkung.csv")
-
-focarb%>%count(Weiblich)
-
-focarb%>%
-  mutate(Langzeit=Bezugsdauer>12)%>%#Definition of long-term recipients
-  count(Langzeit)%>%#Frequencies
-  mutate(Prop=round(n/sum(n)*100)) #Percentages
 
 table<-focarb %>%
   filter(Interventionsgruppe == 1, !is.na(Vitality1)) %>%
@@ -1547,38 +1591,111 @@ table<-focarb %>%
     names_from = Statistic,
     values_from = Value
   )
+
+
+# Create a huxtable
+ht <- as_hux(table) %>%
+  set_bold(1, everywhere, TRUE) %>% # Bold the header
+  set_align(everywhere, 2:3, "center") %>% # Center align numeric columns
+  set_number_format(2:nrow(table) + 1, 2:3, "%.2f") %>% # Format numbers to 2 decimals
+  set_caption("Descriptive Statistics Table") %>% # Add a caption
+  set_width(0.7) 
+
+# Print the table
+ht
+
+#Save it
+
+quick_docx(ht,"Table.docx")
 ```
 
-### Ggplot2
+### Nice graphs: ggplot2
 
-## Workflow
+-   A powerful R package for creating high-quality data visualizations is `ggplot2`. Built around the "grammar of graphics," it allows you to construct plots step-by-step, starting with data and mappings, and then adding layers, scales, labels, and themes.
 
--   Save graphs as png and link them into word
+    -   Grammar of Graphics Approach: Every plot is a combination of data, geometric objects (such as points or bars), and aesthetic mappings (like color or size), making it easy to customize and iterate.
 
--   Save tables as docx and link them into word
+    -   Flexible Customization: You can adjust virtually any aspect of your visualization, including colors, shapes, line types, and backgrounds, ensuring that the final plot is both informative and visually appealing.
 
-### Cross tables
+    -   Data-Ready Visualizations: Like with tables, having data in the correct format is crucial. By using tidyr functions (such as `pivot_longer()` and `pivot_wider()`), you ensure that your dataset is tidy before you start plotting, thereby simplifying the creation of clear and insightful graphs.
 
--   Cross tables are a straightforward method for analyzing associations. They summarize the relationship between two categorical variables by displaying the frequency distribution of variables in a matrix format, making it easy to observe patterns and potential correlations. It is universally applicable to all types of data since all variables can be coded into categorical format.
+    -   Consistency and Reproducibility: Through a structured and layered approach, ggplot2 enables consistent styling and easy updates, making it well-suited for reproducible research—an important aspect for data analysis projects in Switzerland.
 
--   There are two basic rules of cross tables
+```{r ggplot,echo=TRUE,eval=FALSE}
+library(readxl)
+library(dplyr)
+library(ggplot2)
+#Read in data
 
-    -   If you have a hypothesis about the causal relationship between two variables: distribute categories of the [dependent variable](https://en.wikipedia.org/wiki/Dependent_and_independent_variables) into rows and categories of the independent variable into columns.
+setwd("C:/Users/kld1/switchdrive/BFH/Wichtige Dokumente/Lehre/Data skills for social work professionals/BFH/Daten/Burgdorf/Turnhalle/")
 
-    -   Calculate column percentages: it allows you to interpret differences in the distribution of the dependent variable between categories of the independent variable.
+Buero <- read_excel("OJAOffice_Statistikdaten_Jugendbüro Oberburg 23.xlsx",sheet="Statistikdaten 2024")
+Turnhalle<- read_excel("OJAOffice_Statistikdaten_offene Turnhalle 24.xlsx",sheet="Statistikdaten 2024")
 
--   Cross tables can be made with `count(dependent variable, independent variable)`.
+#Bind together
+plotdata <- rbind(Buero,Turnhalle)%>%
+  mutate(erfassungsdatum=`Erfasst am`,
+    months_since_jan_2024 = (as.numeric(format(erfassungsdatum, "%Y")) - 
+                               as.numeric(format(as.Date("2024-01-01"), "%Y"))) * 12 +
+      (as.numeric(format(erfassungsdatum, "%m")) - as.numeric(format(as.Date("2024-01-01"), "%m"))))%>%
+  group_by(months_since_jan_2024)%>%
+  summarise(totalvisits=sum(Anzahl))
 
--   To add column percentages, you need to load the `tidyr` package and add the following code
+#Plot data
+ggplot(plotdata,aes(x=months_since_jan_2024,y=totalvisits))+
+  geom_point()
 
-    -   `%>%`
+ggsave("Figure.pdf",height=7,width=8)
+```
 
-        `group_by(independent variable)%>%`
+### Exercise: ggplot2
 
-        `mutate(Spaltenprozent=n/sum(n)*100)%>%`
+-   Use ESS data to calculate a variable whether someone is a social worker (see [Solution: simple data manipulation with dplyr]).
 
-        `select(-n)%>%`
+-   Calculate the percentage of social workers in each country in the data using grouped mean.
 
-        `pivot_wider(names_from = independent variable,`
+-   Make a bar chart with `ggplot2` where bars are sorted (put `reorder(cntry,share)` as the X-aesthetic). Use `+geom_bar(stat="identity")` to create bars. Save it.
 
-        `values_from = Spaltenprozent)`
+-   Extra taks: create a graph for changes over time (hint: `essround` measures the year of data collection; 6 =2011/2012). Are there more or less social workers?
+
+### Solution: ggplot2
+
+```{r ggplotsolution,echo=FALSE,eval=FALSE}
+
+library(arrow)
+library(dplyr)
+#Set working directory to your download folder
+setwd("C:/Users/kld1/switchdrive/BFH/Wichtige Dokumente/Lehre/Data skills for social work professionals/BFH/Daten/European Social Survey/")
+#https://drive.switch.ch/index.php/s/vSytsi7wl1H1yf3
+#Load in data
+ess <- read_parquet("ESS.parquet")
+
+#Select variables with information on country and occupation
+
+ess <- ess%>%
+  select(cntry,isco08,essround)
+
+#Filter out people with no information on job
+
+ess <- ess%>%
+  filter(isco08<10000)
+
+#Is someone a social worker
+ess <- ess %>%
+  mutate(socialworker= ifelse(isco08 == 2635, "Yes","No"))
+
+#Plot
+ess%>%
+  group_by(cntry)%>%
+  summarise(sharesw=100*mean(socialworker=="Yes"))%>%
+  ggplot(.,aes(x=reorder(cntry,-sharesw),sharesw))+
+  geom_bar(stat = "identity")+
+  labs(x="Land",y="Anteil Sozialarbeitende an der gesamten Arbeitsbevölkerung")
+ess%>%
+  group_by(essround)%>%
+  summarise(sharesw=100*mean(socialworker=="Yes"))%>%
+  ggplot(.,aes(x=essround,sharesw))+
+  geom_bar(stat = "identity")+
+  labs(x="Jahr",y="Anteil Sozialarbeitende an der gesamten Arbeitsbevölkerung")
+
+```
