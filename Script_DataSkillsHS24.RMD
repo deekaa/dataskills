@@ -1,6 +1,6 @@
 ---
 title: "Data skills for social work professionals (HS 24)"
-author: "Dorian Kessler"
+author: "Dorian Kessler, Samin Sepahniya, Olivier Lehmann"
 date: !r December 2024
 output:
   html_document:
@@ -80,7 +80,7 @@ Text to enter into Co-Pilot ein (Microsoft Copilot in Bing; important: verwenden
 
 -   Biete mir am Schluss weitere Übungen an, falls ich Lust habe. Mache Vorschlaege für Übungen.
 
--   Du bist eine R-Expert:in, weisst aber auch, dass angehende Sozialarbeiter:in in Sachen Programmierung wenig Wissen haben und das nicht technische Begriffe eine alltagssprachliche Erklaerung benötigen.
+-   Du bist eine R-Expert:in, weisst aber auch, dass angehende Sozialarbeiter:in in Sachen Programmierung wenig Wissen haben und das technische Begriffe eine alltagssprachliche Erklaerung benötigen.
 
 -   Danke für deine motivierte Unterstützung und Hilfsbereitschaft als persönliche Tutorin! Du hilfst mir bedarfsgerecht R zu lernen und dieses Wissen für Klient:innen einzusetzen.
 
@@ -91,6 +91,10 @@ Text to enter into Co-Pilot ein (Microsoft Copilot in Bing; important: verwenden
 -   Ergaenze bei Strg jeweils Ctrl, falls gewisse Personen englische Windows Tastaturen haben.
 
 # General Introduction
+
+## Course plan
+
+-   [See module description]()
 
 ## Learning Goals
 
@@ -120,7 +124,7 @@ Text to enter into Co-Pilot ein (Microsoft Copilot in Bing; important: verwenden
 
 -   Data contains information on human behavior = **helps us better understand the human world and solve human problems.**
 
--   In the era of AI, ["data literacy"](https://api.swiss-academies.ch/site/assets/files/127302/data_literacy_charta_1405_online_de.pdf) becomes a key skill in all areas of life, including social work –\> it should be a basic competence
+-   In the era of AI, "[data literacy](https://de.wikipedia.org/wiki/Datenkompetenz)" becomes a key skill in all areas of life, including social work –\> it should be a basic competence
 
     -   Skills to interpret data
 
@@ -217,13 +221,9 @@ Text to enter into Co-Pilot ein (Microsoft Copilot in Bing; important: verwenden
 
 -   Post your final ideas on this [padlet](https://padlet.com/doriank1986/data-skills-2x8f5clm7anao11g)
 
-## Course plan
+# Measuring the effects of social work
 
--   [See module description]()
-
-## Measuring the effects of social work
-
-### Why is it important to measure the effects of social work?
+## Why is it important to measure the effects of social work?
 
 Improving practice with better knowledge
 
@@ -233,7 +233,7 @@ Improving practice with better knowledge
 
     -   Exercise
 
-        -   [What conclusions would you draw from this paper for counseling clients thinking about gender affirmative surgey?](https://pubmed.ncbi.nlm.nih.gov/38699117/)
+        -   [What conclusions would you draw from this paper for counseling clients thinking about gender affirmative surgery?](https://pubmed.ncbi.nlm.nih.gov/38699117/)
 
 -   Legitimizing social work
 
@@ -249,7 +249,7 @@ Improving practice with better knowledge
 
     -   Easier randomization (e.g. changing formulations on a website to see whether it affects service usage)
 
-### What is an effect and what not?
+## What is an effect and what not?
 
 -   Effect = difference in the result with influencing variable versus without influencing variable (= **counterfactual** situation)
 
@@ -273,9 +273,9 @@ Improving practice with better knowledge
     -   [Federal Council guidelines for the labor market integration of persons with protection status S for cantons: 40% should have a job until the end of 2024](https://www.blick.ch/politik/40-prozent-sollen-stelle-haben-der-bundesrat-will-dass-mehr-ukrainerinnen-arbeiten-id19105587.html)
         -   Why does a canton (not) reaching the goal of 40% not say much about the effects of its measures?
 
-### How can we measure the effects of social work with quantitative data?
+## How can we measure the effects of social work with quantitative data?
 
-#### Asking experts
+### Asking experts
 
 -   Asking individuals about the subjectively measured effect
 
@@ -293,7 +293,7 @@ Improving practice with better knowledge
 
     -   Social desirability bias: we want to please the researcher
 
-#### Assessing correlations
+### Assessing correlations
 
 -   Is there a systematic relationship between two dimensions?
 
@@ -312,7 +312,7 @@ Improving practice with better knowledge
 
 ![<https://x.com/DBelardoMD/status/1860421340903182519>](images/Moewe.png)
 
-#### Experiments - the gold standard
+### Experiments - the gold standard
 
 -   Gold standard: best way to measure effects
 
@@ -352,7 +352,7 @@ Improving practice with better knowledge
 
     -   Social desirability (except in double-blind studies with placebo)
 
-#### Natural experiments
+### Natural experiments
 
 -   A random event/dimension (Z) influences independent variable (X) but not the outcome (Y)
 
@@ -380,7 +380,7 @@ Improving practice with better knowledge
 
     -   Randomness hard to prove
 
-#### Exercise
+### Exercise
 
 -   Form four groups: one for each method to measure effects
 
@@ -391,124 +391,6 @@ Improving practice with better knowledge
     -   What data would you analyze?
 
     -   What numbers would you calculate to measure the effect?
-
-## Prediction and AI in social work
-
-### Why should we use machines to predict in social work?
-
--   Prediction is an integral part of individual-level social work
-
-    -   It is used for **diagnosis**
-
-        -   Identifying clients' need for assistance
-
-        -   The future developments of clients' outcomes without assistance is an integral part of diagnosis
-
-        -   Based on predictions of future outcomes, we decide **which clients need our help most**
-
-    -   It is also used for **treatment**
-
-        -   When deciding on which action to take for our client (service, activity, intervention), we make predictions on [**which action will bring the greatest improvements?**](https://www.sciencedirect.com/science/article/pii/S0927537105000564)
-
--   On an aggregate level, we need to predict future need for services to ensure mobilization of adequate resources (i.e. asking for more funding)
-
-    -   E.g. [expectations about case numbers in social assistance during covid](https://skos.ch/themen/sozialhilfe-und-corona/herausforderungen-fuer-das-soziale-system/)
-
--   Social workers, like all humans, [make mistakes when predicting future developments](https://academic.oup.com/bjsw/article-abstract/54/3/1150/7382101?redirectedFrom=fulltext).
-
--   Machines can help us predict outcomes more accurately, that's why we can call it artificial intelligence
-
-    -   Helpfulness of machine predictions increase, the more data we have
-
-### How do machine predictions work?
-
--   Basic technology: supervised machine learning
-
--   We need (a lot of) data about **outcomes** and **determinants** of these outcomes
-
-    -   "Supervised", because we tell the computer what the outcome is and what the determinants are
-
--   Using prediction algorithms, the computer finds rules linking determinants to outcomes. These rule sets are a model.
-
--   There are simple and less simple prediction algorithms
-
-    -   E.g., simple and rigid: Ordinary Least Squares
-
-    -   E.g., complex and flexible: Neural Networks
-
-        -   [Statquest for explanations of different algorithms](https://www.youtube.com/@statquest)
-
-    -   In practice, [extreme gradient boosting](https://www.youtube.com/watch?v=OtD8wVaFm6E) is often used
-
--   Model is used to predict unknown outcomes with information on determinants
-
--   Prediction models are more useful for social work practice,
-
-    -   the more precise machines can predict the outcome, and the [less biased](https://onlinelibrary.wiley.com/doi/abs/10.1002/widm.1356) they are.
-
-    -   the clearer it is what can be done to prevent the outcome
-
-    -   the more important it is to intervene early
-
-### Examples
-
--   Exercise
-
-    -   Please choose one of the following texts on applications of prediction algorithms in fields related to social work
-
-        -   [Berman et al. - 2024 - Trustworthy AI in the public sector An empirical .pdf](https://drive.switch.ch/index.php/s/0BnVw64Ld3IlHzl)
-
-        -   [Black et al. - 2003 - Is the Threat of Reemployment Services More Effect.pdf](https://drive.switch.ch/index.php/s/x03olQjgxDtiZAl)
-
-        -   [Gilholm et al. - 2023 - Machine learning to predict poor school performanc.pdf](https://drive.switch.ch/index.php/s/vQ0wcVhosqs8r0X)
-
-        -   [Kleinberg et al. - 2018 - Human Decisions and Machine Predictions.pdf](https://drive.switch.ch/index.php/s/ukrf4MrRG4dejE2)
-
-        -   [Rittenhouse et al. - 2023 - Algorithms, Humans and Racial Disparities in Child.pdf](https://drive.switch.ch/index.php/s/ziuaAdJWjWDU358)
-
-        -   [Stevenson and Doleac - 2022 - Algorithmic Risk Assessment in the Hands of Humans.pdf](https://drive.switch.ch/index.php/s/fuogL1edjahkUSE)
-
-        -   [Tennakoon et al. - 2023 - Using electronic health record data to predict fut.pdf](https://drive.switch.ch/index.php/s/yUkYmA5PtK8AvRY)
-
-        -   [Toros and Flaming - 2018 - Prioritizing Homeless Assistance Using Predictive .pdf](https://drive.switch.ch/index.php/s/JRn0ybFpXYpaiLg)
-
-    -   Answer the following questions (some questions may not be answered based on information in the papers):
-
-        -   What decisions are to be taken based on AI output? Decision-support or decision-making?
-
-        -   What data are used to train the models? What are the outcomes, what are the influencing factors?
-
-        -   How accurate is it? More or less than humans or bureaucratic rules?
-
-        -   How biased is it? More or less than humans or bureaucratic rules?
-
-        -   Would humans trust and use it?
-
-        -   What are the effects of usage?
-
-### How to train your own prediction model
-
--   Training a prediction model involves the following steps
-
-    -   Acquiring the data with past observations of determinants and outcomes
-
-    -   Split observations into training data and test data
-
-    -   Maximizing predictive performance
-
-        -   Measures of predictive performance
-
-            -   Continuous outcomes
-
-                -   usually mean squared error
-
-            -   Categorical outcomes
-
-                -   correctly classified
-
-        -   Play around with the choice of prediction algorithm
-
-        -   For algorithms that have parameters: play around
 
 # Kompetenznachweis
 
@@ -531,7 +413,7 @@ Improving practice with better knowledge
         -   Research question: What was the effect of Fokus Arbeit on individuals vitality, perspectives, mastery, social support and which personal characteristics increased the effect of Fokus Arbeit?
         -   Also see [Regionaljournal](https://www.srf.ch/news/schweiz/hoechste-sozialhilfequote-nach-pilotprojekt-biel-zieht-durchzogene-bilanz) for a deeper understanding of what was done in the project
 
--   Form: presentation on final day
+-   Form: presentation and discussion on final day
 
 # Introduction to R
 
@@ -1648,7 +1530,7 @@ ggplot(plotdata,aes(x=months_since_jan_2024,y=totalvisits))+
 ggsave("Figure.pdf",height=7,width=8)
 ```
 
-### Exercise: ggplot2
+#### Exercise: ggplot2
 
 -   Use ESS data to calculate a variable whether someone is a social worker (see [Solution: simple data manipulation with dplyr]).
 
@@ -1658,7 +1540,7 @@ ggsave("Figure.pdf",height=7,width=8)
 
 -   Extra taks: create a graph for changes over time (hint: `essround` measures the year of data collection; 6 =2011/2012). Are there more or less social workers?
 
-### Solution: ggplot2
+#### Solution: ggplot2
 
 ```{r ggplotsolution,echo=FALSE,eval=FALSE}
 
