@@ -42,6 +42,8 @@ knitr::opts_chunk$set(eval= TRUE)
 
 -   [Carefully study the module description](https://moodle.bfh.ch/mod/resource/view.php?id=2243627)
 
+-   [Here you find the group list (group membership, coaching times, time of final presentation)](https://drive.switch.ch/index.php/s/SUuh1Pqy65CJshk)
+
 ## Welcome Email
 
 Dear students,
