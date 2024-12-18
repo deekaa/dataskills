@@ -158,13 +158,13 @@ ggplot(data, aes(x = factor(Year), y = DataVolume, fill = Type)) +
 
 -   In the era of AI, "[data literacy](https://de.wikipedia.org/wiki/Datenkompetenz)" becomes a key skill in all areas of life, including social work –\> it should be a basic competence
 
-    -   Skills to interpret data
-
     -   Awareness of data and knowing how to use them
 
-    -   Skills to analyze data
+    -   Skills to interpret data science products
 
-## How can data science benefit social work?
+    -   Skills to analyze data correctly
+
+## How does data science benefit social work?
 
 -   [Use cases in social work](https://drive.switch.ch/index.php/s/r3FcksvmwvSodpY)
 
