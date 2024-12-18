@@ -466,6 +466,13 @@ Improving practice with better knowledge
 
 -   R is well known by ChatGPT. Disclaimer: we will focus on the most necessary tools for working the data you have.
 
+-   RStudio Environment
+
+    -   Console Window
+    -   Source Editor (Syntax window)
+    -   File Window, Plot Window
+    -   Environment Window, History Window
+
 ## Data science workflow from A to Z
 
 ```{r Example: Basic workflow, echo=T, eval=F}
@@ -580,13 +587,6 @@ print(doc, target = "Social_Assistance_Report.docx")
 
 ```
 
--   RStudio Environment
-
-    -   Console Window
-    -   Source Editor (Syntax window)
-    -   File Window, Plot Window
-    -   Environment Window, History Window
-
 ## AI coding assistants
 
 -   ChatGPT and other frontier Large Language Models know R pretty well (Copilot also works, but the [newest models](https://huggingface.co/spaces/lmarena-ai/chatbot-arena-leaderboard) are more able)
@@ -649,8 +649,6 @@ Turnhalle<- read_excel("OJAOffice_Statistikdaten_offene Turnhalle 24.xlsx",sheet
 
 #Explain objects, observations and variables
 #Explain range und col_names = FALSE
-
-
 
 ```
 
@@ -767,8 +765,8 @@ focarb <- read.csv("FokusArbeit_Wirkung.csv")
 #Select: select the variables Vitality1 (=measurement of vitality before the intervention), Vitality2 (=measurement of vitality before the intervention) and intervention (did the person participate in Fokus Arbeit or recieve standard counseling)
 focarb <- focarb %>%
   select(Vitality1,Vitality2,Interventionsgruppe)%>%
-#Filter: out observations that have a missing value (NA = not available) on the measurement before the intervention. .
-  filter(!(is.na(Vitality1)))%>%
+#Filter: out observations that have a missing value (NA = not available) on the measurement before the intervention. 
+  filter(!is.na(Vitality1))%>%
 #Mutate: calculate a new variable that measures the change in vitality before versus after
   mutate(Change_Vitality=Vitality2-Vitality1)
 
@@ -803,7 +801,7 @@ focarb <- focarb %>%
     | 88888 | Don't know\*     |
     | 99999 | No answer\*      |
 
--   Create a new variable `socialworker` that measures whether someone is a social worker or not (click on the variable to know which numbers stand for social workers). Use the `ifelse(isco==NUMBERFORSOCAILWORKERS,"Yes","No")` function to define the variable.
+-   Create a new variable `socialworker` that measures whether someone is a social worker or not (click on the variable to know which numbers stand for social workers). Use the `ifelse(isco==NUMBERFORSOCIALWORKERS,"Yes","No")` function to define the variable.
 
 -   Check the number of individuals (i.e. rows) in the total data frame using `nrow(data.frame)`. Store it into an object. Filter out individuals that are social workers and check number of individuals again. What is the proportion of social workers in Europe? And in Switzerland?
 
@@ -860,7 +858,7 @@ socialworkers.CH/total.CH
 
     -   Row-wise linkage using an identifier variable with `merge(dataframe1,dataframe2, identifier variable)`.
 
-        -   Useful when data are not sorted in the same order and when some rows in data frame 1 are not present in data frame 2.
+        -   Useful when data are not sorted in the same order or when some rows in data frame 1 are not present in data frame 2.
 
 ```{r binding,echo=TRUE,eval=FALSE}
 library(arrow)
@@ -1259,15 +1257,13 @@ table<-focarb %>%
 
 -   Grouped means tables are a universal and straightforward method for analyzing associations. They display the mean value of the [dependent variable](https://en.wikipedia.org/wiki/Dependent_and_independent_variables) by categories of the independent variable.
 
--   The dependent variable can either be continuous or have two categories coded as 0 and 1. In the latter case, it displays the proportion of the individuals with a 1 by category of the independent variable. Multiply with 100 and you have percentages.
+-   The dependent variable can either be continuous or have two categories coded as 0 and 1. In the latter case, it displays the proportion of the individuals with a 1 by category of the independent variable. Multiply times 100 and you have percentages.
 
 -   The independent variable has at least two categories.
 
 -   Grouped means tables are universally applicable to all types of data since all variable types can be coded into this format.
 
 -   It is calculated using the `group_by(independent_variable)` command before `summarise(name=mean(dependent_variable).`
-
--   See below for how to do cross tables (the method taught in quantitative social science introduction).
 
 ```{r groupedmean, echo=TRUE,eval=FALSE}
 
@@ -1306,7 +1302,7 @@ ranking<-ess%>%
 1.  Read in the data from Jugendarbeit Oberdorf ([Büro](https://drive.switch.ch/index.php/s/gdNYHopxWDCV9hr){.uri}, [Turnhalle](https://drive.switch.ch/index.php/s/am1T36ehPL24QuQ){.uri}).
 2.  Create the `gesamttabelle` and add a variable before versus after January 2024.
 3.  Summarize the `Anzahl` data into one row per date. We want to have data on the total number of visitors per day. Use `group_by(erfassungsdatum)%>%summarise(Totalvisits=sum(Anzahl)`.
-4.  Create a grouped mean table on whether numbers were, on average, higher before versus after January 2024. Was it higher or lower after the "Büro" was shifted to the "Turnhalle"?
+4.  Create a grouped mean table on whether numbers were, on average, higher before versus after January 2024. Was it higher or lower after the "Jugendbüro" was replaced by the "Turnhalle"?
 
 #### Solution: grouped means
 
@@ -1348,7 +1344,7 @@ gesamttabelle%>%
 
     -   We want to know whether women earn less than men irrespective of the types of jobs they have.
 
-    -   We not only want to know whether social workers are happier with their lives compared to health care workers but also whether this is due to their job satisfaction.
+    -   We not only want to know whether social workers are happier with their lives compared to health care workers but also whether this is due to differences in the number of work hours.
 
 -   In this case, linear regression or **Ordinary Least Squares** (usually called OLS) is the tool of choice. It can be used in the situation where the dependent variable is continuous or has two categories (e.g. 0 for "Not poor" and 1 for "Poor"), and for all types of independent variables.
 
@@ -1379,7 +1375,7 @@ setwd("C:/Users/kld1/switchdrive/BFH/Wichtige Dokumente/Lehre/Data skills for so
 data <- read_parquet("ESS.parquet")
 
 # Select the relevant columns
-selected_data <- as.data.frame(data) %>% select(isco08,stfmjob,happy,essround)
+selected_data <- as.data.frame(data) %>% select(isco08,happy,wkhct,essround)
 
 # Recode job satisfaction values as numeric and set specific values to NA
 selected_data <- selected_data %>%
@@ -1388,9 +1384,9 @@ selected_data <- selected_data %>%
       as.numeric(happy) %in% c(66, 77, 88, 99) ~ NA_real_,
       TRUE ~ as.numeric(happy)
     ),
-    stfmjob = case_when(
-      as.numeric(stfmjob) %in% c(66, 77, 88, 99) ~ NA_real_,
-      TRUE ~ as.numeric(stfmjob)
+    wkhct = case_when(
+      as.numeric(wkhct) %in% c(66, 77, 88, 99) ~ NA_real_,
+      TRUE ~ as.numeric(wkhct)
     )
   )
 
@@ -1411,11 +1407,17 @@ selected_data <- selected_data %>%
   filter(!is.na(occupation))
 
 
+
 # Run the linear regression
-model <- lm(stfmjob ~ occupation, selected_data)
-model_controlled <- lm(stfmjob ~ occupation + happy, selected_data)
+model <- lm(happy ~ occupation, selected_data)
+
+#Differences in work hours
+selected_data%>%group_by(occupation)%>%summarize(mean(wkhct,na.rm=T))
+
+model_controlled <- lm(happy ~ occupation + wkhct, selected_data)
 
 huxreg(model,model_controlled)
+
 ```
 
 #### Exercise: controlled differences
@@ -1426,7 +1428,7 @@ huxreg(model,model_controlled)
 
 -   Run a regression model with `changevit` as the dependent variable and `Interventionsgruppe` as the independent variable.
 
--   Run a second model include age, gender and duration of benefit receipt. Do these factors influence whether vitality has changed between the two measurements? Does accounting for these factors alter the association between `Interventionsgruppe` and vitality?
+-   Run a second model include age, gender and duration of benefit receipt. Do these factors influence whether vitality has changed between the two measurements? Does accounting for these factors alter the association between `Interventionsgruppe` and vitality? Do differences in these dimensions explain why vitality has changed more in the intervention group?
 
 #### Solution: controlled differences
 
@@ -1452,9 +1454,9 @@ huxreg(model,model2)
 
 -   The presentation of results is crucial for their impact.
 
--   R is very versatile in terms of data preparation and analysis but, unfortunately, raw output from R is hard to read.
+-   R is very versatile in terms of data preparation and analysis but, unfortunately, raw console output from R is hard to read.
 
--   However, there are packages (`huxtable,ggplot2,officer,flextable`) that help you create really nice tables and figures from within R.
+-   However, there are several powerful packages (`huxtable,ggplot2,officer,flextable`) that help you create nice tables and figures from within R.
 
 -   Generally, you should try to keep table and graph creation within R. This takes time. However, it allows you to automate the data preparation and analysis process thus saving you a lot of time if your data changes (e.g. because of an update) or when you want the change the way you analyze your data. Specifically, you can save your tables or figures and link them into the document you are creating and automatically update them within your document when needed.
 
@@ -1545,7 +1547,7 @@ setwd("C:/Users/kld1/switchdrive/BFH/Wichtige Dokumente/Lehre/Data skills for so
 Buero <- read_excel("OJAOffice_Statistikdaten_Jugendbüro Oberburg 23.xlsx",sheet="Statistikdaten 2024")
 Turnhalle<- read_excel("OJAOffice_Statistikdaten_offene Turnhalle 24.xlsx",sheet="Statistikdaten 2024")
 
-#Bind together
+#Bind together and calculate average visitors by months difference to january 2024
 plotdata <- rbind(Buero,Turnhalle)%>%
   mutate(erfassungsdatum=`Erfasst am`,
     months_since_jan_2024 = (as.numeric(format(erfassungsdatum, "%Y")) - 
