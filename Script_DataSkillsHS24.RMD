@@ -705,7 +705,7 @@ kable(data, format = "markdown", align = "c")
 
 ### Solution: reading in data and looking at it
 
-```{r solutionreadin,echo=FALSE,eval=FALSE}
+```{r solutionreadin,echo=TRUE,eval=FALSE}
 
 #data: https://drive.switch.ch/index.php/s/LoJjPR0XAVZWFYx
 
