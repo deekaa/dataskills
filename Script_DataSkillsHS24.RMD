@@ -40,7 +40,7 @@ knitr::opts_chunk$set(eval= TRUE)
 
         -   Friday 10th: HAL 224a, 225, 226, 228, 229, 131
 
--   [Carefully study the module description]()
+-   [Carefully study the module description](https://moodle.bfh.ch/mod/resource/view.php?id=2243627)
 
 ## Welcome Email
 
@@ -94,7 +94,7 @@ Text to enter into Co-Pilot ein (Microsoft Copilot in Bing; important: verwenden
 
 ## Course plan
 
--   [See module description]()
+-   [See module description](https://moodle.bfh.ch/mod/resource/view.php?id=2243627)
 
 ## Learning Goals
 
@@ -118,7 +118,39 @@ Text to enter into Co-Pilot ein (Microsoft Copilot in Bing; important: verwenden
 
 ## Datafication or why data science is becoming more important in the future
 
-[![](images/clipboard-1435924333.png)](https://marketsplash.com/data-creation-statistics/)
+```{r annualdata,echo=FALSE,eval=TRUE}
+
+library(ggplot2)
+
+data <- data.frame(
+  Year = 2010:2028,
+  DataVolume = c(2, 5, 6.5, 9, 12.5, 15.5, 18, 26, 33, 41, 64, 81, 101, 123, 149, 182, 221, 291, 394),
+  Type = c(rep("Actual", 14), rep("Forecast", 5))
+)
+
+# Remove NA values
+data <- na.omit(data)
+
+# Create the bar plot using ggplot2
+ggplot(data, aes(x = factor(Year), y = DataVolume, fill = Type)) +
+  geom_bar(stat = "identity", width = 0.7) +
+  geom_text(aes(label = DataVolume), vjust = -0.5, size = 3) +
+  scale_fill_manual(values = c("Actual" = "#3b82f6", "Forecast" = "#1f2937")) +
+  labs(
+    title = "Volume of Data/Information Created, Captured, Copied, and Consumed Worldwide\n(2010-2028, in zettabytes)",
+    x = "Year",
+    y = "Data Volume in Zettabytes",
+    fill = "Data Type",
+    caption = "Source: https://www.statista.com/statistics/871513/worldwide-data-created/"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    panel.grid.major.y = element_line(color = "gray90", linetype = "dotted"),
+    panel.grid.minor = element_blank()
+  )
+
+```
 
 -   [Data is the new oil](https://www.economist.com/leaders/2017/05/06/the-worlds-most-valuable-resource-is-no-longer-oil-but-data).
 
@@ -195,13 +227,13 @@ Text to enter into Co-Pilot ein (Microsoft Copilot in Bing; important: verwenden
 
 3.  *"What are the most common tasks or processes in this field?"*
 
-4.  *"What are the three most pressing challenges or problems you encounter in this area?"*
+4.  *"What are the most pressing challenges or problems you encounter in this area?"*
 
 5.  *"What data is currently available, or could realistically be collected, to improve workflows or solve these challenges?"*
 
 ***Step 2: Suggest Solutions***
 
-*Using the information I provide and the reference material, propose **three realistic examples for each problem** where data science could address challenges or improve processes. Each example should:*
+*Using the information I provide and the reference material, propose **three realistic examples** where data science could address challenges or improve processes. Each example should:*
 
 -   *Clearly outline the concept and how it works.*
 
@@ -219,7 +251,8 @@ Text to enter into Co-Pilot ein (Microsoft Copilot in Bing; important: verwenden
 
 *Throughout the process, aim to keep the ideas practical and impactful, while guiding me in envisioning how they could be implemented effectively in the social work domain.*
 
--   Post your final ideas on this [padlet](https://padlet.com/doriank1986/data-skills-2x8f5clm7anao11g)
+-   Select the best of the three suggested applications and present it to your group members.
+-   Agree on one use case that is most convincing and post it on this [padlet](https://padlet.com/doriank1986/data-skills-2x8f5clm7anao11g). You will then present it in class.
 
 # Measuring the effects of social work
 
@@ -478,7 +511,7 @@ data <- raw_data %>%
 # Transform the data from wide to long format
 long_data <- data %>%
   pivot_longer(
-    cols = `2009`:`2022`,
+    cols = `2010`:`2023`,
     names_to = "Year",
     values_to = "Count"
   ) %>%
@@ -492,7 +525,7 @@ plot <- ggplot(long_data, aes(x = Year, y = Count, color = Kanton)) +
   geom_line(size = 1) +
   theme_minimal() +
   labs(
-    title = "Number of Social Assistance Recipients per Canton (2009-2022)",
+    title = "Number of Social Assistance Recipients per Canton (2010-2023)",
     x = "Year",
     y = "Number of Recipients",
     color = "Canton"
@@ -645,32 +678,30 @@ fix(Buero)
 1.  Goal: read in data necessary for measuring the change of gender composition after introduction of mixed gender youth club in Summer 2023 ([Data](https://drive.switch.ch/index.php/s/LoJjPR0XAVZWFYx)).
 2.  For each file, what are the column names under which you find information on the date of the attendance, the number of attendees and the age and gender composition of the attendees?
 
-| **Object name data should be saved with** | **Year** | **Sheet to read in and additional restrictions** | **Source Link** |
-|------------------|------------------|------------------|------------------|
-
-|  |  |  |  |
-|------------------|------------------|------------------|------------------|
-| `Maedels_22` | 2022 | Statistikdaten 2024 | OJAOffice_Statistikdaten_Moditrff.xlsx |
-
-|              |      |            |                                           |
-|--------------|------|------------|-------------------------------------------|
-| `Maedels_23` | 2023 | Moditraeff | Statistik OJA Angebote Burgdorf 2023.xlsx |
-
-|            |      |             |                                        |
-|------------|------|-------------|----------------------------------------|
-| `Jungs_22` | 2022 | Gieletraeff | OJAOffice_Statistikdaten_Gieltrff.xlsx |
-
-|  |  |  |  |
-|------------------|------------------|------------------|------------------|
-| `Jungs_23` | 2023 | Gieletraeff, range="A11:B11",col_names = FALSE | Statistik OJA Angebote Burgdorf 2023.xlsx |
-
-|           |      |                 |                                           |
-|-------------|-------------|-------------|----------------------------------|
-| `JuBu_23` | 2023 | JuBU Traeff 5&6 | Statistik OJA Angebote Burgdorf 2023.xlsx |
-
-|  |  |  |  |
-|------------------|------------------|------------------|------------------|
-| `JuBu_24` | 2024 | Statistikdaten 2024 | Copy of OJAOffice_Statistikdaten_Mittelstufentreff 24.xlsx |
+```{r tabelledaten, echo=FALSE, results='asis'}
+library(knitr)
+data <- data.frame(
+  `Object name data should be saved with` = c("Maedels_22", "Maedels_23", "Jungs_22", "Jungs_23", "JuBu_23", "JuBu_24"),
+  Year = c(2022, 2023, 2022, 2023, 2023, 2024),
+  `Sheet to Read and Additional Restrictions` = c(
+    "Statistikdaten 2024", 
+    "Moditraeff", 
+    "Gieletraeff", 
+    "Gieletraeff, range=\"A11:B11\", col_names=FALSE", 
+    "JuBU Traeff 5&6", 
+    "Statistikdaten 2024"
+  ),
+  `File` = c(
+    "OJAOffice_Statistikdaten_Moditrff.xlsx", 
+    "Statistik OJA Angebote Burgdorf 2023.xlsx", 
+    "OJAOffice_Statistikdaten_Gieltrff.xlsx", 
+    "Statistik OJA Angebote Burgdorf 2023.xlsx", 
+    "Statistik OJA Angebote Burgdorf 2023.xlsx", 
+    "Copy of OJAOffice_Statistikdaten_Mittelstufentreff 24.xlsx"
+  )
+)
+kable(data, format = "markdown", align = "c")
+```
 
 ### Solution: reading in data and looking at it
 
