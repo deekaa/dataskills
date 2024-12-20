@@ -466,7 +466,7 @@ Improving practice with better knowledge
 
 -   With the `tidyverse` and `dplyr`, R has the simplest and most intuitive language for data preparation and analysis.
 
--   R is more than just statistical software (cf. `shiny`).
+-   R is more than just statistical software [(cf. `shiny`).](https://shiny.posit.co/r/gallery/)
 
 -   R is well known by ChatGPT. Disclaimer: we will focus on the most necessary tools for working the data you have.
 
