@@ -619,7 +619,7 @@ print(doc, target = "Social_Assistance_Report.docx")
 
     -   Exercise 1: Add Luzern and Waadt to the plot and table
     -   Exercise 2: Make the plot more beautiful by adding dots to the lines and by making sure every year is displayed on the x-Axis
-    -   Exercise 3: Develop a bar chart that displays the number of social assistance recipients for each canton for the year 2022 ordered by number of recipients. Ensure the chart includes appropriate titles and axis labels. Also ask it to label the bars with the values (with vertical alignment). Save the bar chart as a PNG file.
+    -   Exercise 3: Develop a bar chart that displays the number of social assistance recipients for each canton for the year 2023 ordered by number of recipients. Ensure the chart includes appropriate titles and axis labels. Also ask it to label the bars with the values (with vertical alignment). Save the bar chart as a PNG file.
 
 ## Reading in data
 
@@ -710,7 +710,7 @@ kable(data, format = "markdown", align = "c")
 ```{r solutionreadin,echo=FALSE,eval=FALSE}
 
 #data: https://drive.switch.ch/index.php/s/LoJjPR0XAVZWFYx
-
+library(readxl)
 
 Maedels_22 <- read_excel("OJAOffice_Statistikdaten_Moditrff.xlsx")
 Maedels_23 <- read_excel("Statistik OJA Angebote Burgdorf 2023.xlsx",sheet = "Moditraeff")
