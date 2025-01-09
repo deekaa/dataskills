@@ -689,7 +689,7 @@ data <- data.frame(
     "Statistikdaten 2024", 
     "Moditraeff", 
     "Gieletraeff", 
-    "Gieletraeff, range=\"A11:B11\", col_names=FALSE", 
+    "Gielaetraeff, range=\"A11:B11\", col_names=FALSE", 
     "JuBU Traeff 5&6", 
     "Statistikdaten 2024"
   ),
